@@ -1,6 +1,6 @@
 {% load static i18n crispy_forms_tags %}
 <!-- Modal Confirmation Suppression Document -->
-<div class="modal fade" id="confirmDeleteDocumentModal" tabindex="-1" caller-id="" role="dialog"
+<div class="modal fade" id="confirmDeleteDocumentModal" tabindex="-1" role="dialog"
      aria-labelledby="confirmDeleteDocumentModal" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -21,8 +21,7 @@
                 <form method="POST" action="{% url 'delete-document' document.id %}">
                     {% csrf_token %}
                     <button type="submit" title="{% trans "Supprimer Document" %}"
-                            class="confirm-delete btn btn-danger"
-                            title="{% trans "Supprimer" %}" data-toggle="modal"
+                            class="confirm-delete btn btn-danger" data-toggle="modal"
                             data-target="#confirmDeleteDocumentModal"
                             id="deleteButton{{ document.id }}">
                         <i class="fa fa-trash-o fa-lg"></i>

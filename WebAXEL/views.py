@@ -4,13 +4,18 @@ from django.contrib.auth import logout, authenticate, login
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 from django.db.models import Q
-from django.http import HttpResponseRedirect, request
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, UpdateView, ListView, CreateView, DeleteView
 
 from WebAXEL.forms import UserForm, DocumentForm, DocumentSearchForm, DataSetForm, DataSetSearchForm
 from WebAXEL.models import Document, DataSet
+
+
+def get_word(request, *args, **kwargs):
+    word = win32com.client.Dispatch('Word.Application')
+    return word
 
 
 # Vue Login pour la connexion
@@ -74,9 +79,6 @@ class DocumentsView(LoginRequiredMixin, ListView):
 
     # EN COURS DE DEV
     # Ouverture des documents Microsoft Word
-    def get_word(self, request, *args, **kwargs):
-        word = win32com.client.Dispatch('Word.Application')
-        return word
 
 
 # LOGIN REQUIS : Vue DocumentSearchResults qui renvoi la liste des documents triée, paginée et filtrée avec une query
@@ -177,7 +179,8 @@ class DataSetSearchResultsView(LoginRequiredMixin, ListView):
         # Si il y a une requête on execute le filtre et on renvoi le resultat dans le queryset
         if query:
             queryset = DataSet.objects.filter(
-                Q(nom__icontains=query) | Q(categories_dataset__categorie__icontains=query) | Q(description__icontains=query))
+                Q(nom__icontains=query) | Q(categories_dataset__categorie__icontains=query) | Q(
+                    description__icontains=query))
             return queryset
         # Sinon on renvoi une liste de datasets vide dans le queryset
         else:

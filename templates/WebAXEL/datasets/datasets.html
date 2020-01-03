@@ -2,9 +2,9 @@
 {% load static i18n crispy_forms_tags %}
 {% block title %}{% trans "Ensembles de données A.X.E.L." %}{% endblock %}
 {% block content %}
-    <div class="container-fluid" align="center" xmlns="http://www.w3.org/1999/html">
+    <div class="container-fluid" style="text-align: center" xmlns="http://www.w3.org/1999/html">
         <br>
-        <h1 align="center" id="mainH1">{% trans "Ensembles de données A.X.E.L." %}</h1>
+        <h1 id="mainH1">{% trans "Ensembles de données A.X.E.L." %}</h1>
         <br>
         <div class="container-fluid">
             <form action="{% url 'dataset-search-results' %}" method="GET" class="form-inline my-2 my-lg-0">
@@ -13,6 +13,9 @@
                            placeholder="{% trans "Recherche d'ensemble de données" %}"
                            onfocus="this.placeholder = ''" aria-label="{% trans "Recherche" %}"
                            name="search">
+                    <button type="submit" class="mb-3">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </button>
                 </div>
             </form>
             {% include 'WebAXEL/datasets/datasets_pagination.html' %}
@@ -22,7 +25,8 @@
                         <h5 class="card-title">
                             {% blocktrans with nom=dataset.nom %}{{ nom }}{% endblocktrans %}</h5>
                         <p class="card-text">
-                            {% blocktrans with description=dataset.description|truncatechars:100 %}{{ description }}{% endblocktrans %}
+                            {% blocktrans with description=dataset.description|truncatechars:100 %}
+                                {{ description }}{% endblocktrans %}
                             <a href="">Lire plus</a>
                         </p>
                         <a title="PDF" href="/{{ dataset.dataset }}" class="btn btn-primary"><i
@@ -32,8 +36,7 @@
                             <a title="{% trans "Modifier DataSet" %}" href="{% url "edit-dataset" dataset.id %}"
                                class="btn btn-info"><i class="fa fa-edit fa-lg"></i></a>
                             <a title="{% trans "Supprimer DataSet" %}"
-                               class="confirm-delete btn btn-danger"
-                               title="{% trans "Supprimer" %}" data-toggle="modal"
+                               class="confirm-delete btn btn-danger" data-toggle="modal"
                                data-target="#confirmDeleteDataSetModal"
                                id="deleteButton{{ dataset.id }}" style="color: white">
                                 <i class="fa fa-trash fa-lg"></i>

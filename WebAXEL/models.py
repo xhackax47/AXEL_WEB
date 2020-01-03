@@ -1,8 +1,7 @@
 from datetime import timedelta
 
 from django.contrib.auth.models import User
-from django.db.models import Model, CharField, DateTimeField, TextField, FileField, IntegerField, ForeignKey, CASCADE, \
-    ManyToManyField
+from django.db.models import Model, CharField, DateTimeField, TextField, FileField, IntegerField, ManyToManyField
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 
@@ -30,7 +29,7 @@ class Document(Model):
                  "Description du document : {3}, Emplacement du document : {4}, Catégorie du document : {5}").format(
             self.titre, self.date_ajout,
             self.auteur, self.description,
-            self.document, self.categorie_document)
+            self.document, self.categories_document)
 
     def was_published_recently(self):
         now = timezone.now()
