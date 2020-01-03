@@ -100,11 +100,10 @@
     {% block content %}
     {% endblock %}
 </section>
-<br>
 {% block footer %}
     {% if user.is_authenticated %}
         <!-- Footer -->
-        <footer class="page-footer bg-dark text-white-50 sticky-footer" id="footer">
+        <footer class="page-footer bg-dark text-white-50 sticky-footer mt-3" id="footer">
             <!-- Copyright -->
             <div class="footer-copyright text-center d-flex">
                 <form action="{% url 'set_language' %}" class="form-inline pl-1" method="post">
