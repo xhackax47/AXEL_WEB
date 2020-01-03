@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load static i18n crispy_forms_tags %}
+{% block title %}IHM WebAXEL{% endblock %}
+{% block content %}
+    <div class="container-fluid" align="center">
+        <br>
+        <h1 align="center" id="mainH1">{% trans "Interface Web A.X.E.L." %}</h1>
+        <br>
+        <h5 id="welcomeMessage">{% trans "Bonjour et bienvenue" %}</h5>
+        <span class="badge badge-secondary">{{ user.username }}</span>
+        <br><br>
+        <div class="card-deck">
+            <div class="card text-white bg-dark" id="featureAXEL">
+                <a href="" style="color: white">
+                    <div class="card-body">
+                        <h5 class="card-title">Assistance Vocal</h5>
+                        <p class="card-text">TextToSpeech et SpeechToText avec traduction et compréhension de langage et
+                            d'écriture</p>
+                    </div>
+                </a>
+                <div class="card-footer">
+                    <small class="text-muted">Dernière mise à jour le {{ IA_assistanceVoc.date_modif }}</small>
+                </div>
+            </div>
+            <div class="card text-white bg-dark" id="featureAXEL">
+                <a href="" style="color: white">
+                    <div class="card-body">
+                        <h5 class="card-title">Apprentissage</h5>
+                        <p class="card-text">Apprentissage supervisé et non-supervisé à partir de datasets</p>
+                    </div>
+                </a>
+                <div class="card-footer">
+                    <small class="text-muted">Dernière mise à jour le {{ IA_apprentissage.date_modif }}</small>
+                </div>
+            </div>
+            <div class="card text-white bg-dark" id="featureAXEL">
+                <a href="" style="color: white">
+                    <div class="card-body">
+                        <h5 class="card-title">Reconaissance</h5>
+                        <p class="card-text">Reconaissance faciale, images, sons, texte manuscrits, mouvements,
+                            personnes,
+                            animaux, robots</p>
+                    </div>
+                </a>
+                <div class="card-footer">
+                    <small class="text-muted">Dernière mise à jour le {{ IA_reconaissance.date_modif }}</small>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="card-deck">
+            <div class="card text-white bg-dark" id="featureAXEL">
+                <a href="" style="color: white">
+                    <div class="card-body">
+                        <h5 class="card-title">Génération</h5>
+                        <p class="card-text">Autogénération d'images, de vidéos et de sons</p>
+                    </div>
+                </a>
+                <div class="card-footer">
+                    <small class="text-muted">Dernière mise à jour le {{ IA_generation.date_modif }}</small>
+                </div>
+            </div>
+            <div class="card text-white bg-dark" id="featureAXEL">
+                <a href="" style="color: white">
+                    <div class="card-body">
+                        <h5 class="card-title">Sécurité</h5>
+                        <p class="card-text">Caméras, detecteurs de mouvements, micros, armement non-létal, drones</p>
+                    </div>
+                </a>
+                <div class="card-footer">
+                    <small class="text-muted">Dernière mise à jour le {{ IA_securite.date_modif }}</small>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

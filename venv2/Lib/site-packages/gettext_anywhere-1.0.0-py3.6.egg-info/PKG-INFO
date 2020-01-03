@@ -1,0 +1,16 @@
+Metadata-Version: 1.1
+Name: gettext-anywhere
+Version: 1.0.0
+Summary: Register gettext catalog files from anywhere.
+Home-page: https://github.com/amilstead/gettext-anywhere
+Author: Alex Milstead
+Author-email: alex@amilstead.com
+License: UNKNOWN
+Description: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Topic :: Software Development :: Libraries :: Python Modules

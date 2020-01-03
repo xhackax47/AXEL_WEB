@@ -1,0 +1,47 @@
+/* Polices Persos */
+@font-face {
+    font-family: "Neuropoltical";
+    src: url("../fonts/neuropolitical rg.ttf");
+}
+
+@font-face {
+    font-family: "MarsPolice";
+    src: url("../fonts/marspolice.ttf");
+}
+
+@font-face {
+    font-family: "MarsPoliceItalic";
+    src: url("../fonts/marspolice_i.ttf");
+}
+
+/* Modif CSS */
+li {
+    list-style-type: none;
+}
+
+.img_max_security {
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+h1#mainH1 {
+    font-family: "Neuropoltical", serif;
+}
+
+h5.modal-title#login {
+    font-family: "Neuropoltical", serif;
+}
+
+h5#welcomeMessage {
+    font-family: "MarsPolice", serif;
+}
+
+p#copyright {
+    font-family: "Neuropoltical", serif;
+    color: white
+}
+
+a#socialButton{
+    font-size: 24px;
+}

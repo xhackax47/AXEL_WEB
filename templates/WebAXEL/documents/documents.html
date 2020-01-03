@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load static i18n crispy_forms_tags %}
+{% block title %}{% trans "Documentation A.X.E.L." %}{% endblock %}
+{% block content %}
+    <div class="container-fluid" align="center" xmlns="http://www.w3.org/1999/html">
+        <br>
+        <h1 align="center" id="mainH1">{% trans "Documentation A.X.E.L." %}</h1>
+        <br>
+        <div class="container-fluid">
+            <form action="{% url 'document-search-results' %}" method="GET" class="form-inline my-2 my-lg-0">
+                <input class="form-control form-control-sm w-auto" type="search"
+                       placeholder="{% trans "Recherche de document" %}"
+                       onfocus="this.placeholder = ''" aria-label="{% trans "Recherche" %}"
+                       name="search">
+                <button type="submit">
+                    <i class="fa fa-search" aria-hidden="true" style="text-color: white"></i>
+                </button>
+            </form>
+            {% include 'WebAXEL/documents/documents_pagination.html' %}
+            {% for document in documents %}
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            {% blocktrans with titre=document.titre %}{{ titre }}{% endblocktrans %}</h5>
+                        <p class="card-text">
+                            {% blocktrans with description=document.description|truncatechars:100 %}
+                                {{ description }}{% endblocktrans %}
+                            {% if document.description|length > 100 %}
+                            <a href="">Lire plus</a>
+                            {% endif %}
+                        </p>
+                        <p class="card-text"><span
+                                class="badge badge-secondary">
+                            {% blocktrans with auteur=document.auteur %}Auteur : {{ auteur }}{% endblocktrans %}
+                        </span></p>
+                        <p class="card-text"><small class="text-muted">
+                            {% blocktrans with nb_vues=document.nb_vues %}Nombre de vues :
+                                {{ nb_vues }}{% endblocktrans %}
+                        </small></p>
+                        <a title="PDF" href="/{{ document.document }}" class="btn btn-primary"><i
+                                class="fa fa-file-pdf-o fa-lg"></i></a>
+                        {% if user.is_staff %}
+                            {% include 'WebAXEL/documents/confirm_delete_modal.html' %}
+                            <a title="{% trans "Modifier Document" %}" href="{% url "edit-document" document.id %}"
+                               class="btn btn-info"><i class="fa fa-edit fa-lg"></i></a>
+                            <a title="{% trans "Supprimer Document" %}"
+                               class="confirm-delete btn btn-danger"
+                               title="{% trans "Supprimer" %}" data-toggle="modal"
+                               data-target="#confirmDeleteDocumentModal"
+                               id="deleteButton{{ document.id }}" style="color: white">
+                                <i class="fa fa-trash fa-lg"></i>
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            {% empty %}
+                <p>Aucun document trouvé</p>
+            {% endfor %}
+            {% include 'WebAXEL/documents/documents_pagination.html' %}
+            {% if is_paginated %}
+                <small class="page-current">
+                    {% blocktrans with number=page_obj.number num_pages=page_obj.num_pages %}Page {{ number }} sur
+                        {{ num_pages }}.{% endblocktrans %}
+                </small>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

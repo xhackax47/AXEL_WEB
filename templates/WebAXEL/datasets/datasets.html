@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static i18n crispy_forms_tags %}
+{% block title %}{% trans "Ensembles de données A.X.E.L." %}{% endblock %}
+{% block content %}
+    <div class="container-fluid" align="center" xmlns="http://www.w3.org/1999/html">
+        <br>
+        <h1 align="center" id="mainH1">{% trans "Ensembles de données A.X.E.L." %}</h1>
+        <br>
+        <div class="container-fluid">
+            <form action="{% url 'dataset-search-results' %}" method="GET" class="form-inline my-2 my-lg-0">
+                <div class="container" id="datasetSearch" style="text-align:center;">
+                    <input style="text-align: center" class="form-control form-control-sm mb-1 w-50" type="search"
+                           placeholder="{% trans "Recherche d'ensemble de données" %}"
+                           onfocus="this.placeholder = ''" aria-label="{% trans "Recherche" %}"
+                           name="search">
+                </div>
+            </form>
+            {% include 'WebAXEL/datasets/datasets_pagination.html' %}
+            {% for dataset in datasets %}
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            {% blocktrans with nom=dataset.nom %}{{ nom }}{% endblocktrans %}</h5>
+                        <p class="card-text">
+                            {% blocktrans with description=dataset.description|truncatechars:100 %}{{ description }}{% endblocktrans %}
+                            <a href="">Lire plus</a>
+                        </p>
+                        <a title="PDF" href="/{{ dataset.dataset }}" class="btn btn-primary"><i
+                                class="fa fa-file-pdf-o fa-lg"></i></a>
+                        {% if user.is_staff %}
+                            {% include 'WebAXEL/datasets/confirm_delete_modal.html' %}
+                            <a title="{% trans "Modifier DataSet" %}" href="{% url "edit-dataset" dataset.id %}"
+                               class="btn btn-info"><i class="fa fa-edit fa-lg"></i></a>
+                            <a title="{% trans "Supprimer DataSet" %}"
+                               class="confirm-delete btn btn-danger"
+                               title="{% trans "Supprimer" %}" data-toggle="modal"
+                               data-target="#confirmDeleteDataSetModal"
+                               id="deleteButton{{ dataset.id }}" style="color: white">
+                                <i class="fa fa-trash fa-lg"></i>
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            {% empty %}
+                <p>{% trans "Aucun ensemble de données trouvé" %}</p>
+            {% endfor %}
+            {% include 'WebAXEL/datasets/datasets_pagination.html' %}
+            {% if is_paginated %}
+                <small class="page-current">
+                    {% blocktrans with number=page_obj.number num_pages=page_obj.num_pages %}Page {{ number }} sur
+                        {{ num_pages }}.{% endblocktrans %}
+                </small>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
