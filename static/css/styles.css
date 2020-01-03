@@ -29,30 +29,41 @@ nav {
     position: fixed;
 }
 
+body {
+	margin: 0;
+}
+
+#content {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
 .img_max_security {
     display: block;
     margin-left: auto;
     margin-right: auto
 }
 
-h1#mainH1 {
+.modal-title#login {
+    font-family: "Neuropoltical", serif;
+}
+
+#mainH1 {
     font-family: "Neuropoltical", serif;
     text-align: center;
 }
 
-h5.modal-title#login {
-    font-family: "Neuropoltical", serif;
-}
 
-h5#welcomeMessage {
+#welcomeMessage {
     font-family: "MarsPolice", serif;
 }
 
-p#copyright {
+#copyright {
     font-family: "Neuropoltical", serif;
     color: white
 }
 
-a#socialButton {
+#socialButton {
     font-size: 24px;
 }

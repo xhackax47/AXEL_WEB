@@ -5,9 +5,9 @@ from . import views
 
 urlpatterns = [
     # Authentication
-    path('accounts', include('django.contrib.auth.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
     # Internationalisation
-    path('i18n', include('django.conf.urls.i18n')),
+    path('i18n/', include('django.conf.urls.i18n')),
     # Index
     path('', login_required(views.IndexView.as_view()), name='index'),
     # Gestion de compte
