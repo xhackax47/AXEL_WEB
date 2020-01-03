@@ -14,9 +14,19 @@
     src: url("../fonts/marspolice_i.ttf");
 }
 
-/* Modif CSS */
+/* CSS */
+
+* {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
 li {
     list-style-type: none;
+}
+
+nav {
+    position: fixed;
 }
 
 .img_max_security {
@@ -43,6 +53,6 @@ p#copyright {
     color: white
 }
 
-a#socialButton{
+a#socialButton {
     font-size: 24px;
 }
