@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-04 13:11+0100\n"
+"POT-Creation-Date: 2020-01-04 21:13+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,77 +38,77 @@ msgstr ""
 msgid "Superuser must have is_superuser=True."
 msgstr ""
 
-#: .\WebAXEL\models.py:15
+#: .\WebAXEL\models.py:22
 msgid "Visiteur"
 msgstr "Guest"
 
-#: .\WebAXEL\models.py:16
+#: .\WebAXEL\models.py:23
 msgid "Utilisateur"
 msgstr "User"
 
-#: .\WebAXEL\models.py:17
+#: .\WebAXEL\models.py:24
 msgid "Développeur"
 msgstr "Developer"
 
-#: .\WebAXEL\models.py:18
+#: .\WebAXEL\models.py:25
 msgid "Administrateur Django"
 msgstr "Django Administrator"
 
-#: .\WebAXEL\models.py:19
+#: .\WebAXEL\models.py:26
 msgid "Administrateur A.X.E.L."
 msgstr "A.X.E.L. Administrator"
 
-#: .\WebAXEL\models.py:20
+#: .\WebAXEL\models.py:27
 msgid "Super Administrateur"
 msgstr "Super Administrator"
 
-#: .\WebAXEL\models.py:23
+#: .\WebAXEL\models.py:30
 msgid "email address"
 msgstr ""
 
-#: .\WebAXEL\models.py:33
+#: .\WebAXEL\models.py:40
 #, fuzzy
 #| msgid "Compte utilisateur"
 msgid "Nom d'utilisateur : "
 msgstr "Username : "
 
-#: .\WebAXEL\models.py:33
+#: .\WebAXEL\models.py:40
 msgid "Adresse email : "
 msgstr "Email address : "
 
-#: .\WebAXEL\models.py:38 .\WebAXEL\models.py:52
+#: .\WebAXEL\models.py:45 .\WebAXEL\models.py:59
 msgid "Catégorie du Document"
 msgstr "Document Category"
 
-#: .\WebAXEL\models.py:41 .\WebAXEL\models.py:76
+#: .\WebAXEL\models.py:48 .\WebAXEL\models.py:83
 msgid "{0}"
 msgstr ""
 
-#: .\WebAXEL\models.py:45
+#: .\WebAXEL\models.py:52
 msgid "Titre"
 msgstr "Title"
 
-#: .\WebAXEL\models.py:47
+#: .\WebAXEL\models.py:54
 msgid "Date d'ajout du document"
 msgstr "Date document added"
 
-#: .\WebAXEL\models.py:48
+#: .\WebAXEL\models.py:55
 msgid "Auteur du document"
 msgstr "Document Author"
 
-#: .\WebAXEL\models.py:49
+#: .\WebAXEL\models.py:56
 msgid "Description du document"
 msgstr "Document description"
 
-#: .\WebAXEL\models.py:50
+#: .\WebAXEL\models.py:57
 msgid "Fichier document"
 msgstr "Document file"
 
-#: .\WebAXEL\models.py:51
+#: .\WebAXEL\models.py:58
 msgid "Nombre de vues du document"
 msgstr "Number of views of document"
 
-#: .\WebAXEL\models.py:55
+#: .\WebAXEL\models.py:62
 #, fuzzy
 #| msgid ""
 #| "Titre du document : {0}, Date d'ajout du document : {1}, Auteur du "
@@ -122,32 +122,32 @@ msgstr ""
 "Document title : {0}, Date the document was added : {1}, Document author : "
 "{2}, Document description : {3}, Document Location : {4}"
 
-#: .\WebAXEL\models.py:67 .\WebAXEL\models.py:68 .\WebAXEL\models.py:102
-#: .\WebAXEL\models.py:103
+#: .\WebAXEL\models.py:74 .\WebAXEL\models.py:75 .\WebAXEL\models.py:109
+#: .\WebAXEL\models.py:110
 msgid "Publié récemment?"
 msgstr "Recently published?"
 
-#: .\WebAXEL\models.py:73 .\WebAXEL\models.py:85
+#: .\WebAXEL\models.py:80 .\WebAXEL\models.py:92
 msgid "Catégorie de l'ensemble de données"
 msgstr "Dataset Category"
 
-#: .\WebAXEL\models.py:80
+#: .\WebAXEL\models.py:87
 msgid "Nom"
 msgstr "Name"
 
-#: .\WebAXEL\models.py:81
+#: .\WebAXEL\models.py:88
 msgid "Date d'ajout de l'ensemble de données"
 msgstr "Date Dataset Added"
 
-#: .\WebAXEL\models.py:82
+#: .\WebAXEL\models.py:89
 msgid "Description de l'ensemble de données"
 msgstr "Dataset Description"
 
-#: .\WebAXEL\models.py:83
+#: .\WebAXEL\models.py:90
 msgid "Fichier ensemble de données"
 msgstr "Dataset File"
 
-#: .\WebAXEL\models.py:89
+#: .\WebAXEL\models.py:96
 msgid ""
 "Nom de l'ensemble de données : {0}, Date d'ajout de l'ensemble de données : "
 "{1}, Description de l'ensemble de données : {2}, Emplacement de l'ensemble "

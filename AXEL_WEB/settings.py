@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'crispy_forms',
 ]
 AUTH_USER_MODEL = 'WebAXEL.AxelUser'
+AUTH_GROUP_MODEL = 'WebAXEL.AxelGroup'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 

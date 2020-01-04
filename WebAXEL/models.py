@@ -1,15 +1,22 @@
 from datetime import timedelta
 
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import AbstractUser, Group
 from django.db.models import Model, CharField, DateTimeField, TextField, FileField, IntegerField, ManyToManyField, \
-    ImageField, EmailField, TextChoices
+    ImageField, EmailField, TextChoices, OneToOneField, CASCADE
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 from .managers import CustomUserManager
 
 
-# Modèle User
+# Modèle Groupe personnalisé (se base sur le groupe de Django)
+class AxelGroup(Group):
+    description = CharField(max_length=1024)
 
+    def __str__(self):
+        return "Groupe A.X.E.L."
+
+
+# Modèle User personnalisé (se base sur le user de Django)
 class AxelUser(AbstractUser):
     class Fonction(TextChoices):
         Guest = _('Visiteur')
@@ -30,7 +37,7 @@ class AxelUser(AbstractUser):
     objects = CustomUserManager()
 
     def __str__(self):
-        return _("Nom d'utilisateur : ") + self.username + _("Adresse email : ") + self.email
+        return _("Nom d'utilisateur {0} / Adresse email : {1} ").format(self.username, self.email)
 
 
 # Modèles Document
