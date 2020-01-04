@@ -1,16 +1,16 @@
 import win32com.client
-from django.conf import settings
-from django.contrib.auth import logout, authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.models import User
+from django.contrib.auth.views import LoginView
 from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, UpdateView, ListView, CreateView, DeleteView
 
+from AXEL_WEB import settings
 from WebAXEL.forms import UserForm, DocumentForm, DocumentSearchForm, DataSetForm, DataSetSearchForm
-from WebAXEL.models import Document, DataSet
+from WebAXEL.models import Document, DataSet, AxelUser
 
 
 def get_word(request, *args, **kwargs):
@@ -19,30 +19,25 @@ def get_word(request, *args, **kwargs):
 
 
 # Vue Login pour la connexion
-class LoginView(TemplateView):
+class LoginView(LoginView):
     template_name = 'registration/login.html'
 
-    # Methode POST de la vue Login
-    def post(self, request, **kwargs):
-        username = request.POST.get('username', False)
-        password = request.POST.get('password', False)
-        user = authenticate(username=username, password=password)
-        if user is not None and user.is_active:
-            login(request, user)
-            return HttpResponseRedirect(settings.LOGIN_REDIRECT_URL)
-
-        return render(request, self.template_name)
+    def get_success_url(self):
+        return reverse_lazy('index')
 
 
 # Vue Logout pour la deconnexion
 class LogoutView(TemplateView):
-    template_name = 'WebAXEL/index.html'
+    template_name = 'registration/login.html'
 
     # Récupération de la requête de logout
     def get(self, request, **kwargs):
         logout(request)
 
         return render(request, self.template_name)
+
+    def get_success_url(self):
+        return reverse_lazy('login')
 
 
 # LOGIN REQUIS : Vue Index après le login
@@ -52,14 +47,14 @@ class IndexView(LoginRequiredMixin, TemplateView):
 
 # LOGIN REQUIS : Vue AccountSettings pour faire la modification de compte utilisateur à travers un form
 class AccountSettingsView(LoginRequiredMixin, UpdateView):
-    model = User
+    model = AxelUser
     form_class = UserForm
     template_name = 'registration/account-settings.html'
     success_url = reverse_lazy('index')
 
     # Récupération de l'objet via son id(pk)
     def get_object(self, *args, **kwargs):
-        user = get_object_or_404(User, pk=self.kwargs['pk'])
+        user = get_object_or_404(AxelUser, pk=self.kwargs['pk'])
 
         return user
 

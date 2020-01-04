@@ -1,9 +1,36 @@
 from datetime import timedelta
 
-from django.contrib.auth.models import User
-from django.db.models import Model, CharField, DateTimeField, TextField, FileField, IntegerField, ManyToManyField
+from django.contrib.auth.models import AbstractUser
+from django.db.models import Model, CharField, DateTimeField, TextField, FileField, IntegerField, ManyToManyField, \
+    ImageField, EmailField, TextChoices
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
+from .managers import CustomUserManager
+
+
+# Modèle User
+
+class AxelUser(AbstractUser):
+    class Fonction(TextChoices):
+        Guest = _('Visiteur')
+        User = _('Utilisateur')
+        Dev = _('Développeur')
+        DjangAdmin = _('Administrateur Django')
+        AxelAdmin = _('Administrateur A.X.E.L.')
+        SuperAdmin = _('Super Administrateur')
+
+    username = CharField(max_length=100, unique=True, null=True)
+    email = EmailField(_('email address'), unique=True)
+    profile_img = ImageField(upload_to='static/img/profilesImages/')
+    fonction = CharField(max_length=100, choices=Fonction.choices, default=Fonction.Guest)
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = []
+
+    objects = CustomUserManager()
+
+    def __str__(self):
+        return self.username
 
 
 # Modèles Document

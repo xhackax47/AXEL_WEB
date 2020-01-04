@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
@@ -39,7 +40,7 @@ INSTALLED_APPS = [
     'WebAXEL.apps.WebaxelConfig',
     'crispy_forms',
 ]
-
+AUTH_USER_MODEL = 'WebAXEL.AxelUser'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
@@ -89,6 +90,7 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -146,6 +148,6 @@ STATICFILES_DIRS = (
 
 
 # Authentification
-LOGIN_URL="/accounts/login/"
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
+LOGIN_URL="/login/"
+LOGIN_REDIRECT_URL = ''
+LOGOUT_REDIRECT_URL = LOGIN_URL
