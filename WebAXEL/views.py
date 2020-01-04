@@ -9,7 +9,7 @@ from django.urls import reverse_lazy
 from django.views.generic import TemplateView, UpdateView, ListView, CreateView, DeleteView
 
 from AXEL_WEB import settings
-from WebAXEL.forms import UserForm, DocumentForm, DocumentSearchForm, DataSetForm, DataSetSearchForm
+from WebAXEL.forms import DocumentForm, DocumentSearchForm, DataSetForm, DataSetSearchForm, UserChangeForm
 from WebAXEL.models import Document, DataSet, AxelUser
 
 
@@ -48,7 +48,7 @@ class IndexView(LoginRequiredMixin, TemplateView):
 # LOGIN REQUIS : Vue AccountSettings pour faire la modification de compte utilisateur à travers un form
 class AccountSettingsView(LoginRequiredMixin, UpdateView):
     model = AxelUser
-    form_class = UserForm
+    form_class = UserChangeForm
     template_name = 'registration/account-settings.html'
     success_url = reverse_lazy('index')
 

@@ -1,12 +1,20 @@
-from django.forms import ModelForm, CharField, PasswordInput
-
+from django.forms import ModelForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from WebAXEL.models import Document, DataSet, DocumentCategory, DataSetCategory, AxelUser
 
 
-class UserForm(ModelForm):
+class UserCreationForm(UserCreationForm):
+
+    class Meta(UserCreationForm):
+        model = AxelUser
+        fields = '__all__'
+
+
+class UserChangeForm(UserChangeForm):
+
     class Meta:
         model = AxelUser
-        exclude = ['user']
+        fields = '__all__'
 
 
 class DocumentCategoryForm(ModelForm):

@@ -1,18 +1,19 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from django.contrib.auth.models import User
 
+from WebAXEL.forms import UserCreationForm, UserChangeForm
 from WebAXEL.models import Document, DocumentCategory, DataSet, DataSetCategory, AxelUser
 
 
-class AxelUserInline(admin.StackedInline):
-    model = AxelUser
-    can_delete = False
-    verbose_name = "Utilisateur A.X.E.L."
-
-
 class AxelUserAdmin(UserAdmin):
-    inlines = (AxelUserInline,)
+    add_form = UserCreationForm
+    form = UserChangeForm
+    model = AxelUser
+    list_display = ('email', 'first_name', 'last_name', 'username', 'is_staff', 'is_active',)
+    list_filter = ('email', 'first_name', 'last_name', 'username',  'is_staff', 'is_active',)
+    verbose_name = "Utilisateur A.X.E.L."
+    search_fields = ('email', 'username', 'first_name', 'last_name')
+    ordering = ('date_joined',)
 
 
 class DocumentCategoryAdmin(admin.ModelAdmin):
@@ -36,7 +37,7 @@ class DataSetAdmin(admin.ModelAdmin):
     date_hierarchy = 'date_ajout'
 
 
-admin.site.register(User, AxelUserAdmin)
+admin.site.register(AxelUser, AxelUserAdmin)
 admin.site.register(Document, DocumentAdmin)
 admin.site.register(DataSet, DataSetAdmin)
 admin.site.register(DocumentCategory, DocumentCategoryAdmin)

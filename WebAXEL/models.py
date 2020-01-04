@@ -30,7 +30,7 @@ class AxelUser(AbstractUser):
     objects = CustomUserManager()
 
     def __str__(self):
-        return self.username
+        return _("Nom d'utilisateur : ") + self.username + _("Adresse email : ") + self.email
 
 
 # Modèles Document
