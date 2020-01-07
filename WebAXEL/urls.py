@@ -14,6 +14,8 @@ urlpatterns = [
     # Gestion de compte
     path('account-settings/<int:pk>', login_required(views.AccountSettingsView.as_view()), name='account-settings'),
 
+    # Details Document
+    path('document/<int:pk>', login_required(views.DocumentView.as_view()), name='document'),
     # Liste Documents
     path('documents', login_required(views.DocumentsView.as_view()), name='documents'),
     # Chercher Documents
@@ -25,6 +27,8 @@ urlpatterns = [
     # Supprimer Document
     path('delete-document/<int:pk>', login_required(views.DocumentDeleteView.as_view()), name='delete-document'),
 
+    # Details DataSet
+    path('dataset/<int:pk>', login_required(views.DataSetView.as_view()), name='dataset'),
     # Liste DataSet
     path('datasets', login_required(views.DataSetsView.as_view()), name='datasets'),
     # Chercher DataSet

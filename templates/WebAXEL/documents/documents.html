@@ -3,11 +3,9 @@
 {% block title %}{% trans "Documentation A.X.E.L." %}{% endblock %}
 {% block content %}
     <div class="container-fluid" style="text-align: center" xmlns="http://www.w3.org/1999/html">
-        <br>
-        <h1 id="mainH1">{% trans "Documentation A.X.E.L." %}</h1>
-        <br>
-        <div class="container-fluid">
-            <form action="{% url 'document-search-results' %}" method="GET" class="form-inline my-2 my-lg-0">
+        <h1 class="mainH1 mt-3 mb-3">{% trans "Documentation A.X.E.L." %}</h1>
+        <div class="container">
+            <form action="{% url 'document-search-results' %}" method="GET" class="form-inline mt-3 mb-3">
                 <div class="container" id="documentSearch" style="text-align:center;">
                     <input style="text-align: center" class="form-control form-control-sm mb-1 w-50" type="search"
                            placeholder="{% trans "Recherche de document" %}"
@@ -18,78 +16,60 @@
                     </button>
                 </div>
             </form>
-            {% include 'WebAXEL/documents/documents_pagination.html' %}
+        </div>
+        {% include 'WebAXEL/documents/documents_pagination.html' %}
+        <div class="container-fluid">
+            {% if documents|length >= 3 %}
+                <div class="card-deck">
+            {% endif %}
             {% for document in documents %}
-                <div class="card">
+                <div class="card text-center mb-3" style="min-width: 30%;">
                     <div class="card-body">
                         <h5 class="card-title">
                             {% blocktrans with titre=document.titre %}{{ titre }}{% endblocktrans %}</h5>
                         <p class="card-text">
-                            {% blocktrans with description=document.description|truncatechars:100 %} {{ description }}{% endblocktrans %}
-                            {% if document.description|length > 100 %}
+                            {% blocktrans with description=document.description|truncatechars:50 %}
+                                {{ description }}{% endblocktrans %}
+                            {% if document.description|length > 50 %}
                                 <a href="">Lire plus</a>
                             {% endif %}
                         </p>
-                        <p class="card-text"><span
-                                class="badge badge-secondary">
+                        <p class="card-text"><span class="badge badge-info">
                             {% blocktrans with auteur=document.auteur %}Auteur : {{ auteur }}{% endblocktrans %}
-                        </span></p>
-                        <p class="card-text"><small class="text-muted">
-                            {% blocktrans with nb_vues=document.nb_vues %}Nombre de vues : {{ nb_vues }}{% endblocktrans %}
+                            </span></p>
+                        <p class="card-text"><small class="badge badge-secondary">
+                            {% blocktrans with nb_vues=document.nb_vues %}Nombre de vues :
+                                {{ nb_vues }}{% endblocktrans %}
                         </small></p>
-                        <a title="PDF" href="/{{ document.document }}" class="btn btn-primary"><i
-                                class="fa fa-file-pdf-o fa-lg"></i></a>
-                        {% if user.is_staff %}
-                            <a title="{% trans "Modifier Document" %}" href="{% url "edit-document" document.id %}"
-                               class="btn btn-info"><i class="fa fa-edit fa-lg"></i></a>
-                            <a title="{% trans "Supprimer Document" %}"
-                               class="confirm-delete btn btn-danger" data-toggle="modal"
-                               data-target="#confirmDeleteDocumentModal"
-                               id="deleteButton{{ document.id }}" style="color: white">
-                                <i class="fa fa-trash fa-lg"></i>
-                            </a>
-                            <!-- Modal Confirmation Suppression Document -->
-                            <div class="modal fade" id="confirmDeleteDocumentModal" tabindex="-1" role="dialog"
-                                 aria-labelledby="confirmDeleteDocumentModal" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="confirmDeleteDocumentModal">
-                                                {% blocktrans with titre=document.titre %}Suppression du document {{ titre }} {% endblocktrans %}
-                                            </h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body confirm-delete">
-                                            <p>{% blocktrans with id=document.id %}Etes-vous sûr de vouloir supprimer le document? (id {{ id }}){% endblocktrans %}</p>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-warning"
-                                                    data-dismiss="modal">{% trans "Annuler" %}</button>
-                                            <form method="POST" action="{% url 'delete-document' document.id %}">
-                                                {% csrf_token %}
-                                                <button type="submit" title="{% trans "Supprimer Document" %}"
-                                                        class="confirm-delete btn btn-danger" data-toggle="modal"
-                                                        data-target="#confirmDeleteDocumentModal"
-                                                        id="deleteButton{{ document.id }}">
-                                                    <i class="fa fa-trash-o fa-lg"></i>
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        {% endif %}
+                        <div class="card-footer p-1">
+                            <a title="PDF" href="/{{ document.document }}" class="btn btn-primary"><i
+                                    class="fa fa-file-pdf-o fa-lg"></i></a>
+                            <a title="{% trans "Détails Document" %}" href="{% url "document" document.id %}"
+                               class="btn btn-info"><i class="fa fa-info fa-lg"></i></a>
+                            {% if user.is_staff %}
+                                <a title="{% trans "Modifier Document" %}"
+                                   href="{% url "edit-document" document.id %}"
+                                   class="btn btn-warning"><i class="fa fa-edit fa-lg"></i></a>
+                                <a title="{% trans "Supprimer Document" %}"
+                                   class="confirm-delete btn btn-danger" data-toggle="modal"
+                                   data-target="#confirmDeleteDocumentModal{{ document.id }}"
+                                   id="deleteButton{{ document.id }}" style="color: white">
+                                    <i class="fa fa-trash fa-lg"></i>
+                                </a>
+                            {% endif %}
+                            {% include "WebAXEL/documents/documents_confirmation_modal.html" %}
+                        </div>
                     </div>
                 </div>
             {% empty %}
-                <p>{% trans "Aucun document trouvé" %}</p>
+                <p style="text-align: center;">{% trans "Aucun document trouvé" %}</p>
             {% endfor %}
+            </div>
             {% include 'WebAXEL/documents/documents_pagination.html' %}
             {% if is_paginated %}
                 <small class="page-current">
-                    {% blocktrans with number=page_obj.number num_pages=page_obj.num_pages %}Page {{ number }} sur {{ num_pages }}.{% endblocktrans %}
+                    {% blocktrans with number=page_obj.number num_pages=page_obj.num_pages %}Page {{ number }} sur
+                        {{ num_pages }}.{% endblocktrans %}
                 </small>
             {% endif %}
         </div>

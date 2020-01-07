@@ -8,3 +8,4 @@ $(document).on('click', '#confirmDeleteDocumentButtonModal', function () {
     var caller = $("#confirmDeleteDocumentButtonModal").closest(".modal").attr("caller-id");
     window.location = $("#".concat(caller)).attr("href");
 });
+

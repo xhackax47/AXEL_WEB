@@ -8,23 +8,27 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-04 21:13+0100\n"
+"POT-Creation-Date: 2020-01-06 13:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: \n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: .\AXEL_WEB\settings.py:132
+#: .\AXEL_WEB\settings.py:133
 msgid "French"
 msgstr "Français"
 
-#: .\AXEL_WEB\settings.py:133
+#: .\AXEL_WEB\settings.py:134
 msgid "English"
 msgstr "Anglais"
+
+#: .\WebAXEL\admin.py:46
+msgid "Ensemble de données"
+msgstr ""
 
 #: .\WebAXEL\managers.py:13
 msgid "The Email must be set"
@@ -62,24 +66,29 @@ msgstr ""
 msgid "Super Administrateur"
 msgstr ""
 
+#: .\WebAXEL\models.py:29
+msgid "Nom d'utilisateur"
+msgstr ""
+
 #: .\WebAXEL\models.py:30
 msgid "email address"
 msgstr ""
 
-#: .\WebAXEL\models.py:40
-msgid "Nom d'utilisateur : "
+#: .\WebAXEL\models.py:31
+msgid "Image Profil"
+msgstr ""
+
+#: .\WebAXEL\models.py:32
+msgid "Fonction"
 msgstr ""
 
 #: .\WebAXEL\models.py:40
-msgid "Adresse email : "
+#, python-brace-format
+msgid "Nom d'utilisateur {0} / Adresse email : {1} "
 msgstr ""
 
 #: .\WebAXEL\models.py:45 .\WebAXEL\models.py:59
 msgid "Catégorie du Document"
-msgstr ""
-
-#: .\WebAXEL\models.py:48 .\WebAXEL\models.py:83
-msgid "{0}"
 msgstr ""
 
 #: .\WebAXEL\models.py:52
@@ -107,6 +116,7 @@ msgid "Nombre de vues du document"
 msgstr ""
 
 #: .\WebAXEL\models.py:62
+#, python-brace-format
 msgid ""
 "Titre du document : {0}, Date d'ajout du document : {1}, Auteur du "
 "document : {2}, Description du document : {3}, Emplacement du document : "
@@ -139,15 +149,19 @@ msgid "Fichier ensemble de données"
 msgstr ""
 
 #: .\WebAXEL\models.py:96
+#, python-brace-format
 msgid ""
 "Nom de l'ensemble de données : {0}, Date d'ajout de l'ensemble de données : "
 "{1}, Description de l'ensemble de données : {2}, Emplacement de l'ensemble "
 "de données : {3}, Catégorie de l'ensemble de données : {4}"
 msgstr ""
 
-#: .\templates\WebAXEL\datasets\create-dataset.html:7
-#: .\templates\WebAXEL\datasets\create-dataset.html:13
-#: .\templates\base.html:71
+#: .\templates\WebAXEL\datasets\create-dataset.html:3
+msgid "Ajouter Ensemble de Données A.X.E.L."
+msgstr ""
+
+#: .\templates\WebAXEL\datasets\create-dataset.html:5
+#: .\templates\WebAXEL\datasets\create-dataset.html:10 .\templates\base.html:68
 msgid "Ajouter Ensemble de Données"
 msgstr ""
 
@@ -230,18 +244,26 @@ msgstr ""
 msgid "Dernière page"
 msgstr ""
 
-#: .\templates\WebAXEL\datasets\edit-dataset.html:7
+#: .\templates\WebAXEL\datasets\edit-dataset.html:3
+msgid "Modifier Ensemble de Données A.X.E.L."
+msgstr ""
+
+#: .\templates\WebAXEL\datasets\edit-dataset.html:5
 msgid "Modifier Ensemble de données"
 msgstr ""
 
-#: .\templates\WebAXEL\datasets\edit-dataset.html:13
-#: .\templates\WebAXEL\documents\edit-document.html:13
+#: .\templates\WebAXEL\datasets\edit-dataset.html:10
+#: .\templates\WebAXEL\documents\edit-document.html:10
 msgid "Sauvegarder les modifications"
 msgstr ""
 
-#: .\templates\WebAXEL\documents\create-document.html:7
-#: .\templates\WebAXEL\documents\create-document.html:13
-#: .\templates\base.html:55
+#: .\templates\WebAXEL\documents\create-document.html:3
+msgid "Ajouter Documentation A.X.E.L."
+msgstr ""
+
+#: .\templates\WebAXEL\documents\create-document.html:5
+#: .\templates\WebAXEL\documents\create-document.html:10
+#: .\templates\base.html:52
 msgid "Ajouter Document"
 msgstr ""
 
@@ -270,7 +292,7 @@ msgid "Nombre de vues : %(nb_vues)s"
 msgstr ""
 
 #: .\templates\WebAXEL\documents\documents.html:43
-#: .\templates\WebAXEL\documents\edit-document.html:7
+#: .\templates\WebAXEL\documents\edit-document.html:5
 msgid "Modifier Document"
 msgstr ""
 
@@ -293,6 +315,10 @@ msgstr ""
 msgid "Aucun document trouvé"
 msgstr ""
 
+#: .\templates\WebAXEL\documents\edit-document.html:3
+msgid "Modifier Documentation A.X.E.L."
+msgstr ""
+
 #: .\templates\WebAXEL\index.html:7
 msgid "Interface Web A.X.E.L."
 msgstr ""
@@ -301,43 +327,43 @@ msgstr ""
 msgid "Bonjour et bienvenue"
 msgstr ""
 
-#: .\templates\base.html:35
+#: .\templates\base.html:32
 msgid "Administration"
 msgstr ""
 
-#: .\templates\base.html:39
+#: .\templates\base.html:36
 msgid "Administration Web"
 msgstr ""
 
-#: .\templates\base.html:42
+#: .\templates\base.html:39
 msgid "Administration A.X.E.L."
 msgstr ""
 
-#: .\templates\base.html:50
+#: .\templates\base.html:47
 msgid "Documentation"
 msgstr ""
 
-#: .\templates\base.html:59
+#: .\templates\base.html:56
 msgid "Documents"
 msgstr ""
 
-#: .\templates\base.html:66
+#: .\templates\base.html:63
 msgid "Données"
 msgstr ""
 
-#: .\templates\base.html:75
+#: .\templates\base.html:72
 msgid "Ensembles de données"
 msgstr ""
 
-#: .\templates\base.html:87
+#: .\templates\base.html:84
 msgid "Gestion Compte"
 msgstr ""
 
-#: .\templates\base.html:90
+#: .\templates\base.html:87
 msgid "Déconnexion"
 msgstr ""
 
-#: .\templates\base.html:125
+#: .\templates\base.html:122
 msgid "Changer"
 msgstr ""
 
@@ -454,22 +480,22 @@ msgstr ""
 #: .\venv2\Lib\site-packages\Django-3.0.1-py3.6.egg\django\core\validators.py:362
 #, python-format
 msgid ""
-"Ensure this value has at least %(limit_value)d character (it has %"
-"(show_value)d)."
+"Ensure this value has at least %(limit_value)d character (it has "
+"%(show_value)d)."
 msgid_plural ""
-"Ensure this value has at least %(limit_value)d characters (it has %"
-"(show_value)d)."
+"Ensure this value has at least %(limit_value)d characters (it has "
+"%(show_value)d)."
 msgstr[0] ""
 msgstr[1] ""
 
 #: .\venv2\Lib\site-packages\Django-3.0.1-py3.6.egg\django\core\validators.py:377
 #, python-format
 msgid ""
-"Ensure this value has at most %(limit_value)d character (it has %(show_value)"
-"d)."
+"Ensure this value has at most %(limit_value)d character (it has "
+"%(show_value)d)."
 msgid_plural ""
-"Ensure this value has at most %(limit_value)d characters (it has %"
-"(show_value)d)."
+"Ensure this value has at most %(limit_value)d characters (it has "
+"%(show_value)d)."
 msgstr[0] ""
 msgstr[1] ""
 
@@ -505,8 +531,8 @@ msgstr[1] ""
 #: .\venv2\Lib\site-packages\Django-3.0.1-py3.6.egg\django\core\validators.py:470
 #, python-format
 msgid ""
-"File extension “%(extension)s” is not allowed. Allowed extensions are: %"
-"(allowed_extensions)s."
+"File extension “%(extension)s” is not allowed. Allowed extensions are: "
+"%(allowed_extensions)s."
 msgstr ""
 
 #: .\venv2\Lib\site-packages\Django-3.0.1-py3.6.egg\django\core\validators.py:522
@@ -808,6 +834,7 @@ msgid "Enter a valid duration."
 msgstr ""
 
 #: .\venv2\Lib\site-packages\Django-3.0.1-py3.6.egg\django\forms\fields.py:473
+#, python-brace-format
 msgid "The number of days must be between {min_days} and {max_days}."
 msgstr ""
 
@@ -1361,10 +1388,6 @@ msgstr[1] ""
 
 #: .\venv2\Lib\site-packages\Django-3.0.1-py3.6.egg\django\utils\timesince.py:72
 msgid "0 minutes"
-msgstr ""
-
-#: .\venv2\Lib\site-packages\Django-3.0.1-py3.6.egg\django\utils\translation\__init__.py:327
-msgid "name"
 msgstr ""
 
 #: .\venv2\Lib\site-packages\Django-3.0.1-py3.6.egg\django\views\csrf.py:110

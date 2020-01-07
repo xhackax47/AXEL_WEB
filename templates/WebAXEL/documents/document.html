@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static i18n crispy_forms_tags %}
+{% block title %}{% trans "Documentation A.X.E.L." %}{% endblock %}
+{% block content %}
+    <div class="container-fluid" style="text-align: center" xmlns="http://www.w3.org/1999/html">
+        <br>
+        <h1 id="mainH1">{{ document.titre }}</h1>
+        <br>
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-body">
+                    <p class="card-text">
+                        {% blocktrans with description=document.description|truncatechars:100 %}
+                            {{ description }}{% endblocktrans %}
+                        {% if document.description|length > 100 %}
+                            <a href="">Lire plus</a>
+                        {% endif %}
+                    </p>
+                    <p class="card-text"><span
+                            class="badge badge-secondary">
+                            {% blocktrans with auteur=document.auteur %}Auteur : {{ auteur }}{% endblocktrans %}
+                        </span></p>
+                    <p class="card-text"><small class="text-muted">
+                        {% blocktrans with nb_vues=document.nb_vues %}Nombre de vues :
+                            {{ nb_vues }}{% endblocktrans %}
+                    </small></p>
+                    <a title="PDF" href="/{{ document.document }}" class="btn btn-primary"><i
+                            class="fa fa-file-pdf-o fa-lg"></i></a>
+                    {% if user.is_staff %}
+                        <a title="{% trans "Modifier Document" %}" href="{% url "edit-document" document.id %}"
+                           class="btn btn-info"><i class="fa fa-edit fa-lg"></i></a>
+                        <a title="{% trans "Supprimer Document" %}"
+                           class="confirm-delete btn btn-danger" data-toggle="modal"
+                           data-target="#confirmDeleteDocumentModal{{ document.id }}"
+                           id="deleteButton{{ document.id }}" style="color: white">
+                            <i class="fa fa-trash fa-lg"></i>
+                        </a>
+                    {% endif %}
+                    {% include "WebAXEL/documents/documents_confirmation_modal.html" %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

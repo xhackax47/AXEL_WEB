@@ -20,7 +20,7 @@ class UserChangeForm(UserChangeForm):
 class DocumentCategoryForm(ModelForm):
     class Meta:
         model = DocumentCategory
-        exclude = []
+        fields = '__all__'
 
 
 class DocumentForm(ModelForm):
@@ -32,13 +32,13 @@ class DocumentForm(ModelForm):
 class DocumentSearchForm(ModelForm):
     class Meta:
         model = Document
-        exclude = []
+        fields = '__all__'
 
 
 class DataSetCategoryForm(ModelForm):
     class Meta:
         model = DataSetCategory
-        exclude = []
+        fields = '__all__'
 
 
 class DataSetForm(ModelForm):

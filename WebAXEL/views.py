@@ -1,18 +1,18 @@
 import win32com.client
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView
 from django.db.models import Q
-from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
-from django.views.generic import TemplateView, UpdateView, ListView, CreateView, DeleteView
+from django.views.generic import TemplateView, UpdateView, ListView, CreateView, DeleteView, DetailView
 
-from AXEL_WEB import settings
 from WebAXEL.forms import DocumentForm, DocumentSearchForm, DataSetForm, DataSetSearchForm, UserChangeForm
 from WebAXEL.models import Document, DataSet, AxelUser
 
 
+# EN COURS DE DEV
+# Ouverture des documents Microsoft Word
 def get_word(request, *args, **kwargs):
     word = win32com.client.Dispatch('Word.Application')
     return word
@@ -59,6 +59,12 @@ class AccountSettingsView(LoginRequiredMixin, UpdateView):
         return user
 
 
+# LOGIN REQUIS : Vue Documents qui renvoi les details d'un document
+class DocumentView(LoginRequiredMixin, DetailView):
+    model = Document
+    template_name = 'WebAXEL/documents/document.html'
+
+
 # LOGIN REQUIS : Vue Documents qui renvoi la liste des documents triée et paginée
 class DocumentsView(LoginRequiredMixin, ListView):
     model = Document
@@ -71,9 +77,6 @@ class DocumentsView(LoginRequiredMixin, ListView):
     def get_ordering(self):
         ordering = self.request.GET.get('ordering', '-date_ajout')
         return ordering
-
-    # EN COURS DE DEV
-    # Ouverture des documents Microsoft Word
 
 
 # LOGIN REQUIS : Vue DocumentSearchResults qui renvoi la liste des documents triée, paginée et filtrée avec une query
@@ -136,15 +139,21 @@ class DocumentUpdateView(LoginRequiredMixin, UpdateView):
 # LOGIN REQUIS : Vue DocumentDelete qui permet la suppression d'un document
 class DocumentDeleteView(LoginRequiredMixin, DeleteView):
     model = Document
+    slug_field = 'id'
     success_url = reverse_lazy('documents')
-    template_name = 'WebAXEL/documents/confirm_delete_modal.html'
+    success_message = "Deleted Successfully"
+    template_name = 'WebAXEL/documents/documents_confirmation_modal.html'
 
     # Récupération de l'objet via son id(pk)
-    def get_object(self, *args, **kwargs):
+    def get_object(self, queryset=None):
         document = get_object_or_404(Document, pk=self.kwargs['pk'])
         return document
 
 
+# LOGIN REQUIS : Vue DataSets qui renvoi les details d'un dataset
+class DataSetView(LoginRequiredMixin, DetailView):
+    model = DataSet
+    template_name = 'WebAXEL/datasets/dataset.html'
 # LOGIN REQUIS : Vue DataSets qui renvoi la liste des datasets triée et paginée
 class DataSetsView(LoginRequiredMixin, ListView):
     model = DataSet
@@ -207,7 +216,7 @@ class DataSetCreateView(LoginRequiredMixin, CreateView):
 class DataSetUpdateView(LoginRequiredMixin, UpdateView):
     model = DataSet
     template_name = 'WebAXEL/datasets/edit-dataset.html'
-    fields = ['nom', 'description', 'dataset', 'categories-datasets']
+    fields = ['nom', 'description','source', 'dataset', 'categories_dataset']
     success_url = reverse_lazy('datasets')
 
     # Récupération de l'objet via son id(pk)
@@ -220,8 +229,10 @@ class DataSetUpdateView(LoginRequiredMixin, UpdateView):
 # LOGIN REQUIS : Vue DataSetDelete qui permet la suppression d'un dataset
 class DataSetDeleteView(LoginRequiredMixin, DeleteView):
     model = DataSet
+    slug_field = 'id'
     success_url = reverse_lazy('datasets')
-    template_name = 'WebAXEL/datasets/confirm_delete_modal.html'
+    success_message = "Deleted Successfully"
+    template_name = 'WebAXEL/datasets/datasets_confirmation_modal.html'
 
     # Récupération de l'objet via son id(pk)
     def get_object(self, *args, **kwargs):

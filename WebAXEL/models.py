@@ -2,7 +2,7 @@ from datetime import timedelta
 
 from django.contrib.auth.models import AbstractUser, Group
 from django.db.models import Model, CharField, DateTimeField, TextField, FileField, IntegerField, ManyToManyField, \
-    ImageField, EmailField, TextChoices, OneToOneField, CASCADE
+    ImageField, EmailField, TextChoices, URLField
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 from .managers import CustomUserManager
@@ -26,10 +26,10 @@ class AxelUser(AbstractUser):
         AxelAdmin = _('Administrateur A.X.E.L.')
         SuperAdmin = _('Super Administrateur')
 
-    username = CharField(max_length=100, unique=True, null=True)
+    username = CharField(max_length=100, unique=True, null=True, verbose_name=_("Nom d'utilisateur"))
     email = EmailField(_('email address'), unique=True)
-    profile_img = ImageField(upload_to='static/img/profilesImages/')
-    fonction = CharField(max_length=100, choices=Fonction.choices, default=Fonction.Guest)
+    profile_img = ImageField(upload_to='static/img/profilesImages/', blank=True, verbose_name=_("Image Profil"))
+    fonction = CharField(max_length=100, choices=Fonction.choices, default=Fonction.Guest, verbose_name=_("Fonction"))
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
@@ -45,7 +45,7 @@ class DocumentCategory(Model):
     categorie = CharField(max_length=255, verbose_name=_("Catégorie du Document"))
 
     def __str__(self):
-        return _("{0}").format(self.categorie)
+        return self.categorie.__str__()
 
 
 class Document(Model):
@@ -56,7 +56,8 @@ class Document(Model):
     description = TextField(null=True, blank=True, verbose_name=_("Description du document"))
     document = FileField(upload_to='static/docs/', null=True, verbose_name=_("Fichier document"))
     nb_vues = IntegerField(default=0, verbose_name=_("Nombre de vues du document"))
-    categories_document = ManyToManyField(DocumentCategory, default=None, verbose_name=_("Catégorie du Document"))
+    categories_document = ManyToManyField(DocumentCategory, blank=True, default=None,
+                                          verbose_name=_("Catégorie du Document"))
 
     def __str__(self):
         return _("Titre du document : {0}, Date d'ajout du document : {1}, Auteur du document : {2}, "
@@ -77,25 +78,26 @@ class Document(Model):
 
 # Modèles DataSet
 class DataSetCategory(Model):
-    categorie = CharField(max_length=255, verbose_name=_("Catégorie de l'ensemble de données"))
+    categorie = CharField(max_length=255, verbose_name=_("Catégorie du jeu de données"))
 
     def __str__(self):
-        return _("{0}").format(self.categorie)
+        return self.categorie.__str__()
 
 
 class DataSet(Model):
     nom = CharField(max_length=255, verbose_name=_("Nom"))
-    date_ajout = DateTimeField(auto_now_add=True, verbose_name=_("Date d'ajout de l'ensemble de données"))
-    description = TextField(null=True, blank=True, verbose_name=_("Description de l'ensemble de données"))
-    dataset = FileField(upload_to='static/datasets/', null=True, verbose_name=_("Fichier ensemble de données"))
-    categories_dataset = ManyToManyField(DataSetCategory, default=None,
-                                         verbose_name=_("Catégorie de l'ensemble de données"))
+    date_ajout = DateTimeField(auto_now_add=True, verbose_name=_("Date d'ajout du jeu de données"))
+    description = TextField(null=True, blank=True, verbose_name=_("Description du jeu de données"))
+    dataset = FileField(upload_to='static/datasets/', null=True, verbose_name=_("Fichier jeu de données"))
+    source = URLField(max_length=1000, verbose_name=_("Source"), blank=True)
+    categories_dataset = ManyToManyField(DataSetCategory, blank=True, default=None,
+                                         verbose_name=_("Catégorie du jeu de données"))
 
     def __str__(self):
         return _(
-            "Nom de l'ensemble de données : {0}, Date d'ajout de l'ensemble de données : {1}, "
-            "Description de l'ensemble de données : {2}, Emplacement de l'ensemble de données : {3}, "
-            "Catégorie de l'ensemble de données : {4}").format(
+            "Nom du jeu de données : {0}, Date d'ajout du jeu de données : {1}, "
+            "Description du jeu de données : {2}, Emplacement du jeu de données : {3}, "
+            "Catégories du jeu de données : {4}").format(
             self.nom, self.date_ajout,
             self.description, self.dataset,
             self.categories_dataset)
