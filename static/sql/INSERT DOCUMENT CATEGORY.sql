@@ -1,0 +1,17 @@
+INSERT INTO public."WebAXEL_documentcategory"(categorie) VALUES 
+('Actes de colloques (proceedings)'),
+('Archives'),
+('Articles de journaux (presse)'),
+('Articles de revues scientifiques'),
+('Documentaires / Films'),
+('Brevets'),
+('Cartes'),
+('Dictionnaires / Encyclopédies'),
+('Données / Statistiques'),
+('Livres (monographies) / Manuels (handbooks)'),
+('Lois et règlements / Normes'),
+('Images / Photos'),
+('Prépublications (preprints)'),
+('Publications gouvernementales / Rapports'),
+('Tests'),
+('Thèses / Mémoires')

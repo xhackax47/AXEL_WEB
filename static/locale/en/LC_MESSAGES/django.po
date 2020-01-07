@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-06 13:49+0100\n"
+"POT-Creation-Date: 2020-01-07 15:23+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -92,7 +92,7 @@ msgstr ""
 msgid "Nom d'utilisateur {0} / Adresse email : {1} "
 msgstr "Username : "
 
-#: .\WebAXEL\models.py:45 .\WebAXEL\models.py:59
+#: .\WebAXEL\models.py:45 .\WebAXEL\models.py:60
 msgid "Catégorie du Document"
 msgstr "Document Category"
 
@@ -120,7 +120,7 @@ msgstr "Document file"
 msgid "Nombre de vues du document"
 msgstr "Number of views of document"
 
-#: .\WebAXEL\models.py:62
+#: .\WebAXEL\models.py:63
 #, fuzzy, python-brace-format
 #| msgid ""
 #| "Titre du document : {0}, Date d'ajout du document : {1}, Auteur du "
@@ -134,37 +134,53 @@ msgstr ""
 "Document title : {0}, Date the document was added : {1}, Document author : "
 "{2}, Document description : {3}, Document Location : {4}"
 
-#: .\WebAXEL\models.py:74 .\WebAXEL\models.py:75 .\WebAXEL\models.py:109
-#: .\WebAXEL\models.py:110
+#: .\WebAXEL\models.py:75 .\WebAXEL\models.py:76 .\WebAXEL\models.py:111
+#: .\WebAXEL\models.py:112
 msgid "Publié récemment?"
 msgstr "Recently published?"
 
-#: .\WebAXEL\models.py:80 .\WebAXEL\models.py:92
-msgid "Catégorie de l'ensemble de données"
+#: .\WebAXEL\models.py:81 .\WebAXEL\models.py:94
+#, fuzzy
+#| msgid "Catégorie de l'ensemble de données"
+msgid "Catégorie du jeu de données"
 msgstr "Dataset Category"
 
-#: .\WebAXEL\models.py:87
+#: .\WebAXEL\models.py:88
 msgid "Nom"
 msgstr "Name"
 
-#: .\WebAXEL\models.py:88
-msgid "Date d'ajout de l'ensemble de données"
+#: .\WebAXEL\models.py:89
+#, fuzzy
+#| msgid "Date d'ajout de l'ensemble de données"
+msgid "Date d'ajout du jeu de données"
 msgstr "Date Dataset Added"
 
-#: .\WebAXEL\models.py:89
-msgid "Description de l'ensemble de données"
+#: .\WebAXEL\models.py:90
+#, fuzzy
+#| msgid "Description de l'ensemble de données"
+msgid "Description du jeu de données"
 msgstr "Dataset Description"
 
-#: .\WebAXEL\models.py:90
-msgid "Fichier ensemble de données"
+#: .\WebAXEL\models.py:91
+#, fuzzy
+#| msgid "Fichier ensemble de données"
+msgid "Fichier jeu de données"
 msgstr "Dataset File"
 
-#: .\WebAXEL\models.py:96
-#, python-brace-format
+#: .\WebAXEL\models.py:92
+msgid "Source"
+msgstr ""
+
+#: .\WebAXEL\models.py:98
+#, fuzzy, python-brace-format
+#| msgid ""
+#| "Nom de l'ensemble de données : {0}, Date d'ajout de l'ensemble de "
+#| "données : {1}, Description de l'ensemble de données : {2}, Emplacement de "
+#| "l'ensemble de données : {3}, Catégorie de l'ensemble de données : {4}"
 msgid ""
-"Nom de l'ensemble de données : {0}, Date d'ajout de l'ensemble de données : "
-"{1}, Description de l'ensemble de données : {2}, Emplacement de l'ensemble "
-"de données : {3}, Catégorie de l'ensemble de données : {4}"
+"Nom du jeu de données : {0}, Date d'ajout du jeu de données : {1}, "
+"Description du jeu de données : {2}, Emplacement du jeu de données : {3}, "
+"Catégories du jeu de données : {4}"
 msgstr ""
 "Dataset name: {0}, Date dataset added: {1}, Dataset Description: {2}, "
 "Dataset Location : {3} Dataset category: {4}"
@@ -180,66 +196,95 @@ msgstr "Add Dataset"
 msgid "Ajouter Ensemble de Données"
 msgstr "Add Dataset"
 
+#: .\templates\WebAXEL\datasets\dataset.html:3
+#: .\templates\WebAXEL\datasets\dataset.html:7
 #: .\templates\WebAXEL\datasets\datasets.html:3
-#: .\templates\WebAXEL\datasets\datasets.html:7
+#: .\templates\WebAXEL\datasets\datasets.html:6
 msgid "Ensembles de données A.X.E.L."
 msgstr "A.X.E.L.'s Dataset"
 
-#: .\templates\WebAXEL\datasets\datasets.html:13
-msgid "Recherche d'ensemble de données"
-msgstr "Datasets search"
-
-#: .\templates\WebAXEL\datasets\datasets.html:14
-#: .\templates\WebAXEL\documents\documents.html:14
-msgid "Recherche"
-msgstr "Search"
-
-#: .\templates\WebAXEL\datasets\datasets.html:26
+#: .\templates\WebAXEL\datasets\dataset.html:13
+#: .\templates\WebAXEL\datasets\datasets.html:29
 #, python-format
 msgid "%(nom)s"
 msgstr ""
 
-#: .\templates\WebAXEL\datasets\datasets.html:28
-#: .\templates\WebAXEL\documents\documents.html:28
-#, python-format
-msgid " %(description)s"
-msgstr ""
+#: .\templates\WebAXEL\datasets\dataset.html:15
+#: .\templates\WebAXEL\datasets\datasets.html:31
+#: .\templates\WebAXEL\documents\documents.html:31
+#, fuzzy, python-format
+#| msgid "Nombre de vues : %(document.nb_vues)s"
+msgid ""
+"\n"
+"                                %(description)s"
+msgstr "Number of views : %(nb_vues)s"
 
-#: .\templates\WebAXEL\datasets\datasets.html:34
+#: .\templates\WebAXEL\datasets\dataset.html:22
+#: .\templates\WebAXEL\datasets\datasets.html:51
 msgid "Modifier DataSet"
 msgstr "Edit DataSet"
 
-#: .\templates\WebAXEL\datasets\datasets.html:36
-#: .\templates\WebAXEL\datasets\datasets.html:65
+#: .\templates\WebAXEL\datasets\dataset.html:24
+#: .\templates\WebAXEL\datasets\datasets.html:53
+#: .\templates\WebAXEL\datasets\datasets_confirmation_modal.html:27
 msgid "Supprimer DataSet"
 msgstr "Delete DataSet"
 
-#: .\templates\WebAXEL\datasets\datasets.html:49
+#: .\templates\WebAXEL\datasets\datasets.html:11
+msgid "Recherche d'ensemble de données"
+msgstr "Datasets search"
+
+#: .\templates\WebAXEL\datasets\datasets.html:12
+#: .\templates\WebAXEL\documents\documents.html:12
+msgid "Recherche"
+msgstr "Search"
+
+#: .\templates\WebAXEL\datasets\datasets.html:38
+#, python-format
+msgid "Catégorie : %(categorie.categorie)s"
+msgstr ""
+
+#: .\templates\WebAXEL\datasets\datasets.html:41
+#, python-format
+msgid "Source : %(source)s"
+msgstr ""
+
+#: .\templates\WebAXEL\datasets\datasets.html:48
+#, fuzzy
+#| msgid "Ensembles de données"
+msgid "Détails Ensemble de Données"
+msgstr "Dataset"
+
+#: .\templates\WebAXEL\datasets\datasets.html:64
+msgid "Aucun ensemble de données trouvé"
+msgstr "No Dataset Found"
+
+#: .\templates\WebAXEL\datasets\datasets.html:70
+#: .\templates\WebAXEL\documents\documents.html:71
+#, fuzzy, python-format
+#| msgid "Page %(number)s sur %(num_pages)s."
+msgid ""
+"Page %(number)s sur\n"
+"                        %(num_pages)s."
+msgstr "Page %(number)s of %(num_pages)s."
+
+#: .\templates\WebAXEL\datasets\datasets_confirmation_modal.html:10
 #, python-format
 msgid "Suppression du dataset %(nom)s"
 msgstr "Deletion of dataset %(nom)s"
 
-#: .\templates\WebAXEL\datasets\datasets.html:57
+#: .\templates\WebAXEL\datasets\datasets_confirmation_modal.html:18
 #, fuzzy, python-format
 #| msgid "Etes-vous sûr de vouloir supprimer le document? (id %(id)s)"
-msgid "Etes-vous sûr de vouloir supprimer l'ensemble de données? (id%(id)s)"
+msgid ""
+"Etes-vous sûr de vouloir supprimer l'ensemble de données? (id\n"
+"                        %(id)s)"
 msgstr "Are you sure you want to delete this document? (id %(id)s)"
 
-#: .\templates\WebAXEL\datasets\datasets.html:62
-#: .\templates\WebAXEL\documents\documents.html:69
+#: .\templates\WebAXEL\datasets\datasets_confirmation_modal.html:24
+#: .\templates\WebAXEL\documents\documents_confirmation_modal.html:22
 msgid "Annuler"
 msgstr "Cancel"
-
-#: .\templates\WebAXEL\datasets\datasets.html:80
-msgid "Aucun ensemble de données trouvé"
-msgstr "No Dataset Found"
-
-#: .\templates\WebAXEL\datasets\datasets.html:85
-#: .\templates\WebAXEL\documents\documents.html:92
-#, fuzzy, python-format
-#| msgid "Page %(number)s sur %(num_pages)s."
-msgid "Page %(number)s sur %(num_pages)s."
-msgstr "Page %(number)s of %(num_pages)s."
 
 #: .\templates\WebAXEL\datasets\datasets_pagination.html:5
 #: .\templates\WebAXEL\documents\documents_pagination.html:5
@@ -290,63 +335,93 @@ msgstr "A.X.E.L. Documentation"
 msgid "Ajouter Document"
 msgstr "Add Document"
 
+#: .\templates\WebAXEL\documents\document.html:3
 #: .\templates\WebAXEL\documents\documents.html:3
-#: .\templates\WebAXEL\documents\documents.html:7
+#: .\templates\WebAXEL\documents\documents.html:6
 msgid "Documentation A.X.E.L."
 msgstr "A.X.E.L. Documentation"
 
-#: .\templates\WebAXEL\documents\documents.html:13
-msgid "Recherche de document"
-msgstr "Document search"
+#: .\templates\WebAXEL\documents\document.html:13
+#, fuzzy, python-format
+#| msgid "Nombre de vues : %(document.nb_vues)s"
+msgid ""
+"\n"
+"                            %(description)s"
+msgstr "Number of views : %(nb_vues)s"
 
-#: .\templates\WebAXEL\documents\documents.html:26
-#, python-format
-msgid "%(titre)s"
-msgstr ""
-
-#: .\templates\WebAXEL\documents\documents.html:35
+#: .\templates\WebAXEL\documents\document.html:21
+#: .\templates\WebAXEL\documents\documents.html:38
 #, fuzzy, python-format
 #| msgid "Auteur : %(document.auteur)s"
 msgid "Auteur : %(auteur)s"
 msgstr "Author : %(auteur)s"
 
-#: .\templates\WebAXEL\documents\documents.html:38
+#: .\templates\WebAXEL\documents\document.html:24
 #, fuzzy, python-format
-#| msgid "Nombre de vues du document"
-msgid "Nombre de vues : %(nb_vues)s"
+#| msgid "Nombre de vues : %(document.nb_vues)s"
+msgid ""
+"Nombre de vues :\n"
+"                            %(nb_vues)s"
 msgstr "Number of views : %(nb_vues)s"
 
-#: .\templates\WebAXEL\documents\documents.html:43
+#: .\templates\WebAXEL\documents\document.html:30
+#: .\templates\WebAXEL\documents\documents.html:50
 #: .\templates\WebAXEL\documents\edit-document.html:5
 #, fuzzy
 #| msgid "Ajouter Document"
 msgid "Modifier Document"
 msgstr "Add Document"
 
-#: .\templates\WebAXEL\documents\documents.html:45
-#: .\templates\WebAXEL\documents\documents.html:72
+#: .\templates\WebAXEL\documents\document.html:32
+#: .\templates\WebAXEL\documents\documents.html:53
+#: .\templates\WebAXEL\documents\documents_confirmation_modal.html:25
 #, fuzzy
 #| msgid "Ajouter Document"
 msgid "Supprimer Document"
 msgstr "Add Document"
 
-#: .\templates\WebAXEL\documents\documents.html:58
+#: .\templates\WebAXEL\documents\documents.html:11
+msgid "Recherche de document"
+msgstr "Document search"
+
+#: .\templates\WebAXEL\documents\documents.html:29
+#, python-format
+msgid "%(titre)s"
+msgstr ""
+
+#: .\templates\WebAXEL\documents\documents.html:41
+#, fuzzy, python-format
+#| msgid "Nombre de vues : %(document.nb_vues)s"
+msgid ""
+"Nombre de vues :\n"
+"                                %(nb_vues)s"
+msgstr "Number of views : %(nb_vues)s"
+
+#: .\templates\WebAXEL\documents\documents.html:47
+#, fuzzy
+#| msgid "Catégorie du Document"
+msgid "Détails Document"
+msgstr "Document Category"
+
+#: .\templates\WebAXEL\documents\documents.html:65
+#, fuzzy
+#| msgid "Aucun ensemble de données trouvé"
+msgid "Aucun document trouvé"
+msgstr "No Dataset Found"
+
+#: .\templates\WebAXEL\documents\documents_confirmation_modal.html:10
 #, fuzzy, python-format
 #| msgid "Suppression du dataset %(nom)s"
 msgid "Suppression du document %(titre)s "
 msgstr "Deletion of dataset %(nom)s"
 
-#: .\templates\WebAXEL\documents\documents.html:65
+#: .\templates\WebAXEL\documents\documents_confirmation_modal.html:17
 #, fuzzy, python-format
 #| msgid "Etes-vous sûr de vouloir supprimer le document? (id %(id)s)"
-msgid "Etes-vous sûr de vouloir supprimer le document? (id %(id)s)"
+msgid ""
+"Etes-vous sûr de vouloir supprimer le document? (id %(id)s\n"
+"                    )"
 msgstr "Are you sure you want to delete this document? (id %(id)s)"
-
-#: .\templates\WebAXEL\documents\documents.html:87
-#, fuzzy
-#| msgid "Aucun ensemble de données trouvé"
-msgid "Aucun document trouvé"
-msgstr "No Dataset Found"
 
 #: .\templates\WebAXEL\documents\edit-document.html:3
 #, fuzzy
@@ -1610,22 +1685,18 @@ msgstr ""
 msgid "i18n legend"
 msgstr ""
 
+#, fuzzy, python-format
+#~| msgid "Page %(number)s sur %(num_pages)s."
+#~ msgid "Page %(number)s sur %(num_pages)s."
+#~ msgstr "Page %(number)s of %(num_pages)s."
+
+#, fuzzy, python-format
+#~| msgid "Nombre de vues du document"
+#~ msgid "Nombre de vues : %(nb_vues)s"
+#~ msgstr "Number of views : %(nb_vues)s"
+
 #~ msgid "Adresse email : "
 #~ msgstr "Email address : "
-
-#, fuzzy
-#~| msgid "Nombre de vues : %(document.nb_vues)s"
-#~ msgid ""
-#~ "\n"
-#~ "                                %(description)s"
-#~ msgstr "Number of views : %(nb_vues)s"
-
-#, fuzzy
-#~| msgid "Nombre de vues : %(document.nb_vues)s"
-#~ msgid ""
-#~ "Nombre de vues :\n"
-#~ "                                %(nb_vues)s"
-#~ msgstr "Number of views : %(nb_vues)s"
 
 #, fuzzy
 #~| msgid "Etes-vous sûr de vouloir supprimer le document? (id %(id)s)"
@@ -1633,13 +1704,6 @@ msgstr ""
 #~ "Etes-vous sûr de vouloir supprimer le\n"
 #~ "                                                document? (id %(id)s)"
 #~ msgstr "Are you sure you want to delete this document? (id %(id)s)"
-
-#, fuzzy
-#~| msgid "Page %(number)s sur %(num_pages)s."
-#~ msgid ""
-#~ "Page %(number)s sur\n"
-#~ "                        %(num_pages)s."
-#~ msgstr "Page %(number)s of %(num_pages)s."
 
 #~ msgid ""
 #~ "Suppression du dataset\n"

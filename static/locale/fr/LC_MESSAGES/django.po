@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-06 13:49+0100\n"
+"POT-Creation-Date: 2020-01-07 15:23+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -87,7 +87,7 @@ msgstr ""
 msgid "Nom d'utilisateur {0} / Adresse email : {1} "
 msgstr ""
 
-#: .\WebAXEL\models.py:45 .\WebAXEL\models.py:59
+#: .\WebAXEL\models.py:45 .\WebAXEL\models.py:60
 msgid "Catégorie du Document"
 msgstr ""
 
@@ -115,7 +115,7 @@ msgstr ""
 msgid "Nombre de vues du document"
 msgstr ""
 
-#: .\WebAXEL\models.py:62
+#: .\WebAXEL\models.py:63
 #, python-brace-format
 msgid ""
 "Titre du document : {0}, Date d'ajout du document : {1}, Auteur du "
@@ -123,37 +123,41 @@ msgid ""
 "{4}, Catégorie du document : {5}"
 msgstr ""
 
-#: .\WebAXEL\models.py:74 .\WebAXEL\models.py:75 .\WebAXEL\models.py:109
-#: .\WebAXEL\models.py:110
+#: .\WebAXEL\models.py:75 .\WebAXEL\models.py:76 .\WebAXEL\models.py:111
+#: .\WebAXEL\models.py:112
 msgid "Publié récemment?"
 msgstr ""
 
-#: .\WebAXEL\models.py:80 .\WebAXEL\models.py:92
-msgid "Catégorie de l'ensemble de données"
-msgstr ""
-
-#: .\WebAXEL\models.py:87
-msgid "Nom"
+#: .\WebAXEL\models.py:81 .\WebAXEL\models.py:94
+msgid "Catégorie du jeu de données"
 msgstr ""
 
 #: .\WebAXEL\models.py:88
-msgid "Date d'ajout de l'ensemble de données"
+msgid "Nom"
 msgstr ""
 
 #: .\WebAXEL\models.py:89
-msgid "Description de l'ensemble de données"
+msgid "Date d'ajout du jeu de données"
 msgstr ""
 
 #: .\WebAXEL\models.py:90
-msgid "Fichier ensemble de données"
+msgid "Description du jeu de données"
 msgstr ""
 
-#: .\WebAXEL\models.py:96
+#: .\WebAXEL\models.py:91
+msgid "Fichier jeu de données"
+msgstr ""
+
+#: .\WebAXEL\models.py:92
+msgid "Source"
+msgstr ""
+
+#: .\WebAXEL\models.py:98
 #, python-brace-format
 msgid ""
-"Nom de l'ensemble de données : {0}, Date d'ajout de l'ensemble de données : "
-"{1}, Description de l'ensemble de données : {2}, Emplacement de l'ensemble "
-"de données : {3}, Catégorie de l'ensemble de données : {4}"
+"Nom du jeu de données : {0}, Date d'ajout du jeu de données : {1}, "
+"Description du jeu de données : {2}, Emplacement du jeu de données : {3}, "
+"Catégories du jeu de données : {4}"
 msgstr ""
 
 #: .\templates\WebAXEL\datasets\create-dataset.html:3
@@ -165,63 +169,89 @@ msgstr ""
 msgid "Ajouter Ensemble de Données"
 msgstr ""
 
+#: .\templates\WebAXEL\datasets\dataset.html:3
+#: .\templates\WebAXEL\datasets\dataset.html:7
 #: .\templates\WebAXEL\datasets\datasets.html:3
-#: .\templates\WebAXEL\datasets\datasets.html:7
+#: .\templates\WebAXEL\datasets\datasets.html:6
 msgid "Ensembles de données A.X.E.L."
 msgstr ""
 
-#: .\templates\WebAXEL\datasets\datasets.html:13
-msgid "Recherche d'ensemble de données"
-msgstr ""
-
-#: .\templates\WebAXEL\datasets\datasets.html:14
-#: .\templates\WebAXEL\documents\documents.html:14
-msgid "Recherche"
-msgstr ""
-
-#: .\templates\WebAXEL\datasets\datasets.html:26
+#: .\templates\WebAXEL\datasets\dataset.html:13
+#: .\templates\WebAXEL\datasets\datasets.html:29
 #, python-format
 msgid "%(nom)s"
 msgstr ""
 
-#: .\templates\WebAXEL\datasets\datasets.html:28
-#: .\templates\WebAXEL\documents\documents.html:28
+#: .\templates\WebAXEL\datasets\dataset.html:15
+#: .\templates\WebAXEL\datasets\datasets.html:31
+#: .\templates\WebAXEL\documents\documents.html:31
 #, python-format
-msgid " %(description)s"
+msgid ""
+"\n"
+"                                %(description)s"
 msgstr ""
 
-#: .\templates\WebAXEL\datasets\datasets.html:34
+#: .\templates\WebAXEL\datasets\dataset.html:22
+#: .\templates\WebAXEL\datasets\datasets.html:51
 msgid "Modifier DataSet"
 msgstr ""
 
-#: .\templates\WebAXEL\datasets\datasets.html:36
-#: .\templates\WebAXEL\datasets\datasets.html:65
+#: .\templates\WebAXEL\datasets\dataset.html:24
+#: .\templates\WebAXEL\datasets\datasets.html:53
+#: .\templates\WebAXEL\datasets\datasets_confirmation_modal.html:27
 msgid "Supprimer DataSet"
 msgstr ""
 
-#: .\templates\WebAXEL\datasets\datasets.html:49
+#: .\templates\WebAXEL\datasets\datasets.html:11
+msgid "Recherche d'ensemble de données"
+msgstr ""
+
+#: .\templates\WebAXEL\datasets\datasets.html:12
+#: .\templates\WebAXEL\documents\documents.html:12
+msgid "Recherche"
+msgstr ""
+
+#: .\templates\WebAXEL\datasets\datasets.html:38
+#, python-format
+msgid "Catégorie : %(categorie.categorie)s"
+msgstr ""
+
+#: .\templates\WebAXEL\datasets\datasets.html:41
+#, python-format
+msgid "Source : %(source)s"
+msgstr ""
+
+#: .\templates\WebAXEL\datasets\datasets.html:48
+msgid "Détails Ensemble de Données"
+msgstr ""
+
+#: .\templates\WebAXEL\datasets\datasets.html:64
+msgid "Aucun ensemble de données trouvé"
+msgstr ""
+
+#: .\templates\WebAXEL\datasets\datasets.html:70
+#: .\templates\WebAXEL\documents\documents.html:71
+#, python-format
+msgid ""
+"Page %(number)s sur\n"
+"                        %(num_pages)s."
+msgstr ""
+
+#: .\templates\WebAXEL\datasets\datasets_confirmation_modal.html:10
 #, python-format
 msgid "Suppression du dataset %(nom)s"
 msgstr ""
 
-#: .\templates\WebAXEL\datasets\datasets.html:57
+#: .\templates\WebAXEL\datasets\datasets_confirmation_modal.html:18
 #, python-format
-msgid "Etes-vous sûr de vouloir supprimer l'ensemble de données? (id%(id)s)"
+msgid ""
+"Etes-vous sûr de vouloir supprimer l'ensemble de données? (id\n"
+"                        %(id)s)"
 msgstr ""
 
-#: .\templates\WebAXEL\datasets\datasets.html:62
-#: .\templates\WebAXEL\documents\documents.html:69
+#: .\templates\WebAXEL\datasets\datasets_confirmation_modal.html:24
+#: .\templates\WebAXEL\documents\documents_confirmation_modal.html:22
 msgid "Annuler"
-msgstr ""
-
-#: .\templates\WebAXEL\datasets\datasets.html:80
-msgid "Aucun ensemble de données trouvé"
-msgstr ""
-
-#: .\templates\WebAXEL\datasets\datasets.html:85
-#: .\templates\WebAXEL\documents\documents.html:92
-#, python-format
-msgid "Page %(number)s sur %(num_pages)s."
 msgstr ""
 
 #: .\templates\WebAXEL\datasets\datasets_pagination.html:5
@@ -267,52 +297,78 @@ msgstr ""
 msgid "Ajouter Document"
 msgstr ""
 
+#: .\templates\WebAXEL\documents\document.html:3
 #: .\templates\WebAXEL\documents\documents.html:3
-#: .\templates\WebAXEL\documents\documents.html:7
+#: .\templates\WebAXEL\documents\documents.html:6
 msgid "Documentation A.X.E.L."
 msgstr ""
 
-#: .\templates\WebAXEL\documents\documents.html:13
-msgid "Recherche de document"
-msgstr ""
-
-#: .\templates\WebAXEL\documents\documents.html:26
+#: .\templates\WebAXEL\documents\document.html:13
 #, python-format
-msgid "%(titre)s"
+msgid ""
+"\n"
+"                            %(description)s"
 msgstr ""
 
-#: .\templates\WebAXEL\documents\documents.html:35
+#: .\templates\WebAXEL\documents\document.html:21
+#: .\templates\WebAXEL\documents\documents.html:38
 #, python-format
 msgid "Auteur : %(auteur)s"
 msgstr ""
 
-#: .\templates\WebAXEL\documents\documents.html:38
+#: .\templates\WebAXEL\documents\document.html:24
 #, python-format
-msgid "Nombre de vues : %(nb_vues)s"
+msgid ""
+"Nombre de vues :\n"
+"                            %(nb_vues)s"
 msgstr ""
 
-#: .\templates\WebAXEL\documents\documents.html:43
+#: .\templates\WebAXEL\documents\document.html:30
+#: .\templates\WebAXEL\documents\documents.html:50
 #: .\templates\WebAXEL\documents\edit-document.html:5
 msgid "Modifier Document"
 msgstr ""
 
-#: .\templates\WebAXEL\documents\documents.html:45
-#: .\templates\WebAXEL\documents\documents.html:72
+#: .\templates\WebAXEL\documents\document.html:32
+#: .\templates\WebAXEL\documents\documents.html:53
+#: .\templates\WebAXEL\documents\documents_confirmation_modal.html:25
 msgid "Supprimer Document"
 msgstr ""
 
-#: .\templates\WebAXEL\documents\documents.html:58
+#: .\templates\WebAXEL\documents\documents.html:11
+msgid "Recherche de document"
+msgstr ""
+
+#: .\templates\WebAXEL\documents\documents.html:29
+#, python-format
+msgid "%(titre)s"
+msgstr ""
+
+#: .\templates\WebAXEL\documents\documents.html:41
+#, python-format
+msgid ""
+"Nombre de vues :\n"
+"                                %(nb_vues)s"
+msgstr ""
+
+#: .\templates\WebAXEL\documents\documents.html:47
+msgid "Détails Document"
+msgstr ""
+
+#: .\templates\WebAXEL\documents\documents.html:65
+msgid "Aucun document trouvé"
+msgstr ""
+
+#: .\templates\WebAXEL\documents\documents_confirmation_modal.html:10
 #, python-format
 msgid "Suppression du document %(titre)s "
 msgstr ""
 
-#: .\templates\WebAXEL\documents\documents.html:65
+#: .\templates\WebAXEL\documents\documents_confirmation_modal.html:17
 #, python-format
-msgid "Etes-vous sûr de vouloir supprimer le document? (id %(id)s)"
-msgstr ""
-
-#: .\templates\WebAXEL\documents\documents.html:87
-msgid "Aucun document trouvé"
+msgid ""
+"Etes-vous sûr de vouloir supprimer le document? (id %(id)s\n"
+"                    )"
 msgstr ""
 
 #: .\templates\WebAXEL\documents\edit-document.html:3

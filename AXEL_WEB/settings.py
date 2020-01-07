@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'AdminAXEL.apps.AdminaxelConfig',
     'WebAXEL.apps.WebaxelConfig',
     'crispy_forms',
+    'rest_framework',
 ]
 AUTH_USER_MODEL = 'WebAXEL.AxelUser'
 AUTH_GROUP_MODEL = 'WebAXEL.AxelGroup'
