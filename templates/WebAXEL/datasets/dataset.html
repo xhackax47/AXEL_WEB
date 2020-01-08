@@ -1,27 +1,28 @@
 {% extends "base.html" %}
 {% load static i18n crispy_forms_tags %}
-{% block title %}{% trans "Ensembles de données A.X.E.L." %}{% endblock %}
+{% block title %}{% trans "Jeu de données A.X.E.L." %}{% endblock %}
 {% block content %}
     <div class="container-fluid" style="text-align: center" xmlns="http://www.w3.org/1999/html">
         <br>
-        <h1 id="mainH1">{% trans "Ensembles de données A.X.E.L." %}</h1>
+        <h1 id="mainH1">{{ dataset.nom }}</h1>
         <br>
-        <div class="container-fluid">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            {% blocktrans with nom=dataset.nom %}{{ nom }}{% endblocktrans %}</h5>
-                        <p class="card-text">
-                            {% blocktrans with description=dataset.description|truncatechars:100 %}
-                                {{ description }}{% endblocktrans %}
-                            <a href="">Lire plus</a>
-                        </p>
+        <div class="container">
+            <div class="card">
+                <div class="card-body">
+                    <p class="card-text">
+                        {% blocktrans with description=dataset.description %} {{ description }}{% endblocktrans %}
+                    </p>
+                    <a class="card-link"><span class="badge badge-info">
+                            {% blocktrans with source=dataset.source %}Source : {{ source }}{% endblocktrans %}
+                            </span>
+                    </a>
+                    <div class="card-footer">
                         <a title="PDF" href="/{{ dataset.dataset }}" class="btn btn-primary"><i
                                 class="fa fa-file-pdf-o fa-lg"></i></a>
                         {% if user.is_staff %}
-                            <a title="{% trans "Modifier DataSet" %}" href="{% url "edit-dataset" dataset.id %}"
+                            <a title="{% trans "Modifier Jeu de Données" %}" href="{% url "edit-dataset" dataset.id %}"
                                class="btn btn-info"><i class="fa fa-edit fa-lg"></i></a>
-                            <a title="{% trans "Supprimer DataSet" %}"
+                            <a title="{% trans "Supprimer Jeu de Données" %}"
                                class="confirm-delete btn btn-danger" data-toggle="modal"
                                data-target="#confirmDeleteDataSetModal"
                                id="deleteButton{{ dataset.id }}" style="color: white">
@@ -31,6 +32,7 @@
                         {% endif %}
                     </div>
                 </div>
+            </div>
         </div>
     </div>
 {% endblock %}

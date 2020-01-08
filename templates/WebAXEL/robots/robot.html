@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static i18n crispy_forms_tags %}
+{% block title %}{% trans "Robot A.X.E.L." %}{% endblock %}
+{% block content %}
+    <div class="container-fluid" style="text-align: center" xmlns="http://www.w3.org/1999/html">
+        <br>
+        <h1 id="mainH1">{{ robot.nom }}</h1>
+        <br>
+        <div class="container">
+            <div class="card">
+                <img src="{{ robot.image }}" class="card-img-top robotImg" alt="Image"
+                     style="width: 50%; text-align: center">
+                <div class="card-body">
+                    <p class="card-text">
+                        {% blocktrans with description=robot.description %} {{ description }}{% endblocktrans %}
+                    </p>
+                    <p class="card-text"><span
+                            class="badge badge-secondary">
+                            {% blocktrans with model=robot.model %}Modèle : {{ model }}{% endblocktrans %}
+                        </span></p>
+                    <p class="card-text"><small class="text-muted">
+                        {% blocktrans with utilisation=robot.utilisation %}Utilisation : {{ utilisation }}{% endblocktrans %}
+                    </small></p>
+                    <a title="PDF" href="/{{ robot.doc }}" class="btn btn-primary"><i
+                            class="fa fa-file-pdf-o fa-lg"></i></a>
+                    {% if user.is_staff %}
+                        <a title="{% trans "Modifier Robot" %}" href="{% url "edit-robot" robot.id %}"
+                           class="btn btn-info"><i class="fa fa-edit fa-lg"></i></a>
+                        <a title="{% trans "Supprimer Robot" %}"
+                           class="confirm-delete btn btn-danger" data-toggle="modal"
+                           data-target="#confirmDeleteRobotModal{{ robot.id }}"
+                           id="deleteButton{{ robot.id }}" style="color: white">
+                            <i class="fa fa-trash fa-lg"></i>
+                        </a>
+                    {% endif %}
+                    {% include "WebAXEL/robots/robots_confirmation_modal.html" %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

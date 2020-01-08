@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load static i18n crispy_forms_tags %}
+{% block title %}{% trans "Robots A.X.E.L." %}{% endblock %}
+{% block content %}
+    <h1 class="mainH1 mt-3 mb-3">{% trans "Robots A.X.E.L." %}</h1>
+    <div class="container">
+        <form action="{% url 'robot-search-results' %}" method="GET" class="form-inline mt-3 mb-3">
+            <div class="container" id="robotSearch" style="text-align:center;">
+                <input style="text-align: center" class="form-control form-control-sm mb-1 w-50" type="search"
+                       placeholder="{% trans "Recherche de robot" %}"
+                       onfocus="this.placeholder = ''" aria-label="{% trans "Recherche" %}"
+                       name="search">
+                <button type="submit" class="mb-3">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+    {% include 'WebAXEL/robots/robots_pagination.html' %}
+    <div class="container-fluid">
+        {% if robots|length >= 3 %}
+            <div class="card-deck">
+        {% endif %}
+        {% for robot in robots %}
+            <div class="card text-center mb-3" style="min-width: 30%;">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        {% blocktrans with nom=robot.nom %}{{ nom }}{% endblocktrans %}</h5>
+                    <p class="card-text">
+                        {% blocktrans with description=robot.description|truncatechars:50 %}
+                            {{ description }}{% endblocktrans %}
+                        {% if robot.description|length > 50 %}
+                            <a href="{% url 'robot' robot.id %}">Lire plus</a>
+                        {% endif %}
+                    </p>
+                    <p class="card-text"><span class="badge badge-primary">
+                            {% blocktrans with model=robot.model %}Modèle : {{ model }}{% endblocktrans %}
+                            </span></p>
+                    <p class="card-text"><small class="badge badge-info">
+                        {% blocktrans with utilisation=robot.utilisation %}Utilisation :
+                            {{ utilisation }}{% endblocktrans %}
+                    </small></p>
+                    <div class="card-footer p-1">
+                        <a title="PDF" href="/{{ robot.doc }}" class="btn btn-primary"><i
+                                class="fa fa-file-pdf-o fa-lg"></i></a>
+                        <a title="{% trans "Détails Robot" %}" href="{% url "robot" robot.id %}"
+                           class="btn btn-info"><i class="fa fa-info fa-lg"></i></a>
+                        {% if user.is_staff %}
+                            <a title="{% trans "Modifier Robot" %}"
+                               href="{% url "edit-robot" robot.id %}"
+                               class="btn btn-warning"><i class="fa fa-edit fa-lg"></i></a>
+                            <a title="{% trans "Supprimer Robot" %}"
+                               class="confirm-delete btn btn-danger" data-toggle="modal"
+                               data-target="#confirmDeleteRobotModal{{ robot.id }}"
+                               id="deleteButton{{ robot.id }}" style="color: white">
+                                <i class="fa fa-trash fa-lg"></i>
+                            </a>
+                        {% endif %}
+                        {% include "WebAXEL/robots/robots_confirmation_modal.html" %}
+                    </div>
+                </div>
+        {% if robots|length >= 3 %}
+            </div>
+        {% endif %}
+        {% empty %}
+            <p style="text-align: center;">{% trans "Aucun robot trouvé" %}</p>
+        {% endfor %}
+        </div>
+        {% include 'WebAXEL/robots/robots_pagination.html' %}
+        {% if is_paginated %}
+            <small class="page-current">
+                {% blocktrans with number=page_obj.number num_pages=page_obj.num_pages %}Page {{ number }} sur
+                    {{ num_pages }}.{% endblocktrans %}
+            </small>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -31,7 +31,7 @@
                             {% blocktrans with description=document.description|truncatechars:50 %}
                                 {{ description }}{% endblocktrans %}
                             {% if document.description|length > 50 %}
-                                <a href="">Lire plus</a>
+                                <a href="{% url 'document' document.id %}">Lire plus</a>
                             {% endif %}
                         </p>
                         <p class="card-text"><span class="badge badge-info">
@@ -61,10 +61,12 @@
                         </div>
                     </div>
                 </div>
+                {% if documents|length >= 3 %}
+                    </div>
+                {% endif %}
             {% empty %}
                 <p style="text-align: center;">{% trans "Aucun document trouvé" %}</p>
             {% endfor %}
-            </div>
             {% include 'WebAXEL/documents/documents_pagination.html' %}
             {% if is_paginated %}
                 <small class="page-current">

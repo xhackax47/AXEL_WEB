@@ -24,7 +24,7 @@
                         data-dismiss="modal">{% trans "Annuler" %}</button>
                 <form method="POST" action="{% url 'delete-dataset' dataset.id %}">
                     {% csrf_token %}
-                    <button type="submit" title="{% trans "Supprimer DataSet" %}"
+                    <button type="submit" title="{% trans "Supprimer Jeu de Données" %}"
                             class="confirm-delete btn btn-danger" data-toggle="modal"
                             data-target="#confirmDeleteDataSetModal"
                             id="deleteButton{{ dataset.id }}">

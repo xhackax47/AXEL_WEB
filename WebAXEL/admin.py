@@ -4,7 +4,8 @@ from django.contrib.auth.admin import UserAdmin, GroupAdmin
 from django.contrib.auth.models import Group
 
 from WebAXEL.forms import UserCreationForm, UserChangeForm
-from WebAXEL.models import Document, DocumentCategory, DataSet, DataSetCategory, AxelUser, AxelGroup
+from WebAXEL.models import Document, DocumentCategory, DataSet, DataSetCategory, AxelUser, AxelGroup, Robot, \
+    RobotCategory
 
 
 class AxelUserAdmin(UserAdmin):
@@ -42,8 +43,15 @@ class DataSetAdmin(ModelAdmin):
     list_display = ('nom', 'date_ajout', 'was_published_recently', 'description', 'dataset')
     date_hierarchy = 'date_ajout'
 
-    def __str__(self):
-        return  _("Ensemble de données")
+
+class RobotCategoryAdmin(ModelAdmin):
+    exclude = ['']
+
+
+class RobotAdmin(ModelAdmin):
+    exclude = ['']
+    list_display = ('nom', 'date_ajout', 'was_published_recently', 'description', 'utilisation', 'doc')
+    date_hierarchy = 'date_ajout'
 
 
 admin.site.unregister(Group)
@@ -52,5 +60,7 @@ admin.site.register(AxelUser, AxelUserAdmin)
 admin.site.register(AxelGroup, AxelGroupAdmin)
 admin.site.register(Document, DocumentAdmin)
 admin.site.register(DataSet, DataSetAdmin)
+admin.site.register(Robot, RobotAdmin)
 admin.site.register(DocumentCategory, DocumentCategoryAdmin)
 admin.site.register(DataSetCategory, DataSetCategoryAdmin)
+admin.site.register(RobotCategory, RobotCategoryAdmin)

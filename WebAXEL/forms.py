@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-from WebAXEL.models import Document, DataSet, DocumentCategory, DataSetCategory, AxelUser
+from WebAXEL.models import Document, DataSet, DocumentCategory, DataSetCategory, AxelUser, RobotCategory, Robot
 
 
 class UserCreationForm(UserCreationForm):
@@ -50,4 +50,22 @@ class DataSetForm(ModelForm):
 class DataSetSearchForm(ModelForm):
     class Meta:
         model = DataSet
+        exclude = []
+
+
+class RobotCategoryForm(ModelForm):
+    class Meta:
+        model = RobotCategory
+        fields = '__all__'
+
+
+class RobotForm(ModelForm):
+    class Meta:
+        model = Robot
+        exclude = ['date_ajout']
+
+
+class RobotSearchForm(ModelForm):
+    class Meta:
+        model = Robot
         exclude = []

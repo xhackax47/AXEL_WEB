@@ -7,8 +7,9 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, UpdateView, ListView, CreateView, DeleteView, DetailView
 
-from WebAXEL.forms import DocumentForm, DocumentSearchForm, DataSetForm, DataSetSearchForm, UserChangeForm
-from WebAXEL.models import Document, DataSet, AxelUser
+from WebAXEL.forms import DocumentForm, DocumentSearchForm, DataSetForm, DataSetSearchForm, UserChangeForm, \
+    RobotSearchForm, RobotForm
+from WebAXEL.models import Document, DataSet, AxelUser, Robot
 
 
 # EN COURS DE DEV
@@ -136,7 +137,7 @@ class DocumentUpdateView(LoginRequiredMixin, UpdateView):
         return document
 
 
-# LOGIN REQUIS : Vue DocumentDelete qui permet la suppression d'un document
+# LOGIN REQUIS : Vue DocumentDelete qui permet la suppression d'un document en BDD
 class DocumentDeleteView(LoginRequiredMixin, DeleteView):
     model = Document
     slug_field = 'id'
@@ -154,6 +155,8 @@ class DocumentDeleteView(LoginRequiredMixin, DeleteView):
 class DataSetView(LoginRequiredMixin, DetailView):
     model = DataSet
     template_name = 'WebAXEL/datasets/dataset.html'
+
+
 # LOGIN REQUIS : Vue DataSets qui renvoi la liste des datasets triée et paginée
 class DataSetsView(LoginRequiredMixin, ListView):
     model = DataSet
@@ -216,7 +219,7 @@ class DataSetCreateView(LoginRequiredMixin, CreateView):
 class DataSetUpdateView(LoginRequiredMixin, UpdateView):
     model = DataSet
     template_name = 'WebAXEL/datasets/edit-dataset.html'
-    fields = ['nom', 'description','source', 'dataset', 'categories_dataset']
+    fields = ['nom', 'description', 'source', 'dataset', 'categories_dataset']
     success_url = reverse_lazy('datasets')
 
     # Récupération de l'objet via son id(pk)
@@ -226,7 +229,7 @@ class DataSetUpdateView(LoginRequiredMixin, UpdateView):
         return dataset
 
 
-# LOGIN REQUIS : Vue DataSetDelete qui permet la suppression d'un dataset
+# LOGIN REQUIS : Vue DataSetDelete qui permet la suppression d'un dataset en BDD
 class DataSetDeleteView(LoginRequiredMixin, DeleteView):
     model = DataSet
     slug_field = 'id'
@@ -238,3 +241,95 @@ class DataSetDeleteView(LoginRequiredMixin, DeleteView):
     def get_object(self, *args, **kwargs):
         dataset = get_object_or_404(DataSet, pk=self.kwargs['pk'])
         return dataset
+
+
+# LOGIN REQUIS : Vue Robot qui renvoi les details d'un robot
+class RobotView(LoginRequiredMixin, DetailView):
+    model = Robot
+    template_name = 'WebAXEL/robots/robot.html'
+
+
+# LOGIN REQUIS : Vue Robots qui renvoi la liste des robots triée et paginée
+class RobotsView(LoginRequiredMixin, ListView):
+    model = Robot
+    template_name = 'WebAXEL/robots/robots.html'
+    queryset = Robot.objects.all()
+    context_object_name = 'robots'
+    paginate_by = 4
+
+    # Tri par date d'ajout
+    def get_ordering(self):
+        ordering = self.request.GET.get('ordering', '-date_ajout')
+        return ordering
+
+
+# LOGIN REQUIS : Vue RobotSearchResults qui renvoi la liste des robots triée , paginée et filtrée avec une query
+# pour la recherche
+class RobotSearchResultsView(LoginRequiredMixin, ListView):
+    model = Robot
+    form_class = RobotSearchForm
+    template_name = 'WebAXEL/robots/robots.html'
+    success_url = reverse_lazy('robots')
+    paginate_by = 4
+
+    # Requête de filre pour la fonction de recherche
+    def get_queryset(self):
+        query = self.request.GET.get('search') or None
+        # Si il y a une requête on execute le filtre et on renvoi le resultat dans le queryset
+        if query:
+            queryset = Robot.objects.filter(
+                Q(nom__icontains=query) | Q(categories_robot__categorie__icontains=query) | Q(
+                    description__icontains=query))
+            return queryset
+        # Sinon on renvoi une liste de robots vide dans le queryset
+        else:
+            queryset = Robot.objects.none()
+            return queryset
+
+    # Passage des datas du back vers le contexte front
+    def get_context_data(self, **kwargs):
+
+        context = super(RobotSearchResultsView, self).get_context_data(**kwargs) or None
+        context['robots'] = self.get_queryset()
+        return context
+
+    # Tri par date d'ajout
+    def get_ordering(self):
+        ordering = self.request.GET.get('ordering', '-date_ajout')
+        return ordering
+
+
+# LOGIN REQUIS : Vue RobotCreate qui permet la création d'un robot à travers un form
+class RobotCreateView(LoginRequiredMixin, CreateView):
+    model = Robot
+    form_class = RobotForm
+    template_name = 'WebAXEL/robots/create-robot.html'
+    success_url = reverse_lazy('robots')
+
+
+# LOGIN REQUIS : Vue RobotUpdate qui permet la modification d'un robot à travers un form
+class RobotUpdateView(LoginRequiredMixin, UpdateView):
+    model = Robot
+    template_name = 'WebAXEL/robots/edit-robot.html'
+    fields = ['nom', 'model', 'utilisation', 'description', 'categories_robot']
+    success_url = reverse_lazy('robots')
+
+    # Récupération de l'objet via son id(pk)
+    def get_object(self, *args, **kwargs):
+        robot = get_object_or_404(Robot, pk=self.kwargs['pk'])
+
+        return robot
+
+
+# LOGIN REQUIS : Vue RobotDelete qui permet la suppression d'un robot en BDD
+class RobotDeleteView(LoginRequiredMixin, DeleteView):
+    model = Robot
+    slug_field = 'id'
+    success_url = reverse_lazy('robots')
+    success_message = "Deleted Successfully"
+    template_name = 'WebAXEL/robots/robots_confirmation_modal.html'
+
+    # Récupération de l'objet via son id(pk)
+    def get_object(self, *args, **kwargs):
+        robot = get_object_or_404(Robot, pk=self.kwargs['pk'])
+        return robot

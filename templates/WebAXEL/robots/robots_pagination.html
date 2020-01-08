@@ -1,0 +1,19 @@
+{% load static i18n crispy_forms_tags %}
+{% if is_paginated %}
+    <ul class="pagination justify-content-center">
+        {% if page_obj.has_previous %}
+            <li class="page-item"><a class="page-link" href="?page=1">{% trans "Première page" %}</a></li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">{% trans "&laquo; Page précédente" %}</a>
+            </li>
+        {% endif %}
+        {% if page_obj.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.next_page_number }}">{% trans "Page suivante &raquo;" %}</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">{% trans "Dernière page" %}</a>
+            </li>
+        {% endif %}
+    </ul>
+{% endif %}

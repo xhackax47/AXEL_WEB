@@ -46,10 +46,10 @@ header, footer, #content {
     flex-grow: 1;
 }
 
-.img_max_security {
+.img_max_security, .robotImg {
     display: block;
     margin-left: auto;
-    margin-right: auto
+    margin-right: auto;
 }
 
 .mainH1 {
@@ -64,13 +64,21 @@ header, footer, #content {
 /* CSS Id */
 
 #welcomeMessage {
-    font-family: "MarsPolice", serif;
+    color: whitesmoke;
+}
+
+#btnAdd{
+    display: block;
+    margin: auto;
 }
 
 #copyright {
     font-family: "Neuropoltical", serif;
     color: white
 }
+
+#featuresAXEL {}
+#featureAXEL {}
 
 #socialButton {
     font-size: 24px;

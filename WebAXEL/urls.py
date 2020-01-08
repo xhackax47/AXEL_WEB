@@ -40,4 +40,17 @@ urlpatterns = [
     # Supprimer DataSet
     path('delete-dataset/<int:pk>', login_required(views.DataSetDeleteView.as_view()), name='delete-dataset'),
 
+    # Details Robot
+    path('robot/<int:pk>', login_required(views.RobotView.as_view()), name='robot'),
+    # Liste Robot
+    path('robots', login_required(views.RobotsView.as_view()), name='robots'),
+    # Chercher Robot
+    path('robot-search', login_required(views.RobotSearchResultsView.as_view()), name='robot-search-results'),
+    # Creer Robot
+    path('create-robot', login_required(views.RobotCreateView.as_view()), name='create-robot'),
+    # Modifier Robot
+    path('edit-robot/<int:pk>', login_required(views.RobotUpdateView.as_view()), name='edit-robot'),
+    # Supprimer Robot
+    path('delete-robot/<int:pk>', login_required(views.RobotDeleteView.as_view()), name='delete-robot'),
+
 ]

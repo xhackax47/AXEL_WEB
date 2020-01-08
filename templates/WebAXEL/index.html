@@ -1,76 +1,114 @@
 {% extends "base.html" %}
 {% load static i18n crispy_forms_tags %}
-{% block title %}IHM WebAXEL{% endblock %}
+{% block title %}{% trans 'Tableau de bord A.X.E.L.' %}{% endblock %}
 {% block content %}
-    <div class="container-fluid" style="text-align: center">
+    <div class="container-fluid" id="featuresAXEL" style="text-align: center">
         <br>
-        <h1 id="mainH1">{% trans "Interface Web A.X.E.L." %}</h1>
+        <h1 id="mainH1">{% trans "Tableau de bord A.X.E.L." %}</h1>
         <br>
-        <h3 id="welcomeMessage">{% trans "Bonjour et bienvenue" %}</h3>
-        <span class="badge badge-secondary">{{ user.username }}</span>
-        <br><br>
-        <div class="card-deck">
+        {% if user.is_staff %}
+            <div class="card-deck mb-3">
+                <div class="card text-white bg-dark" id="featureAXEL">
+                    <a href="/admin" style="color: white">
+                        <div class="card-body">
+                            <h5 class="card-title">Administration Web</h5>
+                            <p class="card-text">Administration Web A.X.E.L.</p>
+                        </div>
+                    </a>
+                    <div class="card-footer">
+                        <strong class="text-muted">{% trans 'Uniquement Administrateur' %}</strong>
+                    </div>
+                </div>
+                <div class="card text-white bg-dark" id="featureAXEL">
+                    <a href="/adminAXEL" style="color: white">
+                        <div class="card-body">
+                            <h5 class="card-title">{% trans 'Administration A.X.E.L.' %}</h5>
+                            <p class="card-text">{% trans 'Administration IA A.X.E.L.' %}</p>
+                        </div>
+                    </a>
+                    <div class="card-footer">
+                        <strong class="text-muted">{% trans 'Uniquement Administrateur' %}</strong>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        <div class="card-deck mb-3">
             <div class="card text-white bg-dark" id="featureAXEL">
-                <a href="" style="color: white">
+                <a href="{% url 'documents' %}" style="color: white">
                     <div class="card-body">
-                        <h5 class="card-title">Assistance Vocal</h5>
-                        <p class="card-text">TextToSpeech et SpeechToText avec traduction et compréhension de langage et
-                            d'écriture</p>
+                        <h5 class="card-title">{% trans 'Documentation' %}</h5>
+                        <p class="card-text">{% trans "Liste de documents concernant l'IA ou A.X.E.L." %}</p>
                     </div>
                 </a>
                 <div class="card-footer">
-                    <small class="text-muted">Dernière mise à jour le {{ IA_assistanceVoc.date_modif }}</small>
+                    <strong class="text-muted">{% trans 'Utilisateurs et Administrateur' %}</strong>
                 </div>
             </div>
-            <div class="card text-white bg-dark" id="featureAXEL">
-                <a href="" style="color: white">
-                    <div class="card-body">
-                        <h5 class="card-title">Apprentissage</h5>
-                        <p class="card-text">Apprentissage supervisé et non-supervisé à partir de datasets</p>
+            {% if user.is_staff %}
+                <div class="card text-white bg-dark" id="featureAXEL">
+                    <a href="{% url 'create-document' %}" style="color: white">
+                        <div class="card-body">
+                            <h5 class="card-title">{% trans 'Ajouter un document' %}</h5>
+                            <p class="card-text">{% trans 'Ajouter un document à la documentation IA / A.X.E.L.' %}</p>
+                        </div>
+                    </a>
+                    <div class="card-footer">
+                        <strong class="text-muted">{% trans 'Uniquement Administrateur' %}</strong>
                     </div>
-                </a>
-                <div class="card-footer">
-                    <small class="text-muted">Dernière mise à jour le {{ IA_apprentissage.date_modif }}</small>
                 </div>
-            </div>
-            <div class="card text-white bg-dark" id="featureAXEL">
-                <a href="" style="color: white">
-                    <div class="card-body">
-                        <h5 class="card-title">Reconaissance</h5>
-                        <p class="card-text">Reconaissance faciale, images, sons, texte manuscrits, mouvements,
-                            personnes,
-                            animaux, robots</p>
-                    </div>
-                </a>
-                <div class="card-footer">
-                    <small class="text-muted">Dernière mise à jour le {{ IA_reconaissance.date_modif }}</small>
-                </div>
-            </div>
+            {% endif %}
         </div>
-        <br>
-        <div class="card-deck">
+        <div class="card-deck mb-3">
             <div class="card text-white bg-dark" id="featureAXEL">
-                <a href="" style="color: white">
+                <a href="{% url 'datasets' %}" style="color: white">
                     <div class="card-body">
-                        <h5 class="card-title">Génération</h5>
-                        <p class="card-text">Autogénération d'images, de vidéos et de sons</p>
+                        <h5 class="card-title">{% trans 'Jeu de données' %}</h5>
+                        <p class="card-text">{% trans 'Liste de jeu de données (datasets) pour A.X.E.L.' %}</p>
                     </div>
                 </a>
                 <div class="card-footer">
-                    <small class="text-muted">Dernière mise à jour le {{ IA_generation.date_modif }}</small>
+                    <strong class="text-muted">{% trans 'Utilisateurs et Administrateur' %}</strong>
                 </div>
             </div>
+            {% if user.is_staff %}
+                <div class="card text-white bg-dark" id="featureAXEL">
+                    <a href="{% url 'create-dataset' %}" style="color: white">
+                        <div class="card-body">
+                            <h5 class="card-title">{% trans 'Ajouter jeu de données' %}</h5>
+                            <p class="card-text">{% trans 'Ajouter un jeu de données pour A.X.E.L.' %}</p>
+                        </div>
+                    </a>
+                    <div class="card-footer">
+                        <strong class="text-muted">{% trans 'Uniquement Administrateur' %}</strong>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+        <div class="card-deck mb-3">
             <div class="card text-white bg-dark" id="featureAXEL">
-                <a href="" style="color: white">
+                <a href="/admin" style="color: white">
                     <div class="card-body">
-                        <h5 class="card-title">Sécurité</h5>
-                        <p class="card-text">Caméras, detecteurs de mouvements, micros, armement non-létal, drones</p>
+                        <h5 class="card-title">{% trans 'Robots' %}</h5>
+                        <p class="card-text">{% trans 'Liste des robots gérés par A.X.E.L.' %}</p>
                     </div>
                 </a>
                 <div class="card-footer">
-                    <small class="text-muted">Dernière mise à jour le {{ IA_securite.date_modif }}</small>
+                    <strong class="text-muted">{% trans 'Utilisateurs et Administrateur' %}</strong>
                 </div>
             </div>
+            {% if user.is_staff %}
+                <div class="card text-white bg-dark" id="featureAXEL">
+                    <a href="/adminAXEL" style="color: white">
+                        <div class="card-body">
+                            <h5 class="card-title">{% trans 'Ajouter un robot' %}</h5>
+                            <p class="card-text">{% trans 'Ajouter un robot à A.X.E.L.' %}</p>
+                        </div>
+                    </a>
+                    <div class="card-footer">
+                        <strong class="text-muted">{% trans 'Uniquement Administrateur' %}</strong>
+                    </div>
+                </div>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

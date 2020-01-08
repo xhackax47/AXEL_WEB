@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% load static i18n crispy_forms_filters %}
-{% block title %}{% trans "Ajouter Ensemble de Données A.X.E.L." %}{% endblock %}
+{% block title %}{% trans "Ajouter Jeu de Données A.X.E.L." %}{% endblock %}
 {% block content %}
-    <h1 id="mainH1 mt-1" style="text-align: center">{% trans "Ajouter Ensemble de Données" %}</h1>
+    <h1 id="mainH1 mt-1" style="text-align: center">{% trans "Ajouter Jeu de Données" %}</h1>
     <div class="container mt-3">
         <form action="" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form|crispy }}
-            <button type="submit" class="btn btn-success" data-toggle="modal" data-target="#confirmation">{% trans "Ajouter Ensemble de Données" %}</button>
+            <button id="btnAdd" type="submit" class="btn btn-success" data-toggle="modal" data-target="#confirmation">{% trans "Ajouter Jeu de Données" %}</button>
         </form>
     </div>
 {% endblock %}

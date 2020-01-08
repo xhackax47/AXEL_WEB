@@ -10,11 +10,7 @@
             <div class="card">
                 <div class="card-body">
                     <p class="card-text">
-                        {% blocktrans with description=document.description|truncatechars:100 %}
-                            {{ description }}{% endblocktrans %}
-                        {% if document.description|length > 100 %}
-                            <a href="">Lire plus</a>
-                        {% endif %}
+                        {% blocktrans with description=document.description %} {{ description }}{% endblocktrans %}
                     </p>
                     <p class="card-text"><span
                             class="badge badge-secondary">

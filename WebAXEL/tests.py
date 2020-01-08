@@ -2,7 +2,7 @@ from django.test import TestCase
 from django.urls import reverse
 from django.utils import timezone
 
-from WebAXEL.models import Document, DataSet
+from WebAXEL.models import Document, DataSet, Robot
 
 
 class DocumentTestCase(TestCase):
@@ -62,4 +62,34 @@ class DataSetTestCase(TestCase):
     def testDelete(self):
         self.dataset.save()
         reponse = self.client.post(reverse('delete-dataset', kwargs={'pk': self.dataset.pk}))
+        self.assertEqual(reponse.status_code, 302)
+
+
+class RobotTestCase(TestCase):
+
+    def setUp(self):
+        self.robot = Robot.objects.create(nom="RobotTest", date_ajout=timezone.now(),
+                                          description="DescriptionTest", doc=None)
+
+    # Test de lecture objet Robot
+    def testRead(self):
+        nom = self.robot.nom
+        self.assertEqual(nom, "RobotTest")
+
+    # Test de création objet Robot
+    def testCreate(self):
+        self.assertIsInstance(self.robot, Robot)
+
+    # Test de mise à jour objet Robot
+    def testUpdate(self):
+        self.robot.save()
+        reponse = self.client.post(
+            reverse('edit-robot', kwargs={'pk': self.robot.pk}),
+            {'nom': 'NomModifié', 'description': 'DescriptionModifiée'})
+        self.assertEqual(reponse.status_code, 302)
+
+    # Test de suppression objet Robot
+    def testDelete(self):
+        self.robot.save()
+        reponse = self.client.post(reverse('delete-robot', kwargs={'pk': self.robot.pk}))
         self.assertEqual(reponse.status_code, 302)

@@ -65,15 +65,31 @@
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     {% if user.is_staff %}
                                         <a class="dropdown-item" href="{% url "create-dataset" %}">
-                                            {% trans "Ajouter Ensemble de Données" %}
+                                            {% trans "Ajouter Jeu de Données" %}
                                         </a>
                                     {% endif %}
                                     <a class="dropdown-item" href="{% url "datasets" %}">
-                                        {% trans "Ensembles de données" %}
+                                        {% trans "Jeux de données" %}
+                                    </a>
+                                </div>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" id="navbarDropdown"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    {% trans "Robots" %}
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    {% if user.is_staff %}
+                                        <a class="dropdown-item" href="{% url "create-robot" %}">
+                                            {% trans "Ajouter Robot" %}
+                                        </a>
+                                    {% endif %}
+                                    <a class="dropdown-item" href="{% url "robots" %}">
+                                        {% trans "Robots" %}
                                     </a>
                                 </div>
                             </li>
                         </ul>
+                        <p id="welcomeMessage" class="my-2 my-sm-0">{% trans "Bonjour et bienvenue" %} {{ user.username }} ({{ user.fonction }})</p>
                         <li class="dropdown">
                             <a class="nav-link my-2 my-sm-0" href="#" role="button" id="navbarDropdown"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
