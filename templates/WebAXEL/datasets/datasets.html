@@ -19,7 +19,8 @@
         </div>
         {% if is_paginated %}
             <p class="page-current text-center">
-                {% blocktrans with number=page_obj.number num_pages=page_obj.paginator.num_pages %}Page {{ number }} sur {{ num_pages }}.{% endblocktrans %}
+                {% blocktrans with number=page_obj.number num_pages=page_obj.paginator.num_pages %}Page {{ number }} sur
+                    {{ num_pages }}.{% endblocktrans %}
             </p>
         {% endif %}
         {% include 'WebAXEL/datasets/datasets_pagination.html' %}
@@ -33,9 +34,12 @@
                         <h5 class="card-title">
                             {% blocktrans with nom=dataset.nom %}{{ nom }}{% endblocktrans %}</h5>
                         <p class="card-text">
-                            {% blocktrans with description=dataset.description|truncatechars:50 %}{{ description }}{% endblocktrans %}
+                            {% blocktrans with description=dataset.description|truncatechars:50 %}
+                                {{ description }}{% endblocktrans %}
                             {% if dataset.description|length > 50 %}
-                                <a href="{% url 'dataset' dataset.id %}">Lire plus</a>
+                                <a href data-toggle="modal"
+                                   data-target="#modalLongDescription{{ dataset.id }}">{% trans 'Lire plus' %}</a>
+                                {% include 'WebAXEL/datasets/datasets_modal_description.html' %}
                             {% endif %}
                         </p>
                         <a class="card-link"><span class="badge badge-info">

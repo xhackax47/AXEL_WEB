@@ -1,0 +1,22 @@
+{% load static i18n crispy_forms_tags %}
+
+<!-- Modal Description Bouton Lire Plus -->
+<div class="modal fade" id="modalLongDescription{{ robot.id }}" tabindex="-1" role="dialog"
+     aria-labelledby="modalLongDescriptionTitle{{ robot.id }}" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalLongDescriptionTitle{{ robot.id }}">{{ robot.nom }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                {{ robot.description }}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans 'Fermer' %}</button>
+            </div>
+        </div>
+    </div>
+</div>

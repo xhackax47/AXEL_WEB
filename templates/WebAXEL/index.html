@@ -7,8 +7,8 @@
         <h1 id="mainH1">{% trans "Tableau de bord A.X.E.L." %}</h1>
         <br>
         {% if user.is_staff %}
-            <div class="card-deck mb-3">
-                <div class="card text-white bg-dark" id="featureAXEL">
+            <div class="card-deck mb-4">
+                <div class="card rounded-pill text-white bg-danger" id="featureAXEL">
                     <a href="/admin" style="color: white">
                         <div class="card-body">
                             <h5 class="card-title">{% trans 'Administration Web' %}</h5>
@@ -16,10 +16,10 @@
                         </div>
                     </a>
                     <div class="card-footer">
-                        <strong class="text-muted">{% trans 'Uniquement Administrateur' %}</strong>
+                        <strong class="text-white">{% trans 'Uniquement Administrateur' %}</strong>
                     </div>
                 </div>
-                <div class="card text-white bg-dark" id="featureAXEL">
+                <div class="card rounded-pill text-white bg-danger" id="featureAXEL">
                     <a href="/adminAXEL" style="color: white">
                         <div class="card-body">
                             <h5 class="card-title">{% trans 'Administration A.X.E.L.' %}</h5>
@@ -27,13 +27,13 @@
                         </div>
                     </a>
                     <div class="card-footer">
-                        <strong class="text-muted">{% trans 'Uniquement Administrateur' %}</strong>
+                        <strong class="text-white">{% trans 'Uniquement Administrateur' %}</strong>
                     </div>
                 </div>
             </div>
         {% endif %}
-        <div class="card-deck mb-3">
-            <div class="card text-white bg-dark" id="featureAXEL">
+        <div class="card-deck mt-2 mb-4">
+            <div class="card rounded-pill text-white bg-info" id="featureAXEL">
                 <a href="{% url 'documents' %}" style="color: white">
                     <div class="card-body">
                         <h5 class="card-title">{% trans 'Documentation' %}</h5>
@@ -41,11 +41,11 @@
                     </div>
                 </a>
                 <div class="card-footer">
-                    <strong class="text-muted">{% trans 'Utilisateurs et Administrateur' %}</strong>
+                    <strong class="text-white">{% trans 'Utilisateurs et Administrateur' %}</strong>
                 </div>
             </div>
             {% if user.is_staff %}
-                <div class="card text-white bg-dark" id="featureAXEL">
+                <div class="card rounded-pill text-white bg-info" id="featureAXEL">
                     <a href="{% url 'create-document' %}" style="color: white">
                         <div class="card-body">
                             <h5 class="card-title">{% trans 'Ajouter un document' %}</h5>
@@ -53,13 +53,13 @@
                         </div>
                     </a>
                     <div class="card-footer">
-                        <strong class="text-muted">{% trans 'Uniquement Administrateur' %}</strong>
+                        <strong class="text-white">{% trans 'Uniquement Administrateur' %}</strong>
                     </div>
                 </div>
             {% endif %}
         </div>
-        <div class="card-deck mb-3">
-            <div class="card text-white bg-dark" id="featureAXEL">
+        <div class="card-deck mt-2 mb-4">
+            <div class="card rounded-pill text-white bg-secondary" id="featureAXEL">
                 <a href="{% url 'datasets' %}" style="color: white">
                     <div class="card-body">
                         <h5 class="card-title">{% trans 'Jeu de données' %}</h5>
@@ -67,11 +67,11 @@
                     </div>
                 </a>
                 <div class="card-footer">
-                    <strong class="text-muted">{% trans 'Utilisateurs et Administrateur' %}</strong>
+                    <strong class="text-white">{% trans 'Utilisateurs et Administrateur' %}</strong>
                 </div>
             </div>
             {% if user.is_staff %}
-                <div class="card text-white bg-dark" id="featureAXEL">
+                <div class="card rounded-pill text-white bg-secondary" id="featureAXEL">
                     <a href="{% url 'create-dataset' %}" style="color: white">
                         <div class="card-body">
                             <h5 class="card-title">{% trans 'Ajouter jeu de données' %}</h5>
@@ -79,25 +79,25 @@
                         </div>
                     </a>
                     <div class="card-footer">
-                        <strong class="text-muted">{% trans 'Uniquement Administrateur' %}</strong>
+                        <strong class="text-white">{% trans 'Uniquement Administrateur' %}</strong>
                     </div>
                 </div>
             {% endif %}
         </div>
-        <div class="card-deck mb-3">
-            <div class="card text-white bg-dark" id="featureAXEL">
-                <a href="/admin" style="color: white">
+        <div class="card-deck mt-2 mb-4">
+            <div class="card rounded-pill text-white bg-dark" id="featureAXEL">
+                <a href="{% url 'robots' %}" style="color: white">
                     <div class="card-body">
                         <h5 class="card-title">{% trans 'Robots' %}</h5>
                         <p class="card-text">{% trans 'Liste des robots gérés par A.X.E.L.' %}</p>
                     </div>
                 </a>
                 <div class="card-footer">
-                    <strong class="text-muted">{% trans 'Utilisateurs et Administrateur' %}</strong>
+                    <strong class="text-white">{% trans 'Utilisateurs et Administrateur' %}</strong>
                 </div>
             </div>
             {% if user.is_staff %}
-                <div class="card text-white bg-dark" id="featureAXEL">
+                <div class="card rounded-pill text-white bg-dark" id="featureAXEL">
                     <a href="/adminAXEL" style="color: white">
                         <div class="card-body">
                             <h5 class="card-title">{% trans 'Ajouter un robot' %}</h5>
@@ -105,7 +105,7 @@
                         </div>
                     </a>
                     <div class="card-footer">
-                        <strong class="text-muted">{% trans 'Uniquement Administrateur' %}</strong>
+                        <strong class="text-white">{% trans 'Uniquement Administrateur' %}</strong>
                     </div>
                 </div>
             {% endif %}

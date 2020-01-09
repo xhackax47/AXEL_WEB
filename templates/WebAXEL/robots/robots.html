@@ -36,7 +36,8 @@
                         <p class="card-text">
                             {% blocktrans with description=robot.description|truncatechars:50 %}{{ description }}{% endblocktrans %}
                             {% if robot.description|length > 50 %}
-                                <a href="{% url 'robot' robot.id %}">Lire plus</a>
+                                <a href data-toggle="modal" data-target="#modalLongDescription{{ robot.id }}">{% trans 'Lire plus' %}</a>
+                                {% include "WebAXEL/robots/robots_modal_description.html" %}
                             {% endif %}
                         </p>
                         <p class="card-text"><span class="badge badge-primary">
