@@ -1,3 +1,4 @@
+from django.conf.urls import url
 from django.contrib.auth.decorators import login_required
 from django.urls import path, include
 
@@ -14,7 +15,8 @@ urlpatterns = [
     # Index
     path('', login_required(views.IndexView.as_view()), name='index'),
     # Gestion de compte
-    path('account-settings/<int:pk>', login_required(views.AccountSettingsView.as_view()), name='account-settings'),
+    url(r'^account-settings/(?P<username>\w+)/$', login_required(views.AccountSettingsView.as_view()),
+         name='account-settings'),
 
     # Details Document
     path('document/<int:pk>', login_required(views.DocumentView.as_view()), name='document'),

@@ -1,4 +1,3 @@
-import openpyxl
 import win32com.client
 from django.contrib.auth import logout
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -58,7 +57,7 @@ class AccountSettingsView(LoginRequiredMixin, UpdateView):
 
     # Récupération de l'objet via son id(pk)
     def get_object(self, *args, **kwargs):
-        user = get_object_or_404(AxelUser, pk=self.kwargs['pk'])
+        user = get_object_or_404(AxelUser, username=self.kwargs['username'])
 
         return user
 
