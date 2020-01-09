@@ -88,8 +88,13 @@
                                     </a>
                                 </div>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/api/v1/">API REST</a>
+                            </li>
                         </ul>
-                        <p id="welcomeMessage" class="my-2 my-sm-0">{% trans "Bonjour et bienvenue" %} {{ user.username }} ({{ user.fonction }})</p>
+                        <p id="welcomeMessage"
+                           class="my-2 my-sm-0">{% trans "Bonjour et bienvenue" %} {{ user.username }}
+                            ({{ user.fonction }})</p>
                         <li class="dropdown">
                             <a class="nav-link my-2 my-sm-0" href="#" role="button" id="navbarDropdown"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">

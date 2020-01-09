@@ -1,20 +1,11 @@
 from django.contrib.auth.decorators import login_required
 from django.urls import path, include
-from rest_framework import routers
 
 from . import views
 
-# REST
-from .views import DocumentViewSet, DataSetViewSet, RobotViewSet
-
-router = routers.DefaultRouter()
-router.register(r'document', DocumentViewSet)
-router.register(r'dataset', DataSetViewSet)
-router.register(r'robot', RobotViewSet)
+# app_name = 'WebAXEL'
 
 urlpatterns = [
-    # REST
-    path('api/', include(router.urls)),
     # Authentication
     path('login/', views.LoginView.as_view(), name='login'),
     path('logout/', views.LogoutView.as_view(), name='logout'),

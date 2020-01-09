@@ -25,7 +25,7 @@ SECRET_KEY = ')k7-35hzr=44j&_nls3u%*ne1xz@==1gt(1k9-6%ra!y6pk21l'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 # Application definition
 
@@ -38,9 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'AdminAXEL.apps.AdminaxelConfig',
     'WebAXEL.apps.WebaxelConfig',
+    'api.apps.ApiConfig',
     'crispy_forms',
     'rest_framework',
+    'rest_framework.authtoken',
+    'rest_auth',
 ]
+
 AUTH_USER_MODEL = 'WebAXEL.AxelUser'
 AUTH_GROUP_MODEL = 'WebAXEL.AxelGroup'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

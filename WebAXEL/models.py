@@ -124,7 +124,7 @@ class Robot(Model):
     nom = CharField(max_length=255, verbose_name=_("Nom"))
     image = ImageField(upload_to='static/img/robots', blank=True, verbose_name=_("Image Robot"))
     model = CharField(max_length=255, verbose_name=_("Modèle"))
-    utilisation = CharField(max_length=255, verbose_name=_("Utilisation"))
+    utilisation = CharField(max_length=1000, verbose_name=_("Utilisation"))
     doc = FileField(upload_to='static/robots/', null=True, verbose_name=_("Documentation Robot"))
     date_ajout = DateTimeField(auto_now_add=True, verbose_name=_("Date d'ajout du robot"))
     description = TextField(null=True, blank=True, verbose_name=_("Description du robot"))

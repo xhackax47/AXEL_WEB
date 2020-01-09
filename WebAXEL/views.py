@@ -6,7 +6,6 @@ from django.db.models import Q
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, UpdateView, ListView, CreateView, DeleteView, DetailView
-from rest_framework.viewsets import ModelViewSet
 
 from WebAXEL.forms import DocumentForm, DocumentSearchForm, DataSetForm, DataSetSearchForm, UserChangeForm, \
     RobotSearchForm, RobotForm
@@ -14,7 +13,6 @@ from WebAXEL.models import Document, DataSet, AxelUser, Robot
 
 # EN COURS DE DEV
 # Ouverture des documents Microsoft Word
-from WebAXEL.serializers import DataSetSerializer, RobotSerializer, DocumentSerializer
 
 
 def get_word(request, *args, **kwargs):
@@ -24,7 +22,7 @@ def get_word(request, *args, **kwargs):
 
 # Vue Login pour la connexion
 class LoginView(LoginView):
-    template_name = 'registration/login.html'
+    template_name = 'WebAXEL/registration/login.html'
 
     def get_success_url(self):
         return reverse_lazy('index')
@@ -32,7 +30,7 @@ class LoginView(LoginView):
 
 # Vue Logout pour la deconnexion
 class LogoutView(TemplateView):
-    template_name = 'registration/login.html'
+    template_name = 'WebAXEL/registration/login.html'
 
     # Récupération de la requête de logout
     def get(self, request, **kwargs):
@@ -53,7 +51,7 @@ class IndexView(LoginRequiredMixin, TemplateView):
 class AccountSettingsView(LoginRequiredMixin, UpdateView):
     model = AxelUser
     form_class = UserChangeForm
-    template_name = 'registration/account-settings.html'
+    template_name = 'WebAXEL/registration/account-settings.html'
     success_url = reverse_lazy('index')
 
     # Récupération de l'objet via son id(pk)
@@ -67,12 +65,6 @@ class AccountSettingsView(LoginRequiredMixin, UpdateView):
 class DocumentView(LoginRequiredMixin, DetailView):
     model = Document
     template_name = 'WebAXEL/documents/document.html'
-
-
-# LOGIN REQUIS : Vue Document qui renvoi les details d'un document en REST
-class DocumentViewSet(ModelViewSet):
-    queryset = Document.objects.all()
-    serializer_class = DocumentSerializer
 
 
 # LOGIN REQUIS : Vue Documents qui renvoi la liste des documents triée et paginée
@@ -166,12 +158,6 @@ class DataSetView(LoginRequiredMixin, DetailView):
     template_name = 'WebAXEL/datasets/dataset.html'
 
 
-# LOGIN REQUIS : Vue DataSetSet qui renvoi les details d'un dataset en REST
-class DataSetViewSet(LoginRequiredMixin, ModelViewSet):
-    queryset = DataSet.objects.all()
-    serializer_class = DataSetSerializer
-
-
 # LOGIN REQUIS : Vue DataSets qui renvoi la liste des datasets triée et paginée
 class DataSetsView(LoginRequiredMixin, ListView):
     model = DataSet
@@ -262,12 +248,6 @@ class DataSetDeleteView(LoginRequiredMixin, DeleteView):
 class RobotView(LoginRequiredMixin, DetailView):
     model = Robot
     template_name = 'WebAXEL/robots/robot.html'
-
-
-# LOGIN REQUIS : Vue RobotSet qui renvoi les details d'un robot en REST
-class RobotViewSet(LoginRequiredMixin, ModelViewSet):
-    queryset = Robot.objects.all()
-    serializer_class = RobotSerializer
 
 
 # LOGIN REQUIS : Vue Robots qui renvoi la liste des robots triée et paginée
