@@ -1,3 +1,4 @@
+import openpyxl
 import win32com.client
 from django.contrib.auth import logout
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -10,6 +11,7 @@ from django.views.generic import TemplateView, UpdateView, ListView, CreateView,
 from WebAXEL.forms import DocumentForm, DocumentSearchForm, DataSetForm, DataSetSearchForm, UserChangeForm, \
     RobotSearchForm, RobotForm
 from WebAXEL.models import Document, DataSet, AxelUser, Robot
+
 
 # EN COURS DE DEV
 # Ouverture des documents Microsoft Word
