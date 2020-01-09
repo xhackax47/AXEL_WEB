@@ -1,0 +1,1 @@
+ALTER SEQUENCE public."WebAXEL_robot_id_seq" RESTART

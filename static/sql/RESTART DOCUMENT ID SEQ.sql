@@ -1,0 +1,1 @@
+ALTER SEQUENCE public."WebAXEL_document_id_seq" RESTART
