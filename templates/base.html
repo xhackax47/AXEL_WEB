@@ -93,8 +93,13 @@
                             </li>
                         </ul>
                         <p id="welcomeMessage"
-                           class="my-2 my-sm-0">{% trans "Bonjour et bienvenue" %} {{ user.username }}
-                            ({{ user.fonction }})</p>
+                           class="my-2 my-sm-0">{% trans "Bonjour et bienvenue" %}
+                            {% if user.username is None %}
+                                {{ user.email }}
+                            {% else %}
+                                {{ user.username }}
+                                ({{ user.fonction }})</p>
+                            {% endif %}
                         <li class="dropdown">
                             <a class="nav-link my-2 my-sm-0" href="#" role="button" id="navbarDropdown"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
