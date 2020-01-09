@@ -5,7 +5,7 @@
     <div class="container-fluid" style="text-align: center" xmlns="http://www.w3.org/1999/html">
         <h1 class="mainH1 mt-3 mb-3">{% trans "Jeux de données A.X.E.L." %}</h1>
         <div class="container">
-            <form action="{% url 'dataset-search-results' %}" method="GET" class="form-inline mt-2 mb-2">
+            <form action="{% url 'dataset-search-results' %}" method="GET" class="form-inline mt-3 mb-3">
                 <div class="container" id="datasetSearch" style="text-align:center;">
                     <input style="text-align: center" class="form-control form-control-sm mb-1 w-50" type="search"
                            placeholder="{% trans "Recherche de jeu(x) de données" %}"
@@ -17,6 +17,11 @@
                 </div>
             </form>
         </div>
+        {% if is_paginated %}
+            <p class="page-current text-center">
+                {% blocktrans with number=page_obj.number num_pages=page_obj.paginator.num_pages %}Page {{ number }} sur {{ num_pages }}.{% endblocktrans %}
+            </p>
+        {% endif %}
         {% include 'WebAXEL/datasets/datasets_pagination.html' %}
         <div class="container-fluid">
             {% if datasets|length >= 3 %}
@@ -28,8 +33,7 @@
                         <h5 class="card-title">
                             {% blocktrans with nom=dataset.nom %}{{ nom }}{% endblocktrans %}</h5>
                         <p class="card-text">
-                            {% blocktrans with description=dataset.description|truncatechars:50 %}
-                                {{ description }}{% endblocktrans %}
+                            {% blocktrans with description=dataset.description|truncatechars:50 %}{{ description }}{% endblocktrans %}
                             {% if dataset.description|length > 50 %}
                                 <a href="{% url 'dataset' dataset.id %}">Lire plus</a>
                             {% endif %}
@@ -64,12 +68,6 @@
             {% endfor %}
             </div>
             {% include 'WebAXEL/datasets/datasets_pagination.html' %}
-            {% if is_paginated %}
-                <small class="page-current">
-                    {% blocktrans with number=page_obj.number num_pages=page_obj.num_pages %}Page {{ number }} sur
-                        {{ num_pages }}.{% endblocktrans %}
-                </small>
-            {% endif %}
         </div>
     </div>
 {% endblock %}

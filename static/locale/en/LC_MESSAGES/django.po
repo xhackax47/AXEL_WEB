@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-08 14:57+0100\n"
+"POT-Creation-Date: 2020-01-09 13:58+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\AXEL_WEB\settings.py:134
+#: .\AXEL_WEB\settings.py:138
 msgid "French"
 msgstr "French"
 
-#: .\AXEL_WEB\settings.py:135
+#: .\AXEL_WEB\settings.py:139
 msgid "English"
 msgstr "English"
 
@@ -177,16 +177,12 @@ msgstr ""
 "Dataset Location : {3} Dataset category: {4}"
 
 #: .\WebAXEL\models.py:117
-#, fuzzy
-#| msgid "Catégorie du Document"
 msgid "Catégorie du robot"
-msgstr "Document Category"
+msgstr "Robot Category"
 
 #: .\WebAXEL\models.py:125
-#, fuzzy
-#| msgid "Image Profil"
 msgid "Image Robot"
-msgstr "Profile picture"
+msgstr "Robot picture"
 
 #: .\WebAXEL\models.py:126
 msgid "Modèle"
@@ -194,7 +190,7 @@ msgstr "Model"
 
 #: .\WebAXEL\models.py:127
 msgid "Utilisation"
-msgstr "Use"
+msgstr "Usage"
 
 #: .\WebAXEL\models.py:128
 msgid "Documentation Robot"
@@ -246,18 +242,18 @@ msgid " %(description)s"
 msgstr ""
 
 #: .\templates\WebAXEL\datasets\dataset.html:16
-#: .\templates\WebAXEL\datasets\datasets.html:38
+#: .\templates\WebAXEL\datasets\datasets.html:42
 #, python-format
 msgid "Source : %(source)s"
 msgstr ""
 
 #: .\templates\WebAXEL\datasets\dataset.html:23
-#: .\templates\WebAXEL\datasets\datasets.html:48
+#: .\templates\WebAXEL\datasets\datasets.html:52
 msgid "Modifier Jeu de Données"
 msgstr "Edit Dataset"
 
 #: .\templates\WebAXEL\datasets\dataset.html:25
-#: .\templates\WebAXEL\datasets\datasets.html:50
+#: .\templates\WebAXEL\datasets\datasets.html:54
 #: .\templates\WebAXEL\datasets\datasets_confirmation_modal.html:27
 msgid "Supprimer Jeu de Données"
 msgstr "Delete Dataset"
@@ -273,41 +269,38 @@ msgstr "Dataset(s) search"
 
 #: .\templates\WebAXEL\datasets\datasets.html:12
 #: .\templates\WebAXEL\documents\documents.html:12
-#: .\templates\WebAXEL\robots\robots.html:11
+#: .\templates\WebAXEL\robots\robots.html:12
 msgid "Recherche"
 msgstr "Search"
 
-#: .\templates\WebAXEL\datasets\datasets.html:29
-#: .\templates\WebAXEL\robots\robots.html:28
+#: .\templates\WebAXEL\datasets\datasets.html:22
+#: .\templates\WebAXEL\documents\documents.html:22
+#: .\templates\WebAXEL\robots\robots.html:22
+#, fuzzy, python-format
+#| msgid "Page %(number)s sur %(num_pages)s."
+msgid "Page %(number)s sur %(num_pages)s."
+msgstr "Page %(number)s of %(num_pages)s."
+
+#: .\templates\WebAXEL\datasets\datasets.html:34
+#: .\templates\WebAXEL\robots\robots.html:34
 #, python-format
 msgid "%(nom)s"
 msgstr ""
 
-#: .\templates\WebAXEL\datasets\datasets.html:31
-#: .\templates\WebAXEL\documents\documents.html:31
-#, fuzzy, python-format
-#| msgid "Nombre de vues : %(document.nb_vues)s"
-msgid ""
-"\n"
-"                                %(description)s"
-msgstr "Number of views : %(nb_vues)s"
+#: .\templates\WebAXEL\datasets\datasets.html:36
+#: .\templates\WebAXEL\documents\documents.html:36
+#: .\templates\WebAXEL\robots\robots.html:37
+#, python-format
+msgid "%(description)s"
+msgstr ""
 
-#: .\templates\WebAXEL\datasets\datasets.html:45
+#: .\templates\WebAXEL\datasets\datasets.html:49
 msgid "Détails Jeu de Données"
 msgstr "Dataset Details"
 
-#: .\templates\WebAXEL\datasets\datasets.html:63
+#: .\templates\WebAXEL\datasets\datasets.html:67
 msgid "Aucun jeu de données trouvé"
 msgstr "No Dataset Found"
-
-#: .\templates\WebAXEL\datasets\datasets.html:69
-#: .\templates\WebAXEL\documents\documents.html:73
-#, fuzzy, python-format
-#| msgid "Page %(number)s sur %(num_pages)s."
-msgid ""
-"Page %(number)s sur\n"
-"                        %(num_pages)s."
-msgstr "Page %(number)s of %(num_pages)s."
 
 #: .\templates\WebAXEL\datasets\datasets_confirmation_modal.html:10
 #, python-format
@@ -385,7 +378,7 @@ msgid "Documentation A.X.E.L."
 msgstr "A.X.E.L. Documentation"
 
 #: .\templates\WebAXEL\documents\document.html:17
-#: .\templates\WebAXEL\documents\documents.html:38
+#: .\templates\WebAXEL\documents\documents.html:42
 #, fuzzy, python-format
 #| msgid "Auteur : %(document.auteur)s"
 msgid "Auteur : %(auteur)s"
@@ -400,13 +393,13 @@ msgid ""
 msgstr "Number of views : %(nb_vues)s"
 
 #: .\templates\WebAXEL\documents\document.html:26
-#: .\templates\WebAXEL\documents\documents.html:50
+#: .\templates\WebAXEL\documents\documents.html:54
 #: .\templates\WebAXEL\documents\edit-document.html:5
 msgid "Modifier Document"
 msgstr "Edit Document"
 
 #: .\templates\WebAXEL\documents\document.html:28
-#: .\templates\WebAXEL\documents\documents.html:53
+#: .\templates\WebAXEL\documents\documents.html:57
 #: .\templates\WebAXEL\documents\documents_confirmation_modal.html:25
 msgid "Supprimer Document"
 msgstr "Delete Document"
@@ -415,26 +408,24 @@ msgstr "Delete Document"
 msgid "Recherche de document"
 msgstr "Document search"
 
-#: .\templates\WebAXEL\documents\documents.html:29
+#: .\templates\WebAXEL\documents\documents.html:34
 #, python-format
 msgid "%(titre)s"
 msgstr ""
 
-#: .\templates\WebAXEL\documents\documents.html:41
+#: .\templates\WebAXEL\documents\documents.html:45
 #, fuzzy, python-format
-#| msgid "Nombre de vues : %(document.nb_vues)s"
-msgid ""
-"Nombre de vues :\n"
-"                                %(nb_vues)s"
+#| msgid "Nombre de vues du document"
+msgid "Nombre de vues : %(nb_vues)s"
 msgstr "Number of views : %(nb_vues)s"
 
-#: .\templates\WebAXEL\documents\documents.html:47
+#: .\templates\WebAXEL\documents\documents.html:51
 #, fuzzy
 #| msgid "Catégorie du Document"
 msgid "Détails Document"
 msgstr "Document Category"
 
-#: .\templates\WebAXEL\documents\documents.html:68
+#: .\templates\WebAXEL\documents\documents.html:72
 msgid "Aucun document trouvé"
 msgstr "No document found"
 
@@ -459,6 +450,14 @@ msgstr "Edit A.X.E.L.'s Documentation"
 #: .\templates\WebAXEL\index.html:3 .\templates\WebAXEL\index.html:7
 msgid "Tableau de bord A.X.E.L."
 msgstr "A.X.E.L. Dashboard"
+
+#: .\templates\WebAXEL\index.html:14 .\templates\base.html:36
+msgid "Administration Web"
+msgstr "Web Management"
+
+#: .\templates\WebAXEL\index.html:15
+msgid "Administration Web A.X.E.L."
+msgstr "A.X.E.L. Web Management"
 
 #: .\templates\WebAXEL\index.html:19 .\templates\WebAXEL\index.html:30
 #: .\templates\WebAXEL\index.html:56 .\templates\WebAXEL\index.html:82
@@ -528,6 +527,24 @@ msgstr "Add Robot"
 msgid "Ajouter un robot à A.X.E.L."
 msgstr "Add a robot to A.X.E.L."
 
+#: .\templates\WebAXEL\registration\account-settings.html:3
+#: .\templates\WebAXEL\registration\account-settings.html:7
+msgid "Gestion Compte Utilisateur"
+msgstr "User Account Management"
+
+#: .\templates\WebAXEL\registration\account-settings.html:13
+msgid "Enregistrer les modifications"
+msgstr "Save changes"
+
+#: .\templates\WebAXEL\registration\login.html:3
+#: .\templates\WebAXEL\registration\login_modal.html:8
+msgid "Connexion - IHM Web A.X.E.L."
+msgstr "Login - A.X.E.L. Web HMI."
+
+#: .\templates\WebAXEL\registration\login.html:7
+msgid "Bienvenue sur l'intelligence artificielle A.X.E.L."
+msgstr "Welcome to A.X.E.L. Artificial Intelligence."
+
 #: .\templates\WebAXEL\robots\create-robot.html:3
 msgid "Ajouter Robot A.X.E.L."
 msgstr "Add A.X.E.L.'s Robot"
@@ -543,7 +560,7 @@ msgstr "Edit A.X.E.L. Robot"
 
 #: .\templates\WebAXEL\robots\edit-robot.html:5
 #: .\templates\WebAXEL\robots\robot.html:27
-#: .\templates\WebAXEL\robots\robots.html:49
+#: .\templates\WebAXEL\robots\robots.html:56
 msgid "Modifier Robot"
 msgstr "Edit Robot"
 
@@ -552,62 +569,39 @@ msgid "Robot A.X.E.L."
 msgstr "A.X.E.L. Robot"
 
 #: .\templates\WebAXEL\robots\robot.html:19
-#: .\templates\WebAXEL\robots\robots.html:37
+#: .\templates\WebAXEL\robots\robots.html:43
 #, python-format
 msgid "Modèle : %(model)s"
 msgstr "Model : %(model)s"
 
 #: .\templates\WebAXEL\robots\robot.html:22
+#: .\templates\WebAXEL\robots\robots.html:47
 #, python-format
 msgid "Utilisation : %(utilisation)s"
-msgstr "Use : %(utilisation)s"
+msgstr "Usage : %(utilisation)s"
 
 #: .\templates\WebAXEL\robots\robot.html:29
-#: .\templates\WebAXEL\robots\robots.html:52
+#: .\templates\WebAXEL\robots\robots.html:59
 #: .\templates\WebAXEL\robots\robots_confirmation_modal.html:25
 msgid "Supprimer Robot"
 msgstr "Delete Robot"
 
 #: .\templates\WebAXEL\robots\robots.html:3
-#: .\templates\WebAXEL\robots\robots.html:5
+#: .\templates\WebAXEL\robots\robots.html:6
 msgid "Robots A.X.E.L."
 msgstr "A.X.E.L.'s Robots."
 
-#: .\templates\WebAXEL\robots\robots.html:10
+#: .\templates\WebAXEL\robots\robots.html:11
 msgid "Recherche de robot"
 msgstr "Robot search"
 
-#: .\templates\WebAXEL\robots\robots.html:30
-#, fuzzy, python-format
-#| msgid "Nombre de vues : %(document.nb_vues)s"
-msgid ""
-"\n"
-"                            %(description)s"
-msgstr "Number of views : %(nb_vues)s"
-
-#: .\templates\WebAXEL\robots\robots.html:40
-#, fuzzy, python-format
-#| msgid "Nombre de vues : %(document.nb_vues)s"
-msgid ""
-"Utilisation :\n"
-"                            %(utilisation)s"
-msgstr "Number of views : %(nb_vues)s"
-
-#: .\templates\WebAXEL\robots\robots.html:46
+#: .\templates\WebAXEL\robots\robots.html:53
 msgid "Détails Robot"
 msgstr "Robot Details"
 
-#: .\templates\WebAXEL\robots\robots.html:66
+#: .\templates\WebAXEL\robots\robots.html:73
 msgid "Aucun robot trouvé"
 msgstr "No robot found"
-
-#: .\templates\WebAXEL\robots\robots.html:72
-#, fuzzy, python-format
-#| msgid "Page %(number)s sur %(num_pages)s."
-msgid ""
-"Page %(number)s sur\n"
-"                    %(num_pages)s."
-msgstr "Page %(number)s of %(num_pages)s."
 
 #: .\templates\WebAXEL\robots\robots_confirmation_modal.html:10
 #, python-format
@@ -625,10 +619,6 @@ msgstr "Are you sure you want to delete this robot? (id %(id)s)"
 msgid "Administration"
 msgstr "Management"
 
-#: .\templates\base.html:36
-msgid "Administration Web"
-msgstr "Web Management"
-
 #: .\templates\base.html:56
 msgid "Documents"
 msgstr ""
@@ -641,39 +631,21 @@ msgstr "Datas"
 msgid "Jeux de données"
 msgstr "Datasets"
 
-#: .\templates\base.html:92
+#: .\templates\base.html:96
 msgid "Bonjour et bienvenue"
 msgstr "Hello and welcome"
 
-#: .\templates\base.html:100
+#: .\templates\base.html:105
 msgid "Gestion Compte"
 msgstr "Account management"
 
-#: .\templates\base.html:103
+#: .\templates\base.html:108
 msgid "Déconnexion"
 msgstr "Logout"
 
-#: .\templates\base.html:138
+#: .\templates\base.html:143
 msgid "Changer"
 msgstr "Change"
-
-#: .\templates\registration\account-settings.html:3
-#: .\templates\registration\account-settings.html:7
-msgid "Gestion Compte Utilisateur"
-msgstr "User Account Management"
-
-#: .\templates\registration\account-settings.html:13
-msgid "Enregistrer les modifications"
-msgstr "Save changes"
-
-#: .\templates\registration\login.html:3
-#: .\templates\registration\login_modal.html:8
-msgid "Connexion - IHM Web A.X.E.L."
-msgstr "Login - A.X.E.L. Web HMI."
-
-#: .\templates\registration\login.html:7
-msgid "Bienvenue sur l'intelligence artificielle A.X.E.L."
-msgstr "Welcome to A.X.E.L. Artificial Intelligence."
 
 #: .\venv2\Lib\site-packages\Django-3.0.1-py3.6.egg\django\contrib\messages\apps.py:7
 msgid "Messages"
@@ -1865,14 +1837,113 @@ msgstr ""
 msgid "i18n legend"
 msgstr ""
 
-#, python-format
-#~ msgid "Catégorie : %(categorie.categorie)s"
-#~ msgstr "Category : %(categorie.categorie)s"
+#, fuzzy, python-format
+#~| msgid "Page %(number)s sur %(num_pages)s."
+#~ msgid ""
+#~ "\n"
+#~ "                    Page %(number)s sur %(num_pages)s.\n"
+#~ "                "
+#~ msgstr "Page %(number)s of %(num_pages)s."
+
+#, fuzzy, python-format
+#~| msgid "Nombre de vues : %(document.nb_vues)s"
+#~ msgid ""
+#~ "\n"
+#~ "                                %(description)s\n"
+#~ "                            "
+#~ msgstr "Number of views : %(nb_vues)s"
+
+#, fuzzy, python-format
+#~| msgid ""
+#~| "Suppression du dataset\n"
+#~| "                                                    %(nom)s"
+#~ msgid ""
+#~ "\n"
+#~ "                                Source : %(source)s\n"
+#~ "                            "
+#~ msgstr "Number of views : %(nb_vues)s"
+
+#, fuzzy, python-format
+#~| msgid ""
+#~| "Suppression du dataset\n"
+#~| "                                                    %(nom)s"
+#~ msgid ""
+#~ "\n"
+#~ "                                Auteur : %(auteur)s\n"
+#~ "                            "
+#~ msgstr "Number of views : %(nb_vues)s"
+
+#, fuzzy, python-format
+#~| msgid ""
+#~| "Suppression du dataset\n"
+#~| "                                                    %(nom)s"
+#~ msgid ""
+#~ "\n"
+#~ "                                Nombre de vues : %(nb_vues)s\n"
+#~ "                            "
+#~ msgstr "Number of views : %(nb_vues)s"
+
+#, fuzzy, python-format
+#~| msgid ""
+#~| "Suppression du dataset\n"
+#~| "                                                    %(nom)s"
+#~ msgid ""
+#~ "\n"
+#~ "                                %(nom)s\n"
+#~ "                            "
+#~ msgstr "Number of views : %(nb_vues)s"
+
+#, fuzzy, python-format
+#~| msgid ""
+#~| "Suppression du dataset\n"
+#~| "                                                    %(nom)s"
+#~ msgid ""
+#~ "\n"
+#~ "                                Modèle : %(model)s\n"
+#~ "                            "
+#~ msgstr "Number of views : %(nb_vues)s"
+
+#, fuzzy, python-format
+#~| msgid ""
+#~| "Suppression du dataset\n"
+#~| "                                                    %(nom)s"
+#~ msgid ""
+#~ "\n"
+#~ "                                Utilisation : %(utilisation)s\n"
+#~ "                            "
+#~ msgstr "Number of views : %(nb_vues)s"
 
 #, fuzzy, python-format
 #~| msgid "Page %(number)s sur %(num_pages)s."
-#~ msgid "Page %(number)s sur %(num_pages)s."
+#~ msgid ""
+#~ "Page %(number)s sur\n"
+#~ "                        %(num_pages)s."
 #~ msgstr "Page %(number)s of %(num_pages)s."
+
+#, fuzzy, python-format
+#~| msgid "Nombre de vues : %(document.nb_vues)s"
+#~ msgid ""
+#~ "Nombre de vues :\n"
+#~ "                                %(nb_vues)s"
+#~ msgstr "Number of views : %(nb_vues)s"
+
+#, fuzzy, python-format
+#~| msgid "Nombre de vues : %(document.nb_vues)s"
+#~ msgid ""
+#~ "\n"
+#~ "                            %(description)s"
+#~ msgstr "Number of views : %(nb_vues)s"
+
+#, fuzzy, python-format
+#~| msgid "Nombre de vues : %(document.nb_vues)s"
+#~ msgid ""
+#~ "Utilisation :\n"
+#~ "                            %(utilisation)s"
+#~ msgstr "Number of views : %(nb_vues)s"
+
+#, python-format
+#~ msgid "Catégorie : %(categorie.categorie)s"
+#~ msgstr "Category : %(categorie.categorie)s"
 
 #~ msgid "Interface Web A.X.E.L."
 #~ msgstr "Web Interface A.X.E.L."
@@ -1895,11 +1966,6 @@ msgstr ""
 #~ msgid "Ensembles de données"
 #~ msgstr "Dataset"
 
-#, fuzzy, python-format
-#~| msgid "Nombre de vues du document"
-#~ msgid "Nombre de vues : %(nb_vues)s"
-#~ msgstr "Number of views : %(nb_vues)s"
-
 #~ msgid "Adresse email : "
 #~ msgstr "Email address : "
 
@@ -1909,11 +1975,6 @@ msgstr ""
 #~ "Etes-vous sûr de vouloir supprimer le\n"
 #~ "                                                document? (id %(id)s)"
 #~ msgstr "Are you sure you want to delete this document? (id %(id)s)"
-
-#~ msgid ""
-#~ "Suppression du dataset\n"
-#~ "                                                    %(nom)s"
-#~ msgstr "Number of views : %(nb_vues)s"
 
 #, fuzzy
 #~| msgid "Etes-vous sûr de vouloir supprimer le document? (id %(id)s)"

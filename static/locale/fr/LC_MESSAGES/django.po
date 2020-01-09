@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-08 14:57+0100\n"
+"POT-Creation-Date: 2020-01-09 13:58+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: .\AXEL_WEB\settings.py:134
+#: .\AXEL_WEB\settings.py:138
 msgid "French"
 msgstr "Français"
 
-#: .\AXEL_WEB\settings.py:135
+#: .\AXEL_WEB\settings.py:139
 msgid "English"
 msgstr "Anglais"
 
@@ -224,18 +224,18 @@ msgid " %(description)s"
 msgstr ""
 
 #: .\templates\WebAXEL\datasets\dataset.html:16
-#: .\templates\WebAXEL\datasets\datasets.html:38
+#: .\templates\WebAXEL\datasets\datasets.html:42
 #, python-format
 msgid "Source : %(source)s"
 msgstr ""
 
 #: .\templates\WebAXEL\datasets\dataset.html:23
-#: .\templates\WebAXEL\datasets\datasets.html:48
+#: .\templates\WebAXEL\datasets\datasets.html:52
 msgid "Modifier Jeu de Données"
 msgstr ""
 
 #: .\templates\WebAXEL\datasets\dataset.html:25
-#: .\templates\WebAXEL\datasets\datasets.html:50
+#: .\templates\WebAXEL\datasets\datasets.html:54
 #: .\templates\WebAXEL\datasets\datasets_confirmation_modal.html:27
 msgid "Supprimer Jeu de Données"
 msgstr ""
@@ -251,38 +251,36 @@ msgstr ""
 
 #: .\templates\WebAXEL\datasets\datasets.html:12
 #: .\templates\WebAXEL\documents\documents.html:12
-#: .\templates\WebAXEL\robots\robots.html:11
+#: .\templates\WebAXEL\robots\robots.html:12
 msgid "Recherche"
 msgstr ""
 
-#: .\templates\WebAXEL\datasets\datasets.html:29
-#: .\templates\WebAXEL\robots\robots.html:28
+#: .\templates\WebAXEL\datasets\datasets.html:22
+#: .\templates\WebAXEL\documents\documents.html:22
+#: .\templates\WebAXEL\robots\robots.html:22
+#, python-format
+msgid "Page %(number)s sur %(num_pages)s."
+msgstr ""
+
+#: .\templates\WebAXEL\datasets\datasets.html:34
+#: .\templates\WebAXEL\robots\robots.html:34
 #, python-format
 msgid "%(nom)s"
 msgstr ""
 
-#: .\templates\WebAXEL\datasets\datasets.html:31
-#: .\templates\WebAXEL\documents\documents.html:31
+#: .\templates\WebAXEL\datasets\datasets.html:36
+#: .\templates\WebAXEL\documents\documents.html:36
+#: .\templates\WebAXEL\robots\robots.html:37
 #, python-format
-msgid ""
-"\n"
-"                                %(description)s"
+msgid "%(description)s"
 msgstr ""
 
-#: .\templates\WebAXEL\datasets\datasets.html:45
+#: .\templates\WebAXEL\datasets\datasets.html:49
 msgid "Détails Jeu de Données"
 msgstr ""
 
-#: .\templates\WebAXEL\datasets\datasets.html:63
+#: .\templates\WebAXEL\datasets\datasets.html:67
 msgid "Aucun jeu de données trouvé"
-msgstr ""
-
-#: .\templates\WebAXEL\datasets\datasets.html:69
-#: .\templates\WebAXEL\documents\documents.html:73
-#, python-format
-msgid ""
-"Page %(number)s sur\n"
-"                        %(num_pages)s."
 msgstr ""
 
 #: .\templates\WebAXEL\datasets\datasets_confirmation_modal.html:10
@@ -358,7 +356,7 @@ msgid "Documentation A.X.E.L."
 msgstr ""
 
 #: .\templates\WebAXEL\documents\document.html:17
-#: .\templates\WebAXEL\documents\documents.html:38
+#: .\templates\WebAXEL\documents\documents.html:42
 #, python-format
 msgid "Auteur : %(auteur)s"
 msgstr ""
@@ -371,13 +369,13 @@ msgid ""
 msgstr ""
 
 #: .\templates\WebAXEL\documents\document.html:26
-#: .\templates\WebAXEL\documents\documents.html:50
+#: .\templates\WebAXEL\documents\documents.html:54
 #: .\templates\WebAXEL\documents\edit-document.html:5
 msgid "Modifier Document"
 msgstr ""
 
 #: .\templates\WebAXEL\documents\document.html:28
-#: .\templates\WebAXEL\documents\documents.html:53
+#: .\templates\WebAXEL\documents\documents.html:57
 #: .\templates\WebAXEL\documents\documents_confirmation_modal.html:25
 msgid "Supprimer Document"
 msgstr ""
@@ -386,23 +384,21 @@ msgstr ""
 msgid "Recherche de document"
 msgstr ""
 
-#: .\templates\WebAXEL\documents\documents.html:29
+#: .\templates\WebAXEL\documents\documents.html:34
 #, python-format
 msgid "%(titre)s"
 msgstr ""
 
-#: .\templates\WebAXEL\documents\documents.html:41
+#: .\templates\WebAXEL\documents\documents.html:45
 #, python-format
-msgid ""
-"Nombre de vues :\n"
-"                                %(nb_vues)s"
+msgid "Nombre de vues : %(nb_vues)s"
 msgstr ""
 
-#: .\templates\WebAXEL\documents\documents.html:47
+#: .\templates\WebAXEL\documents\documents.html:51
 msgid "Détails Document"
 msgstr ""
 
-#: .\templates\WebAXEL\documents\documents.html:68
+#: .\templates\WebAXEL\documents\documents.html:72
 msgid "Aucun document trouvé"
 msgstr ""
 
@@ -424,6 +420,14 @@ msgstr ""
 
 #: .\templates\WebAXEL\index.html:3 .\templates\WebAXEL\index.html:7
 msgid "Tableau de bord A.X.E.L."
+msgstr ""
+
+#: .\templates\WebAXEL\index.html:14 .\templates\base.html:36
+msgid "Administration Web"
+msgstr ""
+
+#: .\templates\WebAXEL\index.html:15
+msgid "Administration Web A.X.E.L."
 msgstr ""
 
 #: .\templates\WebAXEL\index.html:19 .\templates\WebAXEL\index.html:30
@@ -494,6 +498,24 @@ msgstr ""
 msgid "Ajouter un robot à A.X.E.L."
 msgstr ""
 
+#: .\templates\WebAXEL\registration\account-settings.html:3
+#: .\templates\WebAXEL\registration\account-settings.html:7
+msgid "Gestion Compte Utilisateur"
+msgstr ""
+
+#: .\templates\WebAXEL\registration\account-settings.html:13
+msgid "Enregistrer les modifications"
+msgstr ""
+
+#: .\templates\WebAXEL\registration\login.html:3
+#: .\templates\WebAXEL\registration\login_modal.html:8
+msgid "Connexion - IHM Web A.X.E.L."
+msgstr ""
+
+#: .\templates\WebAXEL\registration\login.html:7
+msgid "Bienvenue sur l'intelligence artificielle A.X.E.L."
+msgstr ""
+
 #: .\templates\WebAXEL\robots\create-robot.html:3
 msgid "Ajouter Robot A.X.E.L."
 msgstr ""
@@ -509,7 +531,7 @@ msgstr ""
 
 #: .\templates\WebAXEL\robots\edit-robot.html:5
 #: .\templates\WebAXEL\robots\robot.html:27
-#: .\templates\WebAXEL\robots\robots.html:49
+#: .\templates\WebAXEL\robots\robots.html:56
 msgid "Modifier Robot"
 msgstr ""
 
@@ -518,58 +540,38 @@ msgid "Robot A.X.E.L."
 msgstr ""
 
 #: .\templates\WebAXEL\robots\robot.html:19
-#: .\templates\WebAXEL\robots\robots.html:37
+#: .\templates\WebAXEL\robots\robots.html:43
 #, python-format
 msgid "Modèle : %(model)s"
 msgstr ""
 
 #: .\templates\WebAXEL\robots\robot.html:22
+#: .\templates\WebAXEL\robots\robots.html:47
 #, python-format
 msgid "Utilisation : %(utilisation)s"
 msgstr ""
 
 #: .\templates\WebAXEL\robots\robot.html:29
-#: .\templates\WebAXEL\robots\robots.html:52
+#: .\templates\WebAXEL\robots\robots.html:59
 #: .\templates\WebAXEL\robots\robots_confirmation_modal.html:25
 msgid "Supprimer Robot"
 msgstr ""
 
 #: .\templates\WebAXEL\robots\robots.html:3
-#: .\templates\WebAXEL\robots\robots.html:5
+#: .\templates\WebAXEL\robots\robots.html:6
 msgid "Robots A.X.E.L."
 msgstr ""
 
-#: .\templates\WebAXEL\robots\robots.html:10
+#: .\templates\WebAXEL\robots\robots.html:11
 msgid "Recherche de robot"
 msgstr ""
 
-#: .\templates\WebAXEL\robots\robots.html:30
-#, python-format
-msgid ""
-"\n"
-"                            %(description)s"
-msgstr ""
-
-#: .\templates\WebAXEL\robots\robots.html:40
-#, python-format
-msgid ""
-"Utilisation :\n"
-"                            %(utilisation)s"
-msgstr ""
-
-#: .\templates\WebAXEL\robots\robots.html:46
+#: .\templates\WebAXEL\robots\robots.html:53
 msgid "Détails Robot"
 msgstr ""
 
-#: .\templates\WebAXEL\robots\robots.html:66
+#: .\templates\WebAXEL\robots\robots.html:73
 msgid "Aucun robot trouvé"
-msgstr ""
-
-#: .\templates\WebAXEL\robots\robots.html:72
-#, python-format
-msgid ""
-"Page %(number)s sur\n"
-"                    %(num_pages)s."
 msgstr ""
 
 #: .\templates\WebAXEL\robots\robots_confirmation_modal.html:10
@@ -588,10 +590,6 @@ msgstr ""
 msgid "Administration"
 msgstr ""
 
-#: .\templates\base.html:36
-msgid "Administration Web"
-msgstr ""
-
 #: .\templates\base.html:56
 msgid "Documents"
 msgstr ""
@@ -604,38 +602,20 @@ msgstr ""
 msgid "Jeux de données"
 msgstr ""
 
-#: .\templates\base.html:92
+#: .\templates\base.html:96
 msgid "Bonjour et bienvenue"
 msgstr ""
 
-#: .\templates\base.html:100
+#: .\templates\base.html:105
 msgid "Gestion Compte"
 msgstr ""
 
-#: .\templates\base.html:103
+#: .\templates\base.html:108
 msgid "Déconnexion"
 msgstr ""
 
-#: .\templates\base.html:138
+#: .\templates\base.html:143
 msgid "Changer"
-msgstr ""
-
-#: .\templates\registration\account-settings.html:3
-#: .\templates\registration\account-settings.html:7
-msgid "Gestion Compte Utilisateur"
-msgstr ""
-
-#: .\templates\registration\account-settings.html:13
-msgid "Enregistrer les modifications"
-msgstr ""
-
-#: .\templates\registration\login.html:3
-#: .\templates\registration\login_modal.html:8
-msgid "Connexion - IHM Web A.X.E.L."
-msgstr ""
-
-#: .\templates\registration\login.html:7
-msgid "Bienvenue sur l'intelligence artificielle A.X.E.L."
 msgstr ""
 
 #: .\venv2\Lib\site-packages\Django-3.0.1-py3.6.egg\django\contrib\messages\apps.py:7
