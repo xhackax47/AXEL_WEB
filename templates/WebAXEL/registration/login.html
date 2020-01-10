@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "WebAXEL/base/base.html" %}
 {% load static i18n crispy_forms_tags %}
 {% block title %}{% trans "Connexion - IHM Web A.X.E.L." %}{% endblock %}
 {% block content %}
@@ -6,9 +6,9 @@
         <br>
         <h1 align="center" id="mainH1">{% trans "Bienvenue sur l'intelligence artificielle A.X.E.L." %}</h1>
         <br>
-        <button class="img_max_security" type="button" data-toggle="modal" data-target="#modalLogin">
+        <a class="img_max_security" type="button" data-toggle="modal" data-target="#modalLogin">
             <img src="{% static 'img/max_security_area.jpg' %}"/>
-        </button>
+        </a>
     {% include "WebAXEL/registration/login_modal.html" %}
     </div>
 {% endblock %}

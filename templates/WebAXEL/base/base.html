@@ -1,0 +1,29 @@
+{% load static i18n crispy_forms_filters %}
+<!DOCTYPE html>
+<html lang="fr">
+{% block head %}
+    <head>
+        {% include 'WebAXEL/base/head.html' %}
+    </head>
+{% endblock %}
+<body>
+<div class="wrapper">
+<!-- Bloc de code de la barre de navigation contenant les menus de l'application -->
+    {% block nav %}
+        {% include 'WebAXEL/base/navbar.html' %}
+    {% endblock %}
+    <section class="content">
+    <!-- Bloc de code du contenu de chaque page -->
+        {% block content %}
+        {% endblock %}
+    </section>
+    <!-- Bloc de code du pied de page de l'application -->
+    {% block footer %}
+        {% include 'WebAXEL/base/footer.html' %}
+    {% endblock %}
+</div>
+<!-- Bloc de code d'importation des scripts JavaScript de l'application et des frameworks -->
+{% block scriptsJS %}
+    {% include 'WebAXEL/base/scriptsJS.html' %}
+{% endblock %}
+</body>

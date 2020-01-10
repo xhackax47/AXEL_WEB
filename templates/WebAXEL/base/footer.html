@@ -1,0 +1,33 @@
+{% load static i18n crispy_forms_filters %}
+<!-- Footer -->
+<footer class="page-footer bg-dark text-white-50 bottom mt-3" id="footer">
+    <!-- Copyright -->
+    <div class="footer-copyright text-center d-flex">
+        <!-- Bouton de changement de langue via formulaire -->
+        <form action="{% url 'set_language' %}" class="form-inline pl-1" method="post">
+            {% csrf_token %}
+            <input name="next" type="hidden" value="{{ redirect_to }}">
+            <label>
+                <select name="language">
+                    {% get_current_language as LANGUAGE_CODE %}
+                    {% get_available_languages as LANGUAGES %}
+                    {% get_language_info_list for LANGUAGES as languages %}
+                    {% for language in languages %}
+                        <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %}
+                                selected{% endif %}>
+                            {{ language.name_local }} ({{ language.code }})
+                        </option>
+                    {% endfor %}
+                </select>
+            </label>
+            <button type="submit" class="btn btn-secondary">{% trans "Changer" %}</button>
+        </form>
+        <small class="p-2 flex-grow-1" id="copyright">© 2020 Copyright @
+            <a href="mailto:xhackax47@gmail.com">Samy Chaabi</a>
+        </small>
+        <a href="https://github.com/xhackax47/AXEL_WEB" id="socialButton"><i
+                class="fa fa-github fa-10x"></i></a>
+        <a href="https://www.linkedin.com/in/samy-c-7766ba2b/" id="socialButton"><i
+                class="fa fa-linkedin-square fa-10x pr-1"></i></a>
+    </div>
+</footer>

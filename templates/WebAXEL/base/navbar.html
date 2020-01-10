@@ -1,19 +1,6 @@
 {% load static i18n crispy_forms_filters %}
-<!doctype html>
-<html lang="fr">
-<head>
-    <title>{% block title %}IHM Web AXEL{% endblock %}</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" href="{% static 'img/favicon.ico' %}"/>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}"/>
-    <link rel="stylesheet" href="{% static 'font-awesome-4.7.0/css/font-awesome.min.css' %}"/>
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
-</head>
-<body>
-<div class="wrapper">
-    {% block nav %}
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar">
+{% if user.is_authenticated %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{% url "index" %}">A.X.E.L. Web</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -118,49 +105,5 @@
                 </div>
             </div>
         </nav>
-    {% endblock %}
-    <section class="content">
-        {% block content %}
-        {% endblock %}
-    </section>
-    {% block footer %}
-        {% if user.is_authenticated %}
-            <!-- Footer -->
-            <footer class="page-footer bg-dark text-white-50 bottom mt-3" id="footer">
-                <!-- Copyright -->
-                <div class="footer-copyright text-center d-flex">
-                    <form action="{% url 'set_language' %}" class="form-inline pl-1" method="post">
-                        {% csrf_token %}
-                        <input name="next" type="hidden" value="{{ redirect_to }}">
-                        <label>
-                            <select name="language">
-                                {% get_current_language as LANGUAGE_CODE %}
-                                {% get_available_languages as LANGUAGES %}
-                                {% get_language_info_list for LANGUAGES as languages %}
-                                {% for language in languages %}
-                                    <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %}
-                                            selected{% endif %}>
-                                        {{ language.name_local }} ({{ language.code }})
-                                    </option>
-                                {% endfor %}
-                            </select>
-                        </label>
-                        <button type="submit" class="btn btn-secondary">{% trans "Changer" %}</button>
-                    </form>
-                    <small class="p-2 flex-grow-1" id="copyright">© 2020 Copyright @ <a
-                            href="mailto:xhackax47@gmail.com">Samy
-                        Chaabi</a></small>
-                    <a href="https://github.com/xhackax47/AXEL_WEB" id="socialButton"><i
-                            class="fa fa-github fa-10x"></i></a>
-                    <a href="https://www.linkedin.com/in/samy-c-7766ba2b/" id="socialButton"><i
-                            class="fa fa-linkedin-square fa-10x pr-1"></i></a>
-                </div>
-            </footer>
-        {% endif %}
-    {% endblock %}
-</div>
-<script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/popper.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'js/WebAXEL/main.js' %}"></script>
-</body>
+{% endif %}
+
