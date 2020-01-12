@@ -1,109 +1,125 @@
 {% load static i18n crispy_forms_filters %}
 {% if user.is_authenticated %}
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="{% url "index" %}">A.X.E.L. Web</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent"
-                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url "index" %}">A.X.E.L. Web</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    {% if user.is_authenticated %}
-                        <ul class="navbar-nav mr-auto">
-                            {% if user.is_staff %}
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" role="button" id="navbarDropdown"
-                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                        {% trans "Administration" %}
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="/admin">
-                                            {% trans "Administration Web" %}
-                                        </a>
-                                        <a class="dropdown-item" href="/adminAXEL">
-                                            {% trans "Administration A.X.E.L." %}
-                                        </a>
-                                    </div>
-                                </li>
-                            {% endif %}
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                {% if user.is_authenticated %}
+                    <ul class="navbar-nav mr-auto">
+                        {% if user.is_staff %}
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" id="navbarDropdown"
                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                    {% trans "Documentation" %}
+                                    {% trans "Administration" %}
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    {% if user.is_staff %}
-                                        <a class="dropdown-item" href="{% url "create-document" %}">
-                                            {% trans "Ajouter Document" %}
-                                        </a>
-                                    {% endif %}
-                                    <a class="dropdown-item" href="{% url "documents" %}">
-                                        {% trans "Documents" %}
+                                    <a class="dropdown-item" href="/admin">
+                                        {% trans "Administration Web" %}
+                                    </a>
+                                    <a class="dropdown-item" href="/adminAXEL">
+                                        {% trans "Administration A.X.E.L." %}
                                     </a>
                                 </div>
                             </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" id="navbarDropdown"
-                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                    {% trans "Données" %}
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    {% if user.is_staff %}
-                                        <a class="dropdown-item" href="{% url "create-dataset" %}">
-                                            {% trans "Ajouter Jeu de Données" %}
-                                        </a>
-                                    {% endif %}
-                                    <a class="dropdown-item" href="{% url "datasets" %}">
-                                        {% trans "Jeux de données" %}
-                                    </a>
-                                </div>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" id="navbarDropdown"
-                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                    {% trans "Robots" %}
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    {% if user.is_staff %}
-                                        <a class="dropdown-item" href="{% url "create-robot" %}">
-                                            {% trans "Ajouter Robot" %}
-                                        </a>
-                                    {% endif %}
-                                    <a class="dropdown-item" href="{% url "robots" %}">
-                                        {% trans "Robots" %}
-                                    </a>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/api/v1/">API REST</a>
-                            </li>
-                        </ul>
-                        <p id="welcomeMessage"
-                           class="my-2 my-sm-0">{% trans "Bonjour et bienvenue" %}
-                            {% if user.username is None %}
-                                {{ user.email }}
-                            {% else %}
-                                {{ user.username }}
-                                ({{ user.fonction }})</p>
-                            {% endif %}
-                        <li class="dropdown">
-                            <a class="nav-link my-2 my-sm-0" href="#" role="button" id="navbarDropdown"
+                        {% endif %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" id="navbarDropdown"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                <i class="fa fa-user fa-lg" style="color: white"></i>
+                                {% trans "Documentation" %}
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{% url "account-settings" user.username %}">
-                                    {% trans "Gestion Compte" %}
-                                </a>
-                                <a class="dropdown-item" href="{% url "logout" %}">
-                                    {% trans "Déconnexion" %}
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                {% if user.is_staff %}
+                                    <a class="dropdown-item" href="{% url "create-document" %}">
+                                        {% trans "Ajouter Document" %}
+                                    </a>
+                                {% endif %}
+                                <a class="dropdown-item" href="{% url "documents" %}">
+                                    {% trans "Documents" %}
                                 </a>
                             </div>
                         </li>
-                    {% endif %}
-                </div>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" id="navbarDropdown"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                {% trans "Données" %}
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                {% if user.is_staff %}
+                                    <a class="dropdown-item" href="{% url "create-dataset" %}">
+                                        {% trans "Ajouter Jeu de Données" %}
+                                    </a>
+                                {% endif %}
+                                <a class="dropdown-item" href="{% url "datasets" %}">
+                                    {% trans "Jeux de données" %}
+                                </a>
+                            </div>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" id="navbarDropdown"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                {% trans "Robots" %}
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                {% if user.is_staff %}
+                                    <a class="dropdown-item" href="{% url "create-robot" %}">
+                                        {% trans "Ajouter Robot" %}
+                                    </a>
+                                {% endif %}
+                                <a class="dropdown-item" href="{% url "robots" %}">
+                                    {% trans "Robots" %}
+                                </a>
+                            </div>
+                        </li>
+                        {% if user.is_staff %}
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" id="navbarDropdown"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    {% trans "AWS" %}
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="">
+                                        {% trans "Stockage S3" %}
+                                    </a>
+                                    <a class="dropdown-item" href="">
+                                        {% trans "Virtualisation EC2" %}
+                                    </a>
+                                </div>
+                            </li>
+                        {% endif %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/api/v1/">API REST</a>
+                        </li>
+                    </ul>
+                    <p id="welcomeMessage"
+                       class="my-2 my-sm-0">{% trans "Bonjour et bienvenue" %}
+                        {% if user.username is None %}
+                            {{ user.email }}
+                        {% else %}
+                            {{ user.username }}
+                            ({{ user.fonction }})</p>
+                        {% endif %}
+                    <li class="dropdown">
+                        <a class="nav-link my-2 my-sm-0" href="#" role="button" id="navbarDropdown"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            <i class="fa fa-user fa-lg" style="color: white"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{% url "account-settings" user.username %}">
+                                {% trans "Gestion Compte" %}
+                            </a>
+                            <a class="dropdown-item" href="{% url "logout" %}">
+                                {% trans "Déconnexion" %}
+                            </a>
+                        </div>
+                    </li>
+                {% endif %}
             </div>
-        </nav>
+        </div>
+    </nav>
 {% endif %}
 

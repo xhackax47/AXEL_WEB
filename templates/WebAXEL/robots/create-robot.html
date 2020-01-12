@@ -2,8 +2,8 @@
 {% load static i18n crispy_forms_filters %}
 {% block title %}{% trans "Ajouter Robot A.X.E.L." %}{% endblock %}
 {% block content %}
-    <h1 class="mainH1 mt-1" style="text-align: center">{% trans "Ajouter Robot" %}</h1>
-    <div class="container mt-3">
+    <div class="container">
+        <h1 class="mainH1 mt-3 mb-3">{% trans "Ajouter Robot" %}</h1>
         <form action="" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form|crispy }}

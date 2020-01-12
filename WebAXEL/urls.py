@@ -14,7 +14,7 @@ urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
     # Index
     path('', login_required(views.IndexView.as_view()), name='index'),
-    # Gestion de compte
+    # Gestion de compte par username
     url(r'^account-settings/(?P<username>\w+)/$', login_required(views.AccountSettingsView.as_view()),
          name='account-settings'),
 

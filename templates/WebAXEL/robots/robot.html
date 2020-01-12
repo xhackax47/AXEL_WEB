@@ -2,10 +2,8 @@
 {% load static i18n crispy_forms_tags %}
 {% block title %}{% trans "Robot A.X.E.L." %}{% endblock %}
 {% block content %}
-    <div class="container-fluid" style="text-align: center" xmlns="http://www.w3.org/1999/html">
-        <br>
-        <h1 id="mainH1">{{ robot.nom }}</h1>
-        <br>
+    <div class="container-fluid" style="text-align: center">
+        <h1 class="mainH1 mt-3 mb-3">{{ robot.nom }}</h1>
         <div class="container">
             <div class="card">
                 <img src="{{ robot.image }}" class="card-img-top robotImg" alt="Image"

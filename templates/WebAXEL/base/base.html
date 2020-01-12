@@ -3,17 +3,18 @@
 <html lang="fr">
 {% block head %}
     <head>
+        <title>{% block title %}{% endblock %}</title>
         {% include 'WebAXEL/base/head.html' %}
     </head>
 {% endblock %}
 <body>
 <div class="wrapper">
-<!-- Bloc de code de la barre de navigation contenant les menus de l'application -->
+    <!-- Bloc de code de la barre de navigation contenant les menus de l'application -->
     {% block nav %}
         {% include 'WebAXEL/base/navbar.html' %}
     {% endblock %}
     <section class="content">
-    <!-- Bloc de code du contenu de chaque page -->
+        <!-- Bloc de code du contenu de chaque page -->
         {% block content %}
         {% endblock %}
     </section>

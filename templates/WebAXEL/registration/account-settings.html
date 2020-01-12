@@ -3,10 +3,8 @@
 {% block title %}{% trans 'Gestion Compte Utilisateur' %}{% endblock %}
 {% block content %}
     <div class="container-fluid" align="center">
-        <br>
-        <h1 align="center" id="mainH1">{% trans 'Gestion Compte Utilisateur' %}</h1>
-        <br>
-        <div class="container-fluid">
+        <h1 class="mainH1 mt-3 mb-3">{% trans 'Gestion Compte Utilisateur' %}</h1>
+        <div class="container">
             <form action="" method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                     {{ form|crispy }}
