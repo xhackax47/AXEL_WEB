@@ -8,17 +8,23 @@ from django.urls import reverse_lazy
 from django.views.generic import TemplateView, UpdateView, ListView, CreateView, DeleteView, DetailView
 
 from WebAXEL.forms import DocumentForm, DocumentSearchForm, DataSetForm, DataSetSearchForm, UserChangeForm, \
-    RobotSearchForm, RobotForm
+    RobotSearchForm, RobotForm, UserCreateForm
 from WebAXEL.models import Document, DataSet, AxelUser, Robot
 
 
 # EN COURS DE DEV
 # Ouverture des documents Microsoft Word
-
-
 def get_word(request, *args, **kwargs):
     word = win32com.client.Dispatch('Word.Application')
     return word
+
+
+# Vue Register pour l'inscription
+class RegisterView(CreateView):
+    model = AxelUser
+    form_class = UserCreateForm
+    success_url = reverse_lazy('login')
+    template_name = 'WebAXEL/registration/register.html'
 
 
 # Vue Login pour la connexion

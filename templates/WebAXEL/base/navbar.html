@@ -13,6 +13,7 @@
                 {% if user.is_authenticated %}
                     <ul class="navbar-nav mr-auto">
                         {% if user.is_staff %}
+                            <!-- Menu dropdown Administration-->
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" id="navbarDropdown"
                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -28,6 +29,7 @@
                                 </div>
                             </li>
                         {% endif %}
+                        <!-- Menu dropdown Documentation-->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" id="navbarDropdown"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -44,6 +46,7 @@
                                 </a>
                             </div>
                         </li>
+                        <!-- Menu dropdown Données-->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" id="navbarDropdown"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -59,6 +62,7 @@
                                     {% trans "Jeux de données" %}
                                 </a>
                             </div>
+                            <!-- Menu dropdown Robots-->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" id="navbarDropdown"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -75,22 +79,7 @@
                                 </a>
                             </div>
                         </li>
-                        {% if user.is_staff %}
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" id="navbarDropdown"
-                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                    {% trans "AWS" %}
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="">
-                                        {% trans "Stockage S3" %}
-                                    </a>
-                                    <a class="dropdown-item" href="">
-                                        {% trans "Virtualisation EC2" %}
-                                    </a>
-                                </div>
-                            </li>
-                        {% endif %}
+                        <!-- Menu API REST-->
                         <li class="nav-item">
                             <a class="nav-link" href="/api/v1/">API REST</a>
                         </li>

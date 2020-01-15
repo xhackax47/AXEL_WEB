@@ -24,7 +24,10 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <input type="submit" class="btn btn-success" value="Connexion"/>
+                    <input type="submit" class="btn btn-success" value="{% trans 'Connexion' %}"/>
+                    <a href="{% url 'register' %}">
+                        <input type="button" class="btn btn-warning" value="{% trans 'Inscription' %}">
+                    </a>
                 </div>
             </form>
         </div>

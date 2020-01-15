@@ -1,8 +1,10 @@
 from datetime import timedelta
 
-from django.contrib.auth.models import AbstractUser, Group
+from django.contrib.auth.models import AbstractUser, Group, User
 from django.db.models import Model, CharField, DateTimeField, TextField, FileField, IntegerField, ManyToManyField, \
     ImageField, EmailField, TextChoices, URLField
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 from .managers import CustomUserManager
@@ -38,6 +40,12 @@ class AxelUser(AbstractUser):
 
     def __str__(self):
         return _("Nom d'utilisateur {0} / Adresse email : {1} ").format(self.username, self.email)
+
+    @receiver(post_save, sender=User)
+    def update_axeluser_signal(sender, instance, created, **kwargs):
+        if created:
+            AxelUser.objects.create(user=instance)
+        instance.axeluser.save()
 
 
 # Modèles Document

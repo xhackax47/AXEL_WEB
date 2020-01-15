@@ -1,4 +1,4 @@
-#!C:\Users\samy_\OneDrive\Bureau\A.X.E.L\AXEL_WEB\venv2\Scripts\python.exe
+#!C:\Users\Y0771889\PycharmProjects\AXEL_WEB\venv2\Scripts\python.exe
 # EASY-INSTALL-ENTRY-SCRIPT: 'pip==19.0.3','console_scripts','pip'
 __requires__ = 'pip==19.0.3'
 import re
