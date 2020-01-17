@@ -99,7 +99,8 @@
                             <i class="fa fa-user fa-lg" style="color: white"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{% url "account-settings" user.username %}">
+                            <!--<a class="dropdown-item" href="{% url "account-settings-username" user.username %}">-->
+                            <a class="dropdown-item" href="{% url "account-settings-id" user.id %}">
                                 {% trans "Gestion Compte" %}
                             </a>
                             <a class="dropdown-item" href="{% url "logout" %}?next=/">
