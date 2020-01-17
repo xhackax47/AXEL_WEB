@@ -155,12 +155,13 @@ CSRF_COOKIE_SECURE = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/dev/howto/static-files/
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
-STATIC_ROOT = '/static/'
-#STATICFILES_DIRS = (
-#    os.path.join(BASE_DIR, "static"),
-#)
+
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, "static"),
+)
 
 # Authentification
 LOGIN_URL = reverse_lazy('index')
