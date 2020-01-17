@@ -1,5 +1,5 @@
 from django.core.exceptions import ValidationError
-from django.forms import ModelForm, forms, CharField, HiddenInput
+from django.forms import ModelForm, forms, CharField, HiddenInput, TextInput
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, ReadOnlyPasswordHashField, AuthenticationForm
 from django.utils.translation import ugettext_lazy as _
 
@@ -46,6 +46,11 @@ class UserCreateForm(UserCreationForm, MultipleForm):
 
 
 class UserUpdateForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(UserUpdateForm, self).__init__(*args, **kwargs)
+        self.fields['date_joined'].widget.attrs['readonly'] = True
+        self.fields['last_login'].widget.attrs['readonly'] = True
+
     class Meta:
         model = AxelUser
         exclude = ['is_superuser', 'is_staff', 'user_permissions', 'groups', 'password']
@@ -78,7 +83,7 @@ class DataSetCategoryForm(ModelForm):
 class DataSetForm(ModelForm):
     class Meta:
         model = DataSet
-        exclude = ['date_ajout']
+        exclude = ['date_ajout', 'nb_vues']
 
 
 class DataSetSearchForm(ModelForm):
@@ -96,7 +101,7 @@ class RobotCategoryForm(ModelForm):
 class RobotForm(ModelForm):
     class Meta:
         model = Robot
-        exclude = ['date_ajout']
+        exclude = ['date_ajout', 'nb_vues']
 
 
 class RobotSearchForm(ModelForm):
