@@ -63,6 +63,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.common.BrokenLinkEmailsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ADMIN = ('Samy', 'xhackax47@gmail.com')
@@ -174,6 +175,11 @@ STATIC_URL = '/static/'
 # STATICFILES_DIRS = (
 #     os.path.join(BASE_DIR, "static"),
 # )
+
+# Simplified static file serving HEROKU DEPLOIEMENT
+# https://warehouse.python.org/project/whitenoise/
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Authentification
 LOGIN_URL = reverse_lazy('index')
