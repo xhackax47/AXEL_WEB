@@ -79,16 +79,31 @@ class LogoutView(LogoutView):
 
 
 # LOGIN REQUIS : Vue AccountSettings pour faire la modification de compte utilisateur à travers un form
-class AccountSettingsView(LoginRequiredMixin, UpdateView):
+class AccountSettingsUsernameView(LoginRequiredMixin, UpdateView):
     login_url = reverse_lazy('index')
     model = AxelUser
     form_class = UserUpdateForm
     template_name = 'WebAXEL/registration/account-settings.html'
     success_url = reverse_lazy('index')
 
-    # Récupération de l'objet via son username et son id(pk)
+    # Récupération de l'objet via son username
     def get_object(self, *args, **kwargs):
-        user = get_object_or_404(AxelUser, username=self.kwargs['username'], pk=self.kwargs['pk'])
+        user = get_object_or_404(AxelUser, username=self.kwargs['username'])
+
+        return user
+
+
+# LOGIN REQUIS : Vue AccountSettings pour faire la modification de compte utilisateur à travers un form
+class AccountSettingsUsernameView(LoginRequiredMixin, UpdateView):
+    login_url = reverse_lazy('index')
+    model = AxelUser
+    form_class = UserUpdateForm
+    template_name = 'WebAXEL/registration/account-settings.html'
+    success_url = reverse_lazy('index')
+
+    # Récupération de l'objet via son id(pk)
+    def get_object(self, *args, **kwargs):
+        user = get_object_or_404(AxelUser, pk=self.kwargs['pk'])
 
         return user
 
