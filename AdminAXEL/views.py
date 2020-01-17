@@ -48,8 +48,10 @@ class UtilitiesAnimationView(TemplateView):
 class UtilitiesBorderView(TemplateView):
     template_name = 'AdminAXEL\\utilities-border.html'
 
+
 class UtilitiesColorView(TemplateView):
     template_name = 'AdminAXEL\\utilities-color.html'
+
 
 class UtilitiesOtherView(TemplateView):
     template_name = 'AdminAXEL\\utilities-other.html'

@@ -144,7 +144,6 @@ class DocumentSearchResultsView(LoginRequiredMixin, ListView):
                 Q(titre__icontains=query) | Q(auteur__icontains=query) | Q(description__icontains=query))
             return queryset
         # Sinon on renvoi une liste de document vide dans le queryset
-        else:
             queryset = Document.objects.none()
             return queryset
 
@@ -242,7 +241,6 @@ class DataSetSearchResultsView(LoginRequiredMixin, ListView):
                     description__icontains=query))
             return queryset
         # Sinon on renvoi une liste de datasets vide dans le queryset
-        else:
             queryset = DataSet.objects.none()
             return queryset
 
@@ -340,7 +338,6 @@ class RobotSearchResultsView(LoginRequiredMixin, ListView):
                     description__icontains=query))
             return queryset
         # Sinon on renvoi une liste de robots vide dans le queryset
-        else:
             queryset = Robot.objects.none()
             return queryset
 

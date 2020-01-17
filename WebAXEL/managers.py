@@ -7,6 +7,7 @@ class CustomUserManager(BaseUserManager):
     Gestionnaire perso d'utilisateurs  où email est l'unique identifiant
     pour l'authentification à la place de username
     """
+
     def create_user(self, email, password, **extra_fields):
         # Crée et sauvegarde un utilisateur avec le couple email/password
         if not email:

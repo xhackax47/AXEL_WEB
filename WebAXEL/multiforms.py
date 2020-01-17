@@ -78,8 +78,8 @@ class ProcessMultipleFormsView(ProcessFormView):
             return HttpResponseForbidden()
         elif form.is_valid():
             return self.forms_valid(forms, form_name)
-        else:
-            return self.forms_invalid(forms)
+
+        return self.forms_invalid(forms)
 
 
 class BaseMultipleFormsView(MultiFormMixin, ProcessMultipleFormsView):
