@@ -1,0 +1,14 @@
+{% extends "WebAXEL/base/base.html" %}
+{% load static i18n crispy_forms_tags %}
+{% block title %}{% trans "Confirmation - IHM Web A.X.E.L." %}{% endblock %}
+{% block content %}
+    <div class="container-fluid" align="center">
+        <h1 class="mainH1 mt-3 mb-3">{% trans "Confirmation d'inscription" %}</h1>
+        {% if forms.register.errors %}
+            <p class="badge-danger">{% trans "Les informations données pour l'inscription ne sont pas correctes. Veuillez réessayer." %}</p>
+        {% else %}
+        <p>Votre inscription a bien été prise en compte.</p>
+        <p> Merci d'avoir pris le temps de renseigner ce formulaire. </p>
+        {% endif %}
+    </div>
+{% endblock %}

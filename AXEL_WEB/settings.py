@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+from django.urls import reverse_lazy
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -25,8 +26,7 @@ SECRET_KEY = ')k7-35hzr=44j&_nls3u%*ne1xz@==1gt(1k9-6%ra!y6pk21l'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-#ALLOWED_HOSTS = ['localhost', '127.0.0.1']
-ALLOWED_HOSTS = ['localhost', '0.0.0.0']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 # Application definition
 
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 'channels',
     'AdminAXEL.apps.AdminaxelConfig',
     'WebAXEL.apps.WebaxelConfig',
     'api.apps.ApiConfig',
@@ -50,7 +51,6 @@ AUTH_USER_MODEL = 'WebAXEL.AxelUser'
 AUTH_GROUP_MODEL = 'WebAXEL.AxelGroup'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.middleware.locale.LocaleMiddleware',
@@ -63,12 +63,12 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'AXEL_WEB.urls'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
-        ,
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -98,7 +98,6 @@ DATABASES = {
     }
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
@@ -121,13 +120,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
 LANGUAGE_CODE = 'fr'
-
 TIME_ZONE = 'Europe/Paris'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 LOCALE_PATHS = (
@@ -136,14 +131,23 @@ LOCALE_PATHS = (
 gettext = lambda x: x
 
 LANGUAGES = (
-   ('fr', gettext('French')),
-   ('en', gettext('English')),
+    ('fr', gettext('French')),
+    ('en', gettext('English')),
 )
 
 # Sécurité
 SECURE_SSL_REDIRECT = False
 SESSION_COOKIE_SECURE = False
 CSRF_COOKIE_SECURE = False
+
+# Channels
+# ASGI_APPLICATION = "AXEL_WEB.routing.application"
+# CHANNEL_LAYERS = {
+#         'default': {
+#                 'BACKEND': 'asgiref.inmemory.ChannelLayer',
+#                 'ROUTING': 'live.routing.channel_routing'
+#         },
+# }
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/dev/howto/static-files/
@@ -153,8 +157,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
 
-
 # Authentification
-LOGIN_URL="/login/"
-LOGIN_REDIRECT_URL = ''
+LOGIN_URL = reverse_lazy('index')
+LOGIN_REDIRECT_URL = reverse_lazy('home')
 LOGOUT_REDIRECT_URL = LOGIN_URL

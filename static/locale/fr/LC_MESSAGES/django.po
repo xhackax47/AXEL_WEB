@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-15 11:09+0100\n"
+"POT-Creation-Date: 2020-01-16 14:13+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,7 +26,15 @@ msgstr "Français"
 msgid "English"
 msgstr "Anglais"
 
-#: .\WebAXEL\forms.py:15
+#: .\WebAXEL\forms.py:28
+msgid "Username already exists."
+msgstr "Le nom d'utilisateur existe déjà."
+
+#: .\WebAXEL\forms.py:36
+msgid "Email already exists"
+msgstr "L'email existe déjà"
+
+#: .\WebAXEL\forms.py:44
 msgid "Passwords don't match"
 msgstr "Les mots de passe ne correspondent pas."
 
@@ -266,11 +274,11 @@ msgstr ""
 msgid "Bonjour et bienvenue"
 msgstr ""
 
-#: .\templates\WebAXEL\base\navbar.html:102
+#: .\templates\WebAXEL\base\navbar.html:103
 msgid "Gestion Compte"
 msgstr ""
 
-#: .\templates\WebAXEL\base\navbar.html:105
+#: .\templates\WebAXEL\base\navbar.html:106
 msgid "Déconnexion"
 msgstr ""
 
@@ -528,20 +536,35 @@ msgstr ""
 msgid "Bienvenue sur l'intelligence artificielle A.X.E.L."
 msgstr ""
 
-#: .\templates\WebAXEL\registration\login_modal.html:27
+#: .\templates\WebAXEL\registration\login.html:32
+msgid ""
+"Votre nom d'utilisateur et votre mot de passe ne correspondent pas. Veuillez "
+"réessayer."
+msgstr ""
+
+#: .\templates\WebAXEL\registration\login.html:35
+msgid ""
+"Les informations données pour l'inscription ne sont pas correctes. Veuillez "
+"réessayer."
+msgstr ""
+
+#: .\templates\WebAXEL\registration\login.html:40
+#: .\templates\WebAXEL\registration\login.html:42
+#: .\templates\WebAXEL\registration\login_modal.html:18
 msgid "Connexion"
 msgstr ""
 
-#: .\templates\WebAXEL\registration\login_modal.html:29
+#: .\templates\WebAXEL\registration\login.html:48
+#: .\templates\WebAXEL\registration\login.html:50
+#: .\templates\WebAXEL\registration\login.html:51
 msgid "Inscription"
 msgstr ""
 
-#: .\templates\WebAXEL\registration\register.html:3
-#: .\templates\WebAXEL\registration\register.html:6
+#: .\templates\WebAXEL\registration\register_modal.html:8
 msgid "Inscription - IHM Web A.X.E.L."
 msgstr ""
 
-#: .\templates\WebAXEL\registration\register.html:10
+#: .\templates\WebAXEL\registration\register_modal.html:18
 msgid "S'inscrire"
 msgstr ""
 
@@ -675,16 +698,16 @@ msgstr "Entrez une adresse mail valide."
 msgid ""
 "Enter a valid “slug” consisting of letters, numbers, underscores or hyphens."
 msgstr ""
-"Entrez un “slug” valide composé de lettres, de chiffres, de traits de soulignement ou de tirets."
-
+"Entrez un “slug” valide composé de lettres, de chiffres, de traits de "
+"soulignement ou de tirets."
 
 #: .\venv2\Lib\site-packages\django\core\validators.py:247
 msgid ""
 "Enter a valid “slug” consisting of Unicode letters, numbers, underscores, or "
 "hyphens."
 msgstr ""
-"Entrez un “slug” valide composé de lettres, chiffres, traits de soulignement Unicode ou "
-"tirets."
+"Entrez un “slug” valide composé de lettres, chiffres, traits de soulignement "
+"Unicode ou tirets."
 
 #: .\venv2\Lib\site-packages\django\core\validators.py:256
 #: .\venv2\Lib\site-packages\django\core\validators.py:276
@@ -708,17 +731,20 @@ msgstr "N'entrez que des chiffres séparés par des virgules."
 #: .\venv2\Lib\site-packages\django\core\validators.py:311
 #, python-format
 msgid "Ensure this value is %(limit_value)s (it is %(show_value)s)."
-msgstr "Assurez-vous que cette valeur est %(limit_value)s (c'est %(show_value)s)."
+msgstr ""
+"Assurez-vous que cette valeur est %(limit_value)s (c'est %(show_value)s)."
 
 #: .\venv2\Lib\site-packages\django\core\validators.py:343
 #, python-format
 msgid "Ensure this value is less than or equal to %(limit_value)s."
-msgstr "Assurez-vous que cette valeur est inférieure ou égale à %(limit_value)s."
+msgstr ""
+"Assurez-vous que cette valeur est inférieure ou égale à %(limit_value)s."
 
 #: .\venv2\Lib\site-packages\django\core\validators.py:352
 #, python-format
 msgid "Ensure this value is greater than or equal to %(limit_value)s."
-msgstr "Assurez-vous que cette valeur est supérieure ou égale à %(limit_value)s."
+msgstr ""
+"Assurez-vous que cette valeur est supérieure ou égale à %(limit_value)s."
 
 #: .\venv2\Lib\site-packages\django\core\validators.py:362
 #, python-format
@@ -853,8 +879,8 @@ msgid ""
 "“%(value)s” value has an invalid date format. It must be in YYYY-MM-DD "
 "format."
 msgstr ""
-"La valeur “%(value)s”a un format de date non valide. Elle doit être au format "
-"AAAA-MM-JJ"
+"La valeur “%(value)s”a un format de date non valide. Elle doit être au "
+"format AAAA-MM-JJ"
 
 #: .\venv2\Lib\site-packages\django\db\models\fields\__init__.py:1092
 #: .\venv2\Lib\site-packages\django\db\models\fields\__init__.py:1235
@@ -865,6 +891,7 @@ msgid ""
 msgstr ""
 "La valeur “%(value)s” a le format correct (AAAA-MM-JJ) mais il s'agit d'une "
 "date non valide."
+
 #: .\venv2\Lib\site-packages\django\db\models\fields\__init__.py:1095
 msgid "Date (without time)"
 msgstr "Date (sans heure)"
@@ -982,8 +1009,8 @@ msgid ""
 "“%(value)s” value has an invalid format. It must be in HH:MM[:ss[.uuuuuu]] "
 "format."
 msgstr ""
-"La valeur “%(value)s” a un format non valide. Elle doit être au format "
-"HH: MM [: ss [.uuuuuu]]."
+"La valeur “%(value)s” a un format non valide. Elle doit être au format HH: "
+"MM [: ss [.uuuuuu]]."
 
 #: .\venv2\Lib\site-packages\django\db\models\fields\__init__.py:2058
 #, python-format
@@ -1085,7 +1112,8 @@ msgstr "Le nombre de jours doit être compris entre {min_days} et {max_days}."
 
 #: .\venv2\Lib\site-packages\django\forms\fields.py:533
 msgid "No file was submitted. Check the encoding type on the form."
-msgstr "Aucun fichier n'a été soumis. Vérifiez le type d'encodage sur le formulaire."
+msgstr ""
+"Aucun fichier n'a été soumis. Vérifiez le type d'encodage sur le formulaire."
 
 #: .\venv2\Lib\site-packages\django\forms\fields.py:534
 msgid "No file was submitted."
@@ -1105,22 +1133,25 @@ msgstr[1] ""
 
 #: .\venv2\Lib\site-packages\django\forms\fields.py:540
 msgid "Please either submit a file or check the clear checkbox, not both."
-msgstr "Veuillez soumettre un fichier ou cocher la case décochée, pas les deux."
+msgstr ""
+"Veuillez soumettre un fichier ou cocher la case décochée, pas les deux."
 
 #: .\venv2\Lib\site-packages\django\forms\fields.py:601
 msgid ""
 "Upload a valid image. The file you uploaded was either not an image or a "
 "corrupted image."
 msgstr ""
-"Téléchargez une image valide. Le fichier que vous avez téléchargé n'était pas une image"
-"ou une image corrompue."
+"Téléchargez une image valide. Le fichier que vous avez téléchargé n'était "
+"pas une imageou une image corrompue."
 
 #: .\venv2\Lib\site-packages\django\forms\fields.py:763
 #: .\venv2\Lib\site-packages\django\forms\fields.py:853
 #: .\venv2\Lib\site-packages\django\forms\models.py:1275
 #, python-format
 msgid "Select a valid choice. %(value)s is not one of the available choices."
-msgstr "Sélectionnez un choix valide. %(value)s ne fait pas partie des choix disponibles."
+msgstr ""
+"Sélectionnez un choix valide. %(value)s ne fait pas partie des choix "
+"disponibles."
 
 #: .\venv2\Lib\site-packages\django\forms\fields.py:854
 #: .\venv2\Lib\site-packages\django\forms\fields.py:969
@@ -1181,7 +1212,9 @@ msgstr "Veuillez corriger les données en double pour %(field)s."
 #: .\venv2\Lib\site-packages\django\forms\models.py:758
 #, python-format
 msgid "Please correct the duplicate data for %(field)s, which must be unique."
-msgstr "Veuillez corriger les données en double pour %(field)s, qui doivent être uniques."
+msgstr ""
+"Veuillez corriger les données en double pour %(field)s, qui doivent être "
+"uniques."
 
 #: .\venv2\Lib\site-packages\django\forms\models.py:764
 #, python-format
@@ -1189,9 +1222,9 @@ msgid ""
 "Please correct the duplicate data for %(field_name)s which must be unique "
 "for the %(lookup)s in %(date_field)s."
 msgstr ""
-"Veuillez corriger les données en double pour %(field_name)s qui doivent être uniques "
-"pour le %(lookup)s dans %(date_field)s."
-""
+"Veuillez corriger les données en double pour %(field_name)s qui doivent être "
+"uniques pour le %(lookup)s dans %(date_field)s."
+
 #: .\venv2\Lib\site-packages\django\forms\models.py:773
 msgid "Please correct the duplicate values below."
 msgstr "Veuillez corriger les valeurs en double ci-dessous."
@@ -1202,7 +1235,9 @@ msgstr "La valeur en ligne ne correspond pas à l'instance parent."
 
 #: .\venv2\Lib\site-packages\django\forms\models.py:1161
 msgid "Select a valid choice. That choice is not one of the available choices."
-msgstr "Sélectionnez un choix valide. Ce choix ne fait pas partie des choix disponibles."
+msgstr ""
+"Sélectionnez un choix valide. Ce choix ne fait pas partie des choix "
+"disponibles."
 
 #: .\venv2\Lib\site-packages\django\forms\models.py:1277
 #, python-format
@@ -1215,8 +1250,8 @@ msgid ""
 "%(datetime)s couldn’t be interpreted in time zone %(current_timezone)s; it "
 "may be ambiguous or it may not exist."
 msgstr ""
-"%(datetime)s ne peut pas être interprété dans le fuseau horaire %(current_timezone)s; "
-"il peut être ambigu ou il peut ne pas exister."
+"%(datetime)s ne peut pas être interprété dans le fuseau horaire "
+"%(current_timezone)s; il peut être ambigu ou il peut ne pas exister."
 
 #: .\venv2\Lib\site-packages\django\forms\widgets.py:395
 msgid "Clear"
@@ -1656,10 +1691,10 @@ msgid ""
 "required for security reasons, to ensure that your browser is not being "
 "hijacked by third parties."
 msgstr ""
-"Vous voyez ce message car ce site HTTPS nécessite un “Referer  "
-"header” à envoyer par votre navigateur Web, mais aucun n'a été envoyé. Cet en-tête est "
-"requis pour des raisons de sécurité, pour vous assurer que votre navigateur n'est pas"
-"détourné par des tiers."
+"Vous voyez ce message car ce site HTTPS nécessite un “Referer  header” à "
+"envoyer par votre navigateur Web, mais aucun n'a été envoyé. Cet en-tête est "
+"requis pour des raisons de sécurité, pour vous assurer que votre navigateur "
+"n'est pasdétourné par des tiers."
 
 #: .\venv2\Lib\site-packages\django\views\csrf.py:120
 msgid ""
@@ -1667,9 +1702,9 @@ msgid ""
 "enable them, at least for this site, or for HTTPS connections, or for “same-"
 "origin” requests."
 msgstr ""
-"Si vous avez configuré votre navigateur pour désactiver les en-têtes “Referer”, veuillez les "
-"ré-activez, au moins pour ce site, ou pour les connexions HTTPS, ou pour les requêtes "
-" “same-origin”"
+"Si vous avez configuré votre navigateur pour désactiver les en-têtes "
+"“Referer”, veuillez les ré-activez, au moins pour ce site, ou pour les "
+"connexions HTTPS, ou pour les requêtes  “same-origin”"
 
 #: .\venv2\Lib\site-packages\django\views\csrf.py:124
 msgid ""
@@ -1679,11 +1714,12 @@ msgid ""
 "If you’re concerned about privacy, use alternatives like <a rel=\"noreferrer"
 "\" …> for links to third-party sites."
 msgstr ""
-"Si vous utilisez la balise <meta name=\"referrer\" content =\"no-referrer\"> ou "
-"y compris l'en-tête “Referrer-Policy: no-referrer”, veuillez les supprimer. Le"
-"La protection CSRF nécessite que l'en-tête “Referer” effectue une vérification stricte du référent."
-"Si vous êtes préoccupé par la confidentialité, utilisez des alternatives comme <a rel=\"noreferrer"
-"\"…> pour les liens vers des sites tiers. "
+"Si vous utilisez la balise <meta name=\"referrer\" content =\"no-referrer\"> "
+"ou y compris l'en-tête “Referrer-Policy: no-referrer”, veuillez les "
+"supprimer. LeLa protection CSRF nécessite que l'en-tête “Referer” effectue "
+"une vérification stricte du référent.Si vous êtes préoccupé par la "
+"confidentialité, utilisez des alternatives comme <a rel=\"noreferrer\"…> "
+"pour les liens vers des sites tiers. "
 
 #: .\venv2\Lib\site-packages\django\views\csrf.py:132
 msgid ""
@@ -1691,9 +1727,9 @@ msgid ""
 "submitting forms. This cookie is required for security reasons, to ensure "
 "that your browser is not being hijacked by third parties."
 msgstr ""
-"Vous voyez ce message car ce site nécessite un cookie CSRF lors de l'envoi de formulaires. "
-"Ce cookie est requis pour des raisons de sécurité, afin de s'assurer "
-"que votre navigateur ne soit pas détourné par des tiers."
+"Vous voyez ce message car ce site nécessite un cookie CSRF lors de l'envoi "
+"de formulaires. Ce cookie est requis pour des raisons de sécurité, afin de "
+"s'assurer que votre navigateur ne soit pas détourné par des tiers."
 
 #: .\venv2\Lib\site-packages\django\views\csrf.py:137
 msgid ""
@@ -1701,7 +1737,8 @@ msgid ""
 "them, at least for this site, or for “same-origin” requests."
 msgstr ""
 "Si vous avez configuré votre navigateur pour désactiver les cookies, "
-"veuillez les réactiver, au moins pour ce site, ou pour les requêtes “same-origin”."
+"veuillez les réactiver, au moins pour ce site, ou pour les requêtes “same-"
+"origin”."
 
 #: .\venv2\Lib\site-packages\django\views\csrf.py:142
 msgid "More information is available with DEBUG=True."
@@ -1756,7 +1793,9 @@ msgstr "Aucun %(verbose_name)s ne correspond à la requête"
 
 #: .\venv2\Lib\site-packages\django\views\generic\list.py:67
 msgid "Page is not “last”, nor can it be converted to an int."
-msgstr "La page n'est pas “dernière”, elle ne peut pas non plus être convertie en entier."
+msgstr ""
+"La page n'est pas “dernière”, elle ne peut pas non plus être convertie en "
+"entier."
 
 #: .\venv2\Lib\site-packages\django\views\generic\list.py:72
 #, python-format
@@ -1793,7 +1832,8 @@ msgid ""
 "target=\"_blank\" rel=\"noopener\">release notes</a> for Django %(version)s"
 msgstr ""
 "Afficher <a href=\"https://docs.djangoproject.com/fr/%(version)s/releases/\" "
-"target=\"_blank\" rel=\"noopener\">notes de version</a> pour Django %(version)s"
+"target=\"_blank\" rel=\"noopener\">notes de version</a> pour Django "
+"%(version)s"
 
 #: .\venv2\Lib\site-packages\django\views\templates\default_urlconf.html:368
 msgid "The install worked successfully! Congratulations!"
@@ -1809,8 +1849,8 @@ msgid ""
 msgstr ""
 "Vous voyez cette page parce que <a href=\"https://docs.djangoproject.com/fr/"
 "%(version)s/ref/settings/#debug\" target=\"_blank\" rel=\"noopener"
-"\">DEBUG=True</a> est dans votre fichier de paramètres et vous n'en avez configuré aucun "
-"URL."
+"\">DEBUG=True</a> est dans votre fichier de paramètres et vous n'en avez "
+"configuré aucun URL."
 
 #: .\venv2\Lib\site-packages\django\views\templates\default_urlconf.html:384
 msgid "Django Documentation"

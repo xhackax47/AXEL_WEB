@@ -1,21 +1,21 @@
 {% load static i18n crispy_forms_tags %}
-<div class="modal fade" id="modalLogin" tabindex="-1" role="dialog"
-     aria-labelledby="modalLogin" aria-hidden="true">
+<div class="modal fade" id="modalRegister" tabindex="-1" role="dialog"
+     aria-labelledby="modalRegister" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-            <form method="post" role="form" action="{% url 'login' %}" align="center" enctype="multipart/form-data">
+            <form method="post" role="form" action="{% url 'register' %}" enctype="multipart/form-data">
                 <div class="modal-header">
-                    <h5 align="center" class="modal-title" id="login">{% trans "Connexion - IHM Web A.X.E.L." %}</h5>
+                    <h5 align="center" class="modal-title" id="register">{% trans "Inscription - IHM Web A.X.E.L." %}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     {% csrf_token %}
-                    {{ forms.login|crispy }}
+                    {{ forms.register|crispy }}
                 </div>
                 <div class="modal-footer">
-                    <input type="submit" class="btn btn-success" value="{% trans 'Connexion' %}"/>
+                    <input class="btn btn-success" type="submit" value="{% trans "S'inscrire" %}" name="submit"/>
                 </div>
             </form>
         </div>

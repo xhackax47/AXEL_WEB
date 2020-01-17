@@ -7,6 +7,7 @@ from . import views
 # app_name = 'WebAXEL'
 
 urlpatterns = [
+    path('', views.IndexView.as_view(), name='index'),
     # Inscription
     path('register/', views.RegisterView.as_view(), name='register'),
     # Authentification
@@ -15,7 +16,7 @@ urlpatterns = [
     # Internationalisation
     path('i18n/', include('django.conf.urls.i18n')),
     # Index
-    path('', login_required(views.IndexView.as_view()), name='index'),
+    path('home/', login_required(views.HomeView.as_view()), name='home'),
     # Gestion de compte par username
     url(r'^account-settings/(?P<username>\w+)/$', login_required(views.AccountSettingsView.as_view()),
          name='account-settings'),

@@ -88,6 +88,7 @@
                        class="my-2 my-sm-0">{% trans "Bonjour et bienvenue" %}
                         {% if user.username is None %}
                             {{ user.email }}
+                            {{ user.fonction }}
                         {% else %}
                             {{ user.username }}
                             ({{ user.fonction }})</p>
@@ -101,7 +102,7 @@
                             <a class="dropdown-item" href="{% url "account-settings" user.username %}">
                                 {% trans "Gestion Compte" %}
                             </a>
-                            <a class="dropdown-item" href="{% url "logout" %}">
+                            <a class="dropdown-item" href="{% url "logout" %}?next=/">
                                 {% trans "Déconnexion" %}
                             </a>
                         </div>

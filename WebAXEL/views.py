@@ -1,14 +1,17 @@
 import win32com.client
 from django.contrib.auth import logout
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView, LogoutView
 from django.db.models import Q
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, UpdateView, ListView, CreateView, DeleteView, DetailView
 
 from WebAXEL.forms import DocumentForm, DocumentSearchForm, DataSetForm, DataSetSearchForm, UserChangeForm, \
     RobotSearchForm, RobotForm, UserCreateForm
+from WebAXEL.multiforms import MultiFormsView
 from WebAXEL.models import Document, DataSet, AxelUser, Robot
 
 
@@ -19,25 +22,47 @@ def get_word(request, *args, **kwargs):
     return word
 
 
-# Vue Register pour l'inscription
-class RegisterView(CreateView):
-    model = AxelUser
-    form_class = UserCreateForm
-    success_url = reverse_lazy('login')
-    template_name = 'WebAXEL/registration/register.html'
+class IndexView(MultiFormsView):
+    template_name = 'WebAXEL/registration/login.html'
+    form_classes = {
+        'login': AuthenticationForm,
+        'register': UserCreateForm,
+    }
+    success_urls = {
+        'login': reverse_lazy('home'),
+        'register': reverse_lazy('index'),
+    }
+
+    def login_form_valid(self, form):
+        form_name = form.cleaned_data.get('action')
+        return HttpResponseRedirect(self.get_success_url(form_name))
+
+    def register_form_valid(self, form):
+        form_name = form.cleaned_data.get('action')
+        return HttpResponseRedirect(self.get_success_url(form_name))
 
 
 # Vue Login pour la connexion
 class LoginView(LoginView):
-    template_name = 'WebAXEL/registration/login.html'
+    template_name = 'WebAXEL/index.html'
+    redirect_authenticated_user = True
+    redirect_field_name = reverse_lazy('index')
+    authentication_form = AuthenticationForm
 
     def get_success_url(self):
         return reverse_lazy('index')
 
 
+# Vue Register pour l'inscription
+class RegisterView(CreateView):
+    template_name = 'WebAXEL/index.html'
+    model = AxelUser
+    form_class = UserCreateForm
+    success_url = reverse_lazy('index')
+
+
 # Vue Logout pour la deconnexion
-class LogoutView(TemplateView):
-    template_name = 'WebAXEL/registration/login.html'
+class LogoutView(LogoutView):
 
     # Récupération de la requête de logout
     def get(self, request, **kwargs):
@@ -46,16 +71,18 @@ class LogoutView(TemplateView):
         return render(request, self.template_name)
 
     def get_success_url(self):
-        return reverse_lazy('login')
+        return reverse_lazy('index')
 
 
-# LOGIN REQUIS : Vue Index après le login
-class IndexView(LoginRequiredMixin, TemplateView):
+# LOGIN REQUIS : Vue Home après le login
+class HomeView(LoginRequiredMixin, TemplateView):
+    login_url = reverse_lazy('index')
     template_name = 'WebAXEL/index.html'
 
 
 # LOGIN REQUIS : Vue AccountSettings pour faire la modification de compte utilisateur à travers un form
 class AccountSettingsView(LoginRequiredMixin, UpdateView):
+    login_url = reverse_lazy('index')
     model = AxelUser
     form_class = UserChangeForm
     template_name = 'WebAXEL/registration/account-settings.html'
@@ -70,12 +97,14 @@ class AccountSettingsView(LoginRequiredMixin, UpdateView):
 
 # LOGIN REQUIS : Vue Document qui renvoi les details d'un document
 class DocumentView(LoginRequiredMixin, DetailView):
+    login_url = reverse_lazy('index')
     model = Document
     template_name = 'WebAXEL/documents/document.html'
 
 
 # LOGIN REQUIS : Vue Documents qui renvoi la liste des documents triée et paginée
 class DocumentsView(LoginRequiredMixin, ListView):
+    login_url = reverse_lazy('index')
     model = Document
     template_name = 'WebAXEL/documents/documents.html'
     queryset = Document.objects.all()
@@ -91,6 +120,7 @@ class DocumentsView(LoginRequiredMixin, ListView):
 # LOGIN REQUIS : Vue DocumentSearchResults qui renvoi la liste des documents triée, paginée et filtrée avec une query
 # pour la recherche
 class DocumentSearchResultsView(LoginRequiredMixin, ListView):
+    login_url = reverse_lazy('index')
     model = Document
     form_class = DocumentSearchForm
     template_name = 'WebAXEL/documents/documents.html'
@@ -125,6 +155,7 @@ class DocumentSearchResultsView(LoginRequiredMixin, ListView):
 
 # LOGIN REQUIS : Vue DocumentCreate qui permet la création d'un document à travers un form
 class DocumentCreateView(LoginRequiredMixin, CreateView):
+    login_url = reverse_lazy('index')
     model = Document
     form_class = DocumentForm
     template_name = 'WebAXEL/documents/create-document.html'
@@ -133,6 +164,7 @@ class DocumentCreateView(LoginRequiredMixin, CreateView):
 
 # LOGIN REQUIS : Vue DocumentUpdate qui permet la modification d'un document à travers un form
 class DocumentUpdateView(LoginRequiredMixin, UpdateView):
+    login_url = reverse_lazy('index')
     model = Document
     template_name = 'WebAXEL/documents/edit-document.html'
     fields = ['titre', 'auteur', 'description', 'document', 'categories_document']
@@ -147,6 +179,7 @@ class DocumentUpdateView(LoginRequiredMixin, UpdateView):
 
 # LOGIN REQUIS : Vue DocumentDelete qui permet la suppression d'un document en BDD
 class DocumentDeleteView(LoginRequiredMixin, DeleteView):
+    login_url = reverse_lazy('index')
     model = Document
     slug_field = 'id'
     success_url = reverse_lazy('documents')
@@ -161,12 +194,14 @@ class DocumentDeleteView(LoginRequiredMixin, DeleteView):
 
 # LOGIN REQUIS : Vue DataSet qui renvoi les details d'un dataset
 class DataSetView(LoginRequiredMixin, DetailView):
+    login_url = reverse_lazy('index')
     model = DataSet
     template_name = 'WebAXEL/datasets/dataset.html'
 
 
 # LOGIN REQUIS : Vue DataSets qui renvoi la liste des datasets triée et paginée
 class DataSetsView(LoginRequiredMixin, ListView):
+    login_url = reverse_lazy('index')
     model = DataSet
     template_name = 'WebAXEL/datasets/datasets.html'
     queryset = DataSet.objects.all()
@@ -182,6 +217,7 @@ class DataSetsView(LoginRequiredMixin, ListView):
 # LOGIN REQUIS : Vue DataSetSearchResults qui renvoi la liste des datasets triée , paginée et filtrée avec une query
 # pour la recherche
 class DataSetSearchResultsView(LoginRequiredMixin, ListView):
+    login_url = reverse_lazy('index')
     model = DataSet
     form_class = DataSetSearchForm
     template_name = 'WebAXEL/datasets/datasets.html'
@@ -217,6 +253,7 @@ class DataSetSearchResultsView(LoginRequiredMixin, ListView):
 
 # LOGIN REQUIS : Vue DataSetCreate qui permet la création d'un dataset à travers un form
 class DataSetCreateView(LoginRequiredMixin, CreateView):
+    login_url = reverse_lazy('index')
     model = DataSet
     form_class = DataSetForm
     template_name = 'WebAXEL/datasets/create-dataset.html'
@@ -225,6 +262,7 @@ class DataSetCreateView(LoginRequiredMixin, CreateView):
 
 # LOGIN REQUIS : Vue DataSetUpdate qui permet la modification d'un dataset à travers un form
 class DataSetUpdateView(LoginRequiredMixin, UpdateView):
+    login_url = reverse_lazy('index')
     model = DataSet
     template_name = 'WebAXEL/datasets/edit-dataset.html'
     fields = ['nom', 'description', 'source', 'dataset', 'categories_dataset']
@@ -239,6 +277,7 @@ class DataSetUpdateView(LoginRequiredMixin, UpdateView):
 
 # LOGIN REQUIS : Vue DataSetDelete qui permet la suppression d'un dataset en BDD
 class DataSetDeleteView(LoginRequiredMixin, DeleteView):
+    login_url = reverse_lazy('index')
     model = DataSet
     slug_field = 'id'
     success_url = reverse_lazy('datasets')
@@ -253,12 +292,14 @@ class DataSetDeleteView(LoginRequiredMixin, DeleteView):
 
 # LOGIN REQUIS : Vue Robot qui renvoi les details d'un robot
 class RobotView(LoginRequiredMixin, DetailView):
+    login_url = reverse_lazy('index')
     model = Robot
     template_name = 'WebAXEL/robots/robot.html'
 
 
 # LOGIN REQUIS : Vue Robots qui renvoi la liste des robots triée et paginée
 class RobotsView(LoginRequiredMixin, ListView):
+    login_url = reverse_lazy('index')
     model = Robot
     template_name = 'WebAXEL/robots/robots.html'
     queryset = Robot.objects.all()
@@ -274,6 +315,7 @@ class RobotsView(LoginRequiredMixin, ListView):
 # LOGIN REQUIS : Vue RobotSearchResults qui renvoi la liste des robots triée , paginée et filtrée avec une query
 # pour la recherche
 class RobotSearchResultsView(LoginRequiredMixin, ListView):
+    login_url = reverse_lazy('index')
     model = Robot
     form_class = RobotSearchForm
     template_name = 'WebAXEL/robots/robots.html'
@@ -309,6 +351,7 @@ class RobotSearchResultsView(LoginRequiredMixin, ListView):
 
 # LOGIN REQUIS : Vue RobotCreate qui permet la création d'un robot à travers un form
 class RobotCreateView(LoginRequiredMixin, CreateView):
+    login_url = reverse_lazy('index')
     model = Robot
     form_class = RobotForm
     template_name = 'WebAXEL/robots/create-robot.html'
@@ -317,6 +360,7 @@ class RobotCreateView(LoginRequiredMixin, CreateView):
 
 # LOGIN REQUIS : Vue RobotUpdate qui permet la modification d'un robot à travers un form
 class RobotUpdateView(LoginRequiredMixin, UpdateView):
+    login_url = reverse_lazy('index')
     model = Robot
     template_name = 'WebAXEL/robots/edit-robot.html'
     fields = ['nom', 'model', 'utilisation', 'description', 'categories_robot']
@@ -331,6 +375,7 @@ class RobotUpdateView(LoginRequiredMixin, UpdateView):
 
 # LOGIN REQUIS : Vue RobotDelete qui permet la suppression d'un robot en BDD
 class RobotDeleteView(LoginRequiredMixin, DeleteView):
+    login_url = reverse_lazy('index')
     model = Robot
     slug_field = 'id'
     success_url = reverse_lazy('robots')

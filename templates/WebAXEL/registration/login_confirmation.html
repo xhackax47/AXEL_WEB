@@ -1,0 +1,13 @@
+{% extends "WebAXEL/base/base.html" %}
+{% load static i18n crispy_forms_tags %}
+{% block title %}{% trans "Connexion Réussie - IHM Web A.X.E.L." %}{% endblock %}
+{% block content %}
+    <div class="container-fluid" align="center">
+        <h1 class="mainH1 mt-3 mb-3">{% trans "Connecté" %}</h1>
+        {% if forms.login.errors %}
+            <p class="badge-danger">{% trans "Les informations données pour l'inscription ne sont pas correctes. Veuillez réessayer." %}</p>
+        {% else %}
+        <p>{% blocktrans with user=user %}Vous voilà connecté {{ user.username }} !!!{% endblocktrans %}</p>
+        {% endif %}
+    </div>
+{% endblock %}

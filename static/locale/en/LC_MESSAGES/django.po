@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-15 11:09+0100\n"
+"POT-Creation-Date: 2020-01-16 14:13+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,8 +26,16 @@ msgstr "French"
 msgid "English"
 msgstr "English"
 
-#: .\WebAXEL\forms.py:15
-msgid "Passwords don't match."
+#: .\WebAXEL\forms.py:28
+msgid "Username already exists."
+msgstr ""
+
+#: .\WebAXEL\forms.py:36
+msgid "Email already exists"
+msgstr ""
+
+#: .\WebAXEL\forms.py:44
+msgid "Passwords don't match"
 msgstr ""
 
 #: .\WebAXEL\managers.py:13
@@ -284,11 +292,11 @@ msgstr "Add Robot"
 msgid "Bonjour et bienvenue"
 msgstr "Hello and welcome"
 
-#: .\templates\WebAXEL\base\navbar.html:102
+#: .\templates\WebAXEL\base\navbar.html:103
 msgid "Gestion Compte"
 msgstr "Account management"
 
-#: .\templates\WebAXEL\base\navbar.html:105
+#: .\templates\WebAXEL\base\navbar.html:106
 msgid "Déconnexion"
 msgstr "Logout"
 
@@ -561,24 +569,39 @@ msgstr "Login - A.X.E.L. Web HMI."
 msgid "Bienvenue sur l'intelligence artificielle A.X.E.L."
 msgstr "Welcome to A.X.E.L. Artificial Intelligence."
 
-#: .\templates\WebAXEL\registration\login_modal.html:27
+#: .\templates\WebAXEL\registration\login.html:32
+msgid ""
+"Votre nom d'utilisateur et votre mot de passe ne correspondent pas. Veuillez "
+"réessayer."
+msgstr ""
+
+#: .\templates\WebAXEL\registration\login.html:35
+msgid ""
+"Les informations données pour l'inscription ne sont pas correctes. Veuillez "
+"réessayer."
+msgstr ""
+
+#: .\templates\WebAXEL\registration\login.html:40
+#: .\templates\WebAXEL\registration\login.html:42
+#: .\templates\WebAXEL\registration\login_modal.html:18
 #, fuzzy
 #| msgid "Déconnexion"
 msgid "Connexion"
 msgstr "Logout"
 
-#: .\templates\WebAXEL\registration\login_modal.html:29
+#: .\templates\WebAXEL\registration\login.html:48
+#: .\templates\WebAXEL\registration\login.html:50
+#: .\templates\WebAXEL\registration\login.html:51
 msgid "Inscription"
 msgstr "Registration"
 
-#: .\templates\WebAXEL\registration\register.html:3
-#: .\templates\WebAXEL\registration\register.html:6
+#: .\templates\WebAXEL\registration\register_modal.html:8
 #, fuzzy
 #| msgid "Connexion - IHM Web A.X.E.L."
 msgid "Inscription - IHM Web A.X.E.L."
 msgstr "Login - A.X.E.L. Web HMI."
 
-#: .\templates\WebAXEL\registration\register.html:10
+#: .\templates\WebAXEL\registration\register_modal.html:18
 msgid "S'inscrire"
 msgstr "Register"
 
