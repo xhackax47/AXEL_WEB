@@ -52,6 +52,10 @@ Afin de déployer l'application plusieurs choix s'offrent à nous.
 * [Heroku](https://www.heroku.com/) - Heroku est une plateforme en tant que service (PaaS) permettant de déployer des applications sur le Cloud très facilement.
 * [PythonAnywhere](https://www.pythonanywhere.com/) - PythonAnywhere est un environnement de développement intégré en ligne et un service d'hébergement Web basé sur le langage de programmation Python.
 
+J'ai choisi la solution Heroku pour sa simplicité et sa gratuité.
+
+Tout d'abord installer Heroku CLI et creer un compte.
+
 ## Outils
 
 * [Python](https://www.python.org/) - Python est un langage de programmation interprété, multi-paradigme et multiplateformes.
