@@ -17,8 +17,6 @@ urlpatterns = [
     path('logout/', views.LogoutView.as_view(), name='logout'),
     # Internationalisation
     path('i18n/', include('django.conf.urls.i18n')),
-    # Index
-    path('home/', login_required(views.HomeView.as_view()), name='home'),
     # Gestion de compte par username
     url(r'^account-settings/(?P<username>\w+)/$', login_required(views.AccountSettingsView.as_view()),
          name='account-settings'),

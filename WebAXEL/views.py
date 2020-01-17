@@ -74,12 +74,6 @@ class LogoutView(LogoutView):
         return reverse_lazy('index')
 
 
-# LOGIN REQUIS : Vue Home après le login
-class HomeView(LoginRequiredMixin, TemplateView):
-    login_url = reverse_lazy('index')
-    template_name = 'WebAXEL/index.html'
-
-
 # LOGIN REQUIS : Vue AccountSettings pour faire la modification de compte utilisateur à travers un form
 class AccountSettingsView(LoginRequiredMixin, UpdateView):
     login_url = reverse_lazy('index')
