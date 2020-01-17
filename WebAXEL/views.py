@@ -21,7 +21,7 @@ class IndexView(MultiFormsView):
         'register': UserCreateForm,
     }
     success_urls = {
-        'login': reverse_lazy('home'),
+        'login': reverse_lazy('index'),
         'register': reverse_lazy('index'),
     }
 
