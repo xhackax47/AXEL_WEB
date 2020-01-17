@@ -1,13 +1,48 @@
 {% extends "WebAXEL/base/base.html" %}
 {% load static i18n crispy_forms_tags %}
-{% block title %}{% trans "Connexion Réussie - IHM Web A.X.E.L." %}{% endblock %}
+{% block title %}
+    {% if form.errors %}
+        {% trans "Erreur Connexion - IHM Web A.X.E.L." %}
+    {% elif user.username %}
+        {% trans "Connexion Réussie - IHM Web A.X.E.L." %}
+    {% endif %}
+{% endblock %}
 {% block content %}
-    <div class="container-fluid" align="center">
-        <h1 class="mainH1 mt-3 mb-3">{% trans "Connecté" %}</h1>
-        {% if forms.login.errors %}
-            <p class="badge-danger">{% trans "Les informations données pour l'inscription ne sont pas correctes. Veuillez réessayer." %}</p>
-        {% else %}
-        <p>{% blocktrans with user=user %}Vous voilà connecté {{ user.username }} !!!{% endblocktrans %}</p>
+    <div class="container-fluid" style="text-align: center">
+        {% if form.errors %}
+            <h1 class="mainH1 mt-3 mb-3">{% trans "Erreur" %}</h1>
+            <span class="badge-danger">{% trans "Les informations données pour la connexion ne sont pas correctes. Veuillez réessayer." %}</span>
+            <ul class="badge-warning">
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        {{ field.label }}: {{ error|escape }}
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    {{ error|escape }}
+                {% endfor %}
+            </ul>
+            <a href="{% url 'index' %}" type="button"
+               class="btn btn-success">{% trans "Retourner à l'écran principal" %}</a>
+        {% elif user.username %}
+            <h1 class="mainH1 mt-3 mb-3">{% trans "Connecté" %}</h1>
+            <p class="badge-success">
+                {% blocktrans with username=user.username fonction=user.fonction %}
+                    Bienvenue sur A.X.E.L. {{ username }},
+                    vous voilà connecté en tant que {{ fonction }} !!!{% endblocktrans %}
+            </p>
+            {% if user.is_staff %}
+                <br>
+                <span class="badge-warning">
+                    {% trans "Vous possédez les droits d'un membre de l'équipe d'A.X.E.L., faîtes attention à ce que vous faites s'il vous plaît !!!" %}
+                    </span>
+            {% endif %}
+            {% if user.is_superuser %}
+                <br>
+                <span class="badge-danger">
+                    {% trans "Vous possédez les droits d'un super-utilisateur A.X.E.L., faîtes TRÈS attention à ce que vous faites s'il vous plaît !!!" %}
+                    </span>
+            {% endif %}
         {% endif %}
     </div>
 {% endblock %}

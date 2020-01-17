@@ -9,8 +9,8 @@ from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, UpdateView, ListView, CreateView, DeleteView, DetailView
 
-from WebAXEL.forms import DocumentForm, DocumentSearchForm, DataSetForm, DataSetSearchForm, UserChangeForm, \
-    RobotSearchForm, RobotForm, UserCreateForm
+from WebAXEL.forms import DocumentForm, DocumentSearchForm, DataSetForm, DataSetSearchForm, RobotSearchForm, RobotForm, \
+    UserCreateForm, UserUpdateForm
 from WebAXEL.multiforms import MultiFormsView
 from WebAXEL.models import Document, DataSet, AxelUser, Robot
 
@@ -44,21 +44,29 @@ class IndexView(MultiFormsView):
 
 # Vue Login pour la connexion
 class LoginView(LoginView):
-    template_name = 'WebAXEL/index.html'
+    template_name = 'WebAXEL/registration/login_confirmation.html'
     redirect_authenticated_user = True
     redirect_field_name = reverse_lazy('index')
     authentication_form = AuthenticationForm
 
     def get_success_url(self):
-        return reverse_lazy('index')
+        return reverse_lazy('login-confirmation')
+
+
+class LoginConfirmationView(TemplateView):
+    template_name = 'WebAXEL/registration/login_confirmation.html'
 
 
 # Vue Register pour l'inscription
 class RegisterView(CreateView):
-    template_name = 'WebAXEL/index.html'
+    template_name = 'WebAXEL/registration/register_confirmation.html'
     model = AxelUser
     form_class = UserCreateForm
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('register-confirmation')
+
+
+class RegisterConfirmationView(TemplateView):
+    template_name = 'WebAXEL/registration/register_confirmation.html'
 
 
 # Vue Logout pour la deconnexion
@@ -84,7 +92,7 @@ class HomeView(LoginRequiredMixin, TemplateView):
 class AccountSettingsView(LoginRequiredMixin, UpdateView):
     login_url = reverse_lazy('index')
     model = AxelUser
-    form_class = UserChangeForm
+    form_class = UserUpdateForm
     template_name = 'WebAXEL/registration/account-settings.html'
     success_url = reverse_lazy('index')
 

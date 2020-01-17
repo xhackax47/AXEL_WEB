@@ -1,6 +1,12 @@
 {% extends "WebAXEL/base/base.html" %}
 {% load static i18n crispy_forms_tags %}
-{% block title %}{% trans "Connexion - IHM Web A.X.E.L." %}{% endblock %}
+{% block title %}
+    {% if user.is_authenticated %}
+        {% trans "Accueil - IHM Web A.X.E.L." %}
+    {% else %}
+        {% trans "Connexion - IHM Web A.X.E.L." %}
+    {% endif %}
+{% endblock %}
 {% block content %}
     <div class="container-fluid" align="center">
         <h1 class="mainH1 mt-3 mb-3">{% trans "Bienvenue sur l'intelligence artificielle A.X.E.L." %}</h1>
@@ -12,14 +18,43 @@
             amet felis tristique, a pretium ex aliquet. Duis euismod, leo vitae molestie venenatis, odio elit luctus
             diam, dapibus iaculis lectus diam accumsan justo. Curabitur dolor augue, cursus ut purus eget, ornare
             venenatis ligula.
-
+        </p>
+        <p>
             Sed egestas lobortis dapibus. Pellentesque rhoncus nulla ligula, at pharetra nisl pretium vel. Proin aliquet
             sed felis eu elementum. Sed nisi tortor, fringilla sit amet viverra in, posuere sed massa. Integer sed dui a
             dui rutrum hendrerit sed id magna. Nulla egestas tempor nulla eget tincidunt. Phasellus leo augue, tristique
             id auctor id, lacinia ac enim. Donec eget libero a ante malesuada sollicitudin dignissim eu magna. In hac
             habitasse platea dictumst. Vivamus fringilla, ligula eget imperdiet tempor, elit massa euismod tortor, et
             aliquet leo libero at erat.
-
+        </p>
+        <p>
+            Duis imperdiet mauris sed scelerisque porttitor. Proin at nulla sed libero posuere pretium in nec dui. Nunc
+            semper, felis non euismod mollis, tellus enim aliquet magna, sit amet vulputate ante turpis ut metus. In hac
+            habitasse platea dictumst. Phasellus porttitor non mi et elementum. Aliquam tincidunt ante mi, ut congue ex
+            condimentum id. Aenean viverra, odio vitae aliquam feugiat, dolor massa dictum mi, vitae laoreet nisl ex et
+            nisi. Nunc ligula nibh, lacinia id semper vitae, suscipit at turpis. Nam iaculis ante nisl, eu convallis
+            purus auctor sit amet. Mauris tincidunt massa in massa iaculis posuere. Vivamus consequat leo nec erat
+            malesuada, quis ullamcorper risus sagittis. Proin ullamcorper luctus sagittis. Nulla imperdiet hendrerit
+            magna sit amet placerat. Nulla facilisi. Mauris ultrices libero vitae diam mollis pretium.
+        </p>
+            <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus gravida quam vel vehicula. Vivamus
+            tellus tellus, blandit eget arcu in, pharetra mollis risus. Praesent vel quam quis felis scelerisque
+            porttitor. Nam tristique, metus eget feugiat scelerisque, augue orci vehicula libero, ut tincidunt orci
+            risus non magna. Sed diam nunc, dignissim sit amet rhoncus vel, ultricies quis nisi. Nunc dapibus dui sit
+            amet felis tristique, a pretium ex aliquet. Duis euismod, leo vitae molestie venenatis, odio elit luctus
+            diam, dapibus iaculis lectus diam accumsan justo. Curabitur dolor augue, cursus ut purus eget, ornare
+            venenatis ligula.
+        </p>
+        <p>
+            Sed egestas lobortis dapibus. Pellentesque rhoncus nulla ligula, at pharetra nisl pretium vel. Proin aliquet
+            sed felis eu elementum. Sed nisi tortor, fringilla sit amet viverra in, posuere sed massa. Integer sed dui a
+            dui rutrum hendrerit sed id magna. Nulla egestas tempor nulla eget tincidunt. Phasellus leo augue, tristique
+            id auctor id, lacinia ac enim. Donec eget libero a ante malesuada sollicitudin dignissim eu magna. In hac
+            habitasse platea dictumst. Vivamus fringilla, ligula eget imperdiet tempor, elit massa euismod tortor, et
+            aliquet leo libero at erat.
+        </p>
+        <p>
             Duis imperdiet mauris sed scelerisque porttitor. Proin at nulla sed libero posuere pretium in nec dui. Nunc
             semper, felis non euismod mollis, tellus enim aliquet magna, sit amet vulputate ante turpis ut metus. In hac
             habitasse platea dictumst. Phasellus porttitor non mi et elementum. Aliquam tincidunt ante mi, ut congue ex

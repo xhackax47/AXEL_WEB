@@ -10,8 +10,10 @@ urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
     # Inscription
     path('register/', views.RegisterView.as_view(), name='register'),
+    path('register-confirmation/', views.RegisterConfirmationView.as_view(), name='register-confirmation'),
     # Authentification
     path('login/', views.LoginView.as_view(), name='login'),
+    path('login-confirmation/', views.LoginConfirmationView.as_view(), name='login-confirmation'),
     path('logout/', views.LogoutView.as_view(), name='logout'),
     # Internationalisation
     path('i18n/', include('django.conf.urls.i18n')),

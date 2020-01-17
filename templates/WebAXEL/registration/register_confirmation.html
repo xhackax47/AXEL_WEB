@@ -4,11 +4,23 @@
 {% block content %}
     <div class="container-fluid" align="center">
         <h1 class="mainH1 mt-3 mb-3">{% trans "Confirmation d'inscription" %}</h1>
-        {% if forms.register.errors %}
+        {% if form.errors %}
             <p class="badge-danger">{% trans "Les informations données pour l'inscription ne sont pas correctes. Veuillez réessayer." %}</p>
+            <ul class="badge-warning">
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <li>{{ field.label }}: {{ error|escape }}</li>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                    {{ error|escape }}
+                {% endfor %}
+            </ul>
+            <a href="{% url 'index' %}" type="button"
+               class="btn btn-success">{% trans "Retourner à l'écran principal" %}</a>
         {% else %}
-        <p>Votre inscription a bien été prise en compte.</p>
-        <p> Merci d'avoir pris le temps de renseigner ce formulaire. </p>
+            <p class="badge-success">{% trans 'Votre inscription a bien été prise en compte.' %}</p>
+            <p class="badge-info">{% trans "Merci d'avoir pris le temps de vous inscrire sur mon application web." %}</p>
         {% endif %}
     </div>
 {% endblock %}

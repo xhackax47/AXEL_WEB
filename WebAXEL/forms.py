@@ -45,15 +45,10 @@ class UserCreateForm(UserCreationForm, MultipleForm):
         return password2
 
 
-class UserUpdateForm(UserChangeForm):
-    password = ReadOnlyPasswordHashField()
-
+class UserUpdateForm(ModelForm):
     class Meta:
         model = AxelUser
-        fields = '__all__'
-
-    def clean_password(self):
-        return self.initial["password"]
+        exclude = ['is_superuser', 'is_staff', 'user_permissions', 'groups', 'password']
 
 
 class DocumentCategoryForm(ModelForm):
