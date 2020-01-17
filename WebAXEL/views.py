@@ -86,9 +86,9 @@ class AccountSettingsView(LoginRequiredMixin, UpdateView):
     template_name = 'WebAXEL/registration/account-settings.html'
     success_url = reverse_lazy('index')
 
-    # Récupération de l'objet via son id(pk)
+    # Récupération de l'objet via son username et son id(pk)
     def get_object(self, *args, **kwargs):
-        user = get_object_or_404(AxelUser, username=self.kwargs['username'])
+        user = get_object_or_404(AxelUser, username=self.kwargs['username'], pk=self.kwargs['pk'])
 
         return user
 
