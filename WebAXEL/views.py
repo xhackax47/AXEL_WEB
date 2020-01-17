@@ -1,4 +1,3 @@
-import win32com.client
 from django.contrib.auth import logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -13,13 +12,6 @@ from WebAXEL.forms import DocumentForm, DocumentSearchForm, DataSetForm, DataSet
     UserCreateForm, UserUpdateForm
 from WebAXEL.multiforms import MultiFormsView
 from WebAXEL.models import Document, DataSet, AxelUser, Robot
-
-
-# EN COURS DE DEV
-# Ouverture des documents Microsoft Word
-def get_word(request, *args, **kwargs):
-    word = win32com.client.Dispatch('Word.Application')
-    return word
 
 
 class IndexView(MultiFormsView):
@@ -149,7 +141,6 @@ class DocumentSearchResultsView(LoginRequiredMixin, ListView):
 
     # Passage des datas du back vers le contexte front
     def get_context_data(self, **kwargs):
-
         context = super(DocumentSearchResultsView, self).get_context_data(**kwargs) or None
         context['documents'] = self.get_queryset()
         return context
@@ -246,7 +237,6 @@ class DataSetSearchResultsView(LoginRequiredMixin, ListView):
 
     # Passage des datas du back vers le contexte front
     def get_context_data(self, **kwargs):
-
         context = super(DataSetSearchResultsView, self).get_context_data(**kwargs) or None
         context['datasets'] = self.get_queryset()
         return context
@@ -343,7 +333,6 @@ class RobotSearchResultsView(LoginRequiredMixin, ListView):
 
     # Passage des datas du back vers le contexte front
     def get_context_data(self, **kwargs):
-
         context = super(RobotSearchResultsView, self).get_context_data(**kwargs) or None
         context['robots'] = self.get_queryset()
         return context

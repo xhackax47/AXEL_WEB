@@ -1,6 +1,6 @@
-# Librairies à installer via pip dans l'environnement virtuel "venv2" pour faire fonctionner AXEL_WEB
-# "pip install -r requirements.txt" à executer pour tout installer
-# "pip freeze > requirements.txt" pour générer ce fichier à partir des librairies déjà installées
+# Librairies a installer via pip dans l'environnement virtuel "venv2" pour faire fonctionner AXEL_WEB
+# "pip install -r requirements.txt" a executer pour tout installer
+# "pip freeze > requirements.txt" pour generer ce fichier a partir des librairies deja installees
 asgiref==3.2.3
 channels==2.4.0
 decorator==4.4.1
@@ -18,7 +18,6 @@ psycopg2==2.8.4
 public==2019.4.13
 python-gettext==4.0
 pytz==2019.3
-pywin32==227
 reportlab==3.5.34
 self==2019.4.13
 six==1.13.0
