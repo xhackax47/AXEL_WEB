@@ -90,17 +90,28 @@ WSGI_APPLICATION = 'AXEL_WEB.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'AXEL_WEB',
-        'USER': 'xhackax47',
-        'PASSWORD': 'L@n@s@y@n34000',
-        'HOST': 'localhost',
-        'PORT': '5432',
+if DEBUG == False:
+    DATABASES = {
+        'heroku': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'daskqm0c329l07',
+            'USER': 'zxavxwjozlvyhd',
+            'PASSWORD': '25e6d508fe5fd1fe7d823381ba8fb82077a629a74d811483274fd51e5dd14216',
+            'HOST': 'ec2-54-247-72-30.eu-west-1.compute.amazonaws.com',
+            'PORT': '5432',
+        }
     }
-}
+else:
+    DATABASES = {
+        'local': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'AXEL_WEB',
+            'USER': 'xhackax47',
+            'PASSWORD': 'L@n@s@y@n34000',
+            'HOST': 'localhost',
+            'PORT': '5432',
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
