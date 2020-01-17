@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-01-16 14:13+0100\n"
+"POT-Creation-Date: 2020-01-17 11:56+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,23 +18,23 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: .\AXEL_WEB\settings.py:139
+#: .\AXEL_WEB\settings.py:138
 msgid "French"
 msgstr "French"
 
-#: .\AXEL_WEB\settings.py:140
+#: .\AXEL_WEB\settings.py:139
 msgid "English"
 msgstr "English"
 
-#: .\WebAXEL\forms.py:28
+#: .\WebAXEL\forms.py:27
 msgid "Username already exists."
 msgstr ""
 
-#: .\WebAXEL\forms.py:36
+#: .\WebAXEL\forms.py:35
 msgid "Email already exists"
 msgstr ""
 
-#: .\WebAXEL\forms.py:44
+#: .\WebAXEL\forms.py:43
 msgid "Passwords don't match"
 msgstr ""
 
@@ -141,8 +141,8 @@ msgstr ""
 "Document title : {0}, Date the document was added : {1}, Document author : "
 "{2}, Document description : {3}, Document Location : {4}"
 
-#: .\WebAXEL\models.py:83 .\WebAXEL\models.py:84 .\WebAXEL\models.py:119
-#: .\WebAXEL\models.py:120 .\WebAXEL\models.py:155 .\WebAXEL\models.py:156
+#: .\WebAXEL\models.py:83 .\WebAXEL\models.py:84 .\WebAXEL\models.py:120
+#: .\WebAXEL\models.py:121 .\WebAXEL\models.py:157 .\WebAXEL\models.py:158
 msgid "Publié récemment?"
 msgstr "Recently published?"
 
@@ -150,7 +150,7 @@ msgstr "Recently published?"
 msgid "Catégorie du jeu de données"
 msgstr "Dataset Category"
 
-#: .\WebAXEL\models.py:96 .\WebAXEL\models.py:132
+#: .\WebAXEL\models.py:96 .\WebAXEL\models.py:133
 msgid "Nom"
 msgstr "Name"
 
@@ -170,11 +170,17 @@ msgstr "Dataset File"
 msgid "Source"
 msgstr ""
 
-#: .\WebAXEL\models.py:102
+#: .\WebAXEL\models.py:101
+#, fuzzy
+#| msgid "Catégories du jeu de données"
+msgid "Nombre de vues du jeu de données"
+msgstr "Dataset Categorys"
+
+#: .\WebAXEL\models.py:103
 msgid "Catégories du jeu de données"
 msgstr "Dataset Categorys"
 
-#: .\WebAXEL\models.py:106
+#: .\WebAXEL\models.py:107
 #, fuzzy, python-brace-format
 #| msgid ""
 #| "Nom de l'ensemble de données : {0}, Date d'ajout de l'ensemble de "
@@ -188,39 +194,45 @@ msgstr ""
 "Dataset name: {0}, Date dataset added: {1}, Dataset Description: {2}, "
 "Dataset Location : {3} Dataset category: {4}"
 
-#: .\WebAXEL\models.py:125
+#: .\WebAXEL\models.py:126
 msgid "Catégorie du robot"
 msgstr "Robot Category"
 
-#: .\WebAXEL\models.py:133
+#: .\WebAXEL\models.py:134
 msgid "Image Robot"
 msgstr "Robot picture"
 
-#: .\WebAXEL\models.py:134
+#: .\WebAXEL\models.py:135
 msgid "Modèle"
 msgstr "Model"
 
-#: .\WebAXEL\models.py:135
+#: .\WebAXEL\models.py:136
 msgid "Utilisation"
 msgstr "Usage"
 
-#: .\WebAXEL\models.py:136
+#: .\WebAXEL\models.py:137
 msgid "Documentation Robot"
 msgstr "Robot's Documentation"
 
-#: .\WebAXEL\models.py:137
+#: .\WebAXEL\models.py:138
 msgid "Date d'ajout du robot"
 msgstr "Date robot added"
 
-#: .\WebAXEL\models.py:138
+#: .\WebAXEL\models.py:139
 msgid "Description du robot"
 msgstr "Robot description"
 
 #: .\WebAXEL\models.py:140
+#, fuzzy
+#| msgid "Nombre de vues du document"
+msgid "Nombre de vues du robot"
+msgstr "Number of views of document"
+
+#: .\WebAXEL\models.py:142
 msgid "Catégories du robot"
 msgstr "Robot Categorys"
 
-#: .\WebAXEL\models.py:144
+#: .\WebAXEL\models.py:146
 #, fuzzy, python-brace-format
 #| msgid ""
 #| "Titre du document : {0}, Date d'ajout du document : {1}, Auteur du "
@@ -560,46 +572,116 @@ msgstr "User Account Management"
 msgid "Enregistrer les modifications"
 msgstr "Save changes"
 
-#: .\templates\WebAXEL\registration\login.html:3
+#: .\templates\WebAXEL\registration\login.html:5
+msgid "Accueil - IHM Web A.X.E.L."
+msgstr "Home - A.X.E.L. Web HMI."
+
+#: .\templates\WebAXEL\registration\login.html:7
 #: .\templates\WebAXEL\registration\login_modal.html:8
 msgid "Connexion - IHM Web A.X.E.L."
 msgstr "Login - A.X.E.L. Web HMI."
 
-#: .\templates\WebAXEL\registration\login.html:6
+#: .\templates\WebAXEL\registration\login.html:12
 msgid "Bienvenue sur l'intelligence artificielle A.X.E.L."
 msgstr "Welcome to A.X.E.L. Artificial Intelligence."
 
-#: .\templates\WebAXEL\registration\login.html:32
+#: .\templates\WebAXEL\registration\login.html:68
 msgid ""
 "Votre nom d'utilisateur et votre mot de passe ne correspondent pas. Veuillez "
 "réessayer."
 msgstr ""
+"Your username and password do not match. Please try again."
 
-#: .\templates\WebAXEL\registration\login.html:35
+#: .\templates\WebAXEL\registration\login.html:70
+#: .\templates\WebAXEL\registration\register_confirmation.html:8
 msgid ""
 "Les informations données pour l'inscription ne sont pas correctes. Veuillez "
 "réessayer."
 msgstr ""
+"The information given for registration is not correct. Please try again."
 
-#: .\templates\WebAXEL\registration\login.html:40
-#: .\templates\WebAXEL\registration\login.html:42
+#: .\templates\WebAXEL\registration\login.html:75
+#: .\templates\WebAXEL\registration\login.html:77
 #: .\templates\WebAXEL\registration\login_modal.html:18
-#, fuzzy
-#| msgid "Déconnexion"
 msgid "Connexion"
-msgstr "Logout"
+msgstr "Login"
 
-#: .\templates\WebAXEL\registration\login.html:48
-#: .\templates\WebAXEL\registration\login.html:50
-#: .\templates\WebAXEL\registration\login.html:51
+#: .\templates\WebAXEL\registration\login.html:83
+#: .\templates\WebAXEL\registration\login.html:85
+#: .\templates\WebAXEL\registration\login.html:86
 msgid "Inscription"
 msgstr "Registration"
 
+#: .\templates\WebAXEL\registration\login_confirmation.html:5
+msgid "Erreur Connexion - IHM Web A.X.E.L."
+msgstr "Error Connection - HMI Web A.X.E.L."
+
+#: .\templates\WebAXEL\registration\login_confirmation.html:7
+msgid "Connexion Réussie - IHM Web A.X.E.L."
+msgstr "Successful Connection - A.X.E.L. Web HMI."
+
+#: .\templates\WebAXEL\registration\login_confirmation.html:13
+msgid "Erreur"
+msgstr "Error"
+
+#: .\templates\WebAXEL\registration\login_confirmation.html:14
+msgid ""
+"Les informations données pour la connexion ne sont pas correctes. Veuillez "
+"réessayer."
+msgstr ""
+"The information given for the connection is not correct. Please try again."
+
+#: .\templates\WebAXEL\registration\login_confirmation.html:26
+#: .\templates\WebAXEL\registration\register_confirmation.html:20
+msgid "Retourner à l'écran principal"
+msgstr "Return to main screen"
+
+#: .\templates\WebAXEL\registration\login_confirmation.html:28
+msgid "Connecté"
+msgstr "Connected"
+
+#: .\templates\WebAXEL\registration\login_confirmation.html:30
+#, python-format
+msgid ""
+"\n"
+"                    Bienvenue sur A.X.E.L. %(username)s,\n"
+"                    vous voilà connecté en tant que %(fonction)s !!!"
+msgstr ""
+"\n"
+"                    Welcome to A.X.E.L. %(username)s,\n"
+"                    you are logged in as %(function) !!!"
+#: .\templates\WebAXEL\registration\login_confirmation.html:37
+msgid ""
+"Vous possédez les droits d'un membre de l'équipe d'A.X.E.L., faîtes "
+"attention à ce que vous faites s'il vous plaît !!!"
+msgstr ""
+"You own the rights of a member of the A.X.E.L. team, please be careful what you do!!!"
+
+#: .\templates\WebAXEL\registration\login_confirmation.html:43
+msgid ""
+"Vous possédez les droits d'un super-utilisateur A.X.E.L., faîtes TRÈS "
+"attention à ce que vous faites s'il vous plaît !!!"
+msgstr ""
+"You have superuser A.X.E.L. rights, please be VERY careful what you do!!!"
+#: .\templates\WebAXEL\registration\register_confirmation.html:3
+msgid "Confirmation - IHM Web A.X.E.L."
+msgstr ""
+
+#: .\templates\WebAXEL\registration\register_confirmation.html:6
+msgid "Confirmation d'inscription"
+msgstr "Confirmation of registration"
+
+#: .\templates\WebAXEL\registration\register_confirmation.html:22
+msgid "Votre inscription a bien été prise en compte."
+msgstr "Your registration has been taken into account."
+
+#: .\templates\WebAXEL\registration\register_confirmation.html:23
+msgid "Merci d'avoir pris le temps de vous inscrire sur mon application web."
+msgstr "Thank you for taking the time to register on my web application."
+
 #: .\templates\WebAXEL\registration\register_modal.html:8
-#, fuzzy
-#| msgid "Connexion - IHM Web A.X.E.L."
 msgid "Inscription - IHM Web A.X.E.L."
-msgstr "Login - A.X.E.L. Web HMI."
+msgstr "Registration - A.X.E.L. Web HMI."
 
 #: .\templates\WebAXEL\registration\register_modal.html:18
 msgid "S'inscrire"
