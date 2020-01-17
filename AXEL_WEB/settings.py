@@ -93,7 +93,7 @@ WSGI_APPLICATION = 'AXEL_WEB.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 if DEBUG == False:
     DATABASES = {
-        'heroku': {
+        'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': 'daskqm0c329l07',
             'USER': 'zxavxwjozlvyhd',
@@ -104,7 +104,7 @@ if DEBUG == False:
     }
 else:
     DATABASES = {
-        'local': {
+        'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': 'AXEL_WEB',
             'USER': 'xhackax47',
