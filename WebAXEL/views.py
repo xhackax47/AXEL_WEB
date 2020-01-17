@@ -94,7 +94,7 @@ class AccountSettingsUsernameView(LoginRequiredMixin, UpdateView):
 
 
 # LOGIN REQUIS : Vue AccountSettings pour faire la modification de compte utilisateur à travers un form
-class AccountSettingsUsernameView(LoginRequiredMixin, UpdateView):
+class AccountSettingsIdView(LoginRequiredMixin, UpdateView):
     login_url = reverse_lazy('index')
     model = AxelUser
     form_class = UserUpdateForm
