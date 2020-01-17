@@ -21,8 +21,8 @@ class IndexView(MultiFormsView):
         'register': UserCreateForm,
     }
     success_urls = {
-        'login': reverse_lazy('index'),
-        'register': reverse_lazy('index'),
+        'login': reverse_lazy('login-confirmation'),
+        'register': reverse_lazy('register-confirmation'),
     }
 
     def login_form_valid(self, form):

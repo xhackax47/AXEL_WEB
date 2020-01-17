@@ -8,6 +8,7 @@ from . import views
 
 urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
+    path('home/', views.HomeView.as_view(), name='home'),
     # Inscription
     path('register/', views.RegisterView.as_view(), name='register'),
     path('register-confirmation/', views.RegisterConfirmationView.as_view(), name='register-confirmation'),
