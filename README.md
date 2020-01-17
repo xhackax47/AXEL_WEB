@@ -1,70 +1,74 @@
 # AXEL_WEB
 
-Interface Web A.X.E.L.
+Interface Web de gestion des données de l'intelligence artificielle A.X.E.L.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Penser à spécifier l'interpreteur python du projet (Intrepreter Python 3.6 disponible dans venv2) et à faire l'installation de tous les paquets grâce au fichier requirements.txt afin d'être sûr qu'aucun module ne manque.
 
-### Prerequisites
+```
+python -m pip install -r requirements.txt
+```
+
+### Prérequis
 
 Aucun prérequis n'est nécessaire pour faire tourner l'application étant donné que tout a été empaqueté dans un environnement virtuel "venv2" disponible ici.
-Penser à spécifier l'interpreteur python du projet (Intrepreter Python 3.6 disponible dans venv2)
 
-### Installing
+### Installation
 
-Vous avez besoin d'installer une base PostgreSQL afin de pouvoir enregistrer vos objets.
+Vous avez besoin d'installer ou utiliser une base PostgreSQL afin de pouvoir enregistrer vos objets.
+Ne pas oublier les commandes de migration avant de lancer l'application.
+
+```
+python manage.py makemigrations
+python manage.py migrate
+```
+
+Pour lancer le serveur de développement, il vous suffit d'entrer cette commande une fois la migration te le paramètrage de l'interpreteur effectués
+
+```
+python manage.py runserver
+```
+
+Le serveur se lancera automatiquement sur l'adresse http://localhost:8000 ou http://127.0.0.1:8000
 
 ## Lancer les tests
 
-Executez la commande : "python manage.py test
-
-### Break down into end to end tests
-
-Explain what these tests test and why
+Executez la commande ci-dessous à partir du dossier racine afin de lancer tous les tests du projet.
 
 ```
-Give an example
+python manage.py test
 ```
 
-### And coding style tests
+Les tests sont effectués sur les différentes méthodes CRUD des modèles.
 
-Explain what these tests test and why
+## Déploiement
 
-```
-Give an example
-```
+Afin de déployer l'application plusieurs choix s'offrent à nous.
 
-## Deployment
+* [NGINX/Gunicorn](https://docs.gunicorn.org/en/latest/deploy.html) - Serveur NGINX
+* [AWS](https://aws.amazon.com/fr/) - Amazon Web Services est spécialisée dans les services de cloud computing à la demande pour les entreprises et particuliers.
+* [Azure](https://azure.microsoft.com/fr-fr/) - Microsoft Azure est la plate-forme applicative de cloud computing de Microsoft.
+* [Heroku](https://www.heroku.com/) - Heroku est une plateforme en tant que service (PaaS) permettant de déployer des applications sur le Cloud très facilement.
+* [PythonAnywhere](https://www.pythonanywhere.com/) - PythonAnywhere est un environnement de développement intégré en ligne et un service d'hébergement Web basé sur le langage de programmation Python.
 
-Add additional notes about how to deploy this on a live system
+## Outils
 
-## Built With
+* [Python](https://www.python.org/) - Python est un langage de programmation interprété, multi-paradigme et multiplateformes.
+* [Django](https://www.djangoproject.com/) - Django est un framework web écrit en Python.
+* [Pip](https://pypi.org/project/pip/) - Pip est un gestionnaire de paquets utilisé pour gérer des paquets écrits en Python.
+* [PyCharm](https://www.jetbrains.com/fr-fr/pycharm/) - Environnement de Developpement Intégré Python
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+## Contribution
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+J'utilise Git pour le versionning et je transfère mes dépôts sur ce compte GitHub.
 
-## Authors
+## Auteurs
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+* **CHAABI Samy** - *Développeur & Architecte* - [xhackax47](https://github.com/xhackax47)
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
