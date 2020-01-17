@@ -144,8 +144,8 @@ class DocumentSearchResultsView(LoginRequiredMixin, ListView):
                 Q(titre__icontains=query) | Q(auteur__icontains=query) | Q(description__icontains=query))
             return queryset
         # Sinon on renvoi une liste de document vide dans le queryset
-            queryset = Document.objects.none()
-            return queryset
+        queryset = Document.objects.none()
+        return queryset
 
     # Passage des datas du back vers le contexte front
     def get_context_data(self, **kwargs):
@@ -241,8 +241,8 @@ class DataSetSearchResultsView(LoginRequiredMixin, ListView):
                     description__icontains=query))
             return queryset
         # Sinon on renvoi une liste de datasets vide dans le queryset
-            queryset = DataSet.objects.none()
-            return queryset
+        queryset = DataSet.objects.none()
+        return queryset
 
     # Passage des datas du back vers le contexte front
     def get_context_data(self, **kwargs):
@@ -338,8 +338,8 @@ class RobotSearchResultsView(LoginRequiredMixin, ListView):
                     description__icontains=query))
             return queryset
         # Sinon on renvoi une liste de robots vide dans le queryset
-            queryset = Robot.objects.none()
-            return queryset
+        queryset = Robot.objects.none()
+        return queryset
 
     # Passage des datas du back vers le contexte front
     def get_context_data(self, **kwargs):
