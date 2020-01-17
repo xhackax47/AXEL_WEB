@@ -34,8 +34,7 @@ class MultiFormMixin(ContextMixin):
         form_valid_method = '%s_form_valid' % form_name
         if hasattr(self, form_valid_method):
             return getattr(self, form_valid_method)(forms[form_name])
-        else:
-            return HttpResponseRedirect(self.get_success_url(form_name))
+        return HttpResponseRedirect(self.get_success_url(form_name))
 
     def forms_invalid(self, forms):
         return self.render_to_response(self.get_context_data(forms=forms))
@@ -44,8 +43,7 @@ class MultiFormMixin(ContextMixin):
         initial_method = 'get_%s_initial' % form_name
         if hasattr(self, initial_method):
             return getattr(self, initial_method)()
-        else:
-            return {'action': form_name}
+        return {'action': form_name}
 
     def get_prefix(self, form_name):
         return self.prefixes.get(form_name, self.prefix)
@@ -76,7 +74,7 @@ class ProcessMultipleFormsView(ProcessFormView):
         form = forms.get(form_name)
         if not form:
             return HttpResponseForbidden()
-        elif form.is_valid():
+        if form.is_valid():
             return self.forms_valid(forms, form_name)
 
         return self.forms_invalid(forms)
