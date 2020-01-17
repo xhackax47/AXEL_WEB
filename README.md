@@ -54,7 +54,17 @@ Afin de déployer l'application plusieurs choix s'offrent à nous.
 
 J'ai choisi la solution Heroku pour sa simplicité et sa gratuité.
 
-Tout d'abord installer Heroku CLI et creer un compte.
+Tout d'abord installer [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli#download-and-install) et creer un compte.
+
+**Ne surtout pas oublier le fichier Procfile ainsi que d'enlever le DEBUG dans les settings.py**
+```
+Effectuer les migrations à distance
+heroku run python manage.py makemigrations -a appname
+Migrer les modifications à distance
+heroku run python manage.py makemigrations -a appname
+Mise à l'echelle Web des dynos
+heroku ps:scale web=1 -a appname
+```
 
 ## Outils
 
