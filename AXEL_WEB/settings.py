@@ -176,10 +176,10 @@ STATIC_URL = '/static/'
 #     os.path.join(BASE_DIR, "static"),
 # )
 
-# Simplified static file serving HEROKU DEPLOIEMENT
+# Simplified static file serving HEROKU COMPRESSION GZIP
 # https://warehouse.python.org/project/whitenoise/
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Authentification
 LOGIN_URL = reverse_lazy('index')
