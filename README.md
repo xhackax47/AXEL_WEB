@@ -8,33 +8,16 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
+Aucun prérequis n'est nécessaire pour faire tourner l'application étant donné que tout a été empaqueté dans un environnement virtuel "venv2" disponible ici.
+Penser à spécifier l'interpreteur python du projet (Intrepreter Python 3.6 disponible dans venv2)
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
+Vous avez besoin d'installer une base PostgreSQL afin de pouvoir enregistrer vos objets.
 
-Say what the step will be
+## Lancer les tests
 
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
+Executez la commande : "python manage.py test
 
 ### Break down into end to end tests
 
