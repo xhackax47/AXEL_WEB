@@ -98,7 +98,7 @@ class DataSet(Model):
     description = TextField(null=True, blank=True, verbose_name=_("Description du jeu de données"))
     dataset = FileField(upload_to='static/datasets/', null=True, verbose_name=_("Fichier jeu de données"))
     source = URLField(max_length=1000, verbose_name=_("Source"), blank=True)
-    nb_vues = IntegerField(default=0, verbose_name=_("Nombre de vues du jeu de données"))
+    #nb_vues = IntegerField(default=0, verbose_name=_("Nombre de vues du jeu de données"))
     categories_dataset = ManyToManyField(DataSetCategory, blank=True, default=None,
                                          verbose_name=_("Catégories du jeu de données"))
 
@@ -137,7 +137,7 @@ class Robot(Model):
     doc = FileField(upload_to='static/robots/', null=True, verbose_name=_("Documentation Robot"))
     date_ajout = DateTimeField(auto_now_add=True, verbose_name=_("Date d'ajout du robot"))
     description = TextField(null=True, blank=True, verbose_name=_("Description du robot"))
-    nb_vues = IntegerField(default=0, verbose_name=_("Nombre de vues du robot"))
+    #nb_vues = IntegerField(default=0, verbose_name=_("Nombre de vues du robot"))
     categories_robot = ManyToManyField(RobotCategory, blank=True, default=None,
                                        verbose_name=_("Catégories du robot"))
 
