@@ -83,8 +83,7 @@ WSGI_APPLICATION = 'AXEL_WEB.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-CONDITION_TEST = "DEBUG and 'test' not in sys.argv or 'test_coverage' in sys.argv"
-if not CONDITION_TEST:
+if not DEBUG and 'test' not in sys.argv or 'test_coverage' in sys.argv:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -95,7 +94,7 @@ if not CONDITION_TEST:
             'PORT': '5432',
         }
     }
-elif CONDITION_TEST:
+elif DEBUG and 'test' not in sys.argv or 'test_coverage' in sys.argv:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
