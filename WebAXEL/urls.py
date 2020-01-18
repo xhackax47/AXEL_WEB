@@ -107,7 +107,7 @@ urlpatterns += [
 # Handlers pour les erreurs HTTP
 # handler400 = views.BadRequestView.as_view()
 # handler403 = views.ForbiddenView.as_view()
-handler404 = not_found()
+handler404 = not_found
 # handler405 = views.NotAllowedView.as_view()
 # handler410 = views.RessourceGoneView.as_view()
 # handler500 = views.InternalErrorView.as_view()
