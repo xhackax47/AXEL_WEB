@@ -28,8 +28,8 @@ SECRET_KEY = ')k7-35hzr=44j&_nls3u%*ne1xz@==1gt(1k9-6%ra!y6pk21l'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-if DEBUG == True:
-    ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0']
+if DEBUG:
+    ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 else:
     ALLOWED_HOSTS = ['axel-ihm.herokuapp.com']
 
@@ -95,7 +95,7 @@ WSGI_APPLICATION = 'AXEL_WEB.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-if DEBUG == False:
+if DEBUG == False and 'test' not in sys.argv or 'test_coverage' in sys.argv:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -106,7 +106,7 @@ if DEBUG == False:
             'PORT': '5432',
         }
     }
-else:
+elif DEBUG and 'test' not in sys.argv or 'test_coverage' in sys.argv:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -118,11 +118,14 @@ else:
         }
     }
 
-#Configuration BDD SQLITE pour CircleCI
-if 'test' in sys.argv or 'test_coverage' in sys.argv:
-    DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'
-    DATABASES['default']['NAME'] = 'AXEL_WEB'
-
+# Configuration BDD SQLITE pour CircleCI
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': 'AXEL_WEB',
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
