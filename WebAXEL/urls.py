@@ -71,24 +71,6 @@ urlpatterns += [
     path('delete-robot/<int:pk>', login_required(views.RobotDeleteView.as_view()), name='delete-robot'),
 ]
 
-
-# Erreurs
-#def server_error(request):
-#    return render(request, 'WebAXEL/errors/500.html')
-
-#def bad_request(request):
-#    return render(request, ''WebAXEL/errors/400.html'')
-
-#def permission_denied(request):
-#    return render(request, ''WebAXEL/errors/403.html'')
-
-#def ressource_gone(request):
-#    return render(request, ''WebAXEL/errors/410.html'')
-
-def not_found(request):
-    return render(request, 'WebAXEL/errors/404.html')
-
-
 urlpatterns += [
     # 400
     # path('400/', views.BadRequestView.as_view(), name='400'),
@@ -107,7 +89,7 @@ urlpatterns += [
 # Handlers pour les erreurs HTTP
 # handler400 = views.BadRequestView.as_view()
 # handler403 = views.ForbiddenView.as_view()
-handler404 = not_found
+handler404 = views.not_found
 # handler405 = views.NotAllowedView.as_view()
 # handler410 = views.RessourceGoneView.as_view()
 # handler500 = views.InternalErrorView.as_view()

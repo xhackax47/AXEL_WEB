@@ -398,3 +398,20 @@ class RobotDeleteView(LoginRequiredMixin, DeleteView):
     def get_object(self, *args, **kwargs):
         robot = get_object_or_404(Robot, pk=self.kwargs['pk'])
         return robot
+
+
+# Erreurs
+#def server_error(request):
+#    return render(request, 'WebAXEL/errors/500.html')
+
+#def bad_request(request):
+#    return render(request, ''WebAXEL/errors/400.html'')
+
+#def permission_denied(request):
+#    return render(request, ''WebAXEL/errors/403.html'')
+
+#def ressource_gone(request):
+#    return render(request, ''WebAXEL/errors/410.html'')
+
+def not_found(request):
+    return render(request, 'WebAXEL/errors/404.html')
