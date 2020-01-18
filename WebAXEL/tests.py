@@ -7,9 +7,10 @@ from WebAXEL.models import Document, DataSet, Robot
 
 class DocumentTestCase(TestCase):
 
+    # Init données de tests
     def setUp(self):
         self.document = Document.objects.create(titre="DocumentTest", date_ajout=timezone.now(), auteur="AuteurTest",
-                                                description="DescriptionTest", document=None)
+                                                description="DescriptionTest", document=None, nb_vues=0)
 
     # Test de lecture objet Document
     def testRead(self):
@@ -37,9 +38,10 @@ class DocumentTestCase(TestCase):
 
 class DataSetTestCase(TestCase):
 
+    # Init données de tests
     def setUp(self):
         self.dataset = DataSet.objects.create(nom="DatasetTest", date_ajout=timezone.now(),
-                                              description="DescriptionTest", dataset=None)
+                                              description="DescriptionTest", dataset=None, nb_vues=0)
 
     # Test de lecture objet Dataset
     def testRead(self):
@@ -67,9 +69,10 @@ class DataSetTestCase(TestCase):
 
 class RobotTestCase(TestCase):
 
+    # Init données de tests
     def setUp(self):
         self.robot = Robot.objects.create(nom="RobotTest", date_ajout=timezone.now(),
-                                          description="DescriptionTest", doc=None)
+                                          description="DescriptionTest", doc=None, nb_vues=0)
 
     # Test de lecture objet Robot
     def testRead(self):
