@@ -35,7 +35,7 @@ if (! $env:VIRTUAL_ENV_DISABLE_PROMPT) {
     function global:_OLD_VIRTUAL_PROMPT {""}
     copy-item function:prompt function:_OLD_VIRTUAL_PROMPT
     function global:prompt {
-        Write-Host -NoNewline -ForegroundColor Green '(venv2) '
+        Write-Output -NoNewline -ForegroundColor Green '(venv2) '
         _OLD_VIRTUAL_PROMPT
     }
 }
