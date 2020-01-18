@@ -582,8 +582,8 @@ msgid "Connexion - IHM Web A.X.E.L."
 msgstr "Login - A.X.E.L. Web HMI."
 
 #: .\templates\WebAXEL\registration\login.html:12
-msgid "Bienvenue sur l'intelligence artificielle A.X.E.L."
-msgstr "Welcome to A.X.E.L. Artificial Intelligence."
+msgid "Bienvenue sur l'IHM A.X.E.L."
+msgstr "Welcome to A.X.E.L. HMI."
 
 #: .\templates\WebAXEL\registration\login.html:68
 msgid ""
@@ -643,13 +643,10 @@ msgstr "Connected"
 #: .\templates\WebAXEL\registration\login_confirmation.html:30
 #, python-format
 msgid ""
-"\n"
-"                    Bienvenue sur A.X.E.L. %(username)s,\n"
-"                    vous voilà connecté en tant que %(fonction)s !!!"
+"Bienvenue sur A.X.E.L. %(username)s, vous voilà connecté en tant que %(fonction)s !!!"
 msgstr ""
-"\n"
-"                    Welcome to A.X.E.L. %(username)s,\n"
-"                    you are logged in as %(function) !!!"
+"Welcome to A.X.E.L. %(username)s, you are logged in as %(function) !!!"
+
 #: .\templates\WebAXEL\registration\login_confirmation.html:37
 msgid ""
 "Vous possédez les droits d'un membre de l'équipe d'A.X.E.L., faîtes "

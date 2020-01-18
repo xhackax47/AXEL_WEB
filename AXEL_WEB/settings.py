@@ -7,12 +7,10 @@ from django.conf.global_settings import ADMINS
 from django.urls import reverse_lazy
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = ')k7-35hzr=44j&_nls3u%*ne1xz@==1gt(1k9-6%ra!y6pk21l'
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
+
 if DEBUG:
     ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 else:
@@ -81,9 +79,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'AXEL_WEB.wsgi.application'
 
-# Database
-# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-if not DEBUG and 'test' not in sys.argv or 'test_coverage' in sys.argv:
+# Bases de données
+if not DEBUG and 'test' not in sys.argv or 'test_coverage' not in sys.argv:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -94,7 +91,7 @@ if not DEBUG and 'test' not in sys.argv or 'test_coverage' in sys.argv:
             'PORT': '5432',
         }
     }
-elif DEBUG and 'test' not in sys.argv or 'test_coverage' in sys.argv:
+elif DEBUG and 'test' not in sys.argv or 'test_coverage' not in sys.argv:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -133,8 +130,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# Internationalization
-# https://docs.djangoproject.com/en/3.0/topics/i18n/
+# Internationalisation
 
 LANGUAGE_CODE = 'fr'
 TIME_ZONE = 'Europe/Paris'
@@ -161,19 +157,19 @@ LANGUAGES = (
 #         },
 # }
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/dev/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# Fichiers statiques (CSS, JavaScript, Images)
+
 STATIC_URL = '/static/'
 
-# Extra places for collectstatic to find static files.
-# STATICFILES_DIRS = (
-#     os.path.join(BASE_DIR, "static"),
-# )
+if DEBUG:
+    STATICFILES_DIRS = (
+        os.path.join(BASE_DIR, "static"),
+    )
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Simplified static file serving HEROKU COMPRESSION GZIP
 # https://warehouse.python.org/project/whitenoise/
-
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Authentification
