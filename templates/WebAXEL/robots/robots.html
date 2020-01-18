@@ -19,7 +19,8 @@
         </div>
         {% if is_paginated %}
             <p class="page-current text-center">
-                {% blocktrans with number=page_obj.number num_pages=page_obj.paginator.num_pages %}Page {{ number }} sur {{ num_pages }}.{% endblocktrans %}
+                {% blocktrans with number=page_obj.number num_pages=page_obj.paginator.num_pages %}Page {{ number }} sur
+                    {{ num_pages }}.{% endblocktrans %}
             </p>
         {% endif %}
         {% include 'WebAXEL/robots/robots_pagination.html' %}
@@ -34,9 +35,11 @@
                             {% blocktrans with nom=robot.nom %}{{ nom }}{% endblocktrans %}
                         </h5>
                         <p class="card-text">
-                            {% blocktrans with description=robot.description|truncatechars:50 %}{{ description }}{% endblocktrans %}
+                            {% blocktrans with description=robot.description|truncatechars:50 %}
+                                {{ description }}{% endblocktrans %}
                             {% if robot.description|length > 50 %}
-                                <a href data-toggle="modal" data-target="#modalLongDescription{{ robot.id }}">{% trans 'Lire plus' %}</a>
+                                <a href data-toggle="modal"
+                                   data-target="#modalLongDescription{{ robot.id }}">{% trans 'Lire plus' %}</a>
                                 {% include "WebAXEL/robots/robots_modal_description.html" %}
                             {% endif %}
                         </p>
@@ -45,8 +48,9 @@
                             </span>
                         </p>
                         <p class="card-text"><small class="badge badge-info">
-                            {% blocktrans with utilisation=robot.utilisation %}Utilisation : {{ utilisation }}{% endblocktrans %}
-                            </small>
+                            {% blocktrans with utilisation=robot.utilisation %}Utilisation :
+                                {{ utilisation }}{% endblocktrans %}
+                        </small>
                         </p>
                         <div class="card-footer p-1">
                             <a title="PDF" href="/{{ robot.doc }}" class="btn btn-primary"><i
@@ -67,14 +71,15 @@
                             {% include "WebAXEL/robots/robots_confirmation_modal.html" %}
                         </div>
                     </div>
-                    {% if robots|length >= 3 %}
-                        </div>
-                    {% endif %}
+                </div>
+                {% if robots|length >= 3 %}
+                    </div>
+                {% endif %}
             {% empty %}
                 <p style="text-align: center;">{% trans "Aucun robot trouvé" %}</p>
             {% endfor %}
-            </div>
-            {% include 'WebAXEL/robots/robots_pagination.html' %}
         </div>
+        {% include 'WebAXEL/robots/robots_pagination.html' %}
+    </div>
     </div>
 {% endblock %}
