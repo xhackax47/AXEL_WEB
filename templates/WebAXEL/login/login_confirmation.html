@@ -28,8 +28,8 @@
             <h1 class="mainH1 mt-3 mb-3">{% trans "Connecté" %}</h1>
             <p class="badge-success">
                 {% blocktrans with username=user.username fonction=user.fonction %}
-                    Bienvenue sur A.X.E.L. {{ username }},
-                    vous voilà connecté en tant que {{ fonction }} !!!{% endblocktrans %}
+                    Bienvenue sur A.X.E.L. {{ username }}, vous voilà connecté en tant que {{ fonction }} !!!
+                {% endblocktrans %}
             </p>
             {% if user.is_staff %}
                 <br>
