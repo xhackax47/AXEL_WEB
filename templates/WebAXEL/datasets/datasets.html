@@ -64,14 +64,15 @@
                             {% include "WebAXEL/datasets/datasets_confirmation_modal.html" %}
                         {% endif %}
                     </div>
-                    {% if datasets|length >= 3 %}
-                        </div>
-                    {% endif %}
+                </div>
+                {% if datasets|length >= 3 %}
+                    </div>
+                {% endif %}
             {% empty %}
                 <p class="text-center">{% trans "Aucun jeu de données trouvé" %}</p>
             {% endfor %}
-            </div>
-            {% include 'WebAXEL/datasets/datasets_pagination.html' %}
         </div>
+        {% include 'WebAXEL/datasets/datasets_pagination.html' %}
+    </div>
     </div>
 {% endblock %}
