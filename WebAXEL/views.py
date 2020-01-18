@@ -15,7 +15,7 @@ from WebAXEL.models import Document, DataSet, AxelUser, Robot
 
 
 class IndexView(MultiFormsView):
-    template_name = 'WebAXEL/registration/login.html'
+    template_name = 'WebAXEL/login/login.html'
     form_classes = {
         'login': AuthenticationForm,
         'register': UserCreateForm,
@@ -35,12 +35,12 @@ class IndexView(MultiFormsView):
 
 
 class HomeView(TemplateView):
-    template_name = 'WebAXEL/registration/login.html'
+    template_name = 'WebAXEL/login/login.html'
 
 
 # Vue Login pour la connexion
 class LoginView(LoginView):
-    template_name = 'WebAXEL/registration/login_confirmation.html'
+    template_name = 'WebAXEL/login/login_confirmation.html'
     redirect_authenticated_user = True
     redirect_field_name = reverse_lazy('index')
     authentication_form = AuthenticationForm
@@ -50,7 +50,7 @@ class LoginView(LoginView):
 
 
 class LoginConfirmationView(TemplateView):
-    template_name = 'WebAXEL/registration/login_confirmation.html'
+    template_name = 'WebAXEL/login/login_confirmation.html'
 
 
 # Vue Register pour l'inscription

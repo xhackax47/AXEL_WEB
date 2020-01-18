@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+import sys
+
 from django.conf.global_settings import ADMINS
 from django.urls import reverse_lazy
 
@@ -115,6 +117,12 @@ else:
             'PORT': '5432',
         }
     }
+
+#Configuration BDD SQLITE pour CircleCI
+if 'test' in sys.argv or 'test_coverage' in sys.argv:
+    DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'
+    DATABASES['default']['NAME'] = 'AXEL_WEB'
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
