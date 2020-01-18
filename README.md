@@ -73,7 +73,11 @@ heroku ps:scale web=1 -a appname
 * [Pip](https://pypi.org/project/pip/) - Pip est un gestionnaire de paquets utilisé pour gérer des paquets écrits en Python.
 * [PyCharm](https://www.jetbrains.com/fr-fr/pycharm/) - Environnement de Developpement Intégré Python
 
-## Contribution
+## Intégration Continue
+
+* [CircleCI](https://circleci.com/) - CircleCI automates your software builds, tests, and deployments.
+
+Execution à chaque "git push" d'un job de lancement de build et de test sur la branche "Production" avant le build de déploiement sur Heroku.
 
 ## Versioning
 
