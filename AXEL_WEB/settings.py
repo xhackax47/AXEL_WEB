@@ -80,7 +80,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'AXEL_WEB.wsgi.application'
 
 # Bases de données
-if not DEBUG and 'test' not in sys.argv or 'test_coverage' not in sys.argv:
+if not DEBUG and 'test' not in sys.argv or 'test_coverage' in sys.argv:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -91,7 +91,7 @@ if not DEBUG and 'test' not in sys.argv or 'test_coverage' not in sys.argv:
             'PORT': '5432',
         }
     }
-elif DEBUG and 'test' not in sys.argv or 'test_coverage' not in sys.argv:
+elif DEBUG and 'test' not in sys.argv or 'test_coverage' in sys.argv:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
