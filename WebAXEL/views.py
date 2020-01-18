@@ -38,6 +38,10 @@ class HomeView(TemplateView):
     template_name = 'WebAXEL/login/login.html'
 
 
+class NotFoundView(TemplateView):
+    template_name = 'WebAXEL/errors/404.html'
+
+
 # Vue Login pour la connexion
 class LoginView(LoginView):
     template_name = 'WebAXEL/login/login_confirmation.html'
