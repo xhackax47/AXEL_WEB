@@ -1,10 +1,11 @@
 from django.conf.urls import url, handler404
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
 from django.urls import path, include
 
 from . import views
 
-#app_name = 'WebAXEL'
+# app_name = 'WebAXEL'
 
 urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
@@ -69,20 +70,26 @@ urlpatterns += [
     # Supprimer Robot
     path('delete-robot/<int:pk>', login_required(views.RobotDeleteView.as_view()), name='delete-robot'),
 ]
-# Erreurs
+
 urlpatterns += [
     # 400
-    #path('400/', views.BadRequestView.as_view(), name='400'),
+    # path('400/', views.BadRequestView.as_view(), name='400'),
     # 403
-    #path('404/', views.ForbiddenView.as_view(), name='403'),
+    # path('404/', views.ForbiddenView.as_view(), name='403'),
     # 404
-    path('404/', views.NotFoundView.as_view(), name='404'),
+    path('404/', handler404, name='404'),
+    # 405
+    # path('405/', views.NotAllowedView.as_view(), name='405'),
+    # 410
+    # path('410/', views.RessourceGoneView.as_view(), name='410'),
     # 500
-    #path('500/', views.InternalErrorView.as_view(), name='500'),
+    # path('500/', views.InternalErrorView.as_view(), name='500'),
 ]
 
 # Handlers pour les erreurs HTTP
 # handler400 = views.BadRequestView.as_view()
 # handler403 = views.ForbiddenView.as_view()
-handler404 = views.NotFoundView.as_view()
+handler404 = 'django.views.defaults.page_not_found'
+# handler405 = views.NotAllowedView.as_view()
+# handler410 = views.RessourceGoneView.as_view()
 # handler500 = views.InternalErrorView.as_view()

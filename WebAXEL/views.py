@@ -40,6 +40,7 @@ class HomeView(TemplateView):
 
 class NotFoundView(TemplateView):
     template_name = 'WebAXEL/errors/404.html'
+    status_code = 404
 
 
 # Vue Login pour la connexion
