@@ -42,6 +42,9 @@ SECURE_SSL_REDIRECT = False
 SESSION_COOKIE_SECURE = False
 CSRF_COOKIE_SECURE = False
 
+# reCaptcha Google
+GOOGLE_RECAPTCHA_SECRET_KEY = ""
+
 # Applications installés
 INSTALLED_APPS = [
     'django.contrib.admin',

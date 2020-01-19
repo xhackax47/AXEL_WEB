@@ -5,7 +5,8 @@
         <div class="modal-content">
             <form method="post" role="form" action="{% url 'register' %}" enctype="multipart/form-data">
                 <div class="modal-header">
-                    <h5 align="center" class="modal-title" id="register">{% trans "Inscription - IHM Web A.X.E.L." %}</h5>
+                    <h5 align="center" class="modal-title"
+                        id="register">{% trans "Inscription - IHM Web A.X.E.L." %}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -13,6 +14,9 @@
                 <div class="modal-body">
                     {% csrf_token %}
                     {{ forms.register|crispy }}
+                    <div class="col-md-12">
+                        <div class="g-recaptcha" data-sitekey="public_key_here"></div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <input class="btn btn-success" type="submit" value="{% trans "S'inscrire" %}" name="submit"/>

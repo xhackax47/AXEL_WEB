@@ -1,9 +1,13 @@
+import json
+import urllib
+
 from django.contrib import messages
 from django.contrib.auth import logout, login, update_session_auth_hash
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.sites.shortcuts import get_current_site
+from django.core.exceptions import ValidationError
 from django.core.mail import EmailMessage
 from django.db.models import Q
 from django.http import HttpResponseRedirect, HttpResponse
@@ -16,6 +20,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.views import View
 from django.views.generic import TemplateView, UpdateView, ListView, CreateView, DeleteView, DetailView
 
+from AXEL_WEB import settings
 from WebAXEL.forms import DocumentForm, DocumentSearchForm, DataSetForm, DataSetSearchForm, RobotSearchForm, RobotForm, \
     SignupForm, UserUpdateForm
 from WebAXEL.multiforms import MultiFormsView
@@ -72,7 +77,22 @@ class SignupView(CreateView):
             # Création utilisateur inactif
             user = form.save(commit=False)
             user.is_active = False
-            user.save()
+            # Captcha
+            recaptcha_response = request.POST.get('g-recaptcha-response')
+            url = 'https://www.google.com/recaptcha/api/siteverify'
+            values = {
+                'secret': settings.GOOGLE_RECAPTCHA_SECRET_KEY,
+                'response': recaptcha_response
+            }
+            data = urllib.parse.urlencode(values).encode()
+            req =  urllib.request.Request(url, data=data)
+            response = urllib.request.urlopen(req)
+            result = json.loads(response.read().decode())
+            if result:
+                user.save()
+            else:
+                error = _("Le captcha ne correspond pas")
+                raise ValidationError(error)
 
             # Envoi du mail à l'utilisateur avec le token
             mail_subject = _('Activation du compte A.X.E.L.')
