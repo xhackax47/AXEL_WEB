@@ -13,7 +13,9 @@ DEBUG = False
 if DEBUG:
     SECRET_KEY = ')k7-35hzr=44j&_nls3u%*ne1xz@==1gt(1k9-6%ra!y6pk21l'
 else:
-    SECRET_KEY = [random.choice(string.printable) for _ in range(24)]
+    # Génération d'une nouvelle clé
+    genSecKey = [random.choice(string.printable) for _ in range(24)]
+    SECRET_KEY = genSecKey
 
 # Hôtes autorisés selon l'environnement
 if DEBUG:
