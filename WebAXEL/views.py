@@ -7,7 +7,7 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import EmailMessage
 from django.db.models import Q
 from django.http import HttpResponseRedirect, HttpResponse
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.template.loader import render_to_string
 from django.urls import reverse_lazy
 from django.utils.encoding import force_bytes, force_text
@@ -85,8 +85,8 @@ class SignupView(CreateView):
             email = EmailMessage(mail_subject, message, to=[to_email])
             email.send()
             messages.success(request, _("Lien d'activation envoyé par mail"))
-            return reverse_lazy('register-confirmation')
-        return reverse_lazy('register-confirmation')
+            return redirect('register-confirmation')
+        return redirect('register-confirmation')
 
 
 class ActivateAccount(View):
@@ -104,7 +104,7 @@ class ActivateAccount(View):
             login(request, user)
             return render(request, 'WebAXEL/registration/active_email.html')
         messages.warning(request, _("Le lien d'activation est invalide ou ce compte a déjà été activé."))
-        return reverse_lazy('index')
+        return redirect('index')
 
 
 class RegisterConfirmationView(TemplateView):
