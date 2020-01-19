@@ -70,8 +70,8 @@ def activate(request, uidb64, token):
         login(request, user)
         return reverse_lazy('index')
         # return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
-    else:
-        return HttpResponse('Activation link is invalid!')
+
+    return HttpResponse(_("Activation link is invalid!"))
 
 
 class HomeView(TemplateView):
