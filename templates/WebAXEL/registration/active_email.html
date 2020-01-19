@@ -1,0 +1,14 @@
+{% extends "WebAXEL/base/base.html" %}
+{% load static i18n crispy_forms_tags %}
+{% block title %}{% trans 'Confirmation Mail' %}{% endblock %}
+{% block content %}
+    <div class="container-fluid" align="center">
+        <h1 class="mainH1 mt-3 mb-3">{% trans 'Confirmation Mail' %}</h1>
+    {% blocktrans with username=user.username %}
+        {% autoescape off%}
+            Bonjour {{ user.username }}, Veuillez cliquer sur le lien pour confirmer votre inscription,
+            http://{{ domain }}{% url 'activate' uidb64=uid token=token %}
+        {% endautoescape %}
+    {% endblocktrans %}
+    </div>
+{% endblock %}
