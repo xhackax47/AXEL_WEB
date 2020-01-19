@@ -1,16 +1,21 @@
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-import sys
+import sys, random, string
 
 from django.conf.global_settings import ADMINS
 from django.urls import reverse_lazy
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SECRET_KEY = ')k7-35hzr=44j&_nls3u%*ne1xz@==1gt(1k9-6%ra!y6pk21l'
+DEBUG = True
 
-DEBUG = False
+# Clé secrète selon l'environnement
+if DEBUG:
+    SECRET_KEY = ')k7-35hzr=44j&_nls3u%*ne1xz@==1gt(1k9-6%ra!y6pk21l'
+else:
+    SECRET_KEY = [random.choice(string.printable) for _ in range(24)]
 
+# Hôtes autorisés selon l'environnement
 if DEBUG:
     ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 else:
