@@ -88,6 +88,11 @@ Execution à chaque "git push" d'un job de lancement de build et de test sur la 
 
 * [Sentry](https://sentry.io/) - Sentry est une plate-forme de surveillance des applications qui vous aide à identifier les problèmes en temps réel.
 
+## Review de code
+
+* [CodeFactor](https://www.codefactor.io/) - CodeFactor.io suit automatiquement et en permanence la qualité du code à chaque demande de commit et pull de GitHub ou BitBucket, ce qui permet aux développeurs de logiciels de gagner du temps dans la révision du code et de s'attaquer efficacement à la dette technique.
+
+
 ## Versioning
 
 J'utilise Git pour le versionning et je transfère mes dépôts sur ce compte GitHub.
