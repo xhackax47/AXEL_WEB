@@ -86,6 +86,7 @@ class SignupView(CreateView):
             email.send()
             messages.success(request, _("Lien d'activation envoyé par mail"))
             return reverse_lazy('register-confirmation')
+        return reverse_lazy('register-confirmation')
 
 
 class ActivateAccount(View):
