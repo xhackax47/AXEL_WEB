@@ -16,11 +16,12 @@
                     {{ error|escape }}
                 {% endfor %}
             </ul>
-            <a href="{% url 'index' %}" type="button"
-               class="btn btn-success">{% trans "Retourner à l'écran principal" %}</a>
         {% else %}
             <p class="badge-success">{% trans 'Votre inscription a bien été prise en compte.' %}</p>
             <p class="badge-info">{% trans "Merci d'avoir pris le temps de vous inscrire sur mon application web." %}</p>
+            <p class="badge-danger">{% trans "N'oubliez pas d'aller voir votre compte mail afin d'activer votre compte." %}</p>
         {% endif %}
+        <a href="{% url 'index' %}" type="button"
+           class="btn btn-success">{% trans "Retourner à l'écran principal" %}</a>
     </div>
 {% endblock %}

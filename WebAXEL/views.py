@@ -75,7 +75,7 @@ class SignupView(CreateView):
             user.save()
 
             # Envoi du mail à l'utilisateur avec le token
-            mail_subject = 'Activate your account.'
+            mail_subject = _('Activation du compte A.X.E.L.')
             current_site = get_current_site(request)
             uid = urlsafe_base64_encode(force_bytes(user.pk))
             token = account_activation_token.make_token(user)
@@ -91,11 +91,13 @@ class SignupView(CreateView):
 
 class ActivateAccount(View):
     def get(self, request, uidb64, token):
+        # Décodage base 64 uid et recherche d'utilisateur
         try:
-            uid = urlsafe_base64_decode(uidb64)
+            uid = force_text(urlsafe_base64_decode(uidb64))
             user = AxelUser.objects.get(pk=uid)
         except(TypeError, ValueError, OverflowError, AxelUser.DoesNotExist):
             user = None
+            return HttpResponse('Aucun utilisateur trouvé')
         if user and account_activation_token.check_token(user, token):
             # Activation de l'utilisateur
             user.is_active = True
