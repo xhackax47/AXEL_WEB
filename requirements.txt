@@ -20,6 +20,7 @@ python-gettext==4.0
 pytz==2019.3
 reportlab==3.5.34
 self==2019.4.13
+sentry-sdk==0.14.0
 six==1.13.0
 sqlparse==0.3.0
 whitenoise==5.0.1

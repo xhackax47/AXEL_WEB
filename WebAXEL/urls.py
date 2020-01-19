@@ -7,8 +7,12 @@ from . import views
 
 # app_name = 'WebAXEL'
 
+def test_trigger_error(request):
+    division_by_zero = 1 / 0
+
 urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
+    path('sentry-debug/', test_trigger_error, name='sentry-debug'),
     path('home/', views.HomeView.as_view(), name='home'),
     # Inscription
     path('register/', views.RegisterView.as_view(), name='register'),
