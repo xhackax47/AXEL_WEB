@@ -4,7 +4,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.db.models import Q
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render,get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, UpdateView, ListView, CreateView, DeleteView, DetailView
 
@@ -39,7 +39,7 @@ class HomeView(TemplateView):
 
 
 class NotFoundView(TemplateView):
-    template_name = 'WebAXEL/errors/404.html'
+    template_name = 'WebAXEL/errors/../templates/404.html'
     status_code = 404
 
 
@@ -398,20 +398,3 @@ class RobotDeleteView(LoginRequiredMixin, DeleteView):
     def get_object(self, *args, **kwargs):
         robot = get_object_or_404(Robot, pk=self.kwargs['pk'])
         return robot
-
-
-# Erreurs
-#def server_error(request):
-#    return render(request, 'WebAXEL/errors/500.html')
-
-#def bad_request(request):
-#    return render(request, ''WebAXEL/errors/400.html'')
-
-#def permission_denied(request):
-#    return render(request, ''WebAXEL/errors/403.html'')
-
-#def ressource_gone(request):
-#    return render(request, ''WebAXEL/errors/410.html'')
-
-def not_found(request):
-    return render(request, 'WebAXEL/errors/404.html')

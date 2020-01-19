@@ -46,7 +46,7 @@ header, footer, #content {
     flex-grow: 1;
 }
 
-.img_max_security, .robotImg, .error404 {
+.img_max_security, .robotImg, .error404, .error500 {
     display: block;
     margin-left: auto;
     margin-right: auto;
