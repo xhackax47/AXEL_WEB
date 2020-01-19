@@ -54,8 +54,8 @@ class IndexView(MultiFormsView):
             email = EmailMessage(mail_subject, message, to=[to_email])
         email.send()
         return HttpResponse(_("Veuillez confirmer votre adresse email pour compléter l'inscription"))
-        form_name = form.cleaned_data.get('action')
-        return HttpResponseRedirect(self.get_success_url(form_name))
+        # form_name = form.cleaned_data.get('action')
+        # return HttpResponseRedirect(self.get_success_url(form_name))
 
 
 def activate(request, uidb64, token):
@@ -69,7 +69,7 @@ def activate(request, uidb64, token):
         user.save()
         login(request, user)
         return reverse_lazy('index')
-        return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
+        # return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
     else:
         return HttpResponse('Activation link is invalid!')
 
