@@ -7,7 +7,7 @@ from django.conf.global_settings import ADMINS
 from django.urls import reverse_lazy
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DEBUG = True
+DEBUG = False
 
 # Clé secrète selon l'environnement
 if DEBUG:
