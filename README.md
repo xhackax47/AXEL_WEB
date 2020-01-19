@@ -84,6 +84,10 @@ heroku ps:scale web=1 -a appname
 
 Execution à chaque "git push" d'un job de lancement de build et de test sur la branche "Production" avant le build de déploiement sur Heroku.
 
+## Monitoring et tracking d'erreurs
+
+* [Sentry](https://sentry.io/) - Sentry est une plate-forme de surveillance des applications qui vous aide à identifier les problèmes en temps réel.
+
 ## Versioning
 
 J'utilise Git pour le versionning et je transfère mes dépôts sur ce compte GitHub.

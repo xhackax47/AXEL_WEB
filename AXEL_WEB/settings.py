@@ -3,11 +3,23 @@ import sys
 import random
 import string
 
+import sentry_sdk
 from django.conf.global_settings import ADMINS
 from django.urls import reverse_lazy
+from sentry_sdk.integrations.django import DjangoIntegration
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEBUG = False
+
+# Initialisation Sentry Montoring
+sentry_sdk.init(
+    dsn="https://38fa4be46e8c4295b2ec9bda26b4b232@sentry.io/1887341",
+    integrations=[DjangoIntegration()],
+
+    # If you wish to associate users to errors (assuming you are using
+    # django.contrib.auth) you may enable sending PII data.
+    send_default_pii=True
+)
 
 # Clé secrète selon l'environnement
 if DEBUG:
