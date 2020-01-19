@@ -103,9 +103,8 @@ class ActivateAccount(View):
             messages.success(request, _("Votre compte a été activé avec succès"))
             login(request, user)
             return render(request, 'WebAXEL/registration/active_email.html')
-        else:
-            messages.warning(request, _("Le lien d'activation est invalide ou ce compte a déjà été activé."))
-            return reverse_lazy('index')
+        messages.warning(request, _("Le lien d'activation est invalide ou ce compte a déjà été activé."))
+        return reverse_lazy('index')
 
 
 class RegisterConfirmationView(TemplateView):
