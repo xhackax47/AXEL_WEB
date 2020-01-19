@@ -89,7 +89,6 @@ class SignupView(CreateView):
         return redirect('register-confirmation')
 
 
-
 class RegisterConfirmationView(TemplateView):
     template_name = 'WebAXEL/registration/register_confirmation.html'
 
@@ -111,7 +110,8 @@ class ActivateAccount(View):
             login(request, user)
             return render(request, 'WebAXEL/registration/active_email.html')
         messages.warning(request, _("Le lien d'activation est invalide ou ce compte a déjà été activé."))
-        return redirect('index')
+        return redirect('activate-error')
+
 
 class ActivateAccountError(TemplateView):
     template_name = 'WebAXEL/registration/active_email_error.html'
