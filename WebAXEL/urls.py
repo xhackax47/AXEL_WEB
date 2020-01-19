@@ -11,8 +11,8 @@ def test_trigger_error(request):
     division_by_zero = 1 / 0
 
 urlpatterns = [
+    # Accueil
     path('', views.IndexView.as_view(), name='index'),
-    path('sentry-debug/', test_trigger_error, name='sentry-debug'),
     path('home/', views.HomeView.as_view(), name='home'),
     # Inscription
     path('register/', views.RegisterView.as_view(), name='register'),
@@ -28,6 +28,11 @@ urlpatterns = [
         name='account-settings-username'),
     # Gestion de compte par idgi
     path('account-settings-id/<int:pk>', views.AccountSettingsIdView.as_view(), name='account-settings-id'),
+    # Activation mail des comptes
+    url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
+        views.activate, name='activate'),
+    # Test case pour Sentry
+    path('sentry-debug/', test_trigger_error, name='sentry-debug'),
 ]
 # Documents
 urlpatterns += [

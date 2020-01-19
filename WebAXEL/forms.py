@@ -10,12 +10,16 @@ class MultipleForm(forms.Form):
     action = CharField(max_length=60, widget=HiddenInput())
 
 
+# Formulaire de connexion utilisateur
 class AuthenticationForm(AuthenticationForm, MultipleForm):
     class Meta(AuthenticationForm):
         model = AxelUser
 
 
+# Formulaire d'inscription utilisateur
 class UserCreateForm(UserCreationForm, MultipleForm):
+    email = forms.EmailField(max_length=200, help_text=_('Obligatoire'))
+
     class Meta(UserCreationForm):
         model = AxelUser
         fields = ('username', 'email', 'password1', 'password2', 'first_name', 'last_name', 'profile_img')
@@ -24,7 +28,7 @@ class UserCreateForm(UserCreationForm, MultipleForm):
         username = self.cleaned_data['username'].lower()
         r = AxelUser.objects.filter(username=username)
         if r.count():
-            error = _(u'Username already exists.')
+            error = _('Username already exists.')
             raise ValidationError(error)
         return username
 
@@ -32,7 +36,7 @@ class UserCreateForm(UserCreationForm, MultipleForm):
         email = self.cleaned_data['email'].lower()
         r = AxelUser.objects.filter(email=email)
         if r.count():
-            error = _(u'Email already exists')
+            error = _('Email already exists')
             raise ValidationError(error)
         return email
 
@@ -40,11 +44,12 @@ class UserCreateForm(UserCreationForm, MultipleForm):
         password1 = self.cleaned_data.get("password1")
         password2 = self.cleaned_data.get("password2")
         if password1 and password2 and password1 != password2:
-            error = _(u'Passwords don\'t match')
+            error = _('Passwords don\'t match')
             raise ValidationError(error)
         return password2
 
 
+# Formulaire de modification des informations utilisateur
 class UserUpdateForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super(UserUpdateForm, self).__init__(*args, **kwargs)
@@ -56,54 +61,63 @@ class UserUpdateForm(ModelForm):
         exclude = ['is_superuser', 'is_staff', 'user_permissions', 'groups', 'password']
 
 
+# Formulaire d'ajout de catégorie de Document
 class DocumentCategoryForm(ModelForm):
     class Meta:
         model = DocumentCategory
         fields = '__all__'
 
 
+# Formulaire d'ajout de Document
 class DocumentForm(ModelForm):
     class Meta:
         model = Document
         exclude = ['date_ajout', 'nb_vues']
 
 
+# Formulaire de recherche de Document
 class DocumentSearchForm(ModelForm):
     class Meta:
         model = Document
         fields = '__all__'
 
 
+# Formulaire d'ajout de catégorie de Dataset
 class DataSetCategoryForm(ModelForm):
     class Meta:
         model = DataSetCategory
         fields = '__all__'
 
 
+# Formulaire d'ajout de Dataset
 class DataSetForm(ModelForm):
     class Meta:
         model = DataSet
         exclude = ['date_ajout', 'nb_vues']
 
 
+# Formulaire de recherche de Dataset
 class DataSetSearchForm(ModelForm):
     class Meta:
         model = DataSet
         exclude = []
 
 
+# Formulaire d'ajout de catégorie de Robot
 class RobotCategoryForm(ModelForm):
     class Meta:
         model = RobotCategory
         fields = '__all__'
 
 
+# Formulaire d'ajout de Robot
 class RobotForm(ModelForm):
     class Meta:
         model = Robot
         exclude = ['date_ajout', 'nb_vues']
 
 
+# Formulaire de recherche de Robot
 class RobotSearchForm(ModelForm):
     class Meta:
         model = Robot

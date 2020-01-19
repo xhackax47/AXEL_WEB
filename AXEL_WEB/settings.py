@@ -9,6 +9,9 @@ from django.urls import reverse_lazy
 from sentry_sdk.integrations.django import DjangoIntegration
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# DEBUG = True pour le mode Développement
+# DEBUG = False pour le mode Production
 DEBUG = False
 
 # Initialisation Sentry Montoring
@@ -34,6 +37,7 @@ if DEBUG:
 else:
     ALLOWED_HOSTS = ['axel-ihm.herokuapp.com']
 
+# Configuration sécurité SSL et cookies
 SECURE_SSL_REDIRECT = False
 SESSION_COOKIE_SECURE = False
 CSRF_COOKIE_SECURE = False
@@ -56,8 +60,11 @@ INSTALLED_APPS = [
     'rest_auth',
 ]
 
+# Utilisateur et groupes personnalisés
 AUTH_USER_MODEL = 'WebAXEL.AxelUser'
 AUTH_GROUP_MODEL = 'WebAXEL.AxelGroup'
+
+# Framework Web à utiliser avec crispy
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
@@ -76,7 +83,14 @@ MIDDLEWARE = [
 ADMIN = ('Samy', 'xhackax47@gmail.com')
 MANAGERS = ADMINS
 ROOT_URLCONF = 'AXEL_WEB.urls'
+
+# Configuration email pour l'activation de comptes
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'xhackax47@gmail.com'
+EMAIL_HOST_PASSWORD = 'yourpassword'
+EMAIL_PORT = 587
 
 TEMPLATES = [
     {
@@ -99,6 +113,7 @@ WSGI_APPLICATION = 'AXEL_WEB.wsgi.application'
 
 # Bases de données
 if not DEBUG and 'test' not in sys.argv or 'test_coverage' in sys.argv:
+    # Configuration BDD PostgreSQL Distante en mode Production (DEBUG=False)
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -110,6 +125,7 @@ if not DEBUG and 'test' not in sys.argv or 'test_coverage' in sys.argv:
         }
     }
 elif DEBUG and 'test' not in sys.argv or 'test_coverage' in sys.argv:
+    # Configuration BDD PostgreSQL Local en mode Développement (DEBUG=TRUE)
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -121,7 +137,7 @@ elif DEBUG and 'test' not in sys.argv or 'test_coverage' in sys.argv:
         }
     }
 
-# Configuration BDD SQLITE pour CircleCI
+# Configuration BDD SQLITE pour tests et Intégration Continue CircleCI
 else:
     DATABASES = {
         'default': {
@@ -156,11 +172,13 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
+# Chemin des fichiers de traductions
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'static/locale/'),
 )
 gettext = lambda x: x
 
+# Langages pris en charge par la traduction
 LANGUAGES = (
     ('fr', gettext('French')),
     ('en', gettext('English')),
@@ -180,10 +198,12 @@ LANGUAGES = (
 STATIC_URL = '/static/'
 
 if DEBUG:
+    # Fichiers statiques en mode Développement
     STATICFILES_DIRS = (
         os.path.join(BASE_DIR, "static"),
     )
 else:
+    # Fichiers statiques en mode Production
     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Simplified static file serving HEROKU COMPRESSION GZIP
