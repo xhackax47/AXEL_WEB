@@ -15,6 +15,14 @@ class AuthenticationForm(AuthenticationForm, MultipleForm):
     class Meta(AuthenticationForm):
         model = AxelUser
 
+    # Vérification du statut actif du compte
+    def clean_is_active(self):
+        is_active = self.cleaned_data['is_active']
+        if not is_active:
+            error = _("Le compte n'est pas actif, regardez vos email et activez le !!!")
+            raise ValidationError(error)
+        return is_active
+
 
 # Formulaire d'inscription utilisateur
 class SignupForm(UserCreationForm, MultipleForm):
@@ -24,6 +32,7 @@ class SignupForm(UserCreationForm, MultipleForm):
         model = AxelUser
         fields = ('username', 'email', 'first_name', 'last_name', 'password1', 'password2')
 
+    # Vérification de l'existence du nom d'utilisateur dans la base de données
     def clean_username(self):
         username = self.cleaned_data['username'].lower()
         r = AxelUser.objects.filter(username=username)
@@ -32,6 +41,7 @@ class SignupForm(UserCreationForm, MultipleForm):
             raise ValidationError(error)
         return username
 
+    # Vérification de l'existence de l'adresse email dans la base de données
     def clean_email(self):
         email = self.cleaned_data['email'].lower()
         r = AxelUser.objects.filter(email=email)
@@ -40,6 +50,7 @@ class SignupForm(UserCreationForm, MultipleForm):
             raise ValidationError(error)
         return email
 
+    # Vérification de la coincïdence des deux mots de passe de l'inscription
     def clean_password(self):
         password1 = self.cleaned_data.get("password1")
         password2 = self.cleaned_data.get("password2")
