@@ -2,7 +2,6 @@ from django.core.exceptions import ValidationError
 from django.forms import ModelForm, forms, CharField, HiddenInput, EmailField
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.utils.translation import ugettext_lazy as _
-from verified_email_field.forms import VerifiedEmailField
 
 from WebAXEL.models import Document, DataSet, DocumentCategory, DataSetCategory, AxelUser, RobotCategory, Robot
 
@@ -27,7 +26,7 @@ class AuthenticationForm(AuthenticationForm, MultipleForm):
 
 # Formulaire d'inscription utilisateur
 class SignupForm(UserCreationForm, MultipleForm):
-    email = VerifiedEmailField(max_length=200, help_text=_('Obligatoire'), required=True)
+    email = EmailField(max_length=200, help_text=_('Obligatoire'), required=True)
 
     class Meta(UserCreationForm):
         model = AxelUser

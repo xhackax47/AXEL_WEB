@@ -9,7 +9,6 @@ django-crispy-forms==1.8.1
 django-filter==2.2.0
 django-rest-auth==0.9.5
 djangorestframework==3.11.0
-django-verified-email-field==1.6.1
 gettext-anywhere==1.0.0
 gunicorn==20.0.4
 Markdown==3.1.1
