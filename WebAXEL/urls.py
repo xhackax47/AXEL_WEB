@@ -5,15 +5,25 @@ from django.urls import path, include
 
 from . import views
 
+
 # app_name = 'WebAXEL'
 
 def test_trigger_error(request):
     division_by_zero = 1 / 0
 
+
+# Base
 urlpatterns = [
     # Accueil
     path('', views.IndexView.as_view(), name='index'),
     path('home/', views.HomeView.as_view(), name='home'),
+    # Internationalisation
+    path('i18n/', include('django.conf.urls.i18n')),
+    # Test case pour Sentry
+    path('sentry-debug/', test_trigger_error, name='sentry-debug'),
+]
+# Comptes et connexion
+urlpatterns += [
     # Inscription
     path('register/', views.SignupView.as_view(), name='register'),
     path('register-confirmation/', views.RegisterConfirmationView.as_view(), name='register-confirmation'),
@@ -21,17 +31,13 @@ urlpatterns = [
     path('login/', views.LoginView.as_view(), name='login'),
     path('login-confirmation/', views.LoginConfirmationView.as_view(), name='login-confirmation'),
     path('logout/', views.LogoutView.as_view(), name='logout'),
-    # Internationalisation
-    path('i18n/', include('django.conf.urls.i18n')),
     # Gestion de compte par username
     url(r'^account-settings-username/(?P<username>\w+)/$', login_required(views.AccountSettingsUsernameView.as_view()),
         name='account-settings-username'),
-    # Gestion de compte par idgi
+    # Gestion compte par id
     path('account-settings-id/<int:pk>', views.AccountSettingsIdView.as_view(), name='account-settings-id'),
     # Activation mail des comptes
     path('activate/<str:uidb64>/<str:token>', views.ActivateAccount.as_view(), name='activate'),
-    # Test case pour Sentry
-    path('sentry-debug/', test_trigger_error, name='sentry-debug'),
 ]
 # Documents
 urlpatterns += [

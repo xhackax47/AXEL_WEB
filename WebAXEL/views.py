@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth import logout, login, update_session_auth_hash
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -76,20 +77,21 @@ class SignupView(CreateView):
             # Envoi du mail à l'utilisateur avec le token
             mail_subject = 'Activate your account.'
             current_site = get_current_site(request)
-            uid = urlsafe_base64_encode(force_bytes(user.pk))
+            uid = urlsafe_base64_encode(force_bytes(user.pk)).decode()
             token = account_activation_token.make_token(user)
             activation_link = "{0}/?uid={1}&token{2}".format(current_site, uid, token)
             message = "Hello {0},\n {1}".format(user.username, activation_link)
             to_email = form.cleaned_data.get('email')
             email = EmailMessage(mail_subject, message, to=[to_email])
             email.send()
-            return HttpResponse(_('Please confirm your email address to complete the registration'))
+            messages.success(request, _("Lien d'activation envoyé par mail"))
+            return reverse_lazy('index')
 
 
 class ActivateAccount(View):
     def get(self, request, uidb64, token):
         try:
-            uid = force_text(urlsafe_base64_decode(uidb64))
+            uid = urlsafe_base64_decode(uidb64).decode()
             user = AxelUser.objects.get(pk=uid)
         except(TypeError, ValueError, OverflowError, AxelUser.DoesNotExist):
             user = None
@@ -97,9 +99,12 @@ class ActivateAccount(View):
             # Activation de l'utilisateur
             user.is_active = True
             user.save()
+            messages.success(request, _("Votre compte a été activé avec succès"))
             login(request, user)
             return render(request, 'WebAXEL/registration/active_email.html')
-        return HttpResponse(_('Activation link is invalid!'))
+        else:
+            messages.warning(request, _("Le lien d'activation est invalide ou ce compte a déjà été activé."))
+            return reverse_lazy('index')
 
 
 class RegisterConfirmationView(TemplateView):
