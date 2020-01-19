@@ -1,6 +1,6 @@
 from django.core.exceptions import ValidationError
-from django.forms import ModelForm, forms, CharField, HiddenInput, TextInput
-from django.contrib.auth.forms import UserCreationForm, UserChangeForm, ReadOnlyPasswordHashField, AuthenticationForm
+from django.forms import ModelForm, forms, CharField, HiddenInput, EmailField
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.utils.translation import ugettext_lazy as _
 
 from WebAXEL.models import Document, DataSet, DocumentCategory, DataSetCategory, AxelUser, RobotCategory, Robot
@@ -18,7 +18,7 @@ class AuthenticationForm(AuthenticationForm, MultipleForm):
 
 # Formulaire d'inscription utilisateur
 class UserCreateForm(UserCreationForm, MultipleForm):
-    email = forms.EmailField(max_length=200, help_text=_('Obligatoire'))
+    email = EmailField(max_length=200, help_text=_('Obligatoire'))
 
     class Meta(UserCreationForm):
         model = AxelUser
