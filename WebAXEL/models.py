@@ -7,6 +7,8 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
+from verified_email_field.models import VerifiedEmailField
+
 from .managers import CustomUserManager
 
 
@@ -29,7 +31,7 @@ class AxelUser(AbstractUser):
         SuperAdmin = _('Super Administrateur')
 
     username = CharField(max_length=100, unique=True, null=True, verbose_name=_("Nom d'utilisateur"))
-    email = EmailField(_('email address'), unique=True)
+    email = VerifiedEmailField(_('email address'), unique=True)
     profile_img = ImageField(upload_to='static/img/profilesImages/', blank=True, verbose_name=_("Image Profil"))
     fonction = CharField(max_length=100, choices=Fonction.choices, default=Fonction.Guest, verbose_name=_("Fonction"))
 

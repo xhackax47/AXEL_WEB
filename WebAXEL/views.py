@@ -69,7 +69,7 @@ class SignupView(CreateView):
     def post(self, request):
         form = SignupForm(request.POST)
         if form.is_valid():
-            # Création utilisateur inactif sans mot de passe
+            # Création utilisateur inactif
             user = form.save(commit=False)
             user.is_active = False
             user.save()
