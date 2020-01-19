@@ -62,10 +62,8 @@ class LoginConfirmationView(TemplateView):
 
 
 # Vue Signup pour l'inscription
-class SignupView(View):
-    template_name = 'WebAXEL/registration/register_confirmation.html'
+class SignupView(CreateView):
     model = AxelUser
-    form_class = SignupForm
     success_url = reverse_lazy('register-confirmation')
 
     def post(self, request):
