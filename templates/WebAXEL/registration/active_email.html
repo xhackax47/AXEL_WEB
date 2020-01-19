@@ -6,14 +6,8 @@
         <h1 class="mainH1 mt-3 mb-3">{% trans 'Confirmation Mail' %}</h1>
     {% blocktrans with username=user.username %}
         {% autoescape off%}
-            Bonjour {{ user.username }}, Veuillez cliquer sur le lien pour confirmer votre inscription,
-            http://{{ domain }}{% url 'activate' uidb64=uid token=token %}
+            Bonjour {{ user.username }}, Votre compte a bien été activé.
         <div class="container">
-            <form action="" method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                    {{ form|crispy }}
-                    <button type="submit" class="btn btn-success">{% trans "Enregistrer les modifications" %}</button>
-            </form>
         </div>
         {% endautoescape %}
     {% endblocktrans %}

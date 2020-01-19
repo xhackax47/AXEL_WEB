@@ -94,14 +94,12 @@ class ActivateAccount(View):
             user = AxelUser.objects.get(pk=uid)
         except(TypeError, ValueError, OverflowError, AxelUser.DoesNotExist):
             user = None
-        if user is not None and account_activation_token.check_token(user, token):
-            # activate user and login:
+        if user and account_activation_token.check_token(user, token):
+            # Activation de l'utilisateur
             user.is_active = True
             user.save()
             login(request, user)
-
-            form = PasswordChangeForm(request.user)
-            return render(request, 'WebAXEL/registration/active_email.html', {'form': form})
+            return render(request, 'WebAXEL/registration/active_email.html')
         return HttpResponse(_('Activation link is invalid!'))
 
 
