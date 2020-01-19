@@ -1,7 +1,7 @@
 import os
-
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-import sys, random, string
+import sys
+import random
+import string
 
 from django.conf.global_settings import ADMINS
 from django.urls import reverse_lazy
