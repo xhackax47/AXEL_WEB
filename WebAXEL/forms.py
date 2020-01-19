@@ -22,7 +22,7 @@ class SignupForm(UserCreationForm, MultipleForm):
 
     class Meta(UserCreationForm):
         model = AxelUser
-        fields = ('username', 'email', 'first_name', 'last_name')
+        fields = ('username', 'email', 'password1', 'password2' ,'first_name', 'last_name')
 
     def clean_username(self):
         username = self.cleaned_data['username'].lower()
@@ -40,13 +40,13 @@ class SignupForm(UserCreationForm, MultipleForm):
             raise ValidationError(error)
         return email
 
-    def clean_password(self):
-        password1 = self.cleaned_data.get("password1")
-        password2 = self.cleaned_data.get("password2")
-        if password1 and password2 and password1 != password2:
-            error = _('Passwords don\'t match')
-            raise ValidationError(error)
-        return password2
+    #def clean_password(self):
+    #    password1 = self.cleaned_data.get("password1")
+    #    password2 = self.cleaned_data.get("password2")
+    #    if password1 and password2 and password1 != password2:
+    #        error = _('Passwords don\'t match')
+    #        raise ValidationError(error)
+    #    return password2
 
 
 # Formulaire de modification des informations utilisateur

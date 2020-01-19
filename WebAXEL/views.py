@@ -72,7 +72,6 @@ class SignupView(CreateView):
             # Création utilisateur inactif sans mot de passe
             user = form.save(commit=False)
             user.is_active = False
-            user.set_unusable_password()
             user.save()
 
             # Envoi du mail à l'utilisateur avec le token
@@ -85,7 +84,7 @@ class SignupView(CreateView):
             to_email = form.cleaned_data.get('email')
             email = EmailMessage(mail_subject, message, to=[to_email])
             email.send()
-            return HttpResponse('Please confirm your email address to complete the registration')
+            return HttpResponse(_('Please confirm your email address to complete the registration'))
 
 
 class ActivateAccount(View):
@@ -103,14 +102,7 @@ class ActivateAccount(View):
 
             form = PasswordChangeForm(request.user)
             return render(request, 'WebAXEL/registration/active_email.html', {'form': form})
-        return HttpResponse('Activation link is invalid!')
-
-    def post(self, request):
-        form = PasswordChangeForm(request.user, request.POST)
-        if form.is_valid():
-            user = form.save()
-            update_session_auth_hash(request, user)  # Important, to update the session with the new password
-            return HttpResponse('Password changed successfully')
+        return HttpResponse(_('Activation link is invalid!'))
 
 
 class RegisterConfirmationView(TemplateView):
