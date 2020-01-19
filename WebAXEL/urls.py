@@ -38,6 +38,7 @@ urlpatterns += [
     path('account-settings-id/<int:pk>', views.AccountSettingsIdView.as_view(), name='account-settings-id'),
     # Activation mail des comptes
     path('activate/<str:uidb64>/<str:token>', views.ActivateAccount.as_view(), name='activate'),
+    path('activate-error', views.ActivateAccountError.as_view(), name='activate-error'),
 ]
 # Documents
 urlpatterns += [

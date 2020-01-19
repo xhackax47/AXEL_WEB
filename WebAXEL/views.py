@@ -89,6 +89,11 @@ class SignupView(CreateView):
         return redirect('register-confirmation')
 
 
+
+class RegisterConfirmationView(TemplateView):
+    template_name = 'WebAXEL/registration/register_confirmation.html'
+
+
 class ActivateAccount(View):
     def get(self, request, uidb64, token):
         # Décodage base 64 uid et recherche d'utilisateur
@@ -108,9 +113,8 @@ class ActivateAccount(View):
         messages.warning(request, _("Le lien d'activation est invalide ou ce compte a déjà été activé."))
         return redirect('index')
 
-
-class RegisterConfirmationView(TemplateView):
-    template_name = 'WebAXEL/registration/register_confirmation.html'
+class ActivateAccountError(TemplateView):
+    template_name = 'WebAXEL/registration/active_email_error.html'
 
 
 # Vue Logout pour la deconnexion
