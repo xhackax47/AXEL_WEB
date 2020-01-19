@@ -31,7 +31,6 @@ if DEBUG:
 else:
     SECRET_KEY = os.environ.get('SECRET_KEY', ')k7-35hzr=44j&_nls3u%*ne1xz@==1gt(1k9-6%ra!y6pk21l')
 
-
 # Hôtes autorisés selon l'environnement
 if DEBUG:
     ALLOWED_HOSTS = ['localhost', '127.0.0.1']
@@ -85,17 +84,19 @@ ADMIN = ('Samy', 'xhackax47@gmail.com')
 MANAGERS = ADMINS
 ROOT_URLCONF = 'AXEL_WEB.urls'
 
-def encrypt_string(hash_string):
-    sha_signature = \
-        hashlib.sha256(hash_string.encode()).hexdigest()
-    return sha_signature
+
+# Methode chiffrage sha256
+def encrypt256(cle):
+    cle_hash = hashlib.sha256(cle.encode()).hexdigest()
+    return cle_hash
+
 
 # Configuration email pour l'activation de comptes
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', 'xhackax47@gmail.com')
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', encrypt_string('N@dyalilou71300'))
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', encrypt256('N@dyalilou71300'))
 EMAIL_PORT = 587
 
 TEMPLATES = [
