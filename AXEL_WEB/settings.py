@@ -11,11 +11,10 @@ DEBUG = False
 
 # Clé secrète selon l'environnement
 if DEBUG:
-    SECRET_KEY = os.environ.get('SECRET_KEY', ')k7-35hzr=44j&_nls3u%*ne1xz@==1gt(1k9-6%ra!y6pk21l')
+    SECRET_KEY = os.environ.get('SECRET_KEY', 'c@n%u@91tum=@j392g20b8znh7dqfo-v%81))gxbbmu$=dy_*)')
 else:
-    # Génération d'une nouvelle clé
-    genSecKey = "".join([random.choice(string.printable) for _ in range(24)])
-    SECRET_KEY = genSecKey
+    SECRET_KEY = os.environ.get('SECRET_KEY', ')k7-35hzr=44j&_nls3u%*ne1xz@==1gt(1k9-6%ra!y6pk21l')
+
 
 # Hôtes autorisés selon l'environnement
 if DEBUG:
