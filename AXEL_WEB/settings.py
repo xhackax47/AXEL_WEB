@@ -85,7 +85,7 @@ MANAGERS = ADMINS
 ROOT_URLCONF = 'AXEL_WEB.urls'
 
 # Configuration email pour l'activation de comptes
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'xhackax47@gmail.com'
