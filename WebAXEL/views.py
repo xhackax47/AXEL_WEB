@@ -64,7 +64,6 @@ class LoginConfirmationView(TemplateView):
 # Vue Signup pour l'inscription
 class SignupView(CreateView):
     model = AxelUser
-    success_url = reverse_lazy('register-confirmation')
 
     def post(self, request):
         form = SignupForm(request.POST)

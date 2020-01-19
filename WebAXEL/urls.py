@@ -29,7 +29,7 @@ urlpatterns = [
     # Gestion de compte par idgi
     path('account-settings-id/<int:pk>', views.AccountSettingsIdView.as_view(), name='account-settings-id'),
     # Activation mail des comptes
-    path('activate/<str:uid>/<str:token>', views.ActivateAccount.as_view(), name='activate'),
+    path('activate/<str:uidb64>/<str:token>', views.ActivateAccount.as_view(), name='activate'),
     # Test case pour Sentry
     path('sentry-debug/', test_trigger_error, name='sentry-debug'),
 ]
