@@ -105,9 +105,7 @@ class ActivateAccount(View):
 
             form = PasswordChangeForm(request.user)
             return render(request, 'WebAXEL/registration/active_email.html', {'form': form})
-
-        else:
-            return HttpResponse('Activation link is invalid!')
+        return HttpResponse('Activation link is invalid!')
 
     def post(self, request):
         form = PasswordChangeForm(request.user, request.POST)
