@@ -3,14 +3,14 @@ from django.contrib.admin import ModelAdmin
 from django.contrib.auth.admin import UserAdmin, GroupAdmin
 from django.contrib.auth.models import Group
 
-from WebAXEL.forms import UserCreationForm, UserChangeForm
+from WebAXEL.forms import UserCreationForm, UserUpdateForm
 from WebAXEL.models import Document, DocumentCategory, DataSet, DataSetCategory, AxelUser, AxelGroup, Robot, \
     RobotCategory
 
 
 class AxelUserAdmin(UserAdmin):
     add_form = UserCreationForm
-    form = UserChangeForm
+    form = UserUpdateForm
     model = AxelUser
     list_display = ('email', 'first_name', 'last_name', 'username', 'is_staff', 'is_active',)
     list_filter = ('email', 'first_name', 'last_name', 'username', 'is_staff', 'is_active',)
