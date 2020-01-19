@@ -1,5 +1,5 @@
-from django.contrib.auth import logout, login
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import logout, login, update_session_auth_hash
+from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.sites.shortcuts import get_current_site
@@ -12,10 +12,11 @@ from django.urls import reverse_lazy
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.translation import ugettext_lazy as _
+from django.views import View
 from django.views.generic import TemplateView, UpdateView, ListView, CreateView, DeleteView, DetailView
 
 from WebAXEL.forms import DocumentForm, DocumentSearchForm, DataSetForm, DataSetSearchForm, RobotSearchForm, RobotForm, \
-    UserCreateForm, UserUpdateForm
+    SignupForm, UserUpdateForm
 from WebAXEL.multiforms import MultiFormsView
 from WebAXEL.models import Document, DataSet, AxelUser, Robot
 from WebAXEL.tokens import account_activation_token
@@ -25,7 +26,7 @@ class IndexView(MultiFormsView):
     template_name = 'WebAXEL/login/login.html'
     form_classes = {
         'login': AuthenticationForm,
-        'register': UserCreateForm,
+        'register': SignupForm,
     }
     success_urls = {
         'login': reverse_lazy('login-confirmation'),
@@ -37,50 +38,12 @@ class IndexView(MultiFormsView):
         return HttpResponseRedirect(self.get_success_url(form_name))
 
     def register_form_valid(self, form, request):
-        if form.is_valid():
-            user = form.save(commit=False)
-            user.is_active = False
-            user.save()
-            current_site = get_current_site(request)
-            mail_subject = _('Activer votre compte A.X.E.L.')
-            message = render_to_string('WebAXEL/registration/active_email.html', {
-                'user': user,
-                'domain': current_site.domain,
-                'uid': urlsafe_base64_encode(force_bytes(user.pk)).decode(),
-                'token': account_activation_token.make_token(user),
-            })
-            to_email = form.cleaned_data.get('email')
-
-            email = EmailMessage(mail_subject, message, to=[to_email])
-        email.send()
-        return HttpResponse(_("Veuillez confirmer votre adresse email pour compléter l'inscription"))
-        # form_name = form.cleaned_data.get('action')
-        # return HttpResponseRedirect(self.get_success_url(form_name))
-
-
-def activate(request, uidb64, token):
-    try:
-        uid = force_text(urlsafe_base64_decode(uidb64))
-        user = AxelUser.objects.get(pk=uid)
-    except(TypeError, ValueError, OverflowError, AxelUser.DoesNotExist):
-        user = None
-    if user is not None and account_activation_token.check_token(user, token):
-        user.is_active = True
-        user.save()
-        login(request, user)
-        return reverse_lazy('index')
-        # return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
-
-    return HttpResponse(_("Activation link is invalid!"))
+        form_name = form.cleaned_data.get('action')
+        return HttpResponseRedirect(self.get_success_url(form_name))
 
 
 class HomeView(TemplateView):
     template_name = 'WebAXEL/login/login.html'
-
-
-class NotFoundView(TemplateView):
-    template_name = 'WebAXEL/errors/../templates/404.html'
-    status_code = 404
 
 
 # Vue Login pour la connexion
@@ -98,12 +61,60 @@ class LoginConfirmationView(TemplateView):
     template_name = 'WebAXEL/login/login_confirmation.html'
 
 
-# Vue Register pour l'inscription
-class RegisterView(CreateView):
+# Vue Signup pour l'inscription
+class SignupView(View):
     template_name = 'WebAXEL/registration/register_confirmation.html'
     model = AxelUser
-    form_class = UserCreateForm
+    form_class = SignupForm
     success_url = reverse_lazy('register-confirmation')
+
+    def post(self, request):
+        form = SignupForm(request.POST)
+        if form.is_valid():
+            # Création utilisateur inactif sans mot de passe
+            user = form.save(commit=False)
+            user.is_active = False
+            user.set_unusable_password()
+            user.save()
+
+            # Envoi du mail à l'utilisateur avec le token
+            mail_subject = 'Activate your account.'
+            current_site = get_current_site(request)
+            uid = urlsafe_base64_encode(force_bytes(user.pk))
+            token = account_activation_token.make_token(user)
+            activation_link = "{0}/?uid={1}&token{2}".format(current_site, uid, token)
+            message = "Hello {0},\n {1}".format(user.username, activation_link)
+            to_email = form.cleaned_data.get('email')
+            email = EmailMessage(mail_subject, message, to=[to_email])
+            email.send()
+            return HttpResponse('Please confirm your email address to complete the registration')
+
+
+class ActivateAccount(View):
+    def get(self, request, uidb64, token):
+        try:
+            uid = force_text(urlsafe_base64_decode(uidb64))
+            user = AxelUser.objects.get(pk=uid)
+        except(TypeError, ValueError, OverflowError, AxelUser.DoesNotExist):
+            user = None
+        if user is not None and account_activation_token.check_token(user, token):
+            # activate user and login:
+            user.is_active = True
+            user.save()
+            login(request, user)
+
+            form = PasswordChangeForm(request.user)
+            return render(request, 'WebAXEL/registration/active_email.html', {'form': form})
+
+        else:
+            return HttpResponse('Activation link is invalid!')
+
+    def post(self, request):
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)  # Important, to update the session with the new password
+            return HttpResponse('Password changed successfully')
 
 
 class RegisterConfirmationView(TemplateView):

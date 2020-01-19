@@ -1,5 +1,5 @@
-import six
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
+import six
 
 
 # Création de jeton unique pour la confirmation d'adresse mail à l'inscription

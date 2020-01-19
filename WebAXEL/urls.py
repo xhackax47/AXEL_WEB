@@ -15,7 +15,7 @@ urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
     path('home/', views.HomeView.as_view(), name='home'),
     # Inscription
-    path('register/', views.RegisterView.as_view(), name='register'),
+    path('register/', views.SignupView.as_view(), name='register'),
     path('register-confirmation/', views.RegisterConfirmationView.as_view(), name='register-confirmation'),
     # Authentification
     path('login/', views.LoginView.as_view(), name='login'),
@@ -29,8 +29,7 @@ urlpatterns = [
     # Gestion de compte par idgi
     path('account-settings-id/<int:pk>', views.AccountSettingsIdView.as_view(), name='account-settings-id'),
     # Activation mail des comptes
-    url(r'^activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
-        views.activate, name='activate'),
+    path('activate/<str:uid>/<str:token>', views.ActivateAccount.as_view(), name='activate'),
     # Test case pour Sentry
     path('sentry-debug/', test_trigger_error, name='sentry-debug'),
 ]

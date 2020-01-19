@@ -17,12 +17,12 @@ class AuthenticationForm(AuthenticationForm, MultipleForm):
 
 
 # Formulaire d'inscription utilisateur
-class UserCreateForm(UserCreationForm, MultipleForm):
+class SignupForm(UserCreationForm, MultipleForm):
     email = EmailField(max_length=200, help_text=_('Obligatoire'))
 
     class Meta(UserCreationForm):
         model = AxelUser
-        fields = ('username', 'email', 'password1', 'password2', 'first_name', 'last_name', 'profile_img')
+        fields = ('username', 'email', 'first_name', 'last_name')
 
     def clean_username(self):
         username = self.cleaned_data['username'].lower()
