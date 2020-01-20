@@ -16,6 +16,10 @@
                     {{ error|escape }}
                 {% endfor %}
             </ul>
+        {% elif messages %}
+            {% for message in messages %}
+                {{ message|escape }}
+            {% endfor %}
         {% else %}
             <p class="badge-success">{% trans 'Votre inscription a bien été prise en compte.' %}</p>
             <p class="badge-info">{% trans "Merci d'avoir pris le temps de vous inscrire sur mon application web." %}</p>
