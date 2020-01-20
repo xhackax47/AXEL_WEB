@@ -19,6 +19,7 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.translation import ugettext_lazy as _
 from django.views import View
 from django.views.generic import TemplateView, UpdateView, ListView, CreateView, DeleteView, DetailView
+from rest_framework.views import APIView
 
 from AXEL_WEB import settings
 from WebAXEL.forms import DocumentForm, DocumentSearchForm, DataSetForm, DataSetSearchForm, RobotSearchForm, RobotForm, \
@@ -99,7 +100,7 @@ class SignupView(CreateView):
             current_site = get_current_site(request)
             uid = urlsafe_base64_encode(force_bytes(user.pk))
             token = account_activation_token.make_token(user)
-            activation_link = "{0}/?uid={1}&token{2}".format(current_site, uid, token)
+            activation_link = "'{0}://{1}{2}'".format(current_site, uid, token)
             message = "Hello {0},\n {1}".format(user.username, activation_link)
             to_email = form.cleaned_data.get('email')
             email = EmailMessage(mail_subject, message, to=[to_email])
@@ -113,7 +114,7 @@ class RegisterConfirmationView(TemplateView):
     template_name = 'WebAXEL/registration/register_confirmation.html'
 
 
-class ActivateAccount(View):
+class ActivateAccount(APIView):
     def get(self, request, uidb64, token):
         # Décodage base 64 uid et recherche d'utilisateur
         try:
