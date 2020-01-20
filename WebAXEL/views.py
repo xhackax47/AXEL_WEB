@@ -1,29 +1,25 @@
 import json
-import urllib
+import urllib.request
+import urllib.parse
 
 from django.contrib import messages
-from django.contrib.auth import logout, login, update_session_auth_hash
-from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
+from django.contrib.auth import logout, login
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.sites.shortcuts import get_current_site
-from django.core.exceptions import ValidationError
 from django.core.mail import EmailMessage
 from django.db.models import Q
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
-from django.template.loader import render_to_string
 from django.urls import reverse_lazy
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.translation import ugettext_lazy as _
-from django.views import View
 from django.views.generic import TemplateView, UpdateView, ListView, CreateView, DeleteView, DetailView
 from rest_framework.views import APIView
 
 from AXEL_WEB import settings
-from WebAXEL.forms import DocumentForm, DocumentSearchForm, DataSetForm, DataSetSearchForm, RobotSearchForm, RobotForm, \
-    SignupForm, UserUpdateForm
+from WebAXEL.forms import *
 from WebAXEL.multiforms import MultiFormsView
 from WebAXEL.models import Document, DataSet, AxelUser, Robot
 from WebAXEL.tokens import account_activation_token
@@ -78,6 +74,7 @@ class SignupView(CreateView):
             # Création utilisateur inactif
             user = form.save(commit=False)
             user.is_active = False
+
             # Captcha
             recaptcha_response = request.POST.get('g-recaptcha-response')
             url = 'https://www.google.com/recaptcha/api/siteverify'
@@ -86,14 +83,14 @@ class SignupView(CreateView):
                 'response': recaptcha_response
             }
             data = urllib.parse.urlencode(values).encode()
-            req =  urllib.request.Request(url, data=data)
+            req = urllib.request.Request(url, data=data)
             response = urllib.request.urlopen(req)
-            result = json.loads(response.read().decode())
-            if result:
+            result = json.load(response)
+            if result['success']:
                 user.save()
+                messages.success(request, _('Utilisateur enregistré avec succès'))
             else:
-                error = _("Le captcha ne correspond pas")
-                raise ValidationError(error)
+                messages.error(request, _("Le captcha ne correspond pas"))
 
             # Envoi du mail à l'utilisateur avec le token
             mail_subject = _('Activation du compte A.X.E.L.')
@@ -144,7 +141,6 @@ class LogoutView(LogoutView):
     # Récupération de la requête de logout
     def get(self, request, **kwargs):
         logout(request)
-
         return render(request, self.template_name)
 
     def get_success_url(self):

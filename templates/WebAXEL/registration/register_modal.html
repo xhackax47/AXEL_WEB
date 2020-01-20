@@ -12,7 +12,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <script src='https://www.google.com/recaptcha/api.js'></script>
+                    <script src='https://www.google.com/recaptcha/api.js' async defer></script>
                     {% csrf_token %}
                     {{ forms.register|crispy }}
                     <div class="g-recaptcha" data-sitekey="6Lc-DNEUAAAAAKoOgHFB_L_8HdP0d_O_1cGPtDdE"></div>
