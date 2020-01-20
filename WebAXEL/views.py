@@ -97,7 +97,7 @@ class SignupView(CreateView):
             current_site = get_current_site(request)
             uid = urlsafe_base64_encode(force_bytes(user.pk))
             token = account_activation_token.make_token(user)
-            activation_link = "'http://{0}:/{1}/{2}'".format(current_site, uid, token)
+            activation_link = "'{0}:/{1}/{2}'".format(current_site, uid, token)
             message = "Bonjour {0},\n {1},".format(user.username, activation_link)
             to_email = form.cleaned_data.get('email')
             email = EmailMessage(mail_subject, message, to=[to_email])
