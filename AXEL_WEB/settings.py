@@ -7,6 +7,7 @@ import string
 import sentry_sdk
 from django.conf.global_settings import ADMINS
 from django.urls import reverse_lazy
+from django.utils.translation import ugettext_lazy as _
 from sentry_sdk.integrations.django import DjangoIntegration
 
 env_vars = [
