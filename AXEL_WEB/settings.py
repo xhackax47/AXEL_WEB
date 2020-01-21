@@ -35,7 +35,7 @@ env_vars = [
 
 # PRODUCTION : On met toutes les variables dans un tableau settings
 settings = {}
-if not DEBUG:
+if not DEBUG and 'test' not in sys.argv or 'test_coverage' in sys.argv:
     for var in env_vars:
         try:
             settings[var] = os.environ[var]
@@ -56,7 +56,7 @@ sentry_sdk.init(
 # Clé secrète selon l'environnement
 if DEBUG:
     SECRET_KEY = os.environ.get('SECRET_KEY', 'c@n%u@91tum=@j392g20b8znh7dqfo-v%81))gxbbmu$=dy_*)')
-else:
+elif not DEBUG and 'test' not in sys.argv or 'test_coverage' in sys.argv:
     SECRET_KEY = settings['SECRET_KEY']
 
 # Hôtes autorisés selon l'environnement
