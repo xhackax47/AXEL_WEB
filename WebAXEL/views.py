@@ -84,7 +84,8 @@ class SignupView(CreateView):
         uid = urlsafe_base64_encode(force_bytes(user.pk))
         token = account_activation_token.make_token(user)
         activation_link = "'{0}/activate/{1}/{2}'".format(current_site, uid, token)
-        message = "Bonjour {0},\n voici le lien pour activer votre compte AXEL : <a href={1}>Lien d'activation</a>" \
+        message = "Bonjour {0},\n" \
+                  "Voici le lien pour activer votre compte AXEL : <a href={1}>Lien d'activation</a>" \
             .format(user.username, activation_link)
         to_email = form.cleaned_data.get('email')
         email = EmailMessage(mail_subject, message, to=[to_email])
@@ -132,7 +133,7 @@ class ActivateAccount(APIView):
             login(request, user)
             return render(request, 'WebAXEL/registration/active_email.html')
         messages.warning(request, _("Le lien d'activation est invalide ou ce compte a déjà été activé."))
-        return redirect('activate-error')
+        return render(request, 'WebAXEL/registration/active_email.html')
 
 
 # Vue Logout pour la deconnexion
