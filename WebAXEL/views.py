@@ -71,10 +71,9 @@ class SignupView(CreateView):
             # Création utilisateur inactif
             user = form.save(commit=False)
             user.is_active = False
+            user.save()
             # Envoi mail activation
             self.send_activation_mail(request, form, user)
-            # Sauvegarde utilisateur après envoi mail en BDD
-            user.save()
             return redirect('register-confirmation')
         return render(request, 'WebAXEL/registration/register_confirmation.html', {'form': form})
 
@@ -125,10 +124,11 @@ class ActivateAccount(APIView):
             user = None
             return HttpResponse('Aucun utilisateur trouvé')
         if user and account_activation_token.check_token(user, token):
-            # Activation de l'utilisateur
+            # Activation de l'utilisateur et enregistrement en BDD
             user.is_active = True
             user.save()
             messages.success(request, _("Votre compte a été activé avec succès"))
+            # Connection automatique de l'utilisateur activé
             login(request, user)
             return render(request, 'WebAXEL/registration/active_email.html')
         messages.warning(request, _("Le lien d'activation est invalide ou ce compte a déjà été activé."))
