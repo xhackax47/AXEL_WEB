@@ -35,14 +35,13 @@ env_vars = [
 
 # PRODUCTION : On met toutes les variables dans un tableau settings
 settings = {}
-if not DEBUG and 'test' not in sys.argv or 'test_coverage' in sys.argv:
+if not DEBUG:
     for var in env_vars:
         try:
             settings[var] = os.environ[var]
         except KeyError as ke:
             print(_(f'ATTENTION la variable d\'environnement {var} n\'a pas été trouvé'))
             settings[var] = 'ko'
-
 
 # Initialisation Sentry Montoring
 sentry_sdk.init(
@@ -62,8 +61,7 @@ elif not DEBUG and 'test' not in sys.argv or 'test_coverage' in sys.argv:
 # Hôtes autorisés selon l'environnement
 if DEBUG:
     ALLOWED_HOSTS = ['localhost', '127.0.0.1']
-else:
-    ALLOWED_HOSTS = ['axel-ihm.herokuapp.com']
+ALLOWED_HOSTS = ['axel-ihm.herokuapp.com']
 
 # Configuration sécurité SSL et cookies
 SECURE_SSL_REDIRECT = False
@@ -71,7 +69,8 @@ SESSION_COOKIE_SECURE = False
 CSRF_COOKIE_SECURE = False
 
 # reCaptcha Google
-GOOGLE_RECAPTCHA_SECRET_KEY = settings['GOOGLE_RECAPTCHA_SECRET_KEY']
+if not DEBUG:
+    GOOGLE_RECAPTCHA_SECRET_KEY = settings['GOOGLE_RECAPTCHA_SECRET_KEY']
 
 # Applications installés
 INSTALLED_APPS = [
@@ -123,12 +122,13 @@ def encrypt256(cle):
 
 
 # Configuration email pour l'activation de comptes
-EMAIL_BACKEND = settings['EMAIL_BACKEND']
-EMAIL_USE_TLS = True
-EMAIL_HOST = settings['EMAIL_HOST']
-EMAIL_HOST_USER = settings['EMAIL_HOST_USER']
-EMAIL_HOST_PASSWORD = settings['EMAIL_HOST_PASSWORD']
-EMAIL_PORT = settings['EMAIL_PORT']
+if not DEBUG:
+    EMAIL_BACKEND = settings['EMAIL_BACKEND']
+    EMAIL_USE_TLS = True
+    EMAIL_HOST = settings['EMAIL_HOST']
+    EMAIL_HOST_USER = settings['EMAIL_HOST_USER']
+    EMAIL_HOST_PASSWORD = settings['EMAIL_HOST_PASSWORD']
+    EMAIL_PORT = settings['EMAIL_PORT']
 
 TEMPLATES = [
     {
