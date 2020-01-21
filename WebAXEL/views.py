@@ -84,11 +84,12 @@ class SignupView(CreateView):
         uid = urlsafe_base64_encode(force_bytes(user.pk))
         token = account_activation_token.make_token(user)
         activation_link = "{0}/activate/{1}/{2}".format(current_site, uid, token)
-        html_message = "<p>Bonjour {0},</p>\n" \
-                       "<br>\n" \
+        html_message = "<h1>Activation du compte A.X.E.L.</h1>\n" \
+                       "<p>Bonjour {0},</p>\n" \
                        "<p>Voici le lien pour activer votre compte AXEL :</p>\n" \
                        "<br>\n" \
                        "<a href=http://{1}>Lien d'activation</a>\n" \
+                       "<br>\n" \
                        "<strong>Administrateur A.X.E.L.</strong>" \
             .format(user.username, activation_link)
         to_email = form.cleaned_data.get('email')
