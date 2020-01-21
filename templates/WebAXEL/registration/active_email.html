@@ -5,7 +5,7 @@
     <div class="container-fluid" align="center">
         <h1 class="mainH1 mt-3 mb-3">{% trans 'Confirmation Mail' %}</h1>
         <div class="container">
-            {% if messages %}
+            {% if messages.error %}
                 <ul class="messages">
                     {% for message in messages %}
                         <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
