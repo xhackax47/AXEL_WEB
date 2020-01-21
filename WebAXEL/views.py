@@ -71,9 +71,10 @@ class SignupView(CreateView):
             # Création utilisateur inactif
             user = form.save(commit=False)
             user.is_active = False
-            user.save()
             # Envoi mail activation
             self.send_activation_mail(request, form, user)
+            # Sauvegarde utilisateur après envoi mail en BDD
+            user.save()
             return redirect('register-confirmation')
         return render(request, 'WebAXEL/registration/register_confirmation.html', {'form': form})
 
