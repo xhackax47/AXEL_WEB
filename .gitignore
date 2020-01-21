@@ -107,7 +107,3 @@ media/
 *.pyc
 *.db
 *.pid
-# django migrations (NON CONFIGURE POUR VENV2)
-**/migrations/**
-!**/migrations
-!**/migrations/__init__.py
