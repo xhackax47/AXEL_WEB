@@ -30,12 +30,12 @@ env_vars = [
 
 # On met toutes les variables dans un tableau settings
 settings = {}
-for var in env_vars:
-    try:
-        settings[var] = os.environ[var]
-    except KeyError as ke:
-        print(_(f'ATTENTION la variable d\'environnement {var} n\'a pas été trouvé'))
-        settings[var] = 'ko'
+# for var in env_vars:
+#     try:
+#         settings[var] = os.environ[var]
+#     except KeyError as ke:
+#         print(_(f'ATTENTION la variable d\'environnement {var} n\'a pas été trouvé'))
+#         settings[var] = 'ko'
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
