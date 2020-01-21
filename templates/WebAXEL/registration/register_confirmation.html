@@ -17,9 +17,11 @@
                 {% endfor %}
             </ul>
         {% elif messages %}
-            {% for message in messages %}
-                {{ message|escape }}
-            {% endfor %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
         {% else %}
             <p class="badge-success">{% trans 'Votre inscription a bien été prise en compte.' %}</p>
             <p class="badge-info">{% trans "Merci d'avoir pris le temps de vous inscrire sur mon application web." %}</p>
