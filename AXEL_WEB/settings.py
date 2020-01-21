@@ -223,5 +223,5 @@ else:
 
 # Authentification
 LOGIN_URL = reverse_lazy('index')
-LOGIN_REDIRECT_URL = reverse_lazy('home')
+LOGIN_REDIRECT_URL = reverse_lazy('index')
 LOGOUT_REDIRECT_URL = LOGIN_URL
