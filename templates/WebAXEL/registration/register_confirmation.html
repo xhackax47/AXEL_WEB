@@ -1,7 +1,7 @@
 {% extends "WebAXEL/base/base.html" %}
 {% load static i18n crispy_forms_tags %}
 {% block title %}
-    {% if form.errors or messages %}
+    {% if form.errors or messages.error %}
         {% trans "Erreur - IHM Web A.X.E.L." %}
     {% else %}
         {% trans "Confirmation d'inscription - IHM Web A.X.E.L." %}
@@ -22,7 +22,7 @@
                     <li>{{ error|escape }}</li>
                 {% endfor %}
             </ul>
-        {% elif messages %}
+        {% elif messages.error %}
             <h1 class="mainH1 mt-3 mb-3">{% trans "Erreur d'inscription" %}</h1>
             <ul class="messages">
                 {% for message in messages %}
@@ -33,6 +33,9 @@
             <h1 class="mainH1 mt-3 mb-3">{% trans "Confirmation d'inscription" %}</h1>
             <p class="badge-success">{% trans 'Votre inscription a bien été prise en compte.' %}</p>
             <p class="badge-info">{% trans "Merci d'avoir pris le temps de vous inscrire sur mon application web." %}</p>
+            {% for message in messages %}
+                <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+            {% endfor %}
             <p class="badge-danger">{% trans "N'oubliez pas d'aller voir votre compte mail afin d'activer votre compte." %}</p>
         {% endif %}
         <a href="{% url 'index' %}" type="button"
