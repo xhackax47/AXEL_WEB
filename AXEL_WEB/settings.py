@@ -9,6 +9,33 @@ from django.conf.global_settings import ADMINS
 from django.urls import reverse_lazy
 from sentry_sdk.integrations.django import DjangoIntegration
 
+env_vars = [
+    'SECRET_KEY',
+    'ALLOWED_HOSTS',
+    'GOOGLE_RECAPTCHA_SECRET_KEY',
+    'ADMIN',
+    'MANAGERS',
+    'EMAIL_BACKEND',
+    'EMAIL_USE_TLS',
+    'EMAIL_HOST',
+    'EMAIL_HOST_USER',
+    'EMAIL_HOST_PASSWORD',
+    'EMAIL_PORT',
+    'DB_HOST',
+    'DB_NAME',
+    'DB_USER',
+    'DB_PASSWORD',
+]
+
+# On met toutes les variables dans un tableau settings
+settings = {}
+for var in env_vars:
+    try:
+        settings[var] = os.environ[var]
+    except KeyError as ke:
+        print(_(f'ATTENTION la variable d\'environnement {var} n\'a pas été trouvé'))
+        settings[var] = 'ko'
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # DEBUG = True pour le mode Développement
@@ -84,7 +111,7 @@ MIDDLEWARE = [
 ]
 
 ADMIN = ('Samy', 'xhackax47@gmail.com')
-MANAGERS = ADMINS
+MANAGERS = ADMIN
 ROOT_URLCONF = 'AXEL_WEB.urls'
 
 
@@ -99,7 +126,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', 'xhackax47@gmail.com')
-#EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', encrypt256('N@dyalilou71300'))
+# EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', encrypt256('N@dyalilou71300'))
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', 'jtgrdelljxadtrqg')
 EMAIL_PORT = 587
 
