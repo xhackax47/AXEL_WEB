@@ -68,6 +68,10 @@ class LoginConfirmationView(TemplateView):
 class SignupView(CreateView):
     model = AxelUser
 
+    def form_valid(self, form):
+        form.instance.created_by = self.request.user
+        return super().form_valid(form)
+
     def post(self, request):
         form = SignupForm(request.POST)
         if form.is_valid():
@@ -105,7 +109,7 @@ class SignupView(CreateView):
             email.send()
             messages.success(request, _("Lien d'activation envoyé par mail"))
             return redirect('register-confirmation')
-        return redirect('register-confirmation')
+        return HttpResponse('ERROR')
 
 
 class RegisterConfirmationView(TemplateView):
