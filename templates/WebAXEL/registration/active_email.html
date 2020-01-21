@@ -5,9 +5,18 @@
     <div class="container-fluid" align="center">
         <h1 class="mainH1 mt-3 mb-3">{% trans 'Confirmation Mail' %}</h1>
         <div class="container">
-            {% blocktrans with username=user.username %}
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                {% blocktrans with username=user.username %}
                     Bonjour {{ user.username }}, Votre compte a bien été activé.
-            {% endblocktrans %}
+                {% endblocktrans %}
+            {% endif %}
+
         </div>
     </div>
 {% endblock %}

@@ -1,7 +1,3 @@
-import json
-import urllib.request
-import urllib.parse
-
 from django.contrib import messages
 from django.contrib.auth import logout, login
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -18,8 +14,8 @@ from django.utils.translation import ugettext_lazy as _
 from django.views.generic import TemplateView, UpdateView, ListView, CreateView, DeleteView, DetailView
 from rest_framework.views import APIView
 
-from AXEL_WEB import settings
-from WebAXEL.forms import *
+from WebAXEL.forms import AuthenticationForm, SignupForm, UserUpdateForm, DocumentSearchForm, DocumentForm, \
+    DataSetSearchForm, DataSetForm, RobotSearchForm, RobotForm
 from WebAXEL.multiforms import MultiFormsView
 from WebAXEL.models import Document, DataSet, AxelUser, Robot
 from WebAXEL.tokens import account_activation_token
@@ -131,10 +127,6 @@ class ActivateAccount(APIView):
             return render(request, 'WebAXEL/registration/active_email.html')
         messages.warning(request, _("Le lien d'activation est invalide ou ce compte a déjà été activé."))
         return redirect('activate-error')
-
-
-class ActivateAccountError(TemplateView):
-    template_name = 'WebAXEL/registration/active_email_error.html'
 
 
 # Vue Logout pour la deconnexion
