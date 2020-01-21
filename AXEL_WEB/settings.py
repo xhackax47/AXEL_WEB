@@ -10,46 +10,46 @@ from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 from sentry_sdk.integrations.django import DjangoIntegration
 
-env_vars = [
-    'SECRET_KEY',
-    'ALLOWED_HOSTS',
-    'GOOGLE_RECAPTCHA_SECRET_KEY',
-    'ADMIN',
-    'MANAGERS',
-    'EMAIL_BACKEND',
-    'EMAIL_USE_TLS',
-    'EMAIL_HOST',
-    'EMAIL_HOST_USER',
-    'EMAIL_HOST_PASSWORD',
-    'EMAIL_PORT',
-    'DB_HOST',
-    'DB_NAME',
-    'DB_USER',
-    'DB_PASSWORD',
-]
-
-# On met toutes les variables dans un tableau settings
-settings = {}
-# for var in env_vars:
-#     try:
-#         settings[var] = os.environ[var]
-#     except KeyError as ke:
-#         print(_(f'ATTENTION la variable d\'environnement {var} n\'a pas été trouvé'))
-#         settings[var] = 'ko'
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # DEBUG = True pour le mode Développement
 # DEBUG = False pour le mode Production
 DEBUG = False
 
+env_vars = [
+    'ADMIN',
+    'DB_HOST',
+    'DB_NAME',
+    'DB_USER',
+    'DB_PASSWORD',
+    'EMAIL_BACKEND',
+    'EMAIL_HOST',
+    'EMAIL_HOST_PASSWORD',
+    'EMAIL_HOST_USER',
+    'EMAIL_PORT',
+    'GOOGLE_RECAPTCHA_SECRET_KEY',
+    'MANAGERS',
+    'SECRET_KEY',
+
+]
+
+# PRODUCTION : On met toutes les variables dans un tableau settings
+settings = {}
+if not DEBUG:
+    for var in env_vars:
+        try:
+            settings[var] = os.environ[var]
+        except KeyError as ke:
+            print(_(f'ATTENTION la variable d\'environnement {var} n\'a pas été trouvé'))
+            settings[var] = 'ko'
+
+
 # Initialisation Sentry Montoring
 sentry_sdk.init(
     dsn="https://38fa4be46e8c4295b2ec9bda26b4b232@sentry.io/1887341",
     integrations=[DjangoIntegration()],
 
-    # If you wish to associate users to errors (assuming you are using
-    # django.contrib.auth) you may enable sending PII data.
+    # Associer les utilisateurs aux erreurs
     send_default_pii=True
 )
 
@@ -57,7 +57,7 @@ sentry_sdk.init(
 if DEBUG:
     SECRET_KEY = os.environ.get('SECRET_KEY', 'c@n%u@91tum=@j392g20b8znh7dqfo-v%81))gxbbmu$=dy_*)')
 else:
-    SECRET_KEY = os.environ.get('SECRET_KEY', ')k7-35hzr=44j&_nls3u%*ne1xz@==1gt(1k9-6%ra!y6pk21l')
+    SECRET_KEY = settings['SECRET_KEY']
 
 # Hôtes autorisés selon l'environnement
 if DEBUG:
@@ -71,7 +71,7 @@ SESSION_COOKIE_SECURE = False
 CSRF_COOKIE_SECURE = False
 
 # reCaptcha Google
-GOOGLE_RECAPTCHA_SECRET_KEY = "6Lc-DNEUAAAAANDhT0VMHpWjm87DAzwHQ3XatEhc"
+GOOGLE_RECAPTCHA_SECRET_KEY = settings['GOOGLE_RECAPTCHA_SECRET_KEY']
 
 # Applications installés
 INSTALLED_APPS = [
@@ -111,8 +111,8 @@ MIDDLEWARE = [
     'django.middleware.common.BrokenLinkEmailsMiddleware',
 ]
 
-ADMIN = ('Samy', 'xhackax47@gmail.com')
-MANAGERS = ADMIN
+ADMIN = settings['ADMIN']
+MANAGERS = settings['MANAGERS']
 ROOT_URLCONF = 'AXEL_WEB.urls'
 
 
@@ -123,13 +123,12 @@ def encrypt256(cle):
 
 
 # Configuration email pour l'activation de comptes
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = settings['EMAIL_BACKEND']
 EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', 'xhackax47@gmail.com')
-# EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', encrypt256('N@dyalilou71300'))
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', 'jtgrdelljxadtrqg')
-EMAIL_PORT = 587
+EMAIL_HOST = settings['EMAIL_HOST']
+EMAIL_HOST_USER = settings['EMAIL_HOST_USER']
+EMAIL_HOST_PASSWORD = settings['EMAIL_HOST_PASSWORD']
+EMAIL_PORT = settings['EMAIL_PORT']
 
 TEMPLATES = [
     {
@@ -156,10 +155,10 @@ if not DEBUG and 'test' not in sys.argv or 'test_coverage' in sys.argv:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'daskqm0c329l07',
-            'USER': 'zxavxwjozlvyhd',
-            'PASSWORD': '25e6d508fe5fd1fe7d823381ba8fb82077a629a74d811483274fd51e5dd14216',
-            'HOST': 'ec2-54-247-72-30.eu-west-1.compute.amazonaws.com',
+            'NAME': settings['DB_NAME'],
+            'USER': settings['DB_USER'],
+            'PASSWORD': settings['DB_PASSWORD'],
+            'HOST': settings['DB_HOST'],
             'PORT': '5432',
         }
     }
