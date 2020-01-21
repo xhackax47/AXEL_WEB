@@ -34,7 +34,9 @@
             <p class="badge-success">{% trans 'Votre inscription a bien été prise en compte.' %}</p>
             <p class="badge-info">{% trans "Merci d'avoir pris le temps de vous inscrire sur mon application web." %}</p>
             {% for message in messages %}
-                <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+                {% if message.tags %}
+                    <p class="badge-secondary">{{ message }}</p>
+                {% endif %}
             {% endfor %}
             <p class="badge-danger">{% trans "N'oubliez pas d'aller voir votre compte mail afin d'activer votre compte." %}</p>
         {% endif %}
