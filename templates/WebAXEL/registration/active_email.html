@@ -13,7 +13,7 @@
                 </ul>
             {% else %}
                 {% blocktrans with username=user.username %}
-                    Bonjour {{ user.username }}, Votre compte a bien été activé.
+                    Bonjour {{ username }}, Votre compte a bien été activé.
                 {% endblocktrans %}
             {% endif %}
 
