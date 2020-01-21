@@ -1,6 +1,5 @@
 from django.conf.urls import url
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
 from django.urls import path, include
 
 from . import views
@@ -8,6 +7,7 @@ from . import views
 
 # app_name = 'WebAXEL'
 
+# Génération erreur division par zéro pour test de Sentry
 def test_trigger_error(request):
     division_by_zero = 1 / 0
 
@@ -16,7 +16,6 @@ def test_trigger_error(request):
 urlpatterns = [
     # Accueil
     path('', views.IndexView.as_view(), name='index'),
-    path('home/', views.HomeView.as_view(), name='home'),
     # Internationalisation
     path('i18n/', include('django.conf.urls.i18n')),
     # Test case pour Sentry

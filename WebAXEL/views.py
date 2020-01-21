@@ -41,10 +41,6 @@ class IndexView(MultiFormsView):
         return HttpResponseRedirect(self.get_success_url(form_name))
 
 
-class HomeView(TemplateView):
-    template_name = 'WebAXEL/login/login.html'
-
-
 # Vue Login pour la connexion
 class LoginView(LoginView):
     template_name = 'WebAXEL/login/login_confirmation.html'
