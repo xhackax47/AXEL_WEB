@@ -13,7 +13,7 @@
                     {% endfor %}
                 {% endfor %}
                 {% for error in form.non_field_errors %}
-                    {{ error|escape }}
+                    <li>{{ error|escape }}</li>
                 {% endfor %}
             </ul>
         {% elif messages %}

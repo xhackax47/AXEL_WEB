@@ -68,48 +68,46 @@ class LoginConfirmationView(TemplateView):
 class SignupView(CreateView):
     model = AxelUser
 
-    def form_valid(self, form):
-        form.instance.created_by = self.request.user
-        return super().form_valid(form)
-
     def post(self, request):
         form = SignupForm(request.POST)
-        if form.is_valid():
-            # Création utilisateur inactif
-            user = form.save(commit=False)
-            user.is_active = False
-            user.save()
+        if request.method == 'POST':
+            if form.is_valid():
+                # Création utilisateur inactif
+                user = form.save(commit=False)
+                user.is_active = False
+                user.save()
 
-            # Captcha
-            # recaptcha_response = request.POST.get('g-recaptcha-response')
-            # url = 'https://www.google.com/recaptcha/api/siteverify'
-            # values = {
-            #     'secret': settings.GOOGLE_RECAPTCHA_SECRET_KEY,
-            #     'response': recaptcha_response
-            # }
-            # data = urllib.parse.urlencode(values)
-            # req = urllib.request.Request(url, data=data)
-            # response = urllib.request.urlopen(req)
-            # result = json.load(response)
-            # if result['success']:
-            #     user.save()
-            #     messages.success(request, _('Utilisateur enregistré avec succès'))
-            # else:
-            #     messages.error(request, _("Le captcha ne correspond pas"))
+                # Captcha
+                # recaptcha_response = request.POST.get('g-recaptcha-response')
+                # url = 'https://www.google.com/recaptcha/api/siteverify'
+                # values = {
+                #     'secret': settings.GOOGLE_RECAPTCHA_SECRET_KEY,
+                #     'response': recaptcha_response
+                # }
+                # data = urllib.parse.urlencode(values)
+                # req = urllib.request.Request(url, data=data)
+                # response = urllib.request.urlopen(req)
+                # result = json.load(response)
+                # if result['success']:
+                #     user.save()
+                #     messages.success(request, _('Utilisateur enregistré avec succès'))
+                # else:
+                #     messages.error(request, _("Le captcha ne correspond pas"))
 
-            # Envoi du mail à l'utilisateur avec le token
-            mail_subject = _('Activation du compte A.X.E.L.')
-            current_site = get_current_site(request)
-            uid = urlsafe_base64_encode(force_bytes(user.pk))
-            token = account_activation_token.make_token(user)
-            activation_link = "'{0}/activate/{1}/{2}'".format(current_site, uid, token)
-            message = "Bonjour {0},\n voici le lien pour activer votre compte AXEL : {1},".format(user.username, activation_link)
-            to_email = form.cleaned_data.get('email')
-            email = EmailMessage(mail_subject, message, to=[to_email])
-            email.send()
-            messages.success(request, _("Lien d'activation envoyé par mail"))
-            return redirect('register-confirmation')
-        return HttpResponse('ERROR')
+                # Envoi du mail à l'utilisateur avec le token
+                mail_subject = _('Activation du compte A.X.E.L.')
+                current_site = get_current_site(request)
+                uid = urlsafe_base64_encode(force_bytes(user.pk))
+                token = account_activation_token.make_token(user)
+                activation_link = "'{0}/activate/{1}/{2}'".format(current_site, uid, token)
+                message = "Bonjour {0},\n voici le lien pour activer votre compte AXEL : {1},".format(user.username,
+                                                                                                      activation_link)
+                to_email = form.cleaned_data.get('email')
+                email = EmailMessage(mail_subject, message, to=[to_email])
+                email.send()
+                messages.success(request, _("Lien d'activation envoyé par mail"))
+                return redirect('register-confirmation')
+        return render(request, 'WebAXEL/registration/register_confirmation.html', {'form': form})
 
 
 class RegisterConfirmationView(TemplateView):
