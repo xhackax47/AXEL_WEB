@@ -74,23 +74,24 @@ class SignupView(CreateView):
             # Création utilisateur inactif
             user = form.save(commit=False)
             user.is_active = False
+            user.save()
 
             # Captcha
-            recaptcha_response = request.POST.get('g-recaptcha-response')
-            url = 'https://www.google.com/recaptcha/api/siteverify'
-            values = {
-                'secret': settings.GOOGLE_RECAPTCHA_SECRET_KEY,
-                'response': recaptcha_response
-            }
-            data = urllib.parse.urlencode(values)
-            req = urllib.request.Request(url, data=data)
-            response = urllib.request.urlopen(req)
-            result = json.load(response)
-            if result['success']:
-                user.save()
-                messages.success(request, _('Utilisateur enregistré avec succès'))
-            else:
-                messages.error(request, _("Le captcha ne correspond pas"))
+            # recaptcha_response = request.POST.get('g-recaptcha-response')
+            # url = 'https://www.google.com/recaptcha/api/siteverify'
+            # values = {
+            #     'secret': settings.GOOGLE_RECAPTCHA_SECRET_KEY,
+            #     'response': recaptcha_response
+            # }
+            # data = urllib.parse.urlencode(values)
+            # req = urllib.request.Request(url, data=data)
+            # response = urllib.request.urlopen(req)
+            # result = json.load(response)
+            # if result['success']:
+            #     user.save()
+            #     messages.success(request, _('Utilisateur enregistré avec succès'))
+            # else:
+            #     messages.error(request, _("Le captcha ne correspond pas"))
 
             # Envoi du mail à l'utilisateur avec le token
             mail_subject = _('Activation du compte A.X.E.L.')
