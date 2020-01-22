@@ -53,10 +53,12 @@ sentry_sdk.init(
 )
 
 # Clé secrète selon l'environnement
-if DEBUG:
+if DEBUG and NOT_TEST:
     SECRET_KEY = os.environ.get('SECRET_KEY', 'c@n%u@91tum=@j392g20b8znh7dqfo-v%81))gxbbmu$=dy_*)')
 elif not DEBUG and NOT_TEST:
     SECRET_KEY = settings['SECRET_KEY']
+else:
+    SECRET_KEY = '1hewzbdd-rb*+r)r2u&ewfp90s9gy&lmc35j!38wtis8r6ze4k'
 
 # Hôtes autorisés selon l'environnement
 if DEBUG:
