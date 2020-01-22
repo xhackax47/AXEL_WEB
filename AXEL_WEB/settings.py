@@ -15,7 +15,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # DEBUG = True pour le mode Développement
 # DEBUG = False pour le mode Production
 DEBUG = False
-NOT_TEST = "'test' not in sys.argv or 'test_coverage' in sys.argv"
+NOT_TEST = eval("'test' not in sys.argv or 'test_coverage' in sys.argv")
 
 env_vars = [
     'ADMIN',
