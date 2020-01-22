@@ -82,6 +82,7 @@ class SignupView(CreateView):
         # Envoi du mail à l'utilisateur avec le token
         mail_subject = _('Activation du compte A.X.E.L. pour l\'utilisateur {{user.username}}')
         from_email = settings.EMAIL_HOST_USER
+        to_email = user.email
         current_site = get_current_site(request)
         uid = urlsafe_base64_encode(force_bytes(user.pk))
         token = account_activation_token.make_token(user)
@@ -94,7 +95,7 @@ class SignupView(CreateView):
             'token': token,
             'activation_link': activation_link,
         })
-        msg = EmailMultiAlternatives(mail_subject, text_message, from_email)
+        msg = EmailMultiAlternatives(mail_subject, text_message, from_email, to_email)
         msg.attach_alternative(html_message, "text/html")
         msg.send()
         messages.success(request, _("Lien d'activation envoyé par mail"))
