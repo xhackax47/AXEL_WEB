@@ -15,6 +15,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # DEBUG = True pour le mode Développement
 # DEBUG = False pour le mode Production
 DEBUG = False
+NOT_TEST = "not DEBUG and 'test' not in sys.argv or 'test_coverage' in sys.argv"
 
 env_vars = [
     'ADMIN',
@@ -34,7 +35,7 @@ env_vars = [
 
 # PRODUCTION : On met toutes les variables dans un tableau settings
 settings = {}
-if not DEBUG:
+if not DEBUG and NOT_TEST:
     for var in env_vars:
         try:
             settings[var] = os.environ[var]
@@ -54,7 +55,7 @@ sentry_sdk.init(
 # Clé secrète selon l'environnement
 if DEBUG:
     SECRET_KEY = os.environ.get('SECRET_KEY', 'c@n%u@91tum=@j392g20b8znh7dqfo-v%81))gxbbmu$=dy_*)')
-elif not DEBUG and 'test' not in sys.argv or 'test_coverage' in sys.argv:
+elif not DEBUG and NOT_TEST:
     SECRET_KEY = settings['SECRET_KEY']
 
 # Hôtes autorisés selon l'environnement
@@ -68,7 +69,7 @@ SESSION_COOKIE_SECURE = False
 CSRF_COOKIE_SECURE = False
 
 # reCaptcha Google
-if not DEBUG:
+if not DEBUG and NOT_TEST:
     GOOGLE_RECAPTCHA_SECRET_KEY = settings['GOOGLE_RECAPTCHA_SECRET_KEY']
 
 # Applications installés
@@ -109,19 +110,13 @@ MIDDLEWARE = [
     'django.middleware.common.BrokenLinkEmailsMiddleware',
 ]
 
-ADMIN = settings['ADMIN']
-MANAGERS = settings['MANAGERS']
-ROOT_URLCONF = 'AXEL_WEB.urls'
-
-
-# Methode chiffrage sha256
-def encrypt256(cle):
-    cle_hash = hashlib.sha256(cle.encode()).hexdigest()
-    return cle_hash
-
+if not DEBUG and NOT_TEST:
+    ADMIN = settings['ADMIN']
+    MANAGERS = settings['MANAGERS']
+    ROOT_URLCONF = 'AXEL_WEB.urls'
 
 # Configuration email pour l'activation de comptes
-if not DEBUG:
+if not DEBUG and NOT_TEST:
     EMAIL_BACKEND = settings['EMAIL_BACKEND']
     EMAIL_USE_TLS = True
     EMAIL_HOST = settings['EMAIL_HOST']
@@ -149,7 +144,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'AXEL_WEB.wsgi.application'
 
 # Bases de données
-if not DEBUG and 'test' not in sys.argv or 'test_coverage' in sys.argv:
+if not DEBUG and NOT_TEST:
     # Configuration BDD PostgreSQL Distante en mode Production (DEBUG=False)
     DATABASES = {
         'default': {
@@ -161,7 +156,7 @@ if not DEBUG and 'test' not in sys.argv or 'test_coverage' in sys.argv:
             'PORT': '5432',
         }
     }
-elif DEBUG and 'test' not in sys.argv or 'test_coverage' in sys.argv:
+elif DEBUG and NOT_TEST:
     # Configuration BDD PostgreSQL Local en mode Développement (DEBUG=TRUE)
     DATABASES = {
         'default': {
