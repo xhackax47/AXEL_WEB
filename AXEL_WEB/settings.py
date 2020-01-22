@@ -212,27 +212,6 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-# Chemin des fichiers de traductions
-LOCALE_PATHS = (
-    os.path.join(BASE_DIR, 'static/locale/'),
-)
-gettext = lambda x: x
-
-# Langages pris en charge par la traduction
-LANGUAGES = (
-    ('fr', gettext('French')),
-    ('en', gettext('English')),
-)
-
-# Channels
-# ASGI_APPLICATION = "AXEL_WEB.routing.application"
-# CHANNEL_LAYERS = {
-#         'default': {
-#                 'BACKEND': 'asgiref.inmemory.ChannelLayer',
-#                 'ROUTING': 'live.routing.channel_routing'
-#         },
-# }
-
 # Fichiers statiques (CSS, JavaScript, Images)
 
 STATIC_URL = '/static/'
@@ -249,6 +228,26 @@ else:
 # Simplified static file serving HEROKU COMPRESSION GZIP
 # https://warehouse.python.org/project/whitenoise/
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# Chemin des fichiers de traductions
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+)
+
+# Langages pris en charge par la traduction
+LANGUAGES = (
+    ('fr', _('French')),
+    ('en', _('English')),
+)
+
+# Channels
+# ASGI_APPLICATION = "AXEL_WEB.routing.application"
+# CHANNEL_LAYERS = {
+#         'default': {
+#                 'BACKEND': 'asgiref.inmemory.ChannelLayer',
+#                 'ROUTING': 'live.routing.channel_routing'
+#         },
+# }
 
 # Authentification
 LOGIN_URL = reverse_lazy('index')

@@ -1,0 +1,1014 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-01-22 11:53+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\AXEL_WEB\settings.py:47
+#, python-brace-format
+msgid "ATTENTION la variable d'environnement {var} n'a pas été trouvé"
+msgstr "WARNING the environment variable {var} was not found"
+
+#: .\AXEL_WEB\settings.py:239
+msgid "French"
+msgstr "French"
+
+#: .\AXEL_WEB\settings.py:240
+msgid "English"
+msgstr "English"
+
+#: .\WebAXEL\forms.py:22
+msgid "Le compte n'est pas actif, regardez vos email et activez le !!!"
+msgstr "The account is not active, check your emails and activate it !!!"
+
+#: .\WebAXEL\forms.py:29
+msgid "Obligatoire"
+msgstr "Mandatory"
+
+#: .\WebAXEL\forms.py:40
+msgid "L'utilisateur existe déjà"
+msgstr "User already exists"
+
+#: .\WebAXEL\forms.py:49
+msgid "L'adresse e-mail existe déjà"
+msgstr "Email already exists"
+
+#: .\WebAXEL\forms.py:58
+msgid "Les mots de passe ne correspondent pas"
+msgstr "Passwords don't match"
+
+#: .\WebAXEL\managers.py:14
+msgid "L'adresse électronique doit être définie"
+msgstr "The email must be set."
+
+#: .\WebAXEL\managers.py:28
+msgid "Le super-utilisateur doit avoir is_staff=True."
+msgstr "Superuser must have is_staff=True."
+
+#: .\WebAXEL\managers.py:30
+msgid "Le super-utilisateur doit avoir is_superuser=True."
+msgstr "Superuser must have is_superuser=True."
+
+#: .\WebAXEL\models.py:25
+msgid "Visiteur"
+msgstr "Guest"
+
+#: .\WebAXEL\models.py:26
+msgid "Utilisateur"
+msgstr "User"
+
+#: .\WebAXEL\models.py:27
+msgid "Développeur"
+msgstr "Developer"
+
+#: .\WebAXEL\models.py:28
+msgid "Administrateur Django"
+msgstr "Django Administrator"
+
+#: .\WebAXEL\models.py:29
+msgid "Administrateur A.X.E.L."
+msgstr "A.X.E.L. Administrator"
+
+#: .\WebAXEL\models.py:30
+msgid "Super Administrateur"
+msgstr "Super Administrator"
+
+#: .\WebAXEL\models.py:32
+msgid "Nom d'utilisateur"
+msgstr "Username : "
+
+#: .\WebAXEL\models.py:33
+msgid "email address"
+msgstr ""
+
+#: .\WebAXEL\models.py:34
+msgid "Image Profil"
+msgstr "Profile picture"
+
+#: .\WebAXEL\models.py:35
+msgid "Fonction"
+msgstr "Function"
+
+#: .\WebAXEL\models.py:43
+#, python-brace-format
+msgid "Nom d'utilisateur {0} / Adresse email : {1} "
+msgstr "Username {0} / Email address: {1} "
+
+#: .\WebAXEL\models.py:54
+msgid "Catégorie du Document"
+msgstr "Document Category"
+
+#: .\WebAXEL\models.py:61
+msgid "Titre"
+msgstr "Title"
+
+#: .\WebAXEL\models.py:63
+msgid "Date d'ajout du document"
+msgstr "Date document added"
+
+#: .\WebAXEL\models.py:64
+msgid "Auteur du document"
+msgstr "Document Author"
+
+#: .\WebAXEL\models.py:65
+msgid "Description du document"
+msgstr "Document description"
+
+#: .\WebAXEL\models.py:66
+msgid "Fichier document"
+msgstr "Document file"
+
+#: .\WebAXEL\models.py:67
+msgid "Nombre de vues du document"
+msgstr "Number of views of document"
+
+#: .\WebAXEL\models.py:69
+msgid "Catégories du Document"
+msgstr "Document Categorys"
+
+#: .\WebAXEL\models.py:72
+#, fuzzy, python-brace-format
+#| msgid ""
+#| "Titre du document : {0}, Date d'ajout du document : {1}, Auteur du "
+#| "document : {2}, Description du document : {3}, Emplacement du document : "
+#| "{4}"
+msgid ""
+"Titre du document : {0}, Date d'ajout du document : {1}, Auteur du "
+"document : {2}, Description du document : {3}, Emplacement du document : "
+"{4}, Catégorie du document : {5}"
+msgstr ""
+"Document title : {0}, Date the document was added : {1}, Document author : "
+"{2}, Document description : {3}, Document Location : {4}"
+
+#: .\WebAXEL\models.py:84 .\WebAXEL\models.py:85 .\WebAXEL\models.py:121
+#: .\WebAXEL\models.py:122 .\WebAXEL\models.py:158 .\WebAXEL\models.py:159
+msgid "Publié récemment?"
+msgstr "Recently published?"
+
+#: .\WebAXEL\models.py:90
+msgid "Catégorie du jeu de données"
+msgstr "Dataset Category"
+
+#: .\WebAXEL\models.py:97 .\WebAXEL\models.py:134
+msgid "Nom"
+msgstr "Name"
+
+#: .\WebAXEL\models.py:98
+msgid "Date d'ajout du jeu de données"
+msgstr "Date Dataset Added"
+
+#: .\WebAXEL\models.py:99
+msgid "Description du jeu de données"
+msgstr "Dataset Description"
+
+#: .\WebAXEL\models.py:100
+msgid "Fichier jeu de données"
+msgstr "Dataset File"
+
+#: .\WebAXEL\models.py:101
+msgid "Source"
+msgstr ""
+
+#: .\WebAXEL\models.py:102
+#, fuzzy
+#| msgid "Catégories du jeu de données"
+msgid "Nombre de vues du jeu de données"
+msgstr "Dataset Categorys"
+
+#: .\WebAXEL\models.py:104
+msgid "Catégories du jeu de données"
+msgstr "Dataset Categorys"
+
+#: .\WebAXEL\models.py:108
+#, fuzzy, python-brace-format
+#| msgid ""
+#| "Nom de l'ensemble de données : {0}, Date d'ajout de l'ensemble de "
+#| "données : {1}, Description de l'ensemble de données : {2}, Emplacement de "
+#| "l'ensemble de données : {3}, Catégorie de l'ensemble de données : {4}"
+msgid ""
+"Nom du jeu de données : {0}, Date d'ajout du jeu de données : {1}, "
+"Description du jeu de données : {2}, Emplacement du jeu de données : {3}, "
+"Catégories du jeu de données : {4}"
+msgstr ""
+"Dataset name: {0}, Date dataset added: {1}, Dataset Description: {2}, "
+"Dataset Location : {3} Dataset category: {4}"
+
+#: .\WebAXEL\models.py:127
+msgid "Catégorie du robot"
+msgstr "Robot Category"
+
+#: .\WebAXEL\models.py:135
+msgid "Image Robot"
+msgstr "Robot picture"
+
+#: .\WebAXEL\models.py:136
+msgid "Modèle"
+msgstr "Model"
+
+#: .\WebAXEL\models.py:137
+msgid "Utilisation"
+msgstr "Usage"
+
+#: .\WebAXEL\models.py:138
+msgid "Documentation Robot"
+msgstr "Robot's Documentation"
+
+#: .\WebAXEL\models.py:139
+msgid "Date d'ajout du robot"
+msgstr "Date robot added"
+
+#: .\WebAXEL\models.py:140
+msgid "Description du robot"
+msgstr "Robot description"
+
+#: .\WebAXEL\models.py:141
+#, fuzzy
+#| msgid "Nombre de vues du document"
+msgid "Nombre de vues du robot"
+msgstr "Number of views of document"
+
+#: .\WebAXEL\models.py:143
+msgid "Catégories du robot"
+msgstr "Robot Categorys"
+
+#: .\WebAXEL\models.py:147
+#, fuzzy, python-brace-format
+#| msgid ""
+#| "Titre du document : {0}, Date d'ajout du document : {1}, Auteur du "
+#| "document : {2}, Description du document : {3}, Emplacement du document : "
+#| "{4}"
+msgid ""
+"Nom du robot : {0}, Date d'ajout du robot: {1}, Description du robot : {2}, "
+"Catégories du robot: {3}, "
+msgstr ""
+"Document title : {0}, Date the document was added : {1}, Document author : "
+"{2}, Document description : {3}, Document Location : {4}"
+
+#: .\WebAXEL\views.py:82
+msgid "Activation du compte A.X.E.L."
+msgstr "Activating A.X.E.L. account."
+
+#: .\WebAXEL\views.py:99
+msgid "Lien d'activation envoyé par mail"
+msgstr "Activation link emailed to you."
+
+#: .\WebAXEL\views.py:115
+#, fuzzy
+#| msgid "Utilisateurs et Administrateur"
+msgid "Utilisateur enregistré avec succès"
+msgstr "Users and Administrator"
+
+#: .\WebAXEL\views.py:117
+msgid "Le captcha ne correspond pas"
+msgstr "The captcha doesn't match."
+
+#: .\WebAXEL\views.py:137
+msgid "Votre compte a été activé avec succès"
+msgstr "Your account has been successfully activated."
+
+#: .\WebAXEL\views.py:141
+msgid "Le lien d'activation est invalide ou ce compte a déjà été activé."
+msgstr "The activation link is invalid or this account has already been activated."
+
+#: .\templates\404.html:4
+msgid "404 - IHM Web A.X.E.L."
+msgstr "404 - A.X.E.L. Web HMI."
+
+#: .\templates\404.html:8
+msgid "Cette page n'existe pas"
+msgstr "This page does not exist."
+
+#: .\templates\404.html:12 .\templates\500.html:12
+#: .\templates\WebAXEL\login\login_confirmation.html:26
+#: .\templates\WebAXEL\registration\register_confirmation.html:26
+#: .\templates\WebAXEL\registration\register_confirmation.html:36
+#: .\templates\WebAXEL\registration\register_confirmation.html:49
+msgid "Retourner à l'écran principal"
+msgstr "Return to main screen"
+
+#: .\templates\500.html:4
+msgid "500 - IHM Web A.X.E.L."
+msgstr "500 - A.X.E.L. Web HMI."
+
+#: .\templates\500.html:8
+msgid "Erreur interne au serveur"
+msgstr "Internal server error"
+
+#: .\templates\WebAXEL\base\footer.html:23
+msgid "Changer"
+msgstr "Change"
+
+#: .\templates\WebAXEL\base\navbar.html:20
+msgid "Administration"
+msgstr "Management"
+
+#: .\templates\WebAXEL\base\navbar.html:24
+msgid "Administration Web"
+msgstr "Web Management"
+
+#: .\templates\WebAXEL\base\navbar.html:27
+msgid "Administration A.X.E.L."
+msgstr "A.X.E.L. Management"
+
+#: .\templates\WebAXEL\base\navbar.html:36
+msgid "Documentation"
+msgstr ""
+
+#: .\templates\WebAXEL\base\navbar.html:41
+#: .\templates\WebAXEL\documents\create-document.html:6
+#: .\templates\WebAXEL\documents\create-document.html:10
+msgid "Ajouter Document"
+msgstr "Add Document"
+
+#: .\templates\WebAXEL\base\navbar.html:45
+msgid "Documents"
+msgstr ""
+
+#: .\templates\WebAXEL\base\navbar.html:53
+msgid "Données"
+msgstr "Datas"
+
+#: .\templates\WebAXEL\base\navbar.html:58
+#: .\templates\WebAXEL\datasets\create-dataset.html:6
+#: .\templates\WebAXEL\datasets\create-dataset.html:11
+msgid "Ajouter Jeu de Données"
+msgstr "Add Dataset"
+
+#: .\templates\WebAXEL\base\navbar.html:62
+msgid "Jeux de données"
+msgstr "Datasets"
+
+#: .\templates\WebAXEL\base\navbar.html:69
+#: .\templates\WebAXEL\base\navbar.html:78
+msgid "Robots"
+msgstr ""
+
+#: .\templates\WebAXEL\base\navbar.html:74
+#: .\templates\WebAXEL\robots\create-robot.html:6
+#: .\templates\WebAXEL\robots\create-robot.html:10
+msgid "Ajouter Robot"
+msgstr "Add Robot"
+
+#: .\templates\WebAXEL\base\navbar.html:88
+msgid "Bonjour et bienvenue"
+msgstr "Hello and welcome"
+
+#: .\templates\WebAXEL\base\navbar.html:104
+#: .\templates\WebAXEL\base\navbar.html:108
+msgid "Gestion Compte"
+msgstr "Account management"
+
+#: .\templates\WebAXEL\base\navbar.html:112
+msgid "Déconnexion"
+msgstr "Logout"
+
+#: .\templates\WebAXEL\datasets\create-dataset.html:3
+msgid "Ajouter Jeu de Données A.X.E.L."
+msgstr "Add A.X.E.L.'s Dataset"
+
+#: .\templates\WebAXEL\datasets\dataset.html:3
+msgid "Jeu de données A.X.E.L."
+msgstr "A.X.E.L.'s Dataset"
+
+#: .\templates\WebAXEL\datasets\dataset.html:11
+#: .\templates\WebAXEL\documents\document.html:11
+#: .\templates\WebAXEL\robots\robot.html:13
+#, python-format
+msgid " %(description)s"
+msgstr ""
+
+#: .\templates\WebAXEL\datasets\dataset.html:14
+#: .\templates\WebAXEL\datasets\datasets.html:46
+#, python-format
+msgid "Source : %(source)s"
+msgstr ""
+
+#: .\templates\WebAXEL\datasets\dataset.html:21
+#: .\templates\WebAXEL\datasets\datasets.html:56
+msgid "Modifier Jeu de Données"
+msgstr "Edit Dataset"
+
+#: .\templates\WebAXEL\datasets\dataset.html:23
+#: .\templates\WebAXEL\datasets\datasets.html:58
+#: .\templates\WebAXEL\datasets\datasets_confirmation_modal.html:27
+msgid "Supprimer Jeu de Données"
+msgstr "Delete Dataset"
+
+#: .\templates\WebAXEL\datasets\datasets.html:3
+#: .\templates\WebAXEL\datasets\datasets.html:6
+msgid "Jeux de données A.X.E.L."
+msgstr "A.X.E.L.'s Datasets"
+
+#: .\templates\WebAXEL\datasets\datasets.html:11
+msgid "Recherche de jeu(x) de données"
+msgstr "Dataset(s) search"
+
+#: .\templates\WebAXEL\datasets\datasets.html:12
+#: .\templates\WebAXEL\documents\documents.html:12
+#: .\templates\WebAXEL\robots\robots.html:12
+msgid "Recherche"
+msgstr "Search"
+
+#: .\templates\WebAXEL\datasets\datasets.html:22
+#: .\templates\WebAXEL\robots\robots.html:22
+#, fuzzy, python-format
+#| msgid "Page %(number)s sur %(num_pages)s."
+msgid ""
+"Page %(number)s sur\n"
+"                    %(num_pages)s."
+msgstr "Page %(number)s of %(num_pages)s."
+
+#: .\templates\WebAXEL\datasets\datasets.html:35
+#: .\templates\WebAXEL\robots\robots.html:35
+#, python-format
+msgid "%(nom)s"
+msgstr ""
+
+#: .\templates\WebAXEL\datasets\datasets.html:37
+#: .\templates\WebAXEL\robots\robots.html:38
+#, fuzzy, python-format
+#| msgid "Nombre de vues : %(document.nb_vues)s"
+msgid ""
+"\n"
+"                                %(description)s"
+msgstr "Number of views : %(nb_vues)s"
+
+#: .\templates\WebAXEL\datasets\datasets.html:41
+#: .\templates\WebAXEL\documents\documents.html:39
+#: .\templates\WebAXEL\robots\robots.html:42
+msgid "Lire plus"
+msgstr "Read more"
+
+#: .\templates\WebAXEL\datasets\datasets.html:53
+msgid "Détails Jeu de Données"
+msgstr "Dataset Details"
+
+#: .\templates\WebAXEL\datasets\datasets.html:72
+msgid "Aucun jeu de données trouvé"
+msgstr "No Dataset Found"
+
+#: .\templates\WebAXEL\datasets\datasets_confirmation_modal.html:10
+#, python-format
+msgid "Suppression du dataset %(nom)s"
+msgstr "Deletion of dataset %(nom)s"
+
+#: .\templates\WebAXEL\datasets\datasets_confirmation_modal.html:18
+#, fuzzy, python-format
+#| msgid "Etes-vous sûr de vouloir supprimer le document? (id %(id)s)"
+msgid ""
+"Etes-vous sûr de vouloir supprimer l'ensemble de données? (id\n"
+"                        %(id)s)"
+msgstr "Are you sure you want to delete this document? (id %(id)s)"
+
+#: .\templates\WebAXEL\datasets\datasets_confirmation_modal.html:24
+#: .\templates\WebAXEL\documents\documents_confirmation_modal.html:22
+#: .\templates\WebAXEL\robots\robots_confirmation_modal.html:22
+msgid "Annuler"
+msgstr "Cancel"
+
+#: .\templates\WebAXEL\datasets\datasets_modal_description.html:18
+#: .\templates\WebAXEL\documents\documents_modal_description.html:18
+#: .\templates\WebAXEL\robots\robots_modal_description.html:18
+msgid "Fermer"
+msgstr "Close"
+
+#: .\templates\WebAXEL\datasets\datasets_pagination.html:5
+#: .\templates\WebAXEL\documents\documents_pagination.html:5
+#: .\templates\WebAXEL\robots\robots_pagination.html:5
+msgid "Première page"
+msgstr "First page"
+
+#: .\templates\WebAXEL\datasets\datasets_pagination.html:7
+#: .\templates\WebAXEL\documents\documents_pagination.html:7
+#: .\templates\WebAXEL\robots\robots_pagination.html:7
+msgid "&laquo; Page précédente"
+msgstr "&laquo; Previous page"
+
+#: .\templates\WebAXEL\datasets\datasets_pagination.html:13
+#: .\templates\WebAXEL\documents\documents_pagination.html:13
+#: .\templates\WebAXEL\robots\robots_pagination.html:12
+msgid "Page suivante &raquo;"
+msgstr "Next page &raquo;"
+
+#: .\templates\WebAXEL\datasets\datasets_pagination.html:16
+#: .\templates\WebAXEL\documents\documents_pagination.html:16
+#: .\templates\WebAXEL\robots\robots_pagination.html:15
+msgid "Dernière page"
+msgstr "Last page"
+
+#: .\templates\WebAXEL\datasets\edit-dataset.html:3
+#, fuzzy
+#| msgid "Modifier Ensemble de Données A.X.E.L."
+msgid "Modifier Jeu de Données A.X.E.L."
+msgstr "Edit A.X.E.L.'s Dataset"
+
+#: .\templates\WebAXEL\datasets\edit-dataset.html:5
+msgid "Modifier Jeu de données"
+msgstr "Edit Dataset"
+
+#: .\templates\WebAXEL\datasets\edit-dataset.html:10
+#: .\templates\WebAXEL\documents\edit-document.html:10
+#: .\templates\WebAXEL\robots\edit-robot.html:10
+msgid "Sauvegarder les modifications"
+msgstr "Save changes"
+
+#: .\templates\WebAXEL\documents\create-document.html:3
+msgid "Ajouter Documentation A.X.E.L."
+msgstr "Add A.X.E.L. Documentation"
+
+#: .\templates\WebAXEL\documents\document.html:3
+#: .\templates\WebAXEL\documents\documents.html:3
+#: .\templates\WebAXEL\documents\documents.html:6
+msgid "Documentation A.X.E.L."
+msgstr "A.X.E.L. Documentation"
+
+#: .\templates\WebAXEL\documents\document.html:15
+#: .\templates\WebAXEL\documents\documents.html:44
+#, fuzzy, python-format
+#| msgid "Auteur : %(document.auteur)s"
+msgid "Auteur : %(auteur)s"
+msgstr "Author : %(auteur)s"
+
+#: .\templates\WebAXEL\documents\document.html:18
+#, fuzzy, python-format
+#| msgid "Nombre de vues : %(document.nb_vues)s"
+msgid ""
+"Nombre de vues :\n"
+"                            %(nb_vues)s"
+msgstr "Number of views : %(nb_vues)s"
+
+#: .\templates\WebAXEL\documents\document.html:24
+#: .\templates\WebAXEL\documents\documents.html:56
+#: .\templates\WebAXEL\documents\edit-document.html:6
+msgid "Modifier Document"
+msgstr "Edit Document"
+
+#: .\templates\WebAXEL\documents\document.html:26
+#: .\templates\WebAXEL\documents\documents.html:59
+#: .\templates\WebAXEL\documents\documents_confirmation_modal.html:25
+msgid "Supprimer Document"
+msgstr "Delete Document"
+
+#: .\templates\WebAXEL\documents\documents.html:11
+msgid "Recherche de document"
+msgstr "Document search"
+
+#: .\templates\WebAXEL\documents\documents.html:22
+#, fuzzy, python-format
+#| msgid "Page %(number)s sur %(num_pages)s."
+msgid "Page %(number)s sur %(num_pages)s."
+msgstr "Page %(number)s of %(num_pages)s."
+
+#: .\templates\WebAXEL\documents\documents.html:34
+#, python-format
+msgid "%(titre)s"
+msgstr ""
+
+#: .\templates\WebAXEL\documents\documents.html:36
+#, python-format
+msgid "%(description)s"
+msgstr ""
+
+#: .\templates\WebAXEL\documents\documents.html:47
+#, fuzzy, python-format
+#| msgid "Nombre de vues du document"
+msgid "Nombre de vues : %(nb_vues)s"
+msgstr "Number of views : %(nb_vues)s"
+
+#: .\templates\WebAXEL\documents\documents.html:53
+msgid "Détails Document"
+msgstr "Document Details"
+
+#: .\templates\WebAXEL\documents\documents.html:74
+msgid "Aucun document trouvé"
+msgstr "No document found"
+
+#: .\templates\WebAXEL\documents\documents_confirmation_modal.html:10
+#, fuzzy, python-format
+#| msgid "Suppression du dataset %(nom)s"
+msgid "Suppression du document %(titre)s "
+msgstr "Deletion of dataset %(nom)s"
+
+#: .\templates\WebAXEL\documents\documents_confirmation_modal.html:17
+#, fuzzy, python-format
+#| msgid "Etes-vous sûr de vouloir supprimer le document? (id %(id)s)"
+msgid ""
+"Etes-vous sûr de vouloir supprimer le document? (id %(id)s\n"
+"                    )"
+msgstr "Are you sure you want to delete this document? (id %(id)s)"
+
+#: .\templates\WebAXEL\documents\edit-document.html:3
+msgid "Modifier Documentation A.X.E.L."
+msgstr "Edit A.X.E.L.'s Documentation"
+
+#: .\templates\WebAXEL\login\login.html:5
+msgid "Accueil - IHM Web A.X.E.L."
+msgstr "Home - A.X.E.L. Web HMI."
+
+#: .\templates\WebAXEL\login\login.html:7
+#: .\templates\WebAXEL\login\login_modal.html:8
+msgid "Connexion - IHM Web A.X.E.L."
+msgstr "Login - A.X.E.L. Web HMI."
+
+#: .\templates\WebAXEL\login\login.html:12
+msgid "Bienvenue sur l'IHM A.X.E.L."
+msgstr "Welcome to A.X.E.L. HMI."
+
+#: .\templates\WebAXEL\login\login.html:68
+msgid ""
+"Votre nom d'utilisateur et votre mot de passe ne correspondent pas. Veuillez "
+"réessayer."
+msgstr "Your username and password do not match. Please try again."
+
+#: .\templates\WebAXEL\login\login.html:70
+#: .\templates\WebAXEL\registration\register_confirmation.html:14
+#: .\templates\WebAXEL\registration\register_confirmation.html:29
+msgid ""
+"Les informations données pour l'inscription ne sont pas correctes. Veuillez "
+"réessayer."
+msgstr ""
+"The information given for registration is not correct. Please try again."
+
+#: .\templates\WebAXEL\login\login.html:75
+#: .\templates\WebAXEL\login\login.html:77
+#: .\templates\WebAXEL\login\login_modal.html:18
+msgid "Connexion"
+msgstr "Login"
+
+#: .\templates\WebAXEL\login\login.html:83
+#: .\templates\WebAXEL\login\login.html:85
+#: .\templates\WebAXEL\login\login.html:86
+msgid "Inscription"
+msgstr "Registration"
+
+#: .\templates\WebAXEL\login\login_confirmation.html:5
+msgid "Erreur Connexion - IHM Web A.X.E.L."
+msgstr "Error Connection - HMI Web A.X.E.L."
+
+#: .\templates\WebAXEL\login\login_confirmation.html:7
+msgid "Connexion Réussie - IHM Web A.X.E.L."
+msgstr "Successful Connection - A.X.E.L. Web HMI."
+
+#: .\templates\WebAXEL\login\login_confirmation.html:13
+msgid "Erreur"
+msgstr "Error"
+
+#: .\templates\WebAXEL\login\login_confirmation.html:14
+msgid ""
+"Les informations données pour la connexion ne sont pas correctes. Veuillez "
+"réessayer."
+msgstr ""
+"The information given for the connection is not correct. Please try again."
+
+#: .\templates\WebAXEL\login\login_confirmation.html:28
+msgid "Connecté"
+msgstr "Connected"
+
+#: .\templates\WebAXEL\login\login_confirmation.html:30
+#, fuzzy, python-format
+#| msgid ""
+#| "Bienvenue sur A.X.E.L. %(username)s, vous voilà connecté en tant que "
+#| "%(fonction)s !!!"
+msgid ""
+"\n"
+"                    Bienvenue sur A.X.E.L. %(username)s, vous voilà connecté "
+"en tant que %(fonction)s !!!\n"
+"                "
+msgstr "Welcome to A.X.E.L. %(username)s, you are logged in as %(function) !!!"
+
+#: .\templates\WebAXEL\login\login_confirmation.html:37
+msgid ""
+"Vous possédez les droits d'un membre de l'équipe d'A.X.E.L., faîtes "
+"attention à ce que vous faites s'il vous plaît !!!"
+msgstr ""
+"You own the rights of a member of the A.X.E.L. team, please be careful what "
+"you do!!!"
+
+#: .\templates\WebAXEL\login\login_confirmation.html:43
+msgid ""
+"Vous possédez les droits d'un super-utilisateur A.X.E.L., faîtes TRÈS "
+"attention à ce que vous faites s'il vous plaît !!!"
+msgstr ""
+"You have superuser A.X.E.L. rights, please be VERY careful what you do!!!"
+
+#: .\templates\WebAXEL\registration\account-settings.html:3
+#: .\templates\WebAXEL\registration\account-settings.html:6
+msgid "Gestion Compte Utilisateur"
+msgstr "User Account Management"
+
+#: .\templates\WebAXEL\registration\account-settings.html:11
+msgid "Enregistrer les modifications"
+msgstr "Save changes"
+
+#: .\templates\WebAXEL\registration\active_email.html:3
+#: .\templates\WebAXEL\registration\active_email.html:6
+#, fuzzy
+#| msgid "Confirmation d'inscription"
+msgid "Confirmation Mail"
+msgstr "Confirmation of registration"
+
+#: .\templates\WebAXEL\registration\register_confirmation.html:5
+#, fuzzy
+#| msgid "Erreur Connexion - IHM Web A.X.E.L."
+msgid "Erreur - IHM Web A.X.E.L."
+msgstr "Error Connection - HMI Web A.X.E.L."
+
+#: .\templates\WebAXEL\registration\register_confirmation.html:7
+#, fuzzy
+#| msgid "Inscription - IHM Web A.X.E.L."
+msgid "Confirmation d'inscription - IHM Web A.X.E.L."
+msgstr "Registration - A.X.E.L. Web HMI."
+
+#: .\templates\WebAXEL\registration\register_confirmation.html:13
+#: .\templates\WebAXEL\registration\register_confirmation.html:28
+#, fuzzy
+#| msgid "Confirmation d'inscription"
+msgid "Erreur d'inscription"
+msgstr "Confirmation of registration"
+
+#: .\templates\WebAXEL\registration\register_confirmation.html:38
+msgid "Confirmation d'inscription"
+msgstr "Confirmation of registration"
+
+#: .\templates\WebAXEL\registration\register_confirmation.html:39
+msgid "Votre inscription a bien été prise en compte."
+msgstr "Your registration has been taken into account."
+
+#: .\templates\WebAXEL\registration\register_confirmation.html:40
+msgid "Merci d'avoir pris le temps de vous inscrire sur mon application web."
+msgstr "Thank you for taking the time to register on my web application."
+
+#: .\templates\WebAXEL\registration\register_confirmation.html:46
+msgid ""
+"N'oubliez pas d'aller voir votre compte mail afin d'activer votre compte."
+msgstr ""
+
+#: .\templates\WebAXEL\registration\register_modal.html:9
+msgid "Inscription - IHM Web A.X.E.L."
+msgstr "Registration - A.X.E.L. Web HMI."
+
+#: .\templates\WebAXEL\registration\register_modal.html:21
+msgid "S'inscrire"
+msgstr "Register"
+
+#: .\templates\WebAXEL\robots\create-robot.html:3
+msgid "Ajouter Robot A.X.E.L."
+msgstr "Add A.X.E.L.'s Robot"
+
+#: .\templates\WebAXEL\robots\edit-robot.html:3
+msgid "Modifier Robot A.X.E.L."
+msgstr "Edit A.X.E.L. Robot"
+
+#: .\templates\WebAXEL\robots\edit-robot.html:6
+#: .\templates\WebAXEL\robots\robot.html:25
+#: .\templates\WebAXEL\robots\robots.html:61
+msgid "Modifier Robot"
+msgstr "Edit Robot"
+
+#: .\templates\WebAXEL\robots\robot.html:3
+msgid "Robot A.X.E.L."
+msgstr "A.X.E.L. Robot"
+
+#: .\templates\WebAXEL\robots\robot.html:17
+#: .\templates\WebAXEL\robots\robots.html:47
+#, python-format
+msgid "Modèle : %(model)s"
+msgstr "Model : %(model)s"
+
+#: .\templates\WebAXEL\robots\robot.html:20
+#, python-format
+msgid "Utilisation : %(utilisation)s"
+msgstr "Usage : %(utilisation)s"
+
+#: .\templates\WebAXEL\robots\robot.html:27
+#: .\templates\WebAXEL\robots\robots.html:64
+#: .\templates\WebAXEL\robots\robots_confirmation_modal.html:25
+msgid "Supprimer Robot"
+msgstr "Delete Robot"
+
+#: .\templates\WebAXEL\robots\robots.html:3
+#: .\templates\WebAXEL\robots\robots.html:6
+msgid "Robots A.X.E.L."
+msgstr "A.X.E.L.'s Robots."
+
+#: .\templates\WebAXEL\robots\robots.html:11
+msgid "Recherche de robot"
+msgstr "Robot search"
+
+#: .\templates\WebAXEL\robots\robots.html:51
+#, fuzzy, python-format
+#| msgid "Nombre de vues : %(document.nb_vues)s"
+msgid ""
+"Utilisation :\n"
+"                                %(utilisation)s"
+msgstr "Number of views : %(nb_vues)s"
+
+#: .\templates\WebAXEL\robots\robots.html:58
+msgid "Détails Robot"
+msgstr "Robot Details"
+
+#: .\templates\WebAXEL\robots\robots.html:79
+msgid "Aucun robot trouvé"
+msgstr "No robot found"
+
+#: .\templates\WebAXEL\robots\robots_confirmation_modal.html:10
+#, python-format
+msgid "Suppression du robot %(nom)s "
+msgstr "Deletion of robot %(nom)s"
+
+#: .\templates\WebAXEL\robots\robots_confirmation_modal.html:17
+#, python-format
+msgid ""
+"Etes-vous sûr de vouloir supprimer le robot? (id %(id)s\n"
+"                    )"
+msgstr "Are you sure you want to delete this robot? (id %(id)s)"
+
+#~ msgid "Tableau de bord A.X.E.L."
+#~ msgstr "A.X.E.L. Dashboard"
+
+#, fuzzy
+#~| msgid "Documentation A.X.E.L."
+#~ msgid "Accueil A.X.E.L."
+#~ msgstr "A.X.E.L. Documentation"
+
+#~ msgid "Uniquement Administrateur"
+#~ msgstr "Only Administrator"
+
+#~ msgid "Administration IA A.X.E.L."
+#~ msgstr "A.X.E.L. AI Management"
+
+#~ msgid "Liste de documents concernant l'IA ou A.X.E.L."
+#~ msgstr "List of documents concerning AI or A.X.E.L."
+
+#~ msgid "Ajouter un document"
+#~ msgstr "Add Document"
+
+#~ msgid "Ajouter un document à la documentation IA / A.X.E.L."
+#~ msgstr "Add document to A.X.E.L.'s Documentation"
+
+#~ msgid "Jeu de données"
+#~ msgstr "Dataset"
+
+#~ msgid "Liste de jeu de données (datasets) pour A.X.E.L."
+#~ msgstr "Dataset list for A.X.E.L."
+
+#~ msgid "Ajouter jeu de données"
+#~ msgstr "Add Dataset"
+
+#~ msgid "Ajouter un jeu de données pour A.X.E.L."
+#~ msgstr "Add A.X.E.L.'s Dataset"
+
+#~ msgid "Liste des robots gérés par A.X.E.L."
+#~ msgstr "List of robots managed by A.X.E.L."
+
+#~ msgid "Ajouter un robot"
+#~ msgstr "Add Robot"
+
+#~ msgid "Ajouter un robot à A.X.E.L."
+#~ msgstr "Add a robot to A.X.E.L."
+
+#, fuzzy
+#~| msgid "Page %(number)s sur %(num_pages)s."
+#~ msgid ""
+#~ "\n"
+#~ "                    Page %(number)s sur %(num_pages)s.\n"
+#~ "                "
+#~ msgstr "Page %(number)s of %(num_pages)s."
+
+#, fuzzy
+#~| msgid "Nombre de vues : %(document.nb_vues)s"
+#~ msgid ""
+#~ "\n"
+#~ "                                %(description)s\n"
+#~ "                            "
+#~ msgstr "Number of views : %(nb_vues)s"
+
+#, fuzzy
+#~| msgid ""
+#~| "Suppression du dataset\n"
+#~| "                                                    %(nom)s"
+#~ msgid ""
+#~ "\n"
+#~ "                                Source : %(source)s\n"
+#~ "                            "
+#~ msgstr "Number of views : %(nb_vues)s"
+
+#, fuzzy
+#~| msgid ""
+#~| "Suppression du dataset\n"
+#~| "                                                    %(nom)s"
+#~ msgid ""
+#~ "\n"
+#~ "                                Auteur : %(auteur)s\n"
+#~ "                            "
+#~ msgstr "Number of views : %(nb_vues)s"
+
+#, fuzzy
+#~| msgid ""
+#~| "Suppression du dataset\n"
+#~| "                                                    %(nom)s"
+#~ msgid ""
+#~ "\n"
+#~ "                                Nombre de vues : %(nb_vues)s\n"
+#~ "                            "
+#~ msgstr "Number of views : %(nb_vues)s"
+
+#, fuzzy
+#~| msgid ""
+#~| "Suppression du dataset\n"
+#~| "                                                    %(nom)s"
+#~ msgid ""
+#~ "\n"
+#~ "                                %(nom)s\n"
+#~ "                            "
+#~ msgstr "Number of views : %(nb_vues)s"
+
+#, fuzzy
+#~| msgid ""
+#~| "Suppression du dataset\n"
+#~| "                                                    %(nom)s"
+#~ msgid ""
+#~ "\n"
+#~ "                                Modèle : %(model)s\n"
+#~ "                            "
+#~ msgstr "Number of views : %(nb_vues)s"
+
+#, fuzzy
+#~| msgid ""
+#~| "Suppression du dataset\n"
+#~| "                                                    %(nom)s"
+#~ msgid ""
+#~ "\n"
+#~ "                                Utilisation : %(utilisation)s\n"
+#~ "                            "
+#~ msgstr "Number of views : %(nb_vues)s"
+
+#, fuzzy
+#~| msgid "Nombre de vues : %(document.nb_vues)s"
+#~ msgid ""
+#~ "Nombre de vues :\n"
+#~ "                                %(nb_vues)s"
+#~ msgstr "Number of views : %(nb_vues)s"
+
+#~ msgid "Catégorie : %(categorie.categorie)s"
+#~ msgstr "Category : %(categorie.categorie)s"
+
+#~ msgid "Interface Web A.X.E.L."
+#~ msgstr "Web Interface A.X.E.L."
+
+#~ msgid "Supprimer DataSet"
+#~ msgstr "Delete DataSet"
+
+#~ msgid "Modifier Ensemble de données"
+#~ msgstr "Edit Dataset"
+
+#~ msgid "Modifier DataSet"
+#~ msgstr "Edit DataSet"
+
+#~ msgid "Ensembles de données A.X.E.L."
+#~ msgstr "A.X.E.L.'s Dataset"
+
+#~ msgid "Ajouter Ensemble de Données"
+#~ msgstr "Add Dataset"
+
+#~ msgid "Ensembles de données"
+#~ msgstr "Dataset"
+
+#, fuzzy
+#~| msgid "Etes-vous sûr de vouloir supprimer le document? (id %(id)s)"
+#~ msgid ""
+#~ "Etes-vous sûr de vouloir supprimer le\n"
+#~ "                                                document? (id %(id)s)"
+#~ msgstr "Are you sure you want to delete this document? (id %(id)s)"
+
+#, fuzzy
+#~| msgid "Etes-vous sûr de vouloir supprimer le document? (id %(id)s)"
+#~ msgid ""
+#~ "Etes-vous sûr de vouloir supprimer\n"
+#~ "                                                l'ensemble de données? "
+#~ "(id\n"
+#~ "                                                %(id)s)"
+#~ msgstr "Are you sure you want to delete this document? (id %(id)s)"
+
+#~ msgid "Catégorie du Document : {0}"
+#~ msgstr "Document Category : {0}"
+
+#~ msgid "Catégorie de l'ensemble de données : {0}"
+#~ msgstr "Dataset Category : {0}"
+
+#~ msgid "Fichier"
+#~ msgstr "File"

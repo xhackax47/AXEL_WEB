@@ -37,7 +37,7 @@ class SignupForm(UserCreationForm, MultipleForm):
         username = self.cleaned_data['username'].lower()
         r = AxelUser.objects.filter(username=username)
         if r.count():
-            error = _('Username already exists.')
+            error = _('L\'utilisateur existe déjà')
             raise ValidationError(error)
         return username
 
@@ -46,7 +46,7 @@ class SignupForm(UserCreationForm, MultipleForm):
         email = self.cleaned_data['email'].lower()
         r = AxelUser.objects.filter(email=email)
         if r.count():
-            error = _('Email already exists')
+            error = _('L\'adresse e-mail existe déjà')
             raise ValidationError(error)
         return email
 
@@ -55,7 +55,7 @@ class SignupForm(UserCreationForm, MultipleForm):
         password1 = self.cleaned_data.get("password1")
         password2 = self.cleaned_data.get("password2")
         if password1 and password2 and password1 != password2:
-            error = _('Passwords don\'t match')
+            error = _('Les mots de passe ne correspondent pas')
             raise ValidationError(error)
         return password2
 
