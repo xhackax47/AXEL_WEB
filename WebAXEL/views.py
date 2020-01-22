@@ -82,7 +82,6 @@ class SignupView(CreateView):
         # Envoi du mail à l'utilisateur avec le token
         mail_subject = _('Activation du compte A.X.E.L. pour l\'utilisateur {{user.username}}')
         from_email = settings.EMAIL_HOST_USER + '@gmail.com'
-        to_email = form.cleaned_data.get('email')
         current_site = get_current_site(request)
         uid = urlsafe_base64_encode(force_bytes(user.pk))
         token = account_activation_token.make_token(user)
@@ -94,7 +93,7 @@ class SignupView(CreateView):
             'token': token,
             'activation_link': activation_link,
         })
-        user.email_user(mail_subject, html_message, from_email, to_email)
+        user.email_user(mail_subject, html_message, from_email)
         messages.success(request, _("Lien d'activation envoyé par mail"))
 
     def captcha(self, request, user):
