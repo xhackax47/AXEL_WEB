@@ -32,12 +32,21 @@ class SignupForm(UserCreationForm, MultipleForm):
         model = AxelUser
         fields = ('username', 'email', 'first_name', 'last_name', 'password1', 'password2')
 
+    def validate_digits_letters(word):
+        for char in word:
+            if not char.isdigit() and not char.isalpha():
+                return False
+        return True
+
     # Vérification de l'existence du nom d'utilisateur dans la base de données
     def clean_username(self):
         username = self.cleaned_data['username'].lower()
         r = AxelUser.objects.filter(username=username)
         if r.count():
             error = _('L\'utilisateur existe déjà')
+            raise ValidationError(error)
+        if not self.validate_digits_letters(username):
+            error = _("Les noms d'utilisateur contiennent des caractères qui ne sont ni des chiffres ni des lettres")
             raise ValidationError(error)
         return username
 
