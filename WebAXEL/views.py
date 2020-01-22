@@ -6,10 +6,11 @@ from django.contrib.auth import logout, login
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.sites.shortcuts import get_current_site
-from django.core.mail import EmailMessage
+from django.core.mail import EmailMessage, EmailMultiAlternatives
 from django.db.models import Q
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
+from django.template.loader import get_template, render_to_string
 from django.urls import reverse_lazy
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
@@ -19,7 +20,7 @@ from rest_framework.utils import json
 from rest_framework.views import APIView
 
 from AXEL_WEB import settings
-from WebAXEL.forms import AuthenticationForm, SignupForm, UserUpdateForm, DocumentSearchForm, DocumentForm, \
+from WebAXEL.forms import ConnectForm, SignupForm, UserUpdateForm, DocumentSearchForm, DocumentForm, \
     DataSetSearchForm, DataSetForm, RobotSearchForm, RobotForm
 from WebAXEL.multiforms import MultiFormsView
 from WebAXEL.models import Document, DataSet, AxelUser, Robot
@@ -29,7 +30,7 @@ from WebAXEL.tokens import account_activation_token
 class IndexView(MultiFormsView):
     template_name = 'WebAXEL/login/login.html'
     form_classes = {
-        'login': AuthenticationForm,
+        'login': ConnectForm,
         'register': SignupForm,
     }
     success_urls = {
@@ -47,11 +48,11 @@ class IndexView(MultiFormsView):
 
 
 # Vue Login pour la connexion
-class LoginView(LoginView):
+class ConnectView(LoginView):
     template_name = 'WebAXEL/login/login_confirmation.html'
     redirect_authenticated_user = True
     redirect_field_name = reverse_lazy('index')
-    authentication_form = AuthenticationForm
+    authentication_form = ConnectForm
 
     def get_success_url(self):
         return reverse_lazy('login-confirmation')
@@ -78,24 +79,26 @@ class SignupView(CreateView):
         return render(request, 'WebAXEL/registration/register_confirmation.html', {'form': form})
 
     def send_activation_mail(self, request, form, user):
+        # Récupération des templates mail
+        plaintext = get_template('WebAXEL/mail/activation_mail.txt')
+        html = get_template('WebAXEL/mail/activation_mail.html')
+
         # Envoi du mail à l'utilisateur avec le token
-        mail_subject = _('Activation du compte A.X.E.L.')
+        mail_subject = _('Activation du compte A.X.E.L. pour l\'utilisateur {{user.username}}')
+        from_email = settings.EMAIL_HOST_USER + '@gmail.com'
+        to_email = form.cleaned_data.get('email')
         current_site = get_current_site(request)
         uid = urlsafe_base64_encode(force_bytes(user.pk))
         token = account_activation_token.make_token(user)
         activation_link = "{0}/activate/{1}/{2}".format(current_site, uid, token)
-        html_message = "<h1>Activation du compte A.X.E.L.</h1>\n" \
-                       "<p>Bonjour {0},</p>\n" \
-                       "<p>Voici le lien pour activer votre compte AXEL :</p>\n" \
-                       "<br>\n" \
-                       "<a href=http://{1}>Lien d'activation</a>\n" \
-                       "<br>\n" \
-                       "<strong>Administrateur A.X.E.L.</strong>" \
-            .format(user.username, activation_link)
-        to_email = form.cleaned_data.get('email')
-        email = EmailMessage(mail_subject, html_message, to=[to_email])
-        email.content_subtype = "html"
-        email.send()
+        html_message = render_to_string(html, {
+            'user': user,
+            'domain': current_site.domain,
+            'uid': uid,
+            'token': token,
+            'activation_link': activation_link,
+        })
+        user.email_user(mail_subject, html_message, from_email, to_email)
         messages.success(request, _("Lien d'activation envoyé par mail"))
 
     def captcha(self, request, user):
@@ -129,7 +132,7 @@ class ActivateAccount(APIView):
             user = AxelUser.objects.get(pk=uid)
         except(TypeError, ValueError, OverflowError, AxelUser.DoesNotExist):
             user = None
-            return HttpResponse('Aucun utilisateur trouvé')
+            return messages.warning(request, _("Le lien d'activation est invalide ou ce compte a déjà été activé."))
         if user and account_activation_token.check_token(user, token):
             # Activation de l'utilisateur et enregistrement en BDD
             user.is_active = True
@@ -137,9 +140,8 @@ class ActivateAccount(APIView):
             messages.success(request, _("Votre compte a été activé avec succès"))
             # Connection automatique de l'utilisateur activé
             login(request, user)
-            return render(request, 'WebAXEL/registration/active_email.html')
-        messages.warning(request, _("Le lien d'activation est invalide ou ce compte a déjà été activé."))
-        return render(request, 'WebAXEL/registration/active_email.html')
+            return render(request, 'WebAXEL/mail/active_email.html')
+        return render(request, 'WebAXEL/mail/active_email.html')
 
 
 # Vue Logout pour la deconnexion

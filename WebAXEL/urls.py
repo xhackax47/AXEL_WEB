@@ -7,19 +7,12 @@ from . import views
 
 # app_name = 'WebAXEL'
 
-# Génération erreur division par zéro pour test de Sentry
-def test_trigger_error(request):
-    division_by_zero = 1 / 0
-
-
 # Base
 urlpatterns = [
     # Accueil
     path('', views.IndexView.as_view(), name='index'),
     # Internationalisation
     path('i18n/', include('django.conf.urls.i18n')),
-    # Test case pour Sentry
-    path('sentry-debug/', test_trigger_error, name='sentry-debug'),
 ]
 # Comptes et connexion
 urlpatterns += [
@@ -27,7 +20,7 @@ urlpatterns += [
     path('register/', views.SignupView.as_view(), name='register'),
     path('register-confirmation/', views.RegisterConfirmationView.as_view(), name='register-confirmation'),
     # Authentification
-    path('login/', views.LoginView.as_view(), name='login'),
+    path('login/', views.ConnectView.as_view(), name='login'),
     path('login-confirmation/', views.LoginConfirmationView.as_view(), name='login-confirmation'),
     path('logout/', views.LogoutView.as_view(), name='logout'),
     # Gestion de compte par username

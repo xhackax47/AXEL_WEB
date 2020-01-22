@@ -11,7 +11,7 @@ class MultipleForm(forms.Form):
 
 
 # Formulaire de connexion utilisateur
-class AuthenticationForm(AuthenticationForm, MultipleForm):
+class ConnectForm(AuthenticationForm, MultipleForm):
     class Meta(AuthenticationForm):
         model = AxelUser
 
