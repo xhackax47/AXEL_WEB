@@ -95,7 +95,7 @@ class SignupView(CreateView):
             'token': token,
             'activation_link': activation_link,
         })
-        msg = EmailMultiAlternatives(mail_subject, text_message, from_email, to_email)
+        msg = EmailMultiAlternatives(mail_subject, text_message, from_email, [to_email])
         msg.attach_alternative(html_message, "text/html")
         msg.send()
         messages.success(request, _("Lien d'activation envoyé par mail"))
