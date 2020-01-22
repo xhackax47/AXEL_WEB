@@ -86,14 +86,17 @@ class SignupView(CreateView):
         uid = urlsafe_base64_encode(force_bytes(user.pk))
         token = account_activation_token.make_token(user)
         activation_link = "{0}/activate/{1}/{2}".format(current_site, uid, token)
-        html_message = render_to_string('WebAXEL/mail/activation_mail.html', {
+        html_message = get_template('WebAXEL/mail/activation_mail.html')
+        text_message = render_to_string('WebAXEL/mail/activation_mail.html', {
             'user': user,
             'domain': current_site.domain,
             'uid': uid,
             'token': token,
             'activation_link': activation_link,
         })
-        user.email_user(mail_subject, html_message, from_email)
+        msg = EmailMultiAlternatives(mail_subject, text_message, from_email)
+        msg.attach_alternative(html_message, "text/html")
+        msg.send()
         messages.success(request, _("Lien d'activation envoyé par mail"))
 
     def captcha(self, request, user):
