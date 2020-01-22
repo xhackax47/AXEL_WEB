@@ -6,11 +6,11 @@ from django.contrib.auth import logout, login
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.sites.shortcuts import get_current_site
-from django.core.mail import EmailMessage, EmailMultiAlternatives
+from django.core.mail import EmailMultiAlternatives
 from django.db.models import Q
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404, redirect
-from django.template.loader import get_template, render_to_string
+from django.template.loader import render_to_string
 from django.urls import reverse_lazy
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
@@ -126,6 +126,7 @@ class RegisterConfirmationView(TemplateView):
     template_name = 'WebAXEL/registration/register_confirmation.html'
 
 
+# Activation du compte
 class ActivateAccount(APIView):
     def get(self, request, uidb64, token):
         # Décodage base 64 uid et recherche d'utilisateur
@@ -473,3 +474,7 @@ class RobotDeleteView(LoginRequiredMixin, DeleteView):
     def get_object(self, *args, **kwargs):
         robot = get_object_or_404(Robot, pk=self.kwargs['pk'])
         return robot
+
+# Vue en cas de clic sur page en cours de dev
+class ConstructionView(TemplateView):
+    template_name = 'construction.html'

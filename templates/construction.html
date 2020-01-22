@@ -1,0 +1,14 @@
+{% extends "WebAXEL/base/base.html" %}
+{% load static i18n crispy_forms_tags %}
+{% block title %}
+    {% trans "En construction - IHM Web A.X.E.L." %}
+{% endblock %}
+{% block content %}
+    <div class="container-fluid" align="center">
+        <h1 class="mainH1 mt-3 mb-3">{% trans "Cette page est en cours de développement" %}</h1>
+        <img class="error404" src="{% static 'img/construction.gif' %}" alt="Image Construction" width="100%" height="100%">
+        <br>
+        <a href="{% url 'index' %}" type="button"
+           class="btn btn-success">{% trans "Retourner à l'écran principal" %}</a>
+    </div>
+{% endblock %}
