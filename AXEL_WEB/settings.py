@@ -23,6 +23,10 @@ env_vars = [
     'DB_NAME',
     'DB_USER',
     'DB_PASSWORD',
+    'DEV_DB_NAME',
+    'DEV_DB_USER',
+    'DEV_DB_PASSWORD',
+    'DEV_DB_HOST',
     'EMAIL_BACKEND',
     'EMAIL_HOST',
     'EMAIL_HOST_PASSWORD',
@@ -159,15 +163,16 @@ if not DEBUG and NOT_TEST:
             'PORT': '5432',
         }
     }
+
 elif DEBUG and NOT_TEST:
     # Configuration BDD PostgreSQL Local en mode Développement (DEBUG=TRUE)
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'AXEL_WEB',
-            'USER': 'xhackax47',
-            'PASSWORD': 'L@n@s@y@n34000',
-            'HOST': 'localhost',
+            'NAME': settings['DEV_DB_NAME'],
+            'USER': settings['DEV_DB_USER'],
+            'PASSWORD': settings['DEV_DB_PASSWORD'],
+            'HOST': settings['DEV_DB_HOST'],
             'PORT': '5432',
         }
     }
