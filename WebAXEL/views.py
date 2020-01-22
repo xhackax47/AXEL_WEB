@@ -80,7 +80,7 @@ class SignupView(CreateView):
 
     def send_activation_mail(self, request, form, user):
         # Envoi du mail à l'utilisateur avec le token
-        mail_subject = _('Activation du compte A.X.E.L. pour l\'utilisateur {{user.username}}')
+        mail_subject = _('Activation du compte A.X.E.L. pour l\'utilisateur {0}').format(user)
         from_email = settings.EMAIL_HOST_USER
         to_email = user.email
         current_site = get_current_site(request)
