@@ -115,7 +115,8 @@ MIDDLEWARE = [
 if not DEBUG and NOT_TEST:
     ADMIN = settings['ADMIN']
     MANAGERS = settings['MANAGERS']
-    ROOT_URLCONF = 'AXEL_WEB.urls'
+
+ROOT_URLCONF = 'AXEL_WEB.urls'
 
 # Configuration email pour l'activation de comptes
 if not DEBUG and NOT_TEST:
