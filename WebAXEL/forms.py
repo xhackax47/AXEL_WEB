@@ -35,7 +35,7 @@ class SignupForm(UserCreationForm, MultipleForm):
     def validate_digits_letters(word):
         return word.isalnum()
 
-    # Vérifications du nom d'utilisateur dans la base de données
+    # Vérification de l'existence du nom d'utilisateur dans la base de données
     def clean_username(self):
         username = self.cleaned_data['username'].lower()
         r = AxelUser.objects.filter(username=username)
@@ -44,7 +44,7 @@ class SignupForm(UserCreationForm, MultipleForm):
             error = _('L\'utilisateur existe déjà')
             raise ValidationError(error)
         # Si le nom d'utilisateur possède des caractères alphanumériques, erreur
-        if self.validate_digits_letters(username):
+        if not self.validate_digits_letters(username):
             error = _("Les noms d'utilisateur contiennent des caractères qui ne sont ni des chiffres ni des lettres")
             raise ValidationError(error)
         return username
