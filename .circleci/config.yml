@@ -21,8 +21,21 @@ jobs:
       - image: circleci/postgres:latest-postgis
         # environment variables for all commands executed in the primary container
         environment:
-          POSTGRES_USER: zxavxwjozlvyhd
-          POSTGRES_DB: daskqm0c329l07
+          POSTGRES_USER: $DB_USER
+          POSTGRES_DB: $DB_NAME
+          ADMIN: $ADMIN
+          DB_HOST: $DB_HOST
+          DB_NAME: $DB_NAME
+          DB_USER: $DB_USER
+          DB_PASSWORD: $DB_PASSWORD
+          EMAIL_BACKEND: $EMAIL_BACKEND
+          EMAIL_HOST: $EMAIL_HOST
+          EMAIL_HOST_PASSWORD: $EMAIL_HOST_PASSWORD
+          EMAIL_HOST_USER: $EMAIL_HOST_USER
+          EMAIL_PORT: $EMAIL_PORT
+          GOOGLE_RECAPTCHA_SECRET_KEY: $GOOGLE_RECAPTCHA_SECRET_KEY
+          MANAGERS: $MANAGERS
+          SECRET_KEY: $SECRET_KEY
 
     working_directory: ~/repo
 

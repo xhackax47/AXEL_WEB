@@ -30,7 +30,6 @@ env_vars = [
     'GOOGLE_RECAPTCHA_SECRET_KEY',
     'MANAGERS',
     'SECRET_KEY',
-
 ]
 
 # PRODUCTION : On met toutes les variables dans un tableau settings
