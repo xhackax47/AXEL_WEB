@@ -32,7 +32,7 @@ class SignupForm(UserCreationForm, MultipleForm):
         model = AxelUser
         fields = ('username', 'email', 'first_name', 'last_name', 'password1', 'password2')
 
-    def validate_digits_letters(word):
+    def validate_digits_letters(self, word):
         return word.isalnum()
 
     # Vérification de l'existence du nom d'utilisateur dans la base de données
