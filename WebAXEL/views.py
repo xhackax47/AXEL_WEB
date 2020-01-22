@@ -79,10 +79,6 @@ class SignupView(CreateView):
         return render(request, 'WebAXEL/registration/register_confirmation.html', {'form': form})
 
     def send_activation_mail(self, request, form, user):
-        # Récupération des templates mail
-        plaintext = get_template('WebAXEL/mail/activation_mail.txt')
-        html = get_template('WebAXEL/mail/activation_mail.html')
-
         # Envoi du mail à l'utilisateur avec le token
         mail_subject = _('Activation du compte A.X.E.L. pour l\'utilisateur {{user.username}}')
         from_email = settings.EMAIL_HOST_USER + '@gmail.com'
@@ -91,7 +87,7 @@ class SignupView(CreateView):
         uid = urlsafe_base64_encode(force_bytes(user.pk))
         token = account_activation_token.make_token(user)
         activation_link = "{0}/activate/{1}/{2}".format(current_site, uid, token)
-        html_message = render_to_string(html, {
+        html_message = render_to_string('WebAXEL/mail/activation_mail.html', {
             'user': user,
             'domain': current_site.domain,
             'uid': uid,
