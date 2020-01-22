@@ -16,6 +16,11 @@ class AxelUserAdmin(UserAdmin):
     list_filter = ('email', 'first_name', 'last_name', 'username', 'is_staff', 'is_active',)
     search_fields = ('email', 'username', 'first_name', 'last_name')
     ordering = ('date_joined',)
+    actions = ['make_staff']
+
+    def make_staff(self, request, queryset):
+        queryset.update(is_staff=True)
+    make_staff().short_description = "Passer les utilisateurs en Staff"
 
 
 class AxelGroupAdmin(GroupAdmin):
