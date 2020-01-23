@@ -11,13 +11,25 @@
     <div class="container-fluid" align="center">
         <h1 class="mainH1 mt-3 mb-3">{% trans "Bienvenue sur l'IHM A.X.E.L." %}</h1>
         {% if not forms.login.errors and not forms.register.errors %}
-            <div class="jumbotron">
-                <p class="lead">{% trans "Bonjour et bienvenue sur l'interface web A.X.E.L que j'utilise pour mes différents projets \d'informatiques et de robotiques." %}</p>
+            <div class="jumbotron jumbotron-fluid">
+                <p class="lead">{% trans "Bonjour et bienvenue sur l'interface web A.X.E.L que j'utilise pour mes différents projets d'informatiques et de robotiques." %}</p>
                 <hr class="my-4">
                 <p>{% trans "Cette interface est codée en Python Django avec une implémentation en API pour les appels REST en JSON" %}</p>
                 <p>{% trans "Vous pouvez vous inscrire afin de tester les différentes fonctionnalités de cette application web et me permettre de l'améliorer." %}</p>
                 <p>{% trans "Un système de tracking d'errors et d'intégration continue tourne en permanence sur l'application afin de garantir sa disponibilité et son reporting d'erreurs ou de bug." %}</p>
                 <p>{% trans "L'application en est encore a sa version alpha et se trouve en plein phase de développement, n'hésitez pas à me donner vos retours." %}</p>
+                <p>{% trans "L'application en est encore a sa version alpha et se trouve en plein phase de développement, n'hésitez pas à me donner vos retours." %}</p>
+                <div class="alert alert-warning" role="alert">
+                    <h4 class="alert-heading">{% trans "Prochaine fonctionnalité : " %}</h4>
+                    <p>{% trans "Génération de QR Code à partir d'un document, un jeu de données ou un robot" %}</p>
+                    <hr>
+                    <p class="mb-0">{% trans "Date de sortie prévue : Février 2020" %}</p>
+                    <div class="progress">
+                        <div class="progress-bar bg-success" role="progressbar" style="width: 30%;" aria-valuenow="30"
+                             aria-valuemin="0" aria-valuemax="100">30%
+                        </div>
+                    </div>
+                </div>
                 {% if not user.is_authenticated %}
                     <div class="container">
                         <button class="btn btn-danger btn-lg mt-5" type="button" data-toggle="modal"
