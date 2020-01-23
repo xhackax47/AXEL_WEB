@@ -1,11 +1,10 @@
-import ast
 import hashlib
 import os
 import sys
 import random
 import string
-
 import sentry_sdk
+
 from django.conf.global_settings import ADMINS
 from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
@@ -18,7 +17,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEBUG = False
 
 # Condition pour vérifier le statut des lancement de tests
-NOT_TEST = ast.literal_eval("'test' not in sys.argv or 'test_coverage' in sys.argv")
+NOT_TEST = eval("'test' not in sys.argv or 'test_coverage' in sys.argv")
 
 # Dictionnaire de Variables d'environnement
 env_vars = {
@@ -37,7 +36,7 @@ env_vars = {
     'EMAIL_HOST_USER': {'required': True},
     'EMAIL_PORT': {'required': True},
     'GOOGLE_RECAPTCHA_SECRET_KEY': {'required': True},
-    'MANAGERS': {'required': True, 'parser': ast.literal_eval},
+    'MANAGERS': {'required': True, 'parser': eval},
     'SECRET_KEY': {'required': True},
 }
 
