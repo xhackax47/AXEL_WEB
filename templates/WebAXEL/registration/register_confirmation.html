@@ -22,8 +22,6 @@
                     <li>{{ error|escape }}</li>
                 {% endfor %}
             </ul>
-            <a href="{% url 'index' %}" type="button"
-               class="btn btn-success">{% trans "Retourner à l'écran principal" %}</a>
         {% elif messages.error %}
             <h1 class="mainH1 mt-3 mb-3">{% trans "Erreur d'inscription" %}</h1>
             <p class="badge-danger">{% trans "Les informations données pour l'inscription ne sont pas correctes. Veuillez réessayer." %}</p>
@@ -32,8 +30,6 @@
                     <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
                 {% endfor %}
             </ul>
-            <a href="{% url 'index' %}" type="button"
-               class="btn btn-success">{% trans "Retourner à l'écran principal" %}</a>
         {% else %}
             <h1 class="mainH1 mt-3 mb-3">{% trans "Confirmation d'inscription" %}</h1>
             <p class="badge-success">{% trans 'Votre inscription a bien été prise en compte.' %}</p>

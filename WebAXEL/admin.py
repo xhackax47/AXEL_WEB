@@ -8,6 +8,7 @@ from WebAXEL.models import Document, DocumentCategory, DataSet, DataSetCategory,
     RobotCategory
 
 
+# Gestion des utilisateurs dans l'interface Administrateur de Django
 class AxelUserAdmin(UserAdmin):
     add_form = UserCreationForm
     form = UserUpdateForm
@@ -16,22 +17,29 @@ class AxelUserAdmin(UserAdmin):
     list_filter = ('email', 'first_name', 'last_name', 'username', 'is_staff', 'is_active',)
     search_fields = ('email', 'username', 'first_name', 'last_name')
     ordering = ('date_joined',)
-    actions = ['make_staff']
 
-    def make_staff(self, request, queryset):
-        queryset.update(is_staff=True)
-    make_staff().short_description = "Passer les utilisateurs en Staff"
+    # EN COURS DE DEV
+    # actions = ['make_staff']
+    #
+    # def make_staff(self, request, queryset):
+    #     queryset.update(is_staff=True)
+    #     self.message_user(request, "Les utilisateurs ont été passés Staff avec succès")
+    #
+    # make_staff().short_description = "Passer les utilisateurs en Staff"
 
 
+# Gestion des groupes dans l'interface Administrateur de Django
 class AxelGroupAdmin(GroupAdmin):
     model = AxelGroup
     can_delete = False
 
 
+# Gestion des catégories de document dans l'interface Administrateur de Django
 class DocumentCategoryAdmin(ModelAdmin):
     exclude = ['']
 
 
+# Gestion des catégories de document dans l'interface Administrateur de Django
 class DocumentAdmin(ModelAdmin):
     exclude = ['']
     list_display = (
@@ -39,28 +47,33 @@ class DocumentAdmin(ModelAdmin):
     date_hierarchy = 'date_ajout'
 
 
+# Gestion des catégories de dataset dans l'interface Administrateur de Django
 class DataSetCategoryAdmin(ModelAdmin):
     exclude = ['']
 
 
+# Gestion des dataset dans l'interface Administrateur de Django
 class DataSetAdmin(ModelAdmin):
     exclude = ['']
     list_display = ('nom', 'date_ajout', 'was_published_recently', 'description', 'dataset')
     date_hierarchy = 'date_ajout'
 
 
+# Gestion des catégories de robot dans l'interface Administrateur de Django
 class RobotCategoryAdmin(ModelAdmin):
     exclude = ['']
 
 
+# Gestion des robots dans l'interface Administrateur de Django
 class RobotAdmin(ModelAdmin):
     exclude = ['']
     list_display = ('nom', 'date_ajout', 'was_published_recently', 'description', 'utilisation', 'doc')
     date_hierarchy = 'date_ajout'
 
-
+# Desincription des groupes natifs de Django
 admin.site.unregister(Group)
 
+# Inscription des modèles dans l'administration
 admin.site.register(AxelUser, AxelUserAdmin)
 admin.site.register(AxelGroup, AxelGroupAdmin)
 admin.site.register(Document, DocumentAdmin)

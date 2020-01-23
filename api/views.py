@@ -4,6 +4,7 @@ from rest_framework.viewsets import ModelViewSet
 from WebAXEL.models import Robot, Document, DataSet
 from api.serializers import RobotSerializer, DocumentSerializer, DataSetSerializer
 
+
 # DOCUMENTS
 
 # Vue DocumentListView qui renvoi la liste des documents en JSON

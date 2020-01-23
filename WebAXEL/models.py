@@ -11,7 +11,7 @@ from django.utils.translation import ugettext_lazy as _
 from .managers import CustomUserManager
 
 
-# Modèle Groupe personnalisé (se base sur le groupe de Django)
+# Modèle Groupe personnalisé (Extension du groupe de base de Django)
 class AxelGroup(Group):
     description = CharField(max_length=1024)
 
@@ -19,8 +19,9 @@ class AxelGroup(Group):
         return "Groupe A.X.E.L."
 
 
-# Modèle User personnalisé (se base sur le user de Django)
+# Modèle User personnalisé (Extension de l'utlisateur de base de Django)
 class AxelUser(AbstractUser):
+    # Classe interne de fonctions informatif (Aucun changement de permissions)
     class Fonction(TextChoices):
         Guest = _('Visiteur')
         User = _('Utilisateur')
@@ -42,14 +43,10 @@ class AxelUser(AbstractUser):
     def __str__(self):
         return _("Nom d'utilisateur {0} / Adresse email : {1} ").format(self.username, self.email)
 
-    @receiver(post_save, sender=User)
-    def update_axeluser_signal(sender, instance, created, **kwargs):
-        if created:
-            AxelUser.objects.create(user=instance)
-        instance.axeluser.save()
 
+# DOCUMENTS
 
-# Modèles Document
+# Modèle Catégorie de document
 class DocumentCategory(Model):
     categorie = CharField(max_length=255, verbose_name=_("Catégorie du Document"))
 
@@ -57,6 +54,7 @@ class DocumentCategory(Model):
         return self.categorie.__str__()
 
 
+# Modèle Document
 class Document(Model):
     titre = CharField(max_length=255, verbose_name=_("Titre"))
     date_ajout = DateTimeField(auto_now_add=True,
@@ -85,7 +83,9 @@ class Document(Model):
     was_published_recently.verbose_name = _('Publié récemment?')
 
 
-# Modèles DataSet
+# DATASETS
+
+# Modèle Catégorie de dataset
 class DataSetCategory(Model):
     categorie = CharField(max_length=255, verbose_name=_("Catégorie du jeu de données"))
 
@@ -93,6 +93,7 @@ class DataSetCategory(Model):
         return self.categorie.__str__()
 
 
+# Modèles DataSet
 class DataSet(Model):
     nom = CharField(max_length=255, verbose_name=_("Nom"))
     date_ajout = DateTimeField(auto_now_add=True, verbose_name=_("Date d'ajout du jeu de données"))
@@ -122,7 +123,9 @@ class DataSet(Model):
     was_published_recently.verbose_name = _('Publié récemment?')
 
 
-# Modèles Robots
+# ROBOTS
+
+# Modèle Catégorie de robot
 class RobotCategory(Model):
     categorie = CharField(max_length=255, verbose_name=_("Catégorie du robot"))
 
@@ -130,6 +133,7 @@ class RobotCategory(Model):
         return self.categorie.__str__()
 
 
+# Modèle Robot
 class Robot(Model):
     nom = CharField(max_length=255, verbose_name=_("Nom"))
     image = ImageField(upload_to='static/img/robots', blank=True, verbose_name=_("Image Robot"))
