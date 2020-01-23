@@ -19,7 +19,8 @@
                     cette application web et me permettre de l'améliorer.
                     Un système de tracking d'errors et d'intégration continue tourne en permanence sur l'application
                     afin de garantir sa disponibilité et son reporting d'erreurs ou de bug.
-                    L'application en est encore a sa version alpha et se trouve en plein phase de développement, n'hésitez pas à me donner vos retours.
+                    L'application en est encore a sa version alpha et se trouve en plein phase de développement,
+                    n'hésitez pas à me donner vos retours.
                 {% endblocktrans %}</p>
                 <div class="alert alert-warning" role="alert">
                     <h4 class="alert-heading">{% trans "Prochaine fonctionnalité : " %}</h4>
@@ -32,20 +33,20 @@
                         </div>
                     </div>
                 </div>
-                {% if not user.is_authenticated %}
-                    <div class="text-left">
-                        <button class="btn btn-danger btn-lg mt-5" type="button" data-toggle="modal"
-                                data-target="#modalLogin" title="{% trans "Connexion" %}">{% trans "Connexion" %}
-                        </button>
-                        {% include "WebAXEL/login/login_modal.html" %}
-                    </div>
-                    <div class="text-right">
-                        <button class="btn btn-success btn-lg mt-5" type="button" data-toggle="modal"
-                                data-target="#modalRegister" title="{% trans "Inscription" %}">{% trans "Inscription" %}
-                        </button>
-                        {% include "WebAXEL/registration/register_modal.html" %}
-                    </div>
-                {% endif %}
+            </div>
+        {% endif %}
+        {% if not user.is_authenticated %}
+            <div class="text-left">
+                <button class="btn btn-danger btn-lg mt-5" type="button" data-toggle="modal"
+                        data-target="#modalLogin" title="{% trans "Connexion" %}">{% trans "Connexion" %}
+                </button>
+                {% include "WebAXEL/login/login_modal.html" %}
+            </div>
+            <div class="text-right">
+                <button class="btn btn-success btn-lg mt-5" type="button" data-toggle="modal"
+                        data-target="#modalRegister" title="{% trans "Inscription" %}">{% trans "Inscription" %}
+                </button>
+                {% include "WebAXEL/registration/register_modal.html" %}
             </div>
         {% endif %}
         {% if forms.login.errors %}
