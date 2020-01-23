@@ -1,3 +1,4 @@
+import ast
 import hashlib
 import os
 import sys
@@ -17,38 +18,53 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEBUG = False
 
 # Condition pour vérifier le statut des lancement de tests
-NOT_TEST = eval("'test' not in sys.argv or 'test_coverage' in sys.argv")
+NOT_TEST = ast.literal_eval("'test' not in sys.argv or 'test_coverage' in sys.argv")
 
-# Variables d'environnement
-env_vars = [
-    'ADMIN',
-    'DB_HOST',
-    'DB_NAME',
-    'DB_USER',
-    'DB_PASSWORD',
-    'DEV_DB_NAME',
-    'DEV_DB_USER',
-    'DEV_DB_PASSWORD',
-    'DEV_DB_HOST',
-    'EMAIL_BACKEND',
-    'EMAIL_HOST',
-    'EMAIL_HOST_PASSWORD',
-    'EMAIL_HOST_USER',
-    'EMAIL_PORT',
-    'GOOGLE_RECAPTCHA_SECRET_KEY',
-    'MANAGERS',
-    'SECRET_KEY',
-]
+# Dictionnaire de Variables d'environnement
+env_vars = {
+    'ADMIN': {},
+    'DB_HOST': {'required': True},
+    'DB_NAME': {'required': True},
+    'DB_USER': {'required': True},
+    'DB_PASSWORD': {'required': True},
+    'DEV_DB_NAME': {'required': True},
+    'DEV_DB_USER': {'required': True},
+    'DEV_DB_PASSWORD': {'required': True},
+    'DEV_DB_HOST': {'required': True},
+    'EMAIL_BACKEND': {'required': True},
+    'EMAIL_HOST': {'required': True},
+    'EMAIL_HOST_PASSWORD': {'required': True},
+    'EMAIL_HOST_USER': {'required': True},
+    'EMAIL_PORT': {'required': True},
+    'GOOGLE_RECAPTCHA_SECRET_KEY': {'required': True},
+    'MANAGERS': {'required': True, 'parser': ast.literal_eval},
+    'SECRET_KEY': {'required': True},
+}
 
 # PRODUCTION : On met toutes les variables dans un tableau settings
 settings = {}
+errors = []
 if not DEBUG and NOT_TEST:
-    for var in env_vars:
-        try:
+    for var, infos in env_vars.items():
+        if var in os.environ:
             settings[var] = os.environ[var]
-        except KeyError as ke:
-            print(_(f'ATTENTION la variable d\'environnement {var} n\'a pas été trouvé'))
-            settings[var] = 'ko'
+        elif 'default' in infos:
+            settings[var] = infos['default']
+        elif 'required' in infos:
+            errors.append(var)
+            continue
+        if 'parser' in infos:
+            settings[var] = infos['parser'](settings[var])
+
+        if len(errors):
+            raise Exception("Please set the environment variables: "
+                            "{}.".format(', '.join(errors)))
+        # for var in env_vars:
+        #     try:
+        #         settings[var] = os.environ[var]
+        #     except KeyError as ke:
+        #         print(_(f'ATTENTION la variable d\'environnement {var} n\'a pas été trouvé'))
+        #         settings[var] = 'ko'
 
 # Initialisation Sentry Montoring
 sentry_sdk.init(
