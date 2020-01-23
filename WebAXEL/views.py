@@ -171,7 +171,7 @@ class AccountSettingsUsernameView(LoginRequiredMixin, UpdateView):
     login_url = reverse_lazy('index')
     model = AxelUser
     form_class = UserUpdateForm
-    template_name = 'WebAXEL/registration/account-settings.html'
+    template_name = 'WebAXEL/registration/../templates/WebAXEL/accounts/account-settings.html'
     success_url = reverse_lazy('index')
 
     # Récupération de l'objet via son username
@@ -186,7 +186,7 @@ class AccountSettingsIdView(LoginRequiredMixin, UpdateView):
     login_url = reverse_lazy('index')
     model = AxelUser
     form_class = UserUpdateForm
-    template_name = 'WebAXEL/registration/account-settings.html'
+    template_name = 'WebAXEL/registration/../templates/WebAXEL/accounts/account-settings.html'
     success_url = reverse_lazy('index')
 
     # Récupération de l'objet via son id(pk)
