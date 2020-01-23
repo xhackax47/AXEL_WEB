@@ -46,7 +46,7 @@ header, footer, #content {
     flex-grow: 1;
 }
 
-.img_max_security, .robotImg, .error404, .error500 {
+.robotImg, .error404, .error500 {
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -55,6 +55,13 @@ header, footer, #content {
 .mainH1 {
     font-family: "Neuropoltical", serif;
     text-align: center;
+}
+
+.mainH1NotConnected {
+    font-family: "Neuropoltical", serif;
+    text-align: center;
+    color: whitesmoke;
+    background-color: black;
 }
 
 .modal-title#login {

@@ -9,10 +9,14 @@
 {% endblock %}
 {% block content %}
     <div class="container-fluid" align="center">
-        <h1 class="mainH1 mt-3 mb-3">{% trans "Bienvenue sur l'IHM A.X.E.L." %}</h1>
+        {% if user.is_authenticated %}
+            <h1 class="mainH1 mt-3 mb-3">{% trans "Bienvenue sur l'IHM A.X.E.L." %}</h1>
+        {% else %}
+            <h1 class="mainH1NotConnected mt-3 mb-3">{% trans "Bienvenue sur l'IHM A.X.E.L." %}</h1>
+        {% endif %}
         {% if not forms.login.errors and not forms.register.errors %}
             <div class="jumbotron jumbotron-fluid">
-                <p class="lead">{% trans "Bonjour et bienvenue sur l'interface web A.X.E.L que j'utilise pour mes différents projets d'informatiques et de robotiques." %}</p>
+                <p class="lead mt-1">{% trans "Bonjour et bienvenue sur l'interface web A.X.E.L que j'utilise pour mes différents projets d'informatiques et de robotiques." %}</p>
                 <hr class="my-1">
                 <p>{% blocktrans %} Cette interface est codée en Python Django avec une implémentation en API pour les
                     appels REST en JSON, Vous pouvez vous inscrire afin de tester les différentes fonctionnalités de
@@ -34,7 +38,7 @@
                     </div>
                 </div>
                 {% if not user.is_authenticated %}
-                    <div class="row">
+                    <div class="container">
                         <div class="text-left">
                             <button class="btn btn-danger btn-lg mt-5" type="button" data-toggle="modal"
                                     data-target="#modalLogin" title="{% trans "Connexion" %}">{% trans "Connexion" %}
