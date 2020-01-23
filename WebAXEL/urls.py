@@ -21,7 +21,7 @@ urlpatterns += [
     # Authentification
     path('login/', views.ConnectView.as_view(), name='login'),
     path('login-confirmation/', views.LoginConfirmationView.as_view(), name='login-confirmation'),
-    path('logout/', views.LogoutView.as_view(), name='logout'),
+    path('logout/', views.DisconnectView.as_view(), name='logout'),
     # Gestion de compte par username
     url(r'^account-settings-username/(?P<username>\w+)/$', login_required(views.AccountSettingsUsernameView.as_view()),
         name='account-settings-username'),
