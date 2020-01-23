@@ -10,24 +10,34 @@
 {% block content %}
     <div class="container-fluid" align="center">
         <h1 class="mainH1 mt-3 mb-3">{% trans "Bienvenue sur l'IHM A.X.E.L." %}</h1>
+        {% if not forms.login.errors and not forms.register.errors %}
+            <div class="jumbotron">
+                <p class="lead">{% trans "Bonjour et bienvenue sur l'interface web A.X.E.L que j'utilise pour mes différents projets \d'informatiques et de robotiques." %}</p>
+                <hr class="my-4">
+                <p>{% trans "Cette interface est codée en Python Django avec une implémentation en API pour les appels REST en JSON" %}</p>
+                <p>{% trans "Vous pouvez vous inscrire afin de tester les différentes fonctionnalités de cette application web et me permettre de l'améliorer." %}</p>
+                <p>{% trans "Un système de tracking d'errors et d'intégration continue tourne en permanence sur l'application afin de garantir sa disponibilité et son reporting d'erreurs ou de bug." %}</p>
+                <p>{% trans "L'application en est encore a sa version alpha et se trouve en plein phase de développement, n'hésitez pas à me donner vos retours." %}</p>
+                {% if not user.is_authenticated %}
+                    <div class="container">
+                        <button class="btn btn-danger btn-lg mt-5" type="button" data-toggle="modal"
+                                data-target="#modalLogin" title="{% trans "Connexion" %}">{% trans "Connexion" %}
+                        </button>
+                        {% include "WebAXEL/login/login_modal.html" %}
+                    </div>
+                    <div class="container">
+                        <button class="btn btn-success btn-lg mt-5" type="button" data-toggle="modal"
+                                data-target="#modalRegister" title="{% trans "Inscription" %}">{% trans "Inscription" %}
+                        </button>
+                        {% include "WebAXEL/registration/register_modal.html" %}
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
         {% if forms.login.errors %}
             <p class="badge-danger">{% trans "Votre nom d'utilisateur et votre mot de passe ne correspondent pas. Veuillez réessayer." %}</p>
         {% elif forms.register.errors %}
             <p class="badge-danger">{% trans "Les informations données pour l'inscription ne sont pas correctes. Veuillez réessayer." %}</p>
-        {% endif %}
-        {% if not user.is_authenticated %}
-            <div class="container">
-                <button class="btn btn-danger btn-lg btn-block mt-5" type="button" data-toggle="modal"
-                        data-target="#modalLogin" title="{% trans "Connexion" %}">{% trans "Connexion" %}
-                </button>
-                {% include "WebAXEL/login/login_modal.html" %}
-            </div>
-            <div class="container">
-                <button class="btn btn-success btn-lg btn-block mt-5" type="button" data-toggle="modal"
-                        data-target="#modalRegister" title="{% trans "Inscription" %}">{% trans "Inscription" %}
-                </button>
-                {% include "WebAXEL/registration/register_modal.html" %}
-            </div>
         {% endif %}
     </div>
 {% endblock %}
