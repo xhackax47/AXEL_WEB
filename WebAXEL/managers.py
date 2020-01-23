@@ -4,10 +4,11 @@ from django.utils.translation import ugettext_lazy as _
 
 class CustomUserManager(BaseUserManager):
     """
-    Gestionnaire perso d'utilisateurs  où email est l'unique identifiant
+    Gestionnaire perso d'utilisateurs où email est l'unique identifiant
     pour l'authentification à la place de username
     """
 
+    # Création d'utilisateur simple
     def create_user(self, email, password, **extra_fields):
         # Crée et sauvegarde un utilisateur avec le couple email/password
         if not email:
@@ -18,6 +19,7 @@ class CustomUserManager(BaseUserManager):
         user.save()
         return user
 
+    # Création de super utilisateur
     def create_superuser(self, email, password, **extra_fields):
         # Crée et sauvegarde un super-utilisateur avec le couple email/password
         extra_fields.setdefault('is_staff', True)

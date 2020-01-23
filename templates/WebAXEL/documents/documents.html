@@ -19,7 +19,8 @@
         </div>
         {% if is_paginated %}
             <p class="page-current text-center">
-                {% blocktrans with number=page_obj.number num_pages=page_obj.paginator.num_pages %}Page {{ number }} sur {{ num_pages }}.{% endblocktrans %}
+                {% blocktrans with number=page_obj.number num_pages=page_obj.paginator.num_pages %}Page {{ number }} sur
+                    {{ num_pages }}.{% endblocktrans %}
             </p>
         {% endif %}
         {% include 'WebAXEL/documents/documents_pagination.html' %}
@@ -33,19 +34,17 @@
                         <h5 class="card-title">
                             {% blocktrans with titre=document.titre %}{{ titre }}{% endblocktrans %}</h5>
                         <p class="card-text">
-                            {% blocktrans with description=document.description|truncatechars:50 %}{{ description }}{% endblocktrans %}
+                            {% blocktrans with description=document.description|truncatechars:50 %}
+                                {{ description }}{% endblocktrans %}
                             {% if document.description|length > 50 %}
                                 <a href data-toggle="modal"
                                    data-target="#modalLongDescription{{ document.id }}">{% trans 'Lire plus' %}</a>
-                                        {% include 'WebAXEL/documents/documents_modal_description.html' %}
+                                {% include 'WebAXEL/documents/documents_modal_description.html' %}
                             {% endif %}
                         </p>
                         <p class="card-text"><span class="badge badge-info">
                             {% blocktrans with auteur=document.auteur %}Auteur : {{ auteur }}{% endblocktrans %}
                             </span></p>
-                        <p class="card-text"><small class="badge badge-secondary">
-                            {% blocktrans with nb_vues=document.nb_vues %}Nombre de vues : {{ nb_vues }}{% endblocktrans %}
-                        </small>
                         </p>
                         <div class="card-footer p-1">
                             <a title="PDF" href="/{{ document.document }}" class="btn btn-primary"><i

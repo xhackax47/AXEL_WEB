@@ -15,8 +15,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # DEBUG = True pour le mode Développement
 # DEBUG = False pour le mode Production
 DEBUG = False
+
+# Condition pour vérifier le statut des lancement de tests
 NOT_TEST = eval("'test' not in sys.argv or 'test_coverage' in sys.argv")
 
+# Variables d'environnement
 env_vars = [
     'ADMIN',
     'DB_HOST',
@@ -86,7 +89,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'channels',
     'AdminAXEL.apps.AdminaxelConfig',
     'WebAXEL.apps.WebaxelConfig',
     'api.apps.ApiConfig',
@@ -94,6 +96,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'rest_auth',
+    # 'channels',
 ]
 
 # Utilisateur et groupes personnalisés

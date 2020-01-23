@@ -14,9 +14,6 @@
                             class="badge badge-secondary">
                             {% blocktrans with auteur=document.auteur %}Auteur : {{ auteur }}{% endblocktrans %}
                         </span></p>
-                    <p class="card-text"><small class="text-muted">
-                        {% blocktrans with nb_vues=document.nb_vues %}Nombre de vues :
-                            {{ nb_vues }}{% endblocktrans %}
                     </small></p>
                     <a title="PDF" href="/{{ document.document }}" class="btn btn-primary"><i
                             class="fa fa-file-pdf-o fa-lg"></i></a>

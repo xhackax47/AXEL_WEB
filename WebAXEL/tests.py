@@ -5,6 +5,7 @@ from django.utils import timezone
 from WebAXEL.models import Document, DataSet, Robot
 
 
+# Tests CRUD du model Document
 class DocumentTestCase(TestCase):
 
     # Init données de tests
@@ -36,6 +37,7 @@ class DocumentTestCase(TestCase):
         self.assertEqual(reponse.status_code, 302)
 
 
+# Tests CRUD du model Dataset
 class DataSetTestCase(TestCase):
 
     # Init données de tests
@@ -67,6 +69,7 @@ class DataSetTestCase(TestCase):
         self.assertEqual(reponse.status_code, 302)
 
 
+# Tests CRUD du model Robot
 class RobotTestCase(TestCase):
 
     # Init données de tests

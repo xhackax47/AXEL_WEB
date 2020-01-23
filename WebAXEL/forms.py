@@ -6,6 +6,11 @@ from django.utils.translation import ugettext_lazy as _
 from WebAXEL.models import Document, DataSet, DocumentCategory, DataSetCategory, AxelUser, RobotCategory, Robot
 
 
+def validate_digits_letters(word):
+    return word.isalnum()
+
+
+# Multiple formulaires
 class MultipleForm(forms.Form):
     action = CharField(max_length=60, widget=HiddenInput())
 
@@ -32,8 +37,10 @@ class SignupForm(UserCreationForm, MultipleForm):
         model = AxelUser
         fields = ('username', 'email', 'first_name', 'last_name', 'password1', 'password2')
 
-    def validate_digits_letters(self, word):
-        return word.isalnum()
+    # def validate_digits_letters(self, word):
+    #     username = self.cleaned_data['username'].lower()
+    #     all([word.isalnum() or word in set('_-@') for word in username])
+    #     return word.isalnum()
 
     # Vérification de l'existence du nom d'utilisateur dans la base de données
     def clean_username(self):
@@ -44,7 +51,7 @@ class SignupForm(UserCreationForm, MultipleForm):
             error = _('L\'utilisateur existe déjà')
             raise ValidationError(error)
         # Si le nom d'utilisateur possède des caractères alphanumériques, erreur
-        if not self.validate_digits_letters(username):
+        if not validate_digits_letters(username):
             error = _("Les noms d'utilisateur contiennent des caractères qui ne sont ni des chiffres ni des lettres")
             raise ValidationError(error)
         return username

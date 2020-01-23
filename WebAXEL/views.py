@@ -58,6 +58,7 @@ class ConnectView(LoginView):
         return reverse_lazy('login-confirmation')
 
 
+# Vue LoginConfirmationView pour la confirmation de connexion
 class LoginConfirmationView(TemplateView):
     template_name = 'WebAXEL/login/login_confirmation.html'
 
@@ -66,6 +67,7 @@ class LoginConfirmationView(TemplateView):
 class SignupView(CreateView):
     model = AxelUser
 
+    # Fonction d'envoi des données sur le formulaire d'inscription
     def post(self, request):
         form = SignupForm(request.POST)
         if form.is_valid():
@@ -78,6 +80,7 @@ class SignupView(CreateView):
             return redirect('register-confirmation')
         return render(request, 'WebAXEL/registration/register_confirmation.html', {'form': form})
 
+    # Fonction d'envoi du mail d'activation à partir d'un template email HTML
     def send_activation_mail(self, request, form, user):
         # Envoi du mail à l'utilisateur avec le token
         mail_subject = _('Activation du compte A.X.E.L. pour l\'utilisateur {0}').format(user)
@@ -103,31 +106,35 @@ class SignupView(CreateView):
         msg.send()
         messages.success(request, _("Lien d'activation envoyé par mail"))
 
-    def captcha(self, request, user):
-        # Captcha
-        recaptcha_response = request.POST.get('g-recaptcha-response')
-        url = 'https://www.google.com/recaptcha/api/siteverify'
-        values = {
-            'secret': settings.GOOGLE_RECAPTCHA_SECRET_KEY,
-            'response': recaptcha_response
-        }
-        data = urllib.parse.urlencode(values)
-        req = urllib.request.Request(url, data=data)
-        response = urllib.request.urlopen(req)
-        result = json.load(response)
-        if result['success']:
-            user.save()
-            messages.success(request, _('Utilisateur enregistré avec succès'))
-        else:
-            messages.error(request, _("Le captcha ne correspond pas"))
+    # # Fonction de validation du captcha Google
+    # def captcha(self, request, user):
+    #     # Captcha
+    #     recaptcha_response = request.POST.get('g-recaptcha-response')
+    #     url = 'https://www.google.com/recaptcha/api/siteverify'
+    #     values = {
+    #         'secret': settings.GOOGLE_RECAPTCHA_SECRET_KEY,
+    #         'response': recaptcha_response
+    #     }
+    #     data = urllib.parse.urlencode(values)
+    #     req = urllib.request.Request(url, data=data)
+    #     response = urllib.request.urlopen(req)
+    #     result = json.load(response)
+    #     if result['success']:
+    #         user.save()
+    #         messages.success(request, _('Utilisateur enregistré avec succès'))
+    #     else:
+    #         messages.error(request, _("Le captcha ne correspond pas"))
 
 
+# Vue RegisterConfirmationView pour la confirmation d'inscription
 class RegisterConfirmationView(TemplateView):
     template_name = 'WebAXEL/registration/register_confirmation.html'
 
 
-# Activation du compte
+# Vue ActivateAccount pour l'activation du compte
 class ActivateAccount(APIView):
+
+    # Fonction de vérification du couple token/uid pour l'activation
     def get(self, request, uidb64, token):
         # Décodage base 64 uid et recherche d'utilisateur
         try:
@@ -474,6 +481,7 @@ class RobotDeleteView(LoginRequiredMixin, DeleteView):
     def get_object(self, *args, **kwargs):
         robot = get_object_or_404(Robot, pk=self.kwargs['pk'])
         return robot
+
 
 # Vue en cas de clic sur page en cours de dev
 class ConstructionView(TemplateView):

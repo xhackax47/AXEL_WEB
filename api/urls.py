@@ -1,11 +1,12 @@
 from django.urls import path, include
 from rest_framework import routers
 
-from api.views import DocumentListViewSet, DocumentDetailView, DataSetListView, DataSetDetailView, RobotListView, \
-    RobotDetailView, DataSetListViewSet, RobotListViewSet, DocumentListView
+from api.views import DocumentListViewSet, DocumentDetailView, DataSetDetailView, RobotDetailView, DataSetListViewSet,\
+    RobotListViewSet
 
 app_name = 'api'
 
+# Routage des différentes listes
 router = routers.DefaultRouter()
 router.register('documents', DocumentListViewSet, 'documents')
 router.register('datasets', DataSetListViewSet, 'datasets')
