@@ -35,7 +35,7 @@ class SignupForm(UserCreationForm, MultipleForm):
 
     class Meta(UserCreationForm):
         model = AxelUser
-        fields = ('username', 'email', 'first_name', 'last_name', 'password1', 'password2')
+        fields = ('username', 'email', 'first_name', 'last_name', 'password1', 'password2', 'password')
 
     # def validate_digits_letters(self, word):
     #     username = self.cleaned_data['username'].lower()
@@ -84,7 +84,7 @@ class UserUpdateForm(ModelForm):
 
     class Meta:
         model = AxelUser
-        exclude = ['is_active', 'is_superuser', 'is_staff', 'user_permissions', 'groups']
+        exclude = ['is_active', 'is_superuser', 'is_staff', 'user_permissions', 'groups', 'password']
 
 
 # Formulaire d'ajout de catégorie de Document
