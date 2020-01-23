@@ -1,7 +1,9 @@
 from django.conf.urls import url
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
 from django.urls import path, include
 
+from AXEL_WEB import settings
 from . import views
 
 # app_name = 'WebAXEL'
@@ -12,6 +14,8 @@ urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
     # Internationalisation
     path('i18n/', include('django.conf.urls.i18n')),
+    # Favicon Admin
+    url(r'^favicon.ico/$', lambda x: HttpResponseRedirect(settings.STATIC_URL+'img/favicon.ico')), #google chrome favicon fix
 ]
 # Comptes et connexion
 urlpatterns += [
