@@ -84,7 +84,7 @@ class UserUpdateForm(ModelForm):
 
     class Meta:
         model = AxelUser
-        exclude = ['is_active', 'is_superuser', 'is_staff', 'user_permissions', 'groups', 'password']
+        exclude = ['is_active', 'is_superuser', 'is_staff', 'user_permissions', 'groups']
 
 
 # Formulaire d'ajout de catégorie de Document
