@@ -34,13 +34,13 @@
                 </div>
                 {% if not user.is_authenticated %}
                     <div class="container">
-                        <button class="btn btn-danger btn-lg mt-5" type="button" data-toggle="modal"
+                        <button style="text-align: left" class="btn btn-danger btn-lg mt-5" type="button" data-toggle="modal"
                                 data-target="#modalLogin" title="{% trans "Connexion" %}">{% trans "Connexion" %}
                         </button>
                         {% include "WebAXEL/login/login_modal.html" %}
                     </div>
                     <div class="container">
-                        <button class="btn btn-success btn-lg mt-5" type="button" data-toggle="modal"
+                        <button style="text-align: right" class="btn btn-success btn-lg mt-5" type="button" data-toggle="modal"
                                 data-target="#modalRegister" title="{% trans "Inscription" %}">{% trans "Inscription" %}
                         </button>
                         {% include "WebAXEL/registration/register_modal.html" %}
