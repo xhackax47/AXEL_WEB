@@ -1,4 +1,4 @@
-from django.db.models import Model, IntegerField, FloatField
+from django.db.models import Model, IntegerField, FloatField, CharField
 from django.utils.translation import ugettext_lazy as _
 
 
@@ -14,6 +14,7 @@ class Caracteristiques(Model):
 class Physique(Model):
     age = IntegerField(max_length=2, null=False, verbose_name=_("Age"))
     taille = FloatField(max_length=3, null=False, verbose_name=_("Taille"))
+    categorie_taille = CharField(max_length=3, null=False, verbose_name=_("Catégorie de taille"))
     poids = IntegerField(max_length=2, null=False, verbose_name=_("Poids"))
     yeux = IntegerField(max_length=2, null=False, verbose_name=_("Yeux"))
     peau = IntegerField(max_length=2, null=False, verbose_name=_("Peau"))
