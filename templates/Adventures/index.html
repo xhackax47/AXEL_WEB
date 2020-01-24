@@ -1,0 +1,40 @@
+{% extends "WebAXEL/base/base.html" %}
+{% load static i18n crispy_forms_tags %}
+{% block title %}
+    {% trans "Adventures JDR" %}
+{% endblock %}
+{% block content %}
+    <div class="container-fluid" align="center">
+        {% if user.is_authenticated %}
+            <h1 class="mainH1 mt-3 mb-3">{% trans "Bienvenue sur le jeu de rôles Adventures" %}</h1>
+        {% else %}
+            <h1 class="mainH1NotConnected mt-3 mb-3">{% trans "Bienvenue sur le jeu de rôles Adventures" %}</h1>
+        {% endif %}
+        {% if not forms.createcharacter.errors %}
+            <div class="jumbotron jumbotron-fluid mt-1 mb-1">
+                <p class="lead mt-1">{% trans "Bonjour et bienvenue sur l'interface web A.X.E.L que j'utilise pour mes différents projets d'informatiques et de robotiques." %}</p>
+                <hr class="my-1">
+                <p>{% blocktrans %} Jeu de rôles avec génération de personnages et scénarios aléatoires selon le niveau
+                    du personnage.
+                {% endblocktrans %}</p>
+                {% if not user.is_authenticated %}
+                    <div class="row" align="center">
+                        <div class="col">
+                            <button class="btn btn-danger btn-lg mt-5" type="button" data-toggle="modal"
+                                    data-target="#modalCreateCharacter"
+                                    title="{% trans "Créer un personnage" %}">{% trans "Créer un personnage" %}
+                            </button>
+                        </div>
+                        <div class="col"></div>
+                        <div class="col">
+                            <button class="btn btn-success btn-lg mt-5" type="button" data-toggle="modal"
+                                    data-target="#modalPlayGame"
+                                    title="{% trans "Jouer avec son personnage" %}">{% trans "Jouer avec son personnage" %}
+                            </button>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
