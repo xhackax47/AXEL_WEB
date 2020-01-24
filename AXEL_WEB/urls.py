@@ -1,7 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
 
-from WebAXEL import views
 from WebAXEL.views import ConstructionView
 
 urlpatterns = [
