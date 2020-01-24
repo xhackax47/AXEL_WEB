@@ -195,10 +195,10 @@ elif DEBUG and NOT_TEST:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': settings['DEV_DB_NAME'],
-            'USER': settings['DEV_DB_USER'],
-            'PASSWORD': settings['DEV_DB_PASSWORD'],
-            'HOST': settings['DEV_DB_HOST'],
+            'NAME': 'AXEL_WEB',
+            'USER': 'xhackax47',
+            'PASSWORD': 'L@n@s@y@n34000',
+            'HOST': 'localhost',
             'PORT': '5432',
         }
     }
