@@ -1,5 +1,7 @@
 from django.db import models
 from django.db.models import TextChoices, Model, CharField, IntegerField, FloatField, ForeignKey
+from django.utils.translation import ugettext_lazy as _
+
 
 from Adventures.models import Competences, Equipment, Caracteristiques
 
