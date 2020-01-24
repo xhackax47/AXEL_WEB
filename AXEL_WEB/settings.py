@@ -14,7 +14,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # DEBUG = True pour le mode Développement
 # DEBUG = False pour le mode Production
-DEBUG = False
+DEBUG = True
 
 # Condition pour vérifier le statut des lancement de tests
 NOT_TEST = eval("'test' not in sys.argv or 'test_coverage' in sys.argv")
@@ -189,7 +189,7 @@ if not DEBUG and NOT_TEST:
         }
     }
 
-elif DEBUG and NOT_TEST:
+elif not DEBUG and NOT_TEST:
     # Configuration BDD PostgreSQL Local en mode Développement (DEBUG=TRUE)
     DATABASES = {
         'default': {
