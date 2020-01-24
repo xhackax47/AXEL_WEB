@@ -65,14 +65,15 @@ if not DEBUG and NOT_TEST:
         #         print(_(f'ATTENTION la variable d\'environnement {var} n\'a pas été trouvé'))
         #         settings[var] = 'ko'
 
-# Initialisation Sentry Montoring
-sentry_sdk.init(
-    dsn="https://38fa4be46e8c4295b2ec9bda26b4b232@sentry.io/1887341",
-    integrations=[DjangoIntegration()],
+# PRODUCTION : Initialisation Sentry Montoring
+if not DEBUG:
+    sentry_sdk.init(
+        dsn="https://38fa4be46e8c4295b2ec9bda26b4b232@sentry.io/1887341",
+        integrations=[DjangoIntegration()],
 
-    # Associer les utilisateurs aux erreurs
-    send_default_pii=True
-)
+        # Associer les utilisateurs aux erreurs
+        send_default_pii=True
+    )
 
 # Clé secrète selon l'environnement
 if DEBUG and NOT_TEST:
