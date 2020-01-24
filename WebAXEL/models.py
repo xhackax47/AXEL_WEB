@@ -3,8 +3,6 @@ from datetime import timedelta
 from django.contrib.auth.models import AbstractUser, Group, User
 from django.db.models import Model, CharField, DateTimeField, TextField, FileField, IntegerField, ManyToManyField, \
     ImageField, EmailField, TextChoices, URLField
-from django.db.models.signals import post_save
-from django.dispatch import receiver
 from django.utils import timezone
 from django.utils.translation import ugettext_lazy as _
 
