@@ -4,11 +4,15 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class Armure(Model):
-    TYPE_ARMURE = Choices(_('Armure légère'), _('Armure intermédiaire'), _('Armure lourde'))
+    TYPE_ARMURE = (
+        ('1', _('Armure légère')),
+        ('2', _('Armure intermédiaire')),
+        ('3', _('Armure lourde')),
+    )
     nom = CharField(max_length=100, verbose_name="Nom de l'armure", default=None)
     prix = IntegerField(blank=True, null=True, default=None,
                         verbose_name=_("Prix de l'armure"))
-    type_armure = CharField(max_length=100, choices=TYPE_ARMURE, default=None)
+    type_armure = CharField(max_length=100, verbose_name="Type de l'armure", default=None)
     ca_bonus = IntegerField(blank=True, null=True, default=None, verbose_name=_("CA Bonus"))
     max_dex = IntegerField(blank=True, null=True, default=None, verbose_name=_("Maximum Dextérité"))
     malus = IntegerField(blank=True, null=True, default=None, verbose_name=_("Malus Armure"))
