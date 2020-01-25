@@ -9,24 +9,29 @@
                 <div class="card-deck">
             {% endif %}
             {% for character in characters %}
-            <div class="card text-center mb-3" style="min-width: 30%;">
-                <div class="card-body">
-                    <h5 class="card-title">
-                        {% blocktrans with nom=character.nom %}{{ nom }}{% endblocktrans %}</h5>
-                    <p class="card-text"><span class="badge badge-primary">
+                <div class="card text-center mb-3" style="min-width: 30%;">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            {% blocktrans with nom=character.nom %}{{ nom }}{% endblocktrans %}</h5>
+                        <p class="card-text"><span class="badge badge-primary">
                             {% blocktrans with classe=character.classe %}Auteur : {{ classe }}{% endblocktrans %}
                             </span></p>
-                    </p>
-                    <p class="card-text"><span class="badge badge-secondary">
+                        </p>
+                        <p class="card-text"><span class="badge badge-secondary">
                             {% blocktrans with race=character.race %}Auteur : {{ race }}{% endblocktrans %}
                             </span></p>
-                    </p>
-                    <div class="card-footer p-1">
-                        <a title="{% trans "Détails Personnage" %}" href="{% url "character" character.id %}"
-                           class="btn btn-info"><i class="fa fa-info fa-lg"></i></a>
+                        </p>
+                        <div class="card-footer p-1">
+                            <a title="{% trans "Détails Personnage" %}" href="{% url "character" character.id %}"
+                               class="btn btn-info"><i class="fa fa-info fa-lg"></i></a>
+                        </div>
                     </div>
                 </div>
-            </div>
+            {% empty %}
+                <p style="text-align: center;">{% trans "Aucun personnage trouvé" %}</p>
+            {% endfor %}
             </div>
         </div>
+    </div>
+    </div>
 {% endblock %}
