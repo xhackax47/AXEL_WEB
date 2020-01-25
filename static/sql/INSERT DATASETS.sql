@@ -3,7 +3,8 @@ INSERT INTO public."WebAXEL_dataset" (
     date_ajout,
     description,
 	dataset,
-	source
+	source,
+	nb_vues
 )
 VALUES
     (
@@ -30,7 +31,8 @@ Les données sont encodées en UTF-8.
 
 Note : Les règles relatives à l''heure d''été changent d''une année à l''autre et d''un pays à l''autre. Les données actuelles sont une approximation pour 2009, construite au niveau du pays. La plupart des aéroports des régions sans DST dans les pays qui observent généralement le DST (p. ex. AL, HI aux États-Unis, NT, QL en Australie, certaines parties du Canada) sont marqués de façon incorrecte.',
     	'static/datasets/airports-extended.dat',
-		'https://openflights.org/data.html'
+		'https://openflights.org/data.html',
+		0
 	),
 	(
         'Base officielle des codes postaux',
@@ -50,7 +52,8 @@ Note aux réutilisateurs: les contours géographiques des communes, à partir de
 
 Vous découvrirez des formats de fichiers supplémentaires, des outils de visualisation et des API sur https://datanova.legroupe.laposte.fr.',
     	'static/datasets/laposte_hexasmal.csv',
-		'https://www.data.gouv.fr/en/datasets/base-officielle-des-codes-postaux/'
+		'https://www.data.gouv.fr/en/datasets/base-officielle-des-codes-postaux/',
+		0
 	),
 	(
         'Titanic : Apprendre du désastre par la machine',
@@ -63,5 +66,6 @@ Bien qu''il y ait eu une certaine part de chance pour survivre, il semble que ce
 
 Dans le cadre de ce défi, nous vous demandons de construire un modèle prédictif qui répond à la question : "À l''aide des données sur les passagers (nom, âge, sexe, classe socio-économique, etc.), vous devez construire un modèle prédictif qui répond à la question suivante : " Quelles sortes de personnes étaient plus susceptibles de survivre ?',
     	'static/datasets/titanic.csv',
-		'https://www.kaggle.com/c/titanic/data'
+		'https://www.kaggle.com/c/titanic/data',
+		0
 	);
