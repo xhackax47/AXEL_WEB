@@ -28,15 +28,21 @@ class Armure(Model):
 
 
 class Arme(Model):
-    TYPE_ARME = (
-        ('1', _('Armes courantes de corps à corps')),
-        ('2', _('Armes courantes à distance')),
-        ('3', _('Armes de guerre de corps à corps')),
-        ('4', _('Armes de guerre à distance')),
-    )
+    class Type_Arme(models.TextChoices):
+        courantes_cac = _('Armes courantes de corps à corps'),
+        courantes_dist = _('Armes courantes à distance'),
+        guerre_cac = _('Armes de guerre de corps à corps'),
+        guerre_dist = _('Armes de guerre à distance')
+
+    class Type_Degats(models.TextChoices):
+        cont = '1', _('Contondant'),
+        perf = '2', _('Perforant'),
+        tran = '3', _('Tranchant')
+
     nom = CharField(max_length=100, verbose_name="Nom de l'arme", default=None)
     prix = IntegerField(blank=True, null=True, default=None, verbose_name=_("Prix de l'arme"))
-    type_armure = CharField(max_length=100, choices=TYPE_ARME, verbose_name="Type de l'arme", default=None)
+    type_arme = CharField(max_length=100, choices=Type_Arme.choices, verbose_name="Type de l'arme", default=Type_Arme.courantes_cac)
+    type_degats = CharField(max_length=100, choices=Type_Degats.choices, verbose_name="Type de dégâts de l'arme", default=Type_Degats.cont)
 
     degat = IntegerField(null=False, blank=False, default=1)
     poids = IntegerField(blank=True, null=True, default=None, verbose_name=_("Poids de l'arme en kilogrammes"))
