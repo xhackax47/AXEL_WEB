@@ -5,6 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 from Adventures.models import Caracteristiques, Competences
 from Adventures.models.Caracteristiques import Physique
 from Adventures.models.Equipment import Equipement
+from WebAXEL.models import AxelUser
 
 
 class Character(Model):
@@ -26,6 +27,7 @@ class Character(Model):
     competences = ForeignKey(Competences, on_delete=models.CASCADE, default=None)
     caracteristiques = ForeignKey(Caracteristiques, on_delete=models.CASCADE, default=None)
     physique = ForeignKey(Physique, on_delete=models.CASCADE, default=None)
+    user = ForeignKey(AxelUser, on_delete=models.CASCADE, default=None)
 
     def __str__(self):
         return self.nom

@@ -7,7 +7,7 @@ from Adventures.models import Character, Competences, Caracteristiques, Physique
 class CharacterForm(ModelForm):
     class Meta:
         model = Character
-        exclude = ['equipement', 'competences', 'caracteristiques', 'physique']
+        exclude = ['equipement', 'competences', 'caracteristiques', 'physique', 'user']
 
 
 class EquipementForm(ModelForm):
