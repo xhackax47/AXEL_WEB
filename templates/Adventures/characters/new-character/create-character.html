@@ -7,7 +7,7 @@
         <form action="" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form|crispy }}
-            <div class="card-footer">
+            <div style="text-align: center">
                 <a title="Equipement" href="{% url 'add-equipment' %}" class="btn btn-primary">{% trans 'Equipement' %}</a>
                 <a title="Competences" href="{% url 'add-competences' %}" class="btn btn-primary">{% trans 'Competences' %}</a>
                 <a title="Caracteristiques" href="{% url 'add-carac' %}" class="btn btn-primary">{% trans 'Caracteristiques' %}</a>
