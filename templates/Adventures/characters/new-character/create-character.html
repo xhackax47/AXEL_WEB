@@ -8,10 +8,10 @@
             {% csrf_token %}
             {{ form|crispy }}
             <div class="card-footer">
-                <a title="Equipement" href="{% url 'add-equipment' %}/{{ character.equipement }}" class="btn btn-primary">{% trans 'Equipement' %}</a>
-                <a title="Competences" href="{% url 'add-competences' %}/{{ character.competences }}" class="btn btn-primary">{% trans 'Competences' %}</a>
-                <a title="Caracteristiques" href="{% url 'add-carac' %}/{{ character.caracteristiques }}" class="btn btn-primary">{% trans 'Caracteristiques' %}</a>
-                <a title="Physique" href="{% url 'add-physics' %}/{{ character.physique }}" class="btn btn-primary">{% trans 'Physique' %}</a>
+                <a title="Equipement" href="{% url 'add-equipment' %}" class="btn btn-primary">{% trans 'Equipement' %}</a>
+                <a title="Competences" href="{% url 'add-competences' %}" class="btn btn-primary">{% trans 'Competences' %}</a>
+                <a title="Caracteristiques" href="{% url 'add-carac' %}" class="btn btn-primary">{% trans 'Caracteristiques' %}</a>
+                <a title="Physique" href="{% url 'add-physics' %}" class="btn btn-primary">{% trans 'Physique' %}</a>
             </div>
             <button id="btnAdd" type="submit" class="btn btn-success">{% trans "Créer le personnage" %}</button>
         </form>
