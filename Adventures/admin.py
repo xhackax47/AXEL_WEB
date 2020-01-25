@@ -1,10 +1,8 @@
 from django.contrib import admin
-
-# Register your models here.
 from django.contrib.admin import ModelAdmin
 
-from Adventures.models import Caracteristiques, Character, Competences, Ennemy, Equipment, NPC, Physique
-from Adventures.models.Equipment import Outils, Armure, Arme, Bouclier, Bourse, Objets
+from Adventures.models import Caracteristiques, Character, Competences, Ennemy, NPC, Physique, Equipement
+from Adventures.models.Equipment import Outil, Armure, Arme, Bourse, Objet
 
 
 class CaracteristiquesAdmin(ModelAdmin):
@@ -31,23 +29,19 @@ class ArmeAdmin(ModelAdmin):
     exclude = ['']
 
 
-class BouclierAdmin(ModelAdmin):
-    exclude = ['']
-
-
 class BourseAdmin(ModelAdmin):
     exclude = ['']
 
 
-class ObjetsAdmin(ModelAdmin):
+class ObjetAdmin(ModelAdmin):
     exclude = ['']
 
 
-class OutilsAdmin(ModelAdmin):
+class OutilAdmin(ModelAdmin):
     exclude = ['']
 
 
-class EquipmentAdmin(ModelAdmin):
+class EquipementAdmin(ModelAdmin):
     exclude = ['']
 
 
@@ -65,10 +59,9 @@ admin.site.register(Competences, CompetencesAdmin)
 admin.site.register(Ennemy, EnnemyAdmin)
 admin.site.register(Armure, ArmureAdmin)
 admin.site.register(Arme, ArmeAdmin)
-admin.site.register(Bouclier, BouclierAdmin)
 admin.site.register(Bourse, BourseAdmin)
-admin.site.register(Objets, ObjetsAdmin)
-admin.site.register(Outils, OutilsAdmin)
-admin.site.register(Equipment, EquipmentAdmin)
+admin.site.register(Objet, ObjetAdmin)
+admin.site.register(Outil, OutilAdmin)
+admin.site.register(Equipement, EquipementAdmin)
 admin.site.register(Character, CharacterAdmin)
 admin.site.register(NPC, NPCAdmin)

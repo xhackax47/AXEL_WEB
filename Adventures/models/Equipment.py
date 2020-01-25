@@ -10,8 +10,7 @@ class Armure(Model):
         ('3', _('Armure lourde')),
     )
     nom = CharField(max_length=100, verbose_name="Nom de l'armure", default=None)
-    prix = IntegerField(blank=True, null=True, default=None,
-                        verbose_name=_("Prix de l'armure"))
+    prix = IntegerField(blank=True, null=True, default=None, verbose_name=_("Prix de l'armure"))
     type_armure = CharField(max_length=100, choices=TYPE_ARMURE, verbose_name="Type de l'armure", default=None)
     ca_bonus = IntegerField(blank=True, null=True, default=None, verbose_name=_("CA Bonus"))
     max_dex = IntegerField(blank=True, null=True, default=None, verbose_name=_("Maximum Dextérité"))
@@ -25,32 +24,26 @@ class Armure(Model):
     discretion = BooleanField(blank=True, null=True, default=None, verbose_name=_("Armure discrète ?"))
 
     def __str__(self):
-        return _("Nom de l'armure : {0}").format(self.nom)
+        return self.nom
 
 
 class Arme(Model):
+    TYPE_ARME = (
+        ('1', _('Armes courantes de corps à corps')),
+        ('2', _('Armes courantes à distance')),
+        ('3', _('Armes de guerre de corps à corps')),
+        ('4', _('Armes de guerre à distance')),
+    )
     nom = CharField(max_length=100, verbose_name="Nom de l'arme", default=None)
-    prix = IntegerField(blank=True, null=True, default=None,
-                        verbose_name=_("Prix de l'arme"))
+    prix = IntegerField(blank=True, null=True, default=None, verbose_name=_("Prix de l'arme"))
+    type_armure = CharField(max_length=100, choices=TYPE_ARME, verbose_name="Type de l'arme", default=None)
+
     degat = IntegerField(null=False, blank=False, default=1)
-    poids = IntegerField(blank=True, null=True, default=None,
-                         verbose_name=_("Poids de l'arme en kilogrammes"))
+    poids = IntegerField(blank=True, null=True, default=None, verbose_name=_("Poids de l'arme en kilogrammes"))
     proprietes = CharField(max_length=255, blank=True, null=True, default=None, verbose_name=_("Propriétés de l'arme"))
 
     def __str__(self):
-        return _("Nom de l'arme : {0}").format(self.nom)
-
-
-class Bouclier(Model):
-    nom = CharField(max_length=100, verbose_name="Nom du bouclier", default=None, null=True)
-    prix = IntegerField(blank=True, null=True, default=None,
-                        verbose_name=_("Prix du bouclier"))
-    ca_bonus = IntegerField(blank=True, null=True, default=None, verbose_name=_("CA Bonus"))
-    poids = IntegerField(blank=True, null=True, default=None,
-                         verbose_name=_("Poids du bouclier en kilogrammes"))
-
-    def __str__(self):
-        return _("Nom du bouclier : {0}").format(self.nom)
+        return self.nom
 
 
 class Bourse(Model):
@@ -72,7 +65,8 @@ class Bourse(Model):
             self.pieces_platine, self.pieces_or, self.pieces_electrum, self.pieces_argent, self.pieces_cuivre
         )
 
-class Objets(Model):
+
+class Objet(Model):
     nom = CharField(max_length=255, verbose_name="Nom de l'objet", null=True, default=None)
     prix = IntegerField(blank=True, null=True, default=None,
                         verbose_name=_("Prix de l'objet"))
@@ -80,23 +74,23 @@ class Objets(Model):
                          verbose_name=_("Poids de l'objet"))
 
     def __str__(self):
-        return _("Nom de l'objet : {0}").format(self.nom)
+        return self.nom
 
 
-class Outils(Model):
+class Outil(Model):
     nom = CharField(max_length=255, verbose_name="Nom de l'outil", null=True, default=None)
     prix = IntegerField(blank=True, null=True, default=None,
                         verbose_name=_("Prix de l'outil"))
     poids = IntegerField(blank=True, null=True, default=None,
                          verbose_name=_("Poids de l'outil"))
+
     def __str__(self):
-        return _("Nom de l'outil : {0}").format(self.nom)
+        return self.nom
 
 
-class Equipment(Model):
+class Equipement(Model):
     armure = ForeignKey(Armure, on_delete=models.CASCADE, default=None)
-    arme = ForeignKey(Arme, on_delete=models.CASCADE, default=None)
-    bouclier = ForeignKey(Bouclier, on_delete=models.CASCADE, default=None)
+    armes = ForeignKey(Arme, on_delete=models.CASCADE, default=None)
     bourse = ForeignKey(Bourse, on_delete=models.CASCADE, default=None)
-    objets = ForeignKey(Objets, on_delete=models.CASCADE, default=None)
-    outils = ForeignKey(Outils, on_delete=models.CASCADE, default=None)
+    objets = ForeignKey(Objet, on_delete=models.CASCADE, default=None)
+    outils = ForeignKey(Outil, on_delete=models.CASCADE, default=None)

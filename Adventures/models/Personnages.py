@@ -2,8 +2,9 @@ from django.db import models
 from django.db.models import Model, TextChoices, CharField, IntegerField, ForeignKey, FloatField
 from django.utils.translation import ugettext_lazy as _
 
-from Adventures.models import Caracteristiques, Competences, Equipment
+from Adventures.models import Caracteristiques, Competences
 from Adventures.models.Caracteristiques import Physique
+from Adventures.models.Equipment import Equipement
 
 
 class Character(Model):
@@ -21,10 +22,13 @@ class Character(Model):
     initiative = IntegerField(default=None, verbose_name=_("Initiative"))
     vitesse_deplacement = FloatField(max_length=2, default=None, verbose_name=_("Vitesse de déplacement"))
 
-    equipement = ForeignKey(Equipment, on_delete=models.CASCADE, default=None)
+    equipement = ForeignKey(Equipement, on_delete=models.CASCADE, default=None)
     competences = ForeignKey(Competences, on_delete=models.CASCADE, default=None)
     caracteristiques = ForeignKey(Caracteristiques, on_delete=models.CASCADE, default=None)
     physique = ForeignKey(Physique, on_delete=models.CASCADE, default=None)
+
+    def __str__(self):
+        return self.nom
 
 
 class NPCFonction(TextChoices):
@@ -42,10 +46,13 @@ class NPC(Model):
     ca = IntegerField(default=None, verbose_name=_("Classe d'armure"))
     vitesse_deplacement = FloatField(max_length=2, default=None, verbose_name=_("Vitesse de déplacement"))
 
-    equipement = ForeignKey(Equipment, on_delete=models.CASCADE, default=None)
+    equipement = ForeignKey(Equipement, on_delete=models.CASCADE, default=None)
     competences = ForeignKey(Competences, on_delete=models.CASCADE, default=None)
     caracteristiques = ForeignKey(Caracteristiques, on_delete=models.CASCADE, default=None)
     physique = ForeignKey(Physique, on_delete=models.CASCADE, default=None)
 
     fonction = CharField(max_length=100, choices=NPCFonction.choices, default=NPCFonction.Discussion,
                          verbose_name=_("Fonction du PNJ"))
+
+    def __str__(self):
+        return self.nom

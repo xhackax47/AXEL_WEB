@@ -1,7 +1,7 @@
 from django.forms import ModelForm
 
 # Formulaire de création de personnage
-from Adventures.models import Character, Equipment, Competences, Caracteristiques, Physique
+from Adventures.models import Character, Competences, Caracteristiques, Physique, Equipement
 
 
 class CharacterForm(ModelForm):
@@ -12,7 +12,7 @@ class CharacterForm(ModelForm):
 
 class EquipementForm(ModelForm):
     class Meta:
-        model = Equipment
+        model = Equipement
         exclude = []
 
 
