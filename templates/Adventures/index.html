@@ -8,20 +8,20 @@
         <h1 class="mainH1 mt-3 mb-3">{% trans "Bienvenue sur le jeu de rôles Adventures" %}</h1>
         <div class="jumbotron jumbotron-fluid mt-1 mb-1">
             <hr class="my-1">
-            <p>{% blocktrans %} Jeu de rôles avec génération de personnages et scénarios aléatoires selon le niveau
+            <p>{% blocktrans %} Jeu de rôles avec création de personnages et scénarios aléatoires selon le niveau
                 du personnage.
             {% endblocktrans %}</p>
             <div class="row" align="center">
                 <div class="col">
-                    <button class="btn btn-danger btn-lg mt-5" type="button" href="{% url 'characters' %}"
-                            title="{% trans "Liste des personnages" %}">{% trans "Liste des personnages" %}
-                    </button>
+                    <a class="btn btn-danger btn-lg mt-5" type="button" href="{% url 'characters' %}"
+                       title="{% trans "Liste des personnages" %}">{% trans "Liste des personnages" %}
+                    </a>
                 </div>
                 <div class="col"></div>
                 <div class="col">
-                    <button class="btn btn-success btn-lg mt-5" type="button" href="{% url 'new-character' %}"
-                            title="{% trans "Créer un personnage" %}">{% trans "Créer un personnage" %}
-                    </button>
+                    <a class="btn btn-success btn-lg mt-5" type="button" href="{% url 'new-character' %}"
+                       title="{% trans "Créer un personnage" %}">{% trans "Créer un personnage" %}
+                    </a>
                 </div>
             </div>
         </div>
