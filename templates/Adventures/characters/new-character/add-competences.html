@@ -1,0 +1,13 @@
+{% extends "WebAXEL/base/base.html" %}
+{% load static i18n crispy_forms_filters %}
+{% block title %}{% trans "Création Personnage Adventures" %}{% endblock %}
+{% block content %}
+    <div class="container">
+        <h1 class="mainH1 mt-3 mb-3" style="text-align: center">{% trans "Compétences" %}</h1>
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button id="btnAdd" type="submit" class="btn btn-success">{% trans "Ajouter les Compétences" %}</button>
+        </form>
+    </div>
+{% endblock %}

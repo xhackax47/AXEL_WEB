@@ -3,11 +3,11 @@
 {% block title %}{% trans "Création Personnage Adventures" %}{% endblock %}
 {% block content %}
     <div class="container">
-        <h1 class="mainH1 mt-3 mb-3" style="text-align: center">{% trans "Création de personnage" %}</h1>
+        <h1 class="mainH1 mt-3 mb-3" style="text-align: center">{% trans "Equipement" %}</h1>
         <form action="" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form|crispy }}
-            <button id="btnAdd" type="submit" class="btn btn-success">{% trans "Créer le personnage" %}</button>
+            <button id="btnAdd" type="submit" class="btn btn-success">{% trans "Ajouter l'equipement" %}</button>
         </form>
     </div>
 {% endblock %}

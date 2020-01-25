@@ -12,6 +12,14 @@ urlpatterns = [
     path('characters/', login_required(views.CharactersView.as_view()), name='characters'),
     # Creer Personnage
     path('new-character/', login_required(views.CharacterCreateView.as_view()), name='new-character'),
+    # Ajouter equipement au personnage
+    path('new-character/add-equipment/', login_required(views.CharacterEquipmentCreateView.as_view()), name='add-equipment'),
+    # Ajouter compétences au personnage
+    path('new-character/add-competences/', login_required(views.CharacterCompetencesCreateView.as_view()), name='add-competences'),
+    # Ajouter caractéristiques au personnage
+    path('new-character/add-carac/', login_required(views.CharacterCaracteristiquesCreateView.as_view()), name='add-carac'),
+    # Ajouter physique au personnage
+    path('new-character/add-physics/', login_required(views.CharacterPhysiqueCreateView.as_view()), name='add-physics'),
     #path('new-game/', CreateGameView.as_view(), name='new-game'),
     #path('gameboard/', GameboardView.as_view(), name='gameboard'),
     #path('scores/', ScoresView.as_view(), name='scores'),
