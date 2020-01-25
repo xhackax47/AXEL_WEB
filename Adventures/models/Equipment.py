@@ -24,6 +24,9 @@ class Armure(Model):
                          verbose_name=_("Poids de l'armure en livres"))
     discretion = BooleanField(blank=True, null=True, default=None, verbose_name=_("Armure discrète ?"))
 
+    def __str__(self):
+        return _("Nom de l'armure : {0}").format(self.nom)
+
 
 class Arme(Model):
     nom = CharField(max_length=100, verbose_name="Nom de l'arme", default=None)
@@ -34,13 +37,20 @@ class Arme(Model):
                          verbose_name=_("Poids de l'arme en kilogrammes"))
     proprietes = CharField(max_length=255, blank=True, null=True, default=None, verbose_name=_("Propriétés de l'arme"))
 
+    def __str__(self):
+        return _("Nom de l'arme : {0}").format(self.nom)
+
 
 class Bouclier(Model):
+    nom = CharField(max_length=100, verbose_name="Nom du bouclier", default=None)
     prix = IntegerField(blank=True, null=True, default=None,
                         verbose_name=_("Prix du bouclier"))
     ca_bonus = IntegerField(blank=True, null=True, default=None, verbose_name=_("CA Bonus"))
     poids = IntegerField(blank=True, null=True, default=None,
                          verbose_name=_("Poids du bouclier en kilogrammes"))
+
+    def __str__(self):
+        return _("Nom du bouclier : {0}").format(self.nom)
 
 
 class Bourse(Model):
@@ -52,6 +62,15 @@ class Bourse(Model):
     pieces_argent = IntegerField(blank=True, null=True, default=None, verbose_name=_("Pièces d'argent"))
     pieces_cuivre = IntegerField(blank=True, null=True, default=None, verbose_name=_("Pièces de cuivre"))
 
+    def __str__(self):
+        return _(
+            "Nombre de pièces de platine : {0}, "
+            "Nombre de pièces d'or : {1}, "
+            "Nombre de pièces d'électrum : {2}, "
+            "Nombre de pièces d'argent : {3}, "
+            "Nombre de pièces de cuivre : {4}, ").format(
+            self.pieces_platine, self.pieces_or, self.pieces_electrum, self.pieces_argent, self.pieces_cuivre
+        )
 
 class Objets(Model):
     nom = CharField(max_length=255, verbose_name="Nom de l'objet", null=True, default=None)
@@ -60,6 +79,9 @@ class Objets(Model):
     poids = IntegerField(blank=True, null=True, default=None,
                          verbose_name=_("Poids de l'objet"))
 
+    def __str__(self):
+        return _("Nom de l'objet : {0}").format(self.nom)
+
 
 class Outils(Model):
     nom = CharField(max_length=255, verbose_name="Nom de l'outil", null=True, default=None)
@@ -67,6 +89,8 @@ class Outils(Model):
                         verbose_name=_("Prix de l'outil"))
     poids = IntegerField(blank=True, null=True, default=None,
                          verbose_name=_("Poids de l'outil"))
+    def __str__(self):
+        return _("Nom de l'outil : {0}").format(self.nom)
 
 
 class Equipment(Model):
