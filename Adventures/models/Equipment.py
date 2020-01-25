@@ -1,12 +1,14 @@
 from django.db import models
-from django.db.models import Model, IntegerField, ForeignKey, FloatField, CharField, BooleanField
+from django.db.models import Model, IntegerField, ForeignKey, FloatField, CharField, BooleanField, Choices
 from django.utils.translation import ugettext_lazy as _
 
 
 class Armure(Model):
-    nom = CharField(max_length=100,verbose_name="Nom de l'armure", default=None)
+    TYPE_ARMURE = Choices(_('Armure légère'), _('Armure intermédiaire'), _('Armure lourde'))
+    nom = CharField(max_length=100, verbose_name="Nom de l'armure", default=None)
     prix = IntegerField(blank=True, null=True, default=None,
                         verbose_name=_("Prix de l'armure"))
+    type_armure = CharField(max_length=100, choices=TYPE_ARMURE, default=None)
     ca_bonus = IntegerField(blank=True, null=True, default=None, verbose_name=_("CA Bonus"))
     max_dex = IntegerField(blank=True, null=True, default=None, verbose_name=_("Maximum Dextérité"))
     malus = IntegerField(blank=True, null=True, default=None, verbose_name=_("Malus Armure"))
@@ -20,13 +22,13 @@ class Armure(Model):
 
 
 class Arme(Model):
-    nom = CharField(max_length=100,verbose_name="Nom de l'arme", default=None)
+    nom = CharField(max_length=100, verbose_name="Nom de l'arme", default=None)
     prix = IntegerField(blank=True, null=True, default=None,
                         verbose_name=_("Prix de l'arme"))
     degat = IntegerField(null=False, blank=False, default=1)
     poids = IntegerField(blank=True, null=True, default=None,
                          verbose_name=_("Poids de l'arme en kilogrammes"))
-    proprietes = CharField(max_length=255,blank=True, null=True, default=None, verbose_name=_("Propriétés de l'arme"))
+    proprietes = CharField(max_length=255, blank=True, null=True, default=None, verbose_name=_("Propriétés de l'arme"))
 
 
 class Bouclier(Model):
@@ -48,7 +50,7 @@ class Bourse(Model):
 
 
 class Objets(Model):
-    nom = CharField(max_length=255,verbose_name="Nom de l'objet", null=True, default=None)
+    nom = CharField(max_length=255, verbose_name="Nom de l'objet", null=True, default=None)
     prix = IntegerField(blank=True, null=True, default=None,
                         verbose_name=_("Prix de l'objet"))
     poids = IntegerField(blank=True, null=True, default=None,
@@ -56,7 +58,7 @@ class Objets(Model):
 
 
 class Outils(Model):
-    nom = CharField(max_length=255,verbose_name="Nom de l'outil", null=True, default=None)
+    nom = CharField(max_length=255, verbose_name="Nom de l'outil", null=True, default=None)
     prix = IntegerField(blank=True, null=True, default=None,
                         verbose_name=_("Prix de l'outil"))
     poids = IntegerField(blank=True, null=True, default=None,
