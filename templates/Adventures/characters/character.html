@@ -1,0 +1,21 @@
+{% extends "WebAXEL/base/base.html" %}
+{% load static i18n crispy_forms_tags %}
+{% block title %}{% trans "Personnage Adventures" %}{% endblock %}
+{% block content %}
+    <div class="container-fluid" style="text-align: center">
+        <h1 class="mainH1 mt-3 mb-3">{{ character.nom }}</h1>
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-body">
+                    <p class="card-text">
+                        {% blocktrans with classe=character.classe %} {{ classe }}{% endblocktrans %}
+                    </p>
+                    <p class="card-text"><span
+                            class="badge badge-secondary">
+                            {% blocktrans with race=character.race %}Auteur : {{ race }}{% endblocktrans %}
+                        </span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
