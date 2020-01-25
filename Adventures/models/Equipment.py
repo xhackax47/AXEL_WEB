@@ -1,5 +1,5 @@
 from django.db import models
-from django.db.models import Model, IntegerField, ForeignKey, FloatField, CharField, BooleanField, Choices
+from django.db.models import Model, IntegerField, ForeignKey, FloatField, CharField, BooleanField
 from django.utils.translation import ugettext_lazy as _
 
 
@@ -12,7 +12,7 @@ class Armure(Model):
     nom = CharField(max_length=100, verbose_name="Nom de l'armure", default=None)
     prix = IntegerField(blank=True, null=True, default=None,
                         verbose_name=_("Prix de l'armure"))
-    type_armure = CharField(max_length=100, verbose_name="Type de l'armure", default=None)
+    type_armure = CharField(max_length=100, choices=TYPE_ARMURE, verbose_name="Type de l'armure", default=None)
     ca_bonus = IntegerField(blank=True, null=True, default=None, verbose_name=_("CA Bonus"))
     max_dex = IntegerField(blank=True, null=True, default=None, verbose_name=_("Maximum Dextérité"))
     malus = IntegerField(blank=True, null=True, default=None, verbose_name=_("Malus Armure"))
