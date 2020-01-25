@@ -12,11 +12,10 @@ from sentry_sdk.integrations.django import DjangoIntegration
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# DEBUG = True pour le mode Développement
-# DEBUG = False pour le mode Production
-DEBUG = False
+# DEBUG = True  # pour le mode Développement
+DEBUG = False  # pour le mode Production
 
-# Condition pour vérifier le statut des lancement de tests
+# Condition pour vérifier si les tests sont lancés (python manage.py test)
 NOT_TEST = eval("'test' not in sys.argv or 'test_coverage' in sys.argv")
 
 # Dictionnaire de Variables d'environnement
@@ -143,10 +142,12 @@ MIDDLEWARE = [
     'django.middleware.common.BrokenLinkEmailsMiddleware',
 ]
 
+# Configuration de l'administrateur et des managers de l'application (Nom / Mail)
 if not DEBUG and NOT_TEST:
     ADMIN = settings['ADMIN']
     MANAGERS = settings['MANAGERS']
 
+# Racine des configurations urls
 ROOT_URLCONF = 'AXEL_WEB.urls'
 
 # Configuration email pour l'activation de comptes
@@ -158,6 +159,7 @@ if not DEBUG and NOT_TEST:
     EMAIL_HOST_PASSWORD = settings['EMAIL_HOST_PASSWORD']
     EMAIL_PORT = settings['EMAIL_PORT']
 
+# Configuration du moteur de template
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -179,7 +181,7 @@ WSGI_APPLICATION = 'AXEL_WEB.wsgi.application'
 
 # Bases de données
 if not DEBUG and NOT_TEST:
-    # Configuration BDD PostgreSQL Distante en mode Production (DEBUG=False)
+    # Configuration BDD PostgreSQL Distante en mode Production (DEBUG=False) hors tests
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -192,14 +194,14 @@ if not DEBUG and NOT_TEST:
     }
 
 elif DEBUG and NOT_TEST:
-    # Configuration BDD PostgreSQL Local en mode Développement (DEBUG=TRUE)
+    # Configuration BDD PostgreSQL Local en mode Développement (DEBUG=TRUE) hors tests
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'AXEL_WEB',
-            'USER': 'xhackax47',
-            'PASSWORD': 'L@n@s@y@n34000',
-            'HOST': 'localhost',
+            'NAME': settings['DEV_DB_NAME'],
+            'USER': settings['DEV_DB_USER'],
+            'PASSWORD': settings['DEV_DB_PASSWORD'],
+            'HOST': settings['DEV_DB_HOST'],
             'PORT': '5432',
         }
     }
