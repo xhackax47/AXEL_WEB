@@ -42,7 +42,7 @@ class Arme(Model):
 
 
 class Bouclier(Model):
-    nom = CharField(max_length=100, verbose_name="Nom du bouclier", default=None)
+    nom = CharField(max_length=100, verbose_name="Nom du bouclier", default=None, null=True)
     prix = IntegerField(blank=True, null=True, default=None,
                         verbose_name=_("Prix du bouclier"))
     ca_bonus = IntegerField(blank=True, null=True, default=None, verbose_name=_("CA Bonus"))
