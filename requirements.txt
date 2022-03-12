@@ -13,7 +13,7 @@ gettext-anywhere==1.0.0
 gunicorn==20.0.4
 Markdown==3.1.1
 mysqlclient==1.4.6
-Pillow==7.0.0
+Pillow==9.0.1
 psycopg2==2.8.4
 public==2019.4.13
 python-gettext==4.0
